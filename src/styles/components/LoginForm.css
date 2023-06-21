@@ -1,0 +1,81 @@
+.loginFormContainer {
+    width: 380px;
+    background-color: #fff;
+    padding: 40px 25px 50px 25px;
+    position: relative;
+    left: 50%;
+    border-radius: 10px;
+}
+
+.loginFormContainer>div {
+    display: flex;
+    flex-direction: column;
+}
+
+.loginFormContainer h2 {
+    color: #102B3F;
+    margin-bottom: 40px;
+}
+
+.loginFormContainer form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid rgba(128, 128, 128, .55);
+    padding-bottom: 30px;
+}
+
+.loginFormContainer form>div {
+    width: inherit;
+}
+
+.loginFormContainer input {
+    width: 100%;
+    height: 40px;
+    color: #102B3F;
+    border: 1px solid rgba(128, 128, 128, .55);
+    border-radius: 5px;
+    outline: none;
+    transition: .5s;
+    font-weight: 600;
+    font-size: .9rem;
+    padding-left: 10px;
+}
+
+.loginFormContainer input::placeholder {
+    opacity: .25;
+}
+
+
+.loginFormContainer input:focus {
+    border: 1px solid #102B3F;
+}
+
+.loginFormContainer button {
+    background-color: #2081C3;
+    color: #FFF;
+    font-size: .9rem;
+    font-weight: 600;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.loginFormContainer .loginBtn {
+    padding: 10px 40px;
+}
+
+.loginFormContainer .demoBtn {
+    align-self: center;
+    margin-top: 30px;
+    padding: 12px 30px;
+}
+
+.loginFormContainer button:hover {
+    background-color: #FFF;
+    color: #2081C3;
+    border: 2px solid #2081C3;
+}
