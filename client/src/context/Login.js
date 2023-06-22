@@ -1,9 +1,11 @@
 import React, { useContext, useState } from "react";
+import axios from "axios";
 
 const AppContext = React.createContext();
 const LoginProvider = ({ children }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const emailValidator = (txt) => {
@@ -11,14 +13,14 @@ const LoginProvider = ({ children }) => {
     return regex.test(txt);
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
 
     const inputs = [...e.currentTarget.getElementsByTagName("div")].map(
       (e) => e.children[0]
     );
 
-    if (!email || !password || !emailValidator(email)) {
+    if (!email || !password || !username || !emailValidator(email)) {
       inputs.forEach((e) => {
         if (e.value === "") {
           e.style.borderColor = "red";
@@ -30,14 +32,32 @@ const LoginProvider = ({ children }) => {
       });
 
       if (!emailValidator(email)) {
-        inputs[0].style.borderColor = "red";
-        setErrorMessage("Please enter a valid email");
+        inputs[1].style.borderColor = "red";
 
         setTimeout(() => {
-          inputs[0].style.borderColor = "rgba(128, 128, 128, .55)";
-          setErrorMessage("");
+          inputs[1].style.borderColor = "rgba(128, 128, 128, .55)";
         }, 2500);
       }
+
+      setErrorMessage("Please check for errors");
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 2500);
+
+      return;
+    }
+
+    try {
+      const response = await axios.post("http://localhost:3001/login");
+
+      localStorage.setItem("token", `Bearer ${response.data.token}`);
+
+      window.location = "/";
+    } catch (error) {
+      setErrorMessage(error.message);
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 2500);
     }
   };
 
@@ -48,6 +68,8 @@ const LoginProvider = ({ children }) => {
         setEmail,
         password,
         setPassword,
+        username,
+        setUsername,
         submitHandler,
         errorMessage,
         setErrorMessage,
