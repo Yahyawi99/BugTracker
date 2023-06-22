@@ -1,28 +1,43 @@
 import React from "react";
+import { useGlobal } from "../context/Login";
 // css
 import "../styles/components/LoginForm.css";
 
 const LoginForm = () => {
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    submitHandler,
+    errorMessage,
+  } = useGlobal();
   return (
     <div className="loginFormContainer">
       <div>
         <h2>Login to your account</h2>
 
-        <form action="">
+        <form onSubmit={(e) => submitHandler(e)}>
           <div>
-            <input type="text" placeholder="email" />
+            <input
+              type="text"
+              placeholder="email"
+              value={email}
+              onChange={(e) => setEmail(e.currentTarget.value)}
+            />
           </div>
 
           <div>
             <input
               type="password"
-              name="password"
-              id="password"
               placeholder="password"
+              value={password}
+              onChange={(e) => setPassword(e.currentTarget.value)}
             />
           </div>
 
           <button className="loginBtn">Login</button>
+          <p className="errorMessage">{errorMessage}</p>
         </form>
 
         <button className="demoBtn">Demo Account</button>
