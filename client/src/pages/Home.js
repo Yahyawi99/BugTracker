@@ -1,30 +1,19 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react";
+import { useMain } from "../context/main";
+// components
+import Header from "../components/Header";
 
 const Home = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  const authenticationCheck = async () => {
-    const storage = localStorage.getItem("token");
-
-    try {
-      await axios.get("http://localhost:3001/", {
-        headers: {
-          Authorization: `${storage}`,
-        },
-      });
-
-      setIsAuthenticated(true);
-    } catch (error) {
-      setIsAuthenticated(false);
-      window.location = "/login";
-    }
-  };
+  const { authenticationCheck, isAuthenticated } = useMain();
 
   authenticationCheck();
 
   if (isAuthenticated) {
-    return <h1>HOME</h1>;
+    return (
+      <section className="homeContainer">
+        <Header />
+      </section>
+    );
   }
 };
 
