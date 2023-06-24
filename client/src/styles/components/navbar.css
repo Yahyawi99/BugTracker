@@ -1,0 +1,104 @@
+.navbarContainer {
+    width: 50%;
+    max-width: 325px;
+    height: calc(100vh - 82px);
+    background-color: #FFF;
+    border-right: 1px solid rgb(90, 87, 87, .25);
+}
+
+
+.navbarContainer .info {
+    display: flex;
+    justify-content: flex-start;
+    align-self: flex-start;
+    gap: 10px;
+    padding: 20px 0px 20px 25px
+}
+
+.navbarContainer .info>div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.navbarContainer .info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.navbarContainer .info .name {
+    font-weight: 800;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.navbarContainer .info .role {
+    color: #2DD881;
+    display: flex;
+    justify-content: center;
+    font-size: .7rem;
+    text-transform: uppercase;
+    border: 1px solid #2DD881;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+
+/* navigation */
+.navigationContainer .head {
+    display: flex;
+    align-items: center;
+    margin: 0 0 10px 0;
+}
+
+.navigationContainer .head h3 {
+    color: #2081C3;
+    border-top: 1px solid rgb(90, 87, 87, .25);
+    border-right: 1px solid rgb(90, 87, 87, .25);
+    border-left: 1px solid rgb(90, 87, 87, .25);
+    border-radius: 5px 5px 0px 0px;
+    padding: 10px 20px;
+}
+
+
+.navigationContainer .head i {
+    border-bottom: 1px solid rgb(90, 87, 87, .25);
+    padding: 10px 15px 8px 15px;
+    margin-left: -1px;
+    flex: 1;
+}
+
+.navigationContainer .head svg {
+    transform: scale(.7);
+}
+
+/* List */
+.navigationContainer .list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.navigationContainer .list>li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-left: 5px solid #2081C3;
+    cursor: pointer;
+    padding: 10px 0px 10px 20px;
+}
+
+.navigationContainer .list>li:hover {
+    background-color: rgba(32, 130, 195, 0.1);
+}
+
+.navigationContainer .list>li p {
+    font-size: 1.15rem;
+    margin-bottom: 5px;
+}
+
+.navigationContainer .list>li i svg path {
+    fill: #2081C3;
+}
