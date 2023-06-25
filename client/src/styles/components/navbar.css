@@ -4,6 +4,11 @@
     height: calc(100vh - 82px);
     background-color: #FFF;
     border-right: 1px solid rgb(90, 87, 87, .25);
+    overflow-y: scroll;
+}
+
+.navbarContainer::-webkit-scrollbar {
+    display: none;
 }
 
 
@@ -78,7 +83,6 @@
 .navigationContainer .list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
 }
 
 .navigationContainer .list>li {
@@ -88,19 +92,25 @@
     border-left: 5px solid #2081C3;
     cursor: pointer;
     padding: 15px 10px 15px 15px;
+    margin-bottom: 10px;
+}
+
+.navigationContainer .list>li:nth-child(3),
+.navigationContainer .list>li:nth-child(5) {
+    margin-bottom: 0px;
 }
 
 .navigationContainer .list>li:hover {
     background-color: rgba(32, 130, 195, 0.1);
 }
 
-.navigationContainer .list>li p {
-    font-size: 1.15rem;
-}
-
 .navigationContainer .list>li .arrow {
     font-size: .9rem;
+    transform-origin: center;
+    transform: rotate(90deg);
+    transition: .5s;
     margin-left: auto;
+
 }
 
 .navigationContainer .list>li .arrow path {
@@ -111,11 +121,55 @@
     fill: #2081C3;
 }
 
+/* options */
+.navigationContainer .options {
+    max-height: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden;
+    transition: max-height .5s ease-in-out;
+    padding: 0px 0 10px 25px;
+}
+
+.navigationContainer .options span:nth-child(1) {
+    margin-top: 15px;
+}
+
+.navigationContainer .options span {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.navigationContainer .options span p {
+    color: #767676;
+    cursor: pointer;
+}
+
+.navigationContainer .options span p:hover {
+    text-decoration: 2px underline;
+}
+
+.navigationContainer .options span svg {
+    font-size: .5rem;
+}
+
+.navigationContainer .options span svg path {
+    fill: #000;
+}
 
 /* ************************************ */
 /* ************************************ */
 /* ************************************ */
 .navigationContainer .list>.clicked {
     background-color: rgba(32, 130, 195, 0.1);
-    pointer-events: none;
+}
+
+.navigationContainer .list>li .clickedArrow {
+    transform: rotate(0deg);
+}
+
+.navigationContainer .openDropDown {
+    max-height: 324px;
 }
