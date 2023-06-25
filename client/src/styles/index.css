@@ -14,11 +14,11 @@ body {
 }
 
 svg path {
-  fill: #000;
+  fill: #767676;
 }
 
-
 i {
+  font-size: 1.25rem;
   cursor: pointer;
   transition: .25s;
 }

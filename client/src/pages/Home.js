@@ -1,5 +1,6 @@
 import React from "react";
 import { useMain } from "../context/main";
+import NavBarProvider from "../context/NavBar";
 // components
 import Header from "../components/Header";
 import NavBar from "../components/NavBar";
@@ -18,7 +19,9 @@ const Home = () => {
         <Header />
 
         <section>
-          <NavBar />
+          <NavBarProvider>
+            <NavBar />
+          </NavBarProvider>
 
           <Content />
         </section>

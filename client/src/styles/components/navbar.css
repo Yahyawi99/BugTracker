@@ -1,5 +1,5 @@
 .navbarContainer {
-    width: 50%;
+    width: 100%;
     max-width: 325px;
     height: calc(100vh - 82px);
     background-color: #FFF;
@@ -12,7 +12,7 @@
     justify-content: flex-start;
     align-self: flex-start;
     gap: 10px;
-    padding: 20px 0px 20px 25px
+    padding: 15px 0px 25px 25px;
 }
 
 .navbarContainer .info>div {
@@ -78,16 +78,16 @@
 .navigationContainer .list {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
 }
 
 .navigationContainer .list>li {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
     border-left: 5px solid #2081C3;
     cursor: pointer;
-    padding: 10px 0px 10px 20px;
+    padding: 15px 10px 15px 15px;
 }
 
 .navigationContainer .list>li:hover {
@@ -96,9 +96,26 @@
 
 .navigationContainer .list>li p {
     font-size: 1.15rem;
-    margin-bottom: 5px;
+}
+
+.navigationContainer .list>li .arrow {
+    font-size: .9rem;
+    margin-left: auto;
+}
+
+.navigationContainer .list>li .arrow path {
+    fill: #767676;
 }
 
 .navigationContainer .list>li i svg path {
     fill: #2081C3;
+}
+
+
+/* ************************************ */
+/* ************************************ */
+/* ************************************ */
+.navigationContainer .list>.clicked {
+    background-color: rgba(32, 130, 195, 0.1);
+    pointer-events: none;
 }

@@ -8,15 +8,11 @@
 
 }
 
-
-
-
 .header>div {
     display: flex;
     align-items: center;
     gap: 20px;
 }
-
 
 .header .newTicketBtn {
     background-color: #2081C3;
