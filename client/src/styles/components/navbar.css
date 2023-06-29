@@ -61,7 +61,7 @@
 
 .navigationContainer .head h3 {
     width: 96px;
-    color: var(--blue);
+    color: var(--main-clr);
     border-radius: 5px 5px 0px 0px;
     cursor: pointer;
     user-select: none;
@@ -81,14 +81,15 @@
 }
 
 .navigationContainer .head i:hover {
-    background-color: var(--blue-hover);
+    background-color: var(--main-clr-hover);
+    /* change */
     border: 1px solid var(--border-color);
     border-radius: 5px 5px 0 0;
     opacity: .5;
 }
 
 .navigationContainer .head i:hover svg path {
-    fill: var(--blue)
+    fill: var(--main-clr)
 }
 
 .navigationContainer .head .filler {
@@ -110,7 +111,7 @@
     display: flex;
     align-items: center;
     gap: 15px;
-    border-left: 5px solid var(--blue);
+    border-left: 5px solid var(--main-clr);
     cursor: pointer;
     padding: 15px 10px 15px 15px;
     margin-bottom: 10px;
@@ -124,7 +125,7 @@
 }
 
 .navigationContainer .list>li:hover {
-    background-color: var(--blue-hover);
+    background-color: var(--main-clr-hover);
 }
 
 .navigationContainer .list>li .arrow {
@@ -141,7 +142,7 @@
 }
 
 .navigationContainer .list>li i svg path {
-    fill: var(--blue);
+    fill: var(--main-clr);
 }
 
 /* options */
@@ -221,7 +222,7 @@
 .navigationContainer .skins span .check {
     position: absolute;
     fill: var(--white);
-    font-size: .8rem;
+    font-size: .7rem;
 }
 
 
@@ -229,7 +230,7 @@
 /* ************************************ */
 /* ************************************ */
 .navigationContainer .list>.clicked {
-    background-color: var(--blue-hover);
+    background-color: var(--main-clr-hover);
 }
 
 .navigationContainer .list>li .clickedArrow {
@@ -263,7 +264,7 @@
 }
 
 .navigationContainer .menuOffHead h3:hover {
-    color: var(--blue);
+    color: var(--main-clr);
     border-top: 1px solid var(--border-color);
     border-right: 1px solid var(--border-color);
     border-left: 1px solid var(--border-color);
@@ -280,5 +281,5 @@
 }
 
 .navigationContainer .menuOffHead i path {
-    fill: var(--blue);
+    fill: var(--main-clr);
 }

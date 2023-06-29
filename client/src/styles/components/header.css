@@ -15,7 +15,7 @@
 }
 
 .header .newTicketBtn {
-    background-color: var(--blue);
+    background-color: var(--main-clr);
     color: var(--white);
     font-size: .9rem;
     font-weight: 600;
@@ -28,6 +28,6 @@
 
 .header .newTicketBtn:hover {
     background-color: transparent;
-    color: var(--blue);
-    border: 2px solid var(--blue);
+    color: var(--main-clr);
+    border: 2px solid var(--main-clr);
 }

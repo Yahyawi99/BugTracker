@@ -4,6 +4,7 @@ import axios from "axios";
 const AppContext = React.createContext();
 const MainProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [skin, setSkin] = useState("blue");
 
   // check if user is authenticated
   const authenticationCheck = async () => {
@@ -28,6 +29,8 @@ const MainProvider = ({ children }) => {
       value={{
         authenticationCheck,
         isAuthenticated,
+        skin,
+        setSkin,
       }}
     >
       {children}

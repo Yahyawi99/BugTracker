@@ -1,4 +1,5 @@
 import React from "react";
+import { useMain } from "../context/main";
 import { useNavGlobal } from "../context/NavBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -26,6 +27,7 @@ const NavBar = () => {
     menuSettings,
     isMenu,
   } = useNavGlobal();
+  const { skin: skinChoice, setSkin } = useMain();
 
   return (
     <nav className="navbarContainer">
@@ -253,13 +255,15 @@ const NavBar = () => {
 
             {skins.map((skin, i) => {
               const { name, hex } = skin;
-              console.log(hex);
+
               return (
-                <span key={i}>
+                <span key={i} onClick={() => setSkin(name)}>
                   <i className="dot">
-                    <i className="check">
-                      <FontAwesomeIcon icon={faCheck} />
-                    </i>
+                    {skinChoice === name && (
+                      <i className="check">
+                        <FontAwesomeIcon icon={faCheck} />
+                      </i>
+                    )}
 
                     <FontAwesomeIcon
                       icon={faCircle}
