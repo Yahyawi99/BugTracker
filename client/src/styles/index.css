@@ -46,14 +46,16 @@
   --black: #000;
   --border-color: rgb(90, 87, 87, .25);
   --shadow: 10px 0px 5px 0px rgba(0, 0, 0, .4);
+  --svg-fill: #767676;
 }
 
 body {
   background-color: #EDF2F4;
+  overflow: hidden;
 }
 
 svg path {
-  fill: #767676;
+  fill: var(--svg-fill);
 }
 
 i {
