@@ -54,7 +54,7 @@ body {
   overflow: hidden;
 }
 
-svg path {
+i svg path {
   fill: var(--svg-fill);
 }
 

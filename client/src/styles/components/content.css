@@ -1,6 +1,7 @@
 .mainContentContainer {
     width: 100%;
-    height: 100vh;
-    padding: 15px;
+    height: calc(100vh - 85px);
+    padding: 15px 15px 0 15px;
+    overflow: hidden;
     overflow-y: scroll;
 }

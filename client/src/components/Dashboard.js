@@ -8,34 +8,14 @@ import {
   faFolder,
   faBell,
 } from "@fortawesome/free-solid-svg-icons";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Pie, Bar } from "react-chartjs-2";
 // components
 import HomeBtn from "./HomeBtn";
+import PieChart from "./PieChart";
+import BarChart from "./BarChart";
 // css
 import "../styles/components/dashboard.css";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
-
 const Dashboard = () => {
-  const graph = {
-    labels: ["High", "Medium", "Low"],
-    data: [3, 1, 2],
-  };
-
-  const Data = {
-    labels: graph.labels,
-    datasets: [
-      {
-        label: " ",
-        data: graph.data,
-        backgroundColor: ["#e83e8c", "#20c997", "#fd7e14"],
-        borderColor: ["#e83e8c", "#20c997", "#fd7e14"],
-        borderWidth: 2,
-      },
-    ],
-  };
-
   return (
     <section className="dashboard-Container">
       <HomeBtn name="Dashboard" />
@@ -146,13 +126,14 @@ const Dashboard = () => {
         </div>
 
         <div className="priority-project">
-          <h3>Priority Project</h3>
-          <div className="pie-chart">
-            <Pie data={Data} />
-          </div>
+          <h3>Priority Projects</h3>
+          <PieChart />
         </div>
 
-        <div className="team-statistics"></div>
+        <div className="team-statistics">
+          <h3>Team Distribution</h3>
+          <BarChart />
+        </div>
       </div>
     </section>
   );
