@@ -135,6 +135,8 @@ const Dashboard = () => {
           <BarChart />
         </div>
       </div>
+
+      <div className="members"></div>
     </section>
   );
 };

@@ -1,13 +1,17 @@
 import React from "react";
-import LoginProvider from "../context/Login";
+import { useLogin } from "../context/Login";
 // components
 import LoginForm from "../components/LoginForm";
 // css
 import "../styles/pages/Login.css";
 
 const Login = () => {
-  return (
-    <LoginProvider>
+  const { authenticated, authenticationCheck } = useLogin();
+
+  authenticationCheck();
+
+  if (authenticated) {
+    return (
       <section className="loginConatiner">
         <div>
           <div>
@@ -17,8 +21,8 @@ const Login = () => {
           </div>
         </div>
       </section>
-    </LoginProvider>
-  );
+    );
+  }
 };
 
 export default Login;

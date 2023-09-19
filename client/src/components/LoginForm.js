@@ -1,5 +1,5 @@
 import React from "react";
-import { useGlobal } from "../context/Login";
+import { useLogin } from "../context/Login";
 // css
 import "../styles/components/LoginForm.css";
 
@@ -13,7 +13,7 @@ const LoginForm = () => {
     setUsername,
     submitHandler,
     errorMessage,
-  } = useGlobal();
+  } = useLogin();
   return (
     <div className="loginFormContainer">
       <div>

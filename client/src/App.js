@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { useMain } from "./context/main";
+import LoginProvider from "./context/Login";
 // pages
 import Login from "./pages/Login";
 import Home from "./pages/Home";
@@ -15,10 +16,12 @@ function App() {
 
   return (
     <div className="App" style={stylesVariables}>
-      <Routes>
-        <Route exact path="/" Component={Home} />
-        <Route axact path="/login" Component={Login} />
-      </Routes>
+      <LoginProvider>
+        <Routes>
+          <Route exact path="/" Component={Home} />
+          <Route axact path="/login" Component={Login} />
+        </Routes>
+      </LoginProvider>
     </div>
   );
 }

@@ -7,6 +7,7 @@ const LoginProvider = ({ children }) => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [authenticated, setAuthenticated] = useState(false);
 
   const emailValidator = (txt) => {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -61,6 +62,25 @@ const LoginProvider = ({ children }) => {
     }
   };
 
+  // Authentication check
+  const authenticationCheck = async () => {
+    const storage = localStorage.getItem("token");
+
+    try {
+      await axios.get("http://localhost:3001/", {
+        headers: {
+          Authorization: `${storage}`,
+        },
+      });
+
+      window.location = "/";
+
+      setAuthenticated(false);
+    } catch (error) {
+      setAuthenticated(true);
+    }
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -73,6 +93,8 @@ const LoginProvider = ({ children }) => {
         submitHandler,
         errorMessage,
         setErrorMessage,
+        authenticationCheck,
+        authenticated,
       }}
     >
       {children}
@@ -80,6 +102,6 @@ const LoginProvider = ({ children }) => {
   );
 };
 
-export const useGlobal = () => useContext(AppContext);
+export const useLogin = () => useContext(AppContext);
 
 export default LoginProvider;
