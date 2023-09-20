@@ -17,13 +17,13 @@ const login = async (req, res) => {
   }
 
   //   compare password
-  const isPasswordCorrect = ComparePasswords(password);
+  const isPasswordCorrect = await user.ComparePasswords(password);
 
   if (!isPasswordCorrect) {
-    throw new CustomErrors.UnauthorizedEror("Invalid Credentials!");
+    throw new CustomErrors.UnauthorizedEror("Invalid Password!");
   }
 
-  res.status(StatusCodes).json({ user, msg: `Welcome back ${user.name}` });
+  res.status(StatusCodes.OK).json({ user, msg: `Welcome back ${user.name}` });
 };
 
 // Register
