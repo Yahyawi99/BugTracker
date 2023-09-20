@@ -1,5 +1,7 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
+// Utils
+import wait from "../utils/wait";
 
 const AppContext = React.createContext();
 const AuthProvider = ({ children }) => {
@@ -37,6 +39,8 @@ const AuthProvider = ({ children }) => {
       } = error;
 
       setErrMsg(msg);
+      await wait(1000);
+      setErrMsg("");
     }
   };
 

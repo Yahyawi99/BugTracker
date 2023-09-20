@@ -1,5 +1,6 @@
 import React from "react";
 import { useAuth } from "../../context/Auth-context";
+import { Link } from "react-router-dom";
 // css
 import "../../styles/pages/Login/LoginForm.css";
 
@@ -14,6 +15,7 @@ const LoginForm = () => {
     mode,
     setMode,
     submitHandler,
+    errMsg,
   } = useAuth();
 
   return (
@@ -52,7 +54,10 @@ const LoginForm = () => {
           </div>
 
           <button className="loginBtn">Login</button>
-          <p className="errorMessage">{""}</p>
+          <p className="register">
+            You don't have an account? <Link to="/register">Register</Link>
+          </p>
+          <p className="errorMessage">{errMsg}</p>
         </form>
 
         <button className="demoBtn">Demo Account</button>

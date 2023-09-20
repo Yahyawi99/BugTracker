@@ -22,9 +22,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    border-bottom: 1px solid rgba(128, 128, 128, .55);
-    padding-bottom: 25px;
+    gap: 15px;
+    position: relative;
+    border-bottom: 1px solid rgba(41, 19, 19, 0.55);
+    padding-bottom: 5px;
 }
 
 .loginFormContainer form>div {
@@ -81,10 +82,14 @@
     border: 2px solid var(--main-clr);
 }
 
+.loginFormContainer .register {
+    margin: 0 0 15px 0;
+}
+
 .loginFormContainer .errorMessage {
     color: var(--danger);
     font-weight: 600;
-    font-size: .8rem;
+    font-size: .9rem;
     position: absolute;
-    top: 340px;
+    top: -25px;
 }
