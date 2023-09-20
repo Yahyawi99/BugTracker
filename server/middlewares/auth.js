@@ -1,35 +1,22 @@
-const jwt = require("jsonwebtoken");
-const { StatusCodes } = require("http-status-codes");
-const CustomErrors = require('../errors')
+const CustomErrors = require("../errors");
+const { isTokenValid } = require("../utils");
 
-const authenvticationMiddleware = async (req, res, next) => {
-  const authHeader = req.headers.authorization;
+const authenticateUser = async (req, res, next) => {
+  const token = req.signedCookies.access_token;
 
-  if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    throw new Error("No token provided");
+  if (!token) {
+    throw new CustomErrors.UnauthorizedEror("Authentication Invalid");
   }
 
-  const token = authHeader.split(" ")[1];
-
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const { name, userId, role } = isTokenValid(token);
 
-    const { id, username } = decoded;
-    req.user = { id, username };
+    req.user = { name, userId, role };
+
     next();
   } catch (error) {
-    res
-      .status(StatusCodes.UNAUTHORIZED)
-      .json({ message: "You're not authorized to access this route." });
+    throw new CustomErrors.UnauthorizedEror("Authentication Invalid");
   }
 };
 
-const authenticationMiddleware = async(req,res,next)=>{
-const authHeader = req.headers.authorization
-
-if(!authHeader||!authHeader.includes("Bearer ")){
-  throw 
-}
-}
-
-module.exports = authenticationMiddleware;
+module.exports = authenticateUser;
