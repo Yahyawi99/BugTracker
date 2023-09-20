@@ -37,11 +37,18 @@ const UserSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// hash the password after every save
 UserSchema.pre("save", async function () {
   if (this.isModified("password")) {
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
   }
 });
+
+// compare passwords
+UserSchema.methods.ComparePasswords = async function (inputPassword) {
+  const isMatch = await bcrypt.compare(inputPassword, this.password);
+  return isMatch;
+};
 
 module.exports = mongoose.model("User", UserSchema);

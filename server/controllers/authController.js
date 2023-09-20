@@ -16,7 +16,14 @@ const login = async (req, res) => {
     throw new CustomErrors.NotFoundError(`No user with email : ${email}`);
   }
 
-  res.send();
+  //   compare password
+  const isPasswordCorrect = ComparePasswords(password);
+
+  if (!isPasswordCorrect) {
+    throw new CustomErrors.UnauthorizedEror("Invalid Credentials!");
+  }
+
+  res.status(StatusCodes).json({ user, msg: `Welcome back ${user.name}` });
 };
 
 // Register
