@@ -1,6 +1,5 @@
 import React from "react";
 import { useMainContext } from "../../context";
-// import { useNav } from "../hooks/useAuth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGear,
@@ -19,14 +18,6 @@ import skins from "../../data/colors.json";
 import "../../styles/components/navbar.css";
 
 const NavBar = () => {
-  // const {
-  //   clicked,
-  //   setClicked,
-  //   dropDown,
-  //   showHideDropDown,
-  //   menuSettings,
-  //   isMenu,
-  // } = useNavGlobal();
   const { skin: skinChoice, setSkin } = useMainContext();
 
   return (

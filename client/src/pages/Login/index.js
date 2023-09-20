@@ -3,7 +3,7 @@ import AuthProvider from "../../context/Auth-context";
 // components
 import LoginForm from "../../components/Login/LoginForm";
 // css
-import "../../styles/pages/Login/Login.css";
+import "../../styles/pages/Login/index.css";
 
 const Login = () => {
   return (
