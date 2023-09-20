@@ -1,4 +1,5 @@
 import React from "react";
+import AuthProvider from "../../context/Auth-context";
 // components
 import LoginForm from "../../components/Login/LoginForm";
 // css
@@ -11,7 +12,9 @@ const Login = () => {
         <div>
           <img src="/assets/icons/bug.svg" alt="bug" className="bugImg" />
 
-          <LoginForm />
+          <AuthProvider>
+            <LoginForm />
+          </AuthProvider>
         </div>
       </div>
     </section>

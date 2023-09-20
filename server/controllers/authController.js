@@ -7,13 +7,13 @@ const login = async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    throw new CustomErrors.BadRequestError("Please enter both values");
+    throw new CustomErrors.BadRequestError("Please enter both values.");
   }
 
   const user = await User.findOne({ email });
 
   if (!user) {
-    throw new CustomErrors.NotFoundError(`No user with email : ${email}`);
+    throw new CustomErrors.NotFoundError(`User not found.`);
   }
 
   //   compare password
