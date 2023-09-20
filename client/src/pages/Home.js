@@ -3,7 +3,7 @@ import React from "react";
 // import NavBarProvider from "../context/NavBar";
 // components
 import Header from "../components/Header";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/Navbar";
 import Content from "../components/Content";
 // css
 import "../styles/pages/home.css";
