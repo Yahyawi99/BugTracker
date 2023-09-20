@@ -20,4 +20,4 @@ const attachCookieToResponse = ({ res, user }) => {
   });
 };
 
-module.exports = { attachCookieToResponse, createJWT };
+module.exports = { attachCookieToResponse, createJWT, isTokenValid };

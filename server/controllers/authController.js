@@ -24,6 +24,10 @@ const login = async (req, res) => {
     throw new CustomErrors.UnauthorizedEror("Invalid Password!");
   }
 
+  // create token-user and attach cookie to response
+  const tokenUser = createTokenUser(user);
+  attachCookieToResponse({ res, user: tokenUser });
+
   res.status(StatusCodes.OK).json({ user, msg: `Welcome back ${user.name}` });
 };
 
@@ -45,13 +49,13 @@ const register = async (req, res) => {
 
   const user = await User.create({ name, email, password });
 
-  // create token and attach cookie to response
+  // create token-user and attach cookie to response
   const tokenUser = createTokenUser(user);
   attachCookieToResponse({ res, user: tokenUser });
 
   res
     .status(StatusCodes.CREATED)
-    .json({ user, msg: "User created succesfully" });
+    .json({ tokenUser, msg: "User created succesfully" });
 };
 
 module.exports = { login, register };

@@ -1,7 +1,8 @@
 const jwt = require("jsonwebtoken");
 const { StatusCodes } = require("http-status-codes");
+const CustomErrors = require('../errors')
 
-const authenticationMiddleware = async (req, res, next) => {
+const authenvticationMiddleware = async (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
@@ -22,5 +23,13 @@ const authenticationMiddleware = async (req, res, next) => {
       .json({ message: "You're not authorized to access this route." });
   }
 };
+
+const authenticationMiddleware = async(req,res,next)=>{
+const authHeader = req.headers.authorization
+
+if(!authHeader||!authHeader.includes("Bearer ")){
+  throw 
+}
+}
 
 module.exports = authenticationMiddleware;
