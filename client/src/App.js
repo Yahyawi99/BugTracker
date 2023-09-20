@@ -2,10 +2,10 @@ import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { useMainContext } from "./context";
 // components
-import Header from "./components/Header";
+// import Header from "./components/Header";
 // pages
 import Login from "./pages/Login";
-import Home from "./pages/dashboard";
+import Home from "./pages/main";
 
 function App() {
   const { skin } = useMainContext();
@@ -17,7 +17,6 @@ function App() {
 
   return (
     <div className="App" style={stylesVariables}>
-      <Header />
       <Routes>
         <Route path="/login" Component={Login} />
 
