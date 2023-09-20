@@ -23,14 +23,15 @@ const login = async (req, res) => {
 const register = async (req, res) => {
   const { name, email, password } = req.body;
 
-  if (!name || !email || !password) {
-    throw new CustomErrors.BadRequestError("Please enter all values");
+  const ExistingUser = await User.findOne({ email });
+
+  if (ExistingUser) {
+    throw new CustomErrors.BadRequestError(
+      `User with email : ${email} already exists.`
+    );
   }
 
-  const user = await User.create(
-    { ...req.body },
-    { new: true, runValidators: true }
-  );
+  const user = await User.create({ name, email, password });
 
   res
     .status(StatusCodes.CREATED)

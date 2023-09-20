@@ -6,6 +6,7 @@ const errHandler = (err, req, res, next) => {
     message: err.message || "Something went wrong please try again!",
   };
 
+  // mongoose validation error
   if (err.name === "ValidationError") {
     customError.statusCode = StatusCodes.BAD_REQUEST;
 
