@@ -1,16 +1,10 @@
 import React from "react";
-// import { useLogin } from "../context/Login";
 // components
-import LoginForm from "../components/LoginForm";
+import LoginForm from "../../components/Login/LoginForm";
 // css
-import "../styles/pages/Login.css";
+import "../../styles/pages/Login/Login.css";
 
 const Login = () => {
-  // const { authenticated, authenticationCheck } = useLogin();
-
-  // authenticationCheck();
-
-  // if (authenticated) {
   return (
     <section className="loginConatiner">
       <div>
@@ -22,7 +16,6 @@ const Login = () => {
       </div>
     </section>
   );
-  // }
 };
 
 export default Login;
