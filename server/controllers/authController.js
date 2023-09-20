@@ -21,7 +21,11 @@ const login = async (req, res) => {
 
 // Register
 const register = async (req, res) => {
-  res.send();
+  const { name, email, password } = req.body;
+
+  if (!name || !email || !password) {
+    throw new CustomErrors.BadRequestError("Please enter all values");
+  }
 };
 
 module.exports = { login, register };
