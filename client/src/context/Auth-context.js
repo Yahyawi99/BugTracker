@@ -20,32 +20,39 @@ const AuthProvider = ({ children }) => {
     }
 
     if (mode === "register") {
+      register();
     }
   };
 
   //   Login
   const login = async () => {
     try {
-      if (!email || !password) {
-        throw new Error("Please provide both values!");
-      }
-
       const response = await axios.post("/api/v1/login", { email, password });
     } catch (error) {
-      const {
-        response: {
-          data: { msg },
-        },
-      } = error;
+      const msg = error.response.data.msg;
 
       setErrMsg(msg);
-      await wait(1000);
+      await wait(3000);
       setErrMsg("");
     }
   };
 
   //   Register
-  const register = async () => {};
+  const register = async () => {
+    try {
+      const response = await axios.post("/api/v1/register", {
+        name,
+        email,
+        password,
+      });
+    } catch (error) {
+      const msg = error.response.data.msg;
+
+      setErrMsg(msg);
+      await wait(3000);
+      setErrMsg("");
+    }
+  };
 
   return (
     <AppContext.Provider

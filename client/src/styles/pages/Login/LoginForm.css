@@ -66,7 +66,8 @@
     transition: .25s;
 }
 
-.loginFormContainer .loginBtn {
+.loginFormContainer .loginRegisterBtn {
+    text-transform: capitalize;
     padding: 10px 40px;
 }
 
@@ -82,8 +83,14 @@
     border: 2px solid var(--main-clr);
 }
 
-.loginFormContainer .register {
+.loginFormContainer .registerLoginQuestion {
     margin: 0 0 15px 0;
+}
+
+.loginFormContainer .registerLoginQuestion span {
+    color: var(--blue);
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .loginFormContainer .errorMessage {

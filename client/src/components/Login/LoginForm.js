@@ -1,6 +1,5 @@
 import React from "react";
 import { useAuth } from "../../context/Auth-context";
-import { Link } from "react-router-dom";
 // css
 import "../../styles/pages/Login/LoginForm.css";
 
@@ -53,10 +52,22 @@ const LoginForm = () => {
             />
           </div>
 
-          <button className="loginBtn">Login</button>
-          <p className="register">
-            You don't have an account? <Link to="/register">Register</Link>
+          <button className="loginRegisterBtn">{mode}</button>
+
+          <p className="registerLoginQuestion">
+            {mode === "login" ? (
+              <>
+                You don't have an account?{" "}
+                <span onClick={() => setMode("register")}>Register</span>
+              </>
+            ) : (
+              <>
+                You already have an account?{" "}
+                <span onClick={() => setMode("login")}>Login</span>
+              </>
+            )}
           </p>
+
           <p className="errorMessage">{errMsg}</p>
         </form>
 

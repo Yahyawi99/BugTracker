@@ -30,6 +30,10 @@ const login = async (req, res) => {
 const register = async (req, res) => {
   const { name, email, password } = req.body;
 
+  if (!name || !email || !password) {
+    throw new CustomErrors.BadRequestError("Please enter all values");
+  }
+
   const ExistingUser = await User.findOne({ email });
 
   if (ExistingUser) {
