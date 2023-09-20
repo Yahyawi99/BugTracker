@@ -5,7 +5,6 @@ const AppContext = React.createContext();
 const LoginProvider = ({ children }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
 
@@ -21,7 +20,7 @@ const LoginProvider = ({ children }) => {
       (e) => e.children[0]
     );
 
-    if (!email || !password || !username || !emailValidator(email)) {
+    if (!email || !password || !emailValidator(email)) {
       inputs.forEach((e) => {
         if (e.value === "") {
           e.style.borderColor = "red";
@@ -88,8 +87,7 @@ const LoginProvider = ({ children }) => {
         setEmail,
         password,
         setPassword,
-        username,
-        setUsername,
+
         submitHandler,
         errorMessage,
         setErrorMessage,

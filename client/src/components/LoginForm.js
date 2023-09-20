@@ -9,8 +9,6 @@ const LoginForm = () => {
     setEmail,
     password,
     setPassword,
-    username,
-    setUsername,
     submitHandler,
     errorMessage,
   } = useLogin();
@@ -20,15 +18,6 @@ const LoginForm = () => {
         <h2>Login to your account</h2>
 
         <form onSubmit={(e) => submitHandler(e)}>
-          <div>
-            <input
-              type="text"
-              placeholder="name"
-              value={username}
-              onChange={(e) => setUsername(e.currentTarget.value)}
-            />
-          </div>
-
           <div>
             <input
               type="text"
