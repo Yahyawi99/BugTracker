@@ -1,10 +1,12 @@
 .loginFormContainer {
     width: 380px;
+    max-height: 440px;
     background-color: var(--white);
     padding: 40px 25px 50px 25px;
     position: relative;
     left: 50%;
     border-radius: 10px;
+    overflow-y: scroll;
 }
 
 .loginFormContainer>div {
@@ -14,6 +16,7 @@
 
 .loginFormContainer h2 {
     color: #102B3F;
+    text-align: center;
     margin-bottom: 40px;
 }
 

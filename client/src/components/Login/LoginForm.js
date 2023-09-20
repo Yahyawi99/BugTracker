@@ -20,7 +20,11 @@ const LoginForm = () => {
   return (
     <div className="loginFormContainer">
       <div>
-        <h2>Login to your account</h2>
+        {mode === "login" ? (
+          <h2>Login to your account</h2>
+        ) : (
+          <h2>Create new account</h2>
+        )}
 
         <form onSubmit={(e) => submitHandler(e)}>
           {mode === "register" && (
