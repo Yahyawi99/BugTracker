@@ -1,6 +1,6 @@
 import React from "react";
-import { useMain } from "../context/main";
-import { useNavGlobal } from "../context/NavBar";
+// import { useMain } from "../context/main";
+// import { useNav } from "../hooks/useAuth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGear,
@@ -19,19 +19,19 @@ import skins from "../data/colors.json";
 import "../styles/components/navbar.css";
 
 const NavBar = () => {
-  const {
-    clicked,
-    setClicked,
-    dropDown,
-    showHideDropDown,
-    menuSettings,
-    isMenu,
-  } = useNavGlobal();
-  const { skin: skinChoice, setSkin } = useMain();
+  // const {
+  //   clicked,
+  //   setClicked,
+  //   dropDown,
+  //   showHideDropDown,
+  //   menuSettings,
+  //   isMenu,
+  // } = useNavGlobal();
+  // const { skin: skinChoice, setSkin } = useMain();
 
   return (
     <nav className="navbarContainer">
-      <div className="info">
+      {/* <div className="info">
         <img src="/assets/images/avatar.png" alt="avatar" />
         <div>
           <p>Welcome,</p>
@@ -279,7 +279,7 @@ const NavBar = () => {
             })}
           </div>
         )}
-      </div>
+      </div> */}
     </nav>
   );
 };

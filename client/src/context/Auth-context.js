@@ -1,0 +1,10 @@
+import React, { useContext } from "react";
+
+const AppContext = React.createContext();
+const AuthProvider = ({ children }) => {
+  return <AppContext.Provider value={""}>{children}</AppContext.Provider>;
+};
+
+export const useAuth = () => useContext(AppContext);
+
+export default AuthProvider;

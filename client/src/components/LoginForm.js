@@ -1,23 +1,14 @@
 import React from "react";
-import { useLogin } from "../context/Login";
 // css
 import "../styles/components/LoginForm.css";
 
 const LoginForm = () => {
-  const {
-    email,
-    setEmail,
-    password,
-    setPassword,
-    submitHandler,
-    errorMessage,
-  } = useLogin();
   return (
     <div className="loginFormContainer">
       <div>
         <h2>Login to your account</h2>
 
-        <form onSubmit={(e) => submitHandler(e)}>
+        {/* <form onSubmit={(e) => submitHandler(e)}>
           <div>
             <input
               type="text"
@@ -38,7 +29,7 @@ const LoginForm = () => {
 
           <button className="loginBtn">Login</button>
           <p className="errorMessage">{errorMessage}</p>
-        </form>
+        </form> */}
 
         <button className="demoBtn">Demo Account</button>
       </div>
