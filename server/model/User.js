@@ -15,23 +15,23 @@ const UserSchema = new mongoose.Schema(
     email: {
       type: String,
       unique: true,
-      required: [true, "Please provide an email"],
       validate: {
         validator: validator.isEmail,
         message: "Please provide a valid email",
       },
+      required: [true, "Please provide an email"],
     },
 
     password: {
       type: String,
+      minlength: [10, "Password must be at least 10, got '{VALUE}'"],
       required: [true, "Please provide a password"],
-      minlength: 10,
     },
 
     role: {
       type: String,
       enum: ["admin", "developer", "PM", "user", "submitter"],
-      required: true,
+      default: "user",
     },
   },
   { timestamps: true }

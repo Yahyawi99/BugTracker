@@ -26,6 +26,15 @@ const register = async (req, res) => {
   if (!name || !email || !password) {
     throw new CustomErrors.BadRequestError("Please enter all values");
   }
+
+  const user = await User.create(
+    { ...req.body },
+    { new: true, runValidators: true }
+  );
+
+  res
+    .status(StatusCodes.CREATED)
+    .json({ user, msg: "User created succesfully" });
 };
 
 module.exports = { login, register };
