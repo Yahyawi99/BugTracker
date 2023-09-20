@@ -1,15 +1,27 @@
 const User = require("../model/User");
 const { StatusCodes } = require("http-status-codes");
-const CustomEroors = require("../errors");
+const CustomErrors = require("../errors");
 
+// Login
 const login = async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    throw new CustomEroors.BadRequestError("Please enter both values");
+    throw new CustomErrors.BadRequestError("Please enter both values");
+  }
+
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    throw new CustomErrors.NotFoundError(`No user with email : ${email}`);
   }
 
   res.send();
 };
 
-module.exports = { login };
+// Register
+const register = async (req, res) => {
+  res.send();
+};
+
+module.exports = { login, register };
