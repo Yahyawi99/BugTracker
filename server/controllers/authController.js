@@ -47,6 +47,7 @@ const register = async (req, res) => {
 
   // create token and attach cookie to response
   const tokenUser = createTokenUser(user);
+  attachCookieToResponse({ res, user: tokenUser });
 
   res
     .status(StatusCodes.CREATED)

@@ -14,10 +14,10 @@ const connectDB = require("./db/connect");
 // Routers
 const AuthRoutes = require("./routes/authRoutes");
 
+// ========================================
+// ========================================
 app.use(express.json());
 
-// ========================================
-// ========================================
 app.use("/api/v1", AuthRoutes);
 
 app.use(NotFoundMiddleware);
