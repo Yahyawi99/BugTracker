@@ -7,11 +7,11 @@ import "../styles/components/homeBtn.css";
 const HomeBtn = ({ name }) => {
   return (
     <div className="home-btn">
-      <i>
+      {/* <i>
         <FontAwesomeIcon icon={faHouse} />
       </i>
       <span>/</span>
-      <p>{name}</p>
+      <p>{name}</p> */}
     </div>
   );
 };

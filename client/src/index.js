@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-// import MainProvider from "./context/main";
+import MainProvider from "./context";
 
 import "./styles/index.css";
 import App from "./App";
@@ -9,10 +9,10 @@ import App from "./App";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    {/* <MainProvider> */}
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-    {/* </MainProvider> */}
+    <MainProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </MainProvider>
   </React.StrictMode>
 );
