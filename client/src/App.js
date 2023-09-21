@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="App" style={stylesVariables}>
       <Routes>
-        <Route path="/login/login-form" Component={Login} />
+        <Route path="/login/*" Component={Login} />
 
         <Route element={<RouteProtector />}>
           <Route path="/*" element={<Main />} />

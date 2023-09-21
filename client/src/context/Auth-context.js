@@ -63,7 +63,7 @@ const AuthProvider = ({ children }) => {
 
       console.log(response);
 
-      window.location = "/login";
+      window.location = "/login/login-form";
     } catch (error) {
       console.log(error);
     }

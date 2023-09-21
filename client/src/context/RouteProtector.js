@@ -6,7 +6,7 @@ const RouteProtector = () => {
   const isAuthenticated = isAuthenticatedCheck();
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/login/login-form" />;
   }
 
   return <Outlet />;
