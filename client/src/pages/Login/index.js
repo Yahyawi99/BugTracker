@@ -17,7 +17,7 @@ const Login = () => {
 
           <AuthProvider>
             <Routes>
-              <Route path="/login-form" Component={LoginForm} />
+              <Route path="/login-register-form" Component={LoginForm} />
               <Route path="/demo-accounts" Component={DemoAccounts} />
             </Routes>
           </AuthProvider>
