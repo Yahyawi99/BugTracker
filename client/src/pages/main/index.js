@@ -1,13 +1,27 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
+// main
+import Dashboard from "../../containers/dashboard";
+// components
+import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
-// css
 // import "../../styles/pages/dashboard/index.css";
 
 const Home = () => {
   return (
-    <main className="dashboard">
-      <Navbar />
-    </main>
+    <section className="dashboard">
+      <Header />
+
+      <div>
+        <Navbar />
+
+        <main>
+          <Routes>
+            <Route path="/dashboard" Component={Dashboard} />
+          </Routes>
+        </main>
+      </div>
+    </section>
   );
 };
 
