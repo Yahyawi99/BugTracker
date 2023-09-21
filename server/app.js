@@ -1,6 +1,8 @@
 require("dotenv").config();
 require("express-async-errors");
 
+const cors = require("cors");
+
 const express = require("express");
 const app = express();
 
@@ -19,6 +21,7 @@ const AuthRoutes = require("./routes/authRoutes");
 // ========================================
 // ========================================
 app.use(express.json());
+app.use(cors());
 app.use(cookieParser(process.env.JWT_SECRET));
 
 app.use("/api/v1", AuthRoutes);

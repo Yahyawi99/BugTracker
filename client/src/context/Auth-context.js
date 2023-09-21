@@ -27,7 +27,10 @@ const AuthProvider = ({ children }) => {
   //   Login
   const login = async () => {
     try {
-      const response = await axios.post("/api/v1/login", { email, password });
+      const response = await axios.post("http://localhost:5000/api/v1/login", {
+        email,
+        password,
+      });
     } catch (error) {
       const msg = error.response.data.msg;
 
@@ -40,11 +43,14 @@ const AuthProvider = ({ children }) => {
   //   Register
   const register = async () => {
     try {
-      const response = await axios.post("/api/v1/register", {
-        name,
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "http://localhost:5000/api/v1/register",
+        {
+          name,
+          email,
+          password,
+        }
+      );
     } catch (error) {
       const msg = error.response.data.msg;
 

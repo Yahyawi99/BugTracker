@@ -56,7 +56,9 @@ const LoginForm = () => {
             />
           </div>
 
-          <button className="loginRegisterBtn">{mode}</button>
+          <button type="sumbit" className="loginRegisterBtn">
+            {mode}
+          </button>
 
           <p className="registerLoginQuestion">
             {mode === "login" ? (
