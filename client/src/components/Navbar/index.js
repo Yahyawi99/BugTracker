@@ -15,7 +15,7 @@ import { faEnvelope, faGem } from "@fortawesome/free-regular-svg-icons";
 // data
 import skins from "../../data/colors.json";
 // css
-import "../../styles/components/navbar.css";
+import "../../styles/components/navbar/index.css";
 
 const NavBar = () => {
   const { skin: skinChoice, setSkin } = useMainContext();

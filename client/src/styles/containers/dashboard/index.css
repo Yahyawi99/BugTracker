@@ -1,0 +1,186 @@
+/* *********************************** */
+/* First row */
+.number-data {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.number-data span {
+    height: 125px;
+    width: 25%;
+    min-width: 200px;
+    color: var(--white);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.number-data span>p:nth-child(1) {
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+.number-data span:nth-child(1) {
+    background-color: var(--cyan);
+}
+
+.number-data span:nth-child(2) {
+    background-color: var(--gray);
+}
+
+.number-data span:nth-child(3) {
+    background-color: var(--yellow);
+}
+
+.number-data span:nth-child(4) {
+    background-color: var(--dark);
+}
+
+/* *********************************** */
+/* Second row */
+.company {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.company h3 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.company>div {
+    min-width: 200px;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* company info */
+.company-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.company-info i {
+    width: 50px;
+    height: 50px;
+    background-color: var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.company-info i svg path {
+    fill: var(--dark);
+}
+
+.company-info div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.company-info p {
+    word-wrap: break-word;
+}
+
+.company-info .num {
+    font-weight: 800;
+}
+
+/* company data */
+.company-data h3 {
+    margin-bottom: 25px;
+}
+
+.company-data span {
+    display: flex;
+    align-items: center;
+    padding: 0 0 20px 0;
+}
+
+.company-data span:not(:nth-child(5)) {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.company-data span i {
+    width: 25px;
+    pointer-events: none;
+    margin-right: 15px;
+}
+
+.company-data span>p:nth-child(2) {
+    color: var(--blue);
+    font-weight: 600;
+}
+
+.company-data span>p:nth-child(3) {
+    margin-left: auto;
+}
+
+.company-data span p:nth-child(3) {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.company-data span:nth-child(2) p:nth-child(3) {
+    border-color: var(--pink);
+    color: var(--pink);
+}
+
+.company-data span:nth-child(3) p:nth-child(3) {
+    border-color: var(--orange);
+    color: var(--orange);
+}
+
+.company-data span:nth-child(4) p:nth-child(3) {
+    border-color: var(--teal);
+    color: var(--teal);
+}
+
+.company-data span:nth-child(5) p:nth-child(3) {
+    border-color: var(--cyan);
+    color: var(--cyan);
+}
+
+/* priority-project */
+.priority-project {
+    display: flex;
+    align-items: center;
+}
+
+
+/* Team-statistics */
+.team-statistics {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.team-statistics .recharts-legend-wrapper {
+    width: 100% !important;
+    left: 5px !important;
+    bottom: -10px !important;
+}
