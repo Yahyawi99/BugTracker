@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+// contexts
 import { useAuth } from "../../context/Auth-context";
 // css
 import "../../styles/pages/Login/LoginForm.css";
@@ -77,7 +79,9 @@ const LoginForm = () => {
           <p className="errorMessage">{errMsg}</p>
         </form>
 
-        <button className="demoBtn">Demo Account</button>
+        <Link to="/login/demo-accounts">
+          <button className="demoBtn">Demo Account</button>
+        </Link>
       </div>
     </div>
   );

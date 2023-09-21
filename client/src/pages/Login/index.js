@@ -1,7 +1,10 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
+// contexts
 import AuthProvider from "../../context/Auth-context";
 // components
 import LoginForm from "../../components/Login/LoginForm";
+import DemoAccounts from "../../components/Login/Demo";
 // css
 import "../../styles/pages/Login/index.css";
 
@@ -13,7 +16,10 @@ const Login = () => {
           <img src="/assets/icons/bug.svg" alt="bug" className="bugImg" />
 
           <AuthProvider>
-            <LoginForm />
+            <Routes>
+              <Route path="/login-form" Component={LoginForm} />
+              <Route path="/demo-accounts" Component={DemoAccounts} />
+            </Routes>
           </AuthProvider>
         </div>
       </div>
