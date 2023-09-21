@@ -3,7 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import isAuthenticatedCheck from "../utils/isAuthenticated";
 
 const RouteProtector = () => {
-  const isAuthenticated = false;
+  const isAuthenticated = true;
   isAuthenticatedCheck();
 
   if (!isAuthenticated) {

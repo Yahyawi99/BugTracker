@@ -1,5 +1,8 @@
 import React from "react";
+// context
 import { useMainContext } from "../../context";
+import { useNavbar } from "../../context/Navbar";
+// Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGear,
@@ -19,6 +22,8 @@ import "../../styles/components/navbar/index.css";
 
 const NavBar = () => {
   const { skin: skinChoice, setSkin } = useMainContext();
+  const { nav, setNav, clicked, setClicked, dropDown, dropDownFunctionality } =
+    useNavbar();
 
   return (
     <nav className="navbarContainer">
@@ -32,28 +37,24 @@ const NavBar = () => {
       </div>
 
       <div className="navigationContainer">
-        <div className={`head ${true ? "menuOnHead" : "menuOffHead"}`}>
-          <h3
-          //   onClick={() => menuSettings("menu")}
-          >
-            Project
-          </h3>
+        <div
+          className={`head ${nav === "menu" ? "menuOnHead" : "menuOffHead"}`}
+        >
+          <h3 onClick={() => setNav("menu")}>Project</h3>
 
-          <i
-          //   onClick={() => menuSettings("skin")}
-          >
+          <i onClick={() => setNav("skin")}>
             <FontAwesomeIcon icon={faGear} />
           </i>
 
           <div className="filler"></div>
         </div>
 
-        {true ? (
+        {nav === "menu" ? (
           <div className="menu">
             <ul className="list">
               <li
-                className={`listItem1 ${true === "dashboard" && "clicked"}`}
-                // onClick={() => setClicked("dashboard")}
+                className={`listItem1 ${clicked === "dashboard" && "clicked"}`}
+                onClick={() => setClicked("dashboard")}
               >
                 <i>
                   <FontAwesomeIcon icon={faGauge} />
@@ -62,8 +63,10 @@ const NavBar = () => {
               </li>
 
               <li
-                className={`listItem2 ${true === "notification" && "clicked"}`}
-                // onClick={() => setClicked("notification")}
+                className={`listItem2 ${
+                  clicked === "notification" && "clicked"
+                }`}
+                onClick={() => setClicked("notification")}
               >
                 <i>
                   <FontAwesomeIcon icon={faEnvelope} />
@@ -72,11 +75,11 @@ const NavBar = () => {
               </li>
 
               <li
-                className={`listItem3 ${true === "projects" && "clicked"}`}
-                // onClick={(e) => {
-                //   setClicked("projects");
-                //   showHideDropDown(e, "projects");
-                // }}
+                className={`listItem3 ${clicked === "projects" && "clicked"}`}
+                onClick={(e) => {
+                  setClicked("projects");
+                  dropDownFunctionality("projects");
+                }}
               >
                 <i>
                   <FontAwesomeIcon icon={faDiagramProject} />
@@ -84,13 +87,19 @@ const NavBar = () => {
 
                 <p>Projects</p>
 
-                <i className={`arrow ${true === "projects" && "clickedArrow"}`}>
+                <i
+                  className={`arrow ${
+                    dropDown === "projects" && "clickedArrow"
+                  }`}
+                >
                   <FontAwesomeIcon icon={faChevronDown} />
                 </i>
               </li>
 
               <div
-                className={`options ${true === "projects" && "openDropDown"}`}
+                className={`options ${
+                  dropDown === "projects" && "openDropDown"
+                }`}
               >
                 <span>
                   <FontAwesomeIcon icon={faStarOfLife} />
@@ -119,23 +128,31 @@ const NavBar = () => {
               </div>
 
               <li
-                className={`listItem4 ${true === "tickets" && "clicked"}`}
-                // onClick={(e) => {
-                //   setClicked("tickets");
-                //   showHideDropDown(e, "tickets");
-                // }}
+                className={`listItem4 ${clicked === "tickets" && "clicked"}`}
+                onClick={(e) => {
+                  setClicked("tickets");
+                  dropDownFunctionality("tickets");
+                }}
               >
                 <i>
                   <FontAwesomeIcon icon={faTicket} />
                 </i>
+
                 <p>Tickets</p>
-                <i className={`arrow ${true === "tickets" && "clickedArrow"}`}>
+
+                <i
+                  className={`arrow ${
+                    dropDown === "tickets" && "clickedArrow"
+                  }`}
+                >
                   <FontAwesomeIcon icon={faChevronDown} />
                 </i>
               </li>
 
               <div
-                className={`options ${true === "tickets" && "openDropDown"}`}
+                className={`options ${
+                  dropDown === "tickets" && "openDropDown"
+                }`}
               >
                 <span>
                   <FontAwesomeIcon icon={faStarOfLife} />
@@ -164,22 +181,26 @@ const NavBar = () => {
               </div>
 
               <li
-                className={`listItem4 ${true === "admin" && "clicked"}`}
-                // onClick={(e) => {
-                //   setClicked("admin");
-                //   showHideDropDown(e, "admin");
-                // }}
+                className={`listItem4 ${clicked === "admin" && "clicked"}`}
+                onClick={(e) => {
+                  setClicked("admin");
+                  dropDownFunctionality("admin");
+                }}
               >
                 <i>
                   <FontAwesomeIcon icon={faGem} />
                 </i>
                 <p>Admin</p>
-                <i className={`arrow ${true === "admin" && "clickedArrow"}`}>
+                <i
+                  className={`arrow ${dropDown === "admin" && "clickedArrow"}`}
+                >
                   <FontAwesomeIcon icon={faChevronDown} />
                 </i>
               </li>
 
-              <div className={`options ${true === "admin" && "openDropDown"}`}>
+              <div
+                className={`options ${dropDown === "admin" && "openDropDown"}`}
+              >
                 <span>
                   <FontAwesomeIcon icon={faStarOfLife} />
                   <p>Company Invite</p>
@@ -197,23 +218,29 @@ const NavBar = () => {
               </div>
 
               <li
-                className={`listItem4 ${true === "manager" && "clicked"}`}
-                // onClick={(e) => {
-                //   setClicked("manager");
-                //   showHideDropDown(e, "manager");
-                // }}
+                className={`listItem4 ${clicked === "manager" && "clicked"}`}
+                onClick={(e) => {
+                  setClicked("manager");
+                  dropDownFunctionality("manager");
+                }}
               >
                 <i>
                   <FontAwesomeIcon icon={faGem} />
                 </i>
                 <p>Project Manager</p>
-                <i className={`arrow ${true === "manager" && "clickedArrow"}`}>
+                <i
+                  className={`arrow ${
+                    dropDown === "manager" && "clickedArrow"
+                  }`}
+                >
                   <FontAwesomeIcon icon={faChevronDown} />
                 </i>
               </li>
 
               <div
-                className={`options ${true === "manager" && "openDropDown"}`}
+                className={`options ${
+                  dropDown === "manager" && "openDropDown"
+                }`}
               >
                 <span>
                   <FontAwesomeIcon icon={faStarOfLife} />

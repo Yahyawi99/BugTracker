@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-// Route protector
+// Navbar provider
+import NavbarProvider from "../../context/Navbar";
 // main
 import Dashboard from "../../containers/dashboard";
 // components
@@ -16,12 +17,16 @@ const Main = () => {
       <Header />
 
       <div className="NavbarAndMain">
-        <Navbar />
+        <NavbarProvider>
+          <Navbar />
+        </NavbarProvider>
 
         <main>
-          <Route element={<RouteProtector />}>
-            <Route path="/dashboard" Component={Dashboard} />
-          </Route>
+          <Routes>
+            <Route element={<RouteProtector />}>
+              <Route path="/" Component={Dashboard} />
+            </Route>
+          </Routes>
         </main>
       </div>
     </section>
