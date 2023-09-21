@@ -4,6 +4,7 @@
     height: calc(100vh - 82px);
     background-color: var(--white);
     border-right: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
     overflow-y: scroll;
     position: sticky;
     top: 83px;

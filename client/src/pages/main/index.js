@@ -5,24 +5,26 @@ import Dashboard from "../../containers/dashboard";
 // components
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
-// import "../../styles/pages/dashboard/index.css";
+// csss
+import "../../styles/pages/main/index.css";
 
-const Home = () => {
+const Main = () => {
   return (
-    <section className="dashboard">
+    <section className="mainContainer">
       <Header />
 
-      <div>
+      <div className="NavbarAndMain">
         <Navbar />
 
         <main>
-          <Routes>
-            <Route path="/dashboard" Component={Dashboard} />
-          </Routes>
+          {/* <Routes>
+            <Route path="/" Component={Dashboard} />
+          </Routes> */}
+          <Dashboard />
         </main>
       </div>
     </section>
   );
 };
 
-export default Home;
+export default Main;

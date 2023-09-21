@@ -5,7 +5,7 @@ import { useMainContext } from "./context";
 // import Header from "./components/Header";
 // pages
 import Login from "./pages/Login";
-import Home from "./pages/main";
+import Main from "./pages/main";
 
 function App() {
   const { skin } = useMainContext();
@@ -22,7 +22,7 @@ function App() {
 
         {/* Protected routes */}
 
-        <Route path="/" Component={Home} />
+        <Route path="/" Component={Main} />
       </Routes>
     </div>
   );
