@@ -1,14 +1,20 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Router } from "react-router-dom";
 import { useMainContext } from "./context";
+// Route protector
+import RouteProtector from "./context/RouteProtector";
 // components
 // import Header from "./components/Header";
 // pages
 import Login from "./pages/Login";
 import Main from "./pages/main";
 
+import isAuthenticatedCheck from "./utils/isAuthenticated";
+
 function App() {
   const { skin } = useMainContext();
+
+  isAuthenticatedCheck();
 
   const stylesVariables = {
     "--main-clr": `var(--${skin})`,
@@ -20,9 +26,9 @@ function App() {
       <Routes>
         <Route path="/login" Component={Login} />
 
-        {/* Protected routes */}
-
-        <Route path="/" Component={Main} />
+        <Route element={<RouteProtector />}>
+          <Route path="/" element={<Main />} />
+        </Route>
       </Routes>
     </div>
   );
