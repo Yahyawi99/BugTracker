@@ -1,4 +1,7 @@
 import React from "react";
+// context
+import { useAuth } from "../../context/Auth-context";
+// Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
 import {
@@ -9,6 +12,8 @@ import {
 import "../../styles/components/header/index.css";
 
 const Header = () => {
+  const { logout } = useAuth();
+
   return (
     <header className="header">
       <img src="/assets/icons/logo.svg" alt="bugtracker" className="logo" />
@@ -24,7 +29,7 @@ const Header = () => {
           <FontAwesomeIcon icon={faSliders} />
         </i>
 
-        <i>
+        <i onClick={logout}>
           <FontAwesomeIcon icon={faArrowRightFromBracket} />
         </i>
       </div>

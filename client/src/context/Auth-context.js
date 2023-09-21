@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 // Utils
 import wait from "../utils/wait";
+import { redirect } from "react-router-dom";
 
 const AppContext = React.createContext();
 const AuthProvider = ({ children }) => {
@@ -51,11 +52,20 @@ const AuthProvider = ({ children }) => {
         password,
       });
     } catch (error) {
-      const msg = error.response.data.msg;
+      console.log(error);
+    }
+  };
 
-      setErrMsg(msg);
-      await wait(3000);
-      setErrMsg("");
+  // Log out
+  const logout = async () => {
+    try {
+      const response = await axios.delete("/api/v1/logout");
+
+      console.log(response);
+
+      window.location = "/login";
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -71,8 +81,9 @@ const AuthProvider = ({ children }) => {
         password,
         setPassword,
         submitHandler,
-        login,
         errMsg,
+        login,
+        logout,
       }}
     >
       {children}

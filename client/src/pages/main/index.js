@@ -1,7 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-// Navbar provider
+// context
 import NavbarProvider from "../../context/Navbar";
+import AuthProvider from "../../context/Auth-context";
 // main
 import Dashboard from "../../containers/dashboard";
 // components
@@ -14,7 +15,9 @@ import RouteProtector from "../../context/RouteProtector";
 const Main = () => {
   return (
     <section className="mainContainer">
-      <Header />
+      <AuthProvider>
+        <Header />
+      </AuthProvider>
 
       <div className="NavbarAndMain">
         <NavbarProvider>

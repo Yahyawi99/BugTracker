@@ -58,4 +58,11 @@ const register = async (req, res) => {
     .json({ tokenUser, msg: "User created succesfully" });
 };
 
-module.exports = { login, register };
+// Logout
+const logout = async (req, res) => {
+  res.cookie("access_token", "logged_out", { expires: new Date(Date.now()) });
+
+  res.status(StatusCodes.OK).json({ msg: "User logged out successfully!" });
+};
+
+module.exports = { login, register, logout };
