@@ -24,7 +24,7 @@ const Main = () => {
         <main>
           <Routes>
             <Route element={<RouteProtector />}>
-              <Route path="/" Component={Dashboard} />
+              <Route path="/dashboard" Component={Dashboard} />
             </Route>
           </Routes>
         </main>

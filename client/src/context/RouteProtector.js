@@ -4,6 +4,7 @@ import isAuthenticatedCheck from "../utils/isAuthenticated";
 
 const RouteProtector = () => {
   const isAuthenticated = true;
+
   isAuthenticatedCheck();
 
   if (!isAuthenticated) {

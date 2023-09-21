@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes, Router } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { useMainContext } from "./context";
 // Route protector
 import RouteProtector from "./context/RouteProtector";
@@ -9,12 +9,8 @@ import RouteProtector from "./context/RouteProtector";
 import Login from "./pages/Login";
 import Main from "./pages/main";
 
-import isAuthenticatedCheck from "./utils/isAuthenticated";
-
 function App() {
   const { skin } = useMainContext();
-
-  isAuthenticatedCheck();
 
   const stylesVariables = {
     "--main-clr": `var(--${skin})`,
@@ -27,7 +23,7 @@ function App() {
         <Route path="/login" Component={Login} />
 
         <Route element={<RouteProtector />}>
-          <Route path="/" element={<Main />} />
+          <Route path="*" element={<Main />} />
         </Route>
       </Routes>
     </div>
