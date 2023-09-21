@@ -31,7 +31,8 @@ const AuthProvider = ({ children }) => {
         email,
         password,
       });
-      console.log(response);
+
+      window.location = "/dashboard";
     } catch (error) {
       const msg = error.response.data.msg;
 
