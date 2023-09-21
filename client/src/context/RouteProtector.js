@@ -3,9 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import isAuthenticatedCheck from "../utils/isAuthenticated";
 
 const RouteProtector = () => {
-  const isAuthenticated = true;
-
-  isAuthenticatedCheck();
+  const isAuthenticated = isAuthenticatedCheck();
 
   if (!isAuthenticated) {
     return <Navigate to="/login" />;
