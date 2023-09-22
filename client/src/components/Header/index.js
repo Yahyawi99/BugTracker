@@ -1,6 +1,6 @@
 import React from "react";
 // context
-import { useAuth } from "../../context/Auth-context";
+import { useAuth } from "../../context/auth/Auth-context";
 // Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-regular-svg-icons";

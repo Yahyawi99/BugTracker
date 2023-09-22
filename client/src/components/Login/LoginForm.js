@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // contexts
-import { useAuth } from "../../context/Auth-context";
+import { useAuth } from "../../context/auth/Auth-context";
 // css
 import "../../styles/pages/Login/LoginForm.css";
 

@@ -1,6 +1,6 @@
 import React from "react";
 // context
-import { useMainContext } from "../../context";
+import { useMainContext } from "../../context/global";
 import { useNavbar } from "../../context/Navbar";
 // Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

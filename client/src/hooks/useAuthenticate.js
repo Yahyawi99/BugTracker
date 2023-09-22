@@ -1,6 +1,6 @@
 import jwt_decode from "jwt-decode";
 
-const useIsAuthenticated = () => {
+const useAuthenticate = () => {
   const allCookies = document.cookie;
 
   const cookie = allCookies
@@ -22,4 +22,4 @@ const useIsAuthenticated = () => {
   return true;
 };
 
-export default useIsAuthenticated;
+export default useAuthenticate;

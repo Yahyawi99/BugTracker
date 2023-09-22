@@ -1,8 +1,9 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import RouteProtector from "../../context/auth/RouteProtector";
 // context
 import NavbarProvider from "../../context/Navbar";
-import AuthProvider from "../../context/Auth-context";
+import AuthProvider from "../../context/auth/Auth-context";
 // main
 import Dashboard from "../../containers/dashboard";
 // components
@@ -10,7 +11,6 @@ import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
 // css
 import "../../styles/pages/main/index.css";
-import RouteProtector from "../../context/RouteProtector";
 
 const Main = () => {
   return (

@@ -1,9 +1,9 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import isAuthenticatedCheck from "../utils/isAuthenticated";
+import useAuthenticate from "../../hooks/useAuthenticate";
 
 const RouteProtector = () => {
-  const isAuthenticated = isAuthenticatedCheck();
+  const isAuthenticated = useAuthenticate();
 
   if (!isAuthenticated) {
     return <Navigate to="/login-register/login-register-form" />;

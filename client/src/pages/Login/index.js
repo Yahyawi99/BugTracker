@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 // contexts
-import AuthProvider from "../../context/Auth-context";
+import AuthProvider from "../../context/auth/Auth-context";
 // components
 import LoginForm from "../../components/Login/LoginForm";
 import DemoAccounts from "../../components/Login/Demo";

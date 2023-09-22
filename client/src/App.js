@@ -1,11 +1,9 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { useMainContext } from "./context";
+import { useMainContext } from "./context/global";
 // Route protector
-import RouteProtector from "./context/RouteProtector";
+import RouteProtector from "./context/auth/RouteProtector";
 // components
-// import Header from "./components/Header";
-// pages
 import Login from "./pages/Login";
 import Main from "./pages/main";
 

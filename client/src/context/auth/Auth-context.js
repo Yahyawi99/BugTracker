@@ -1,8 +1,7 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 // Utils
-import wait from "../utils/wait";
-import { redirect } from "react-router-dom";
+import wait from "../../utils/wait";
 
 const AppContext = React.createContext();
 const AuthProvider = ({ children }) => {
