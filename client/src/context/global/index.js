@@ -6,7 +6,7 @@ const MainProvider = ({ children }) => {
   const [alert, setAlert] = useState({
     isOn: false,
     message: "",
-    backClr: "orange",
+    backClr: "",
   });
 
   return (

@@ -8,7 +8,7 @@ const Alert = () => {
 
   return (
     <section className={`alertContainer ${alert.isOn && "alertOn"}`}>
-      <p>{alert.message}</p>
+      <p style={{ background: alert.backClr }}>{alert.message}</p>
     </section>
   );
 };
