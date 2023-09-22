@@ -79,8 +79,6 @@ const AuthProvider = ({ children }) => {
       loading(false);
 
       await alertMe(response.data.msg, "var(--success)");
-
-      window.location = "/login-register/login-form";
     } catch (error) {
       loading(false);
 

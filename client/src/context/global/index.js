@@ -27,7 +27,7 @@ const MainProvider = ({ children }) => {
       backClr: clr,
     });
 
-    await wait(500);
+    await wait(1000);
   };
 
   // Loading
