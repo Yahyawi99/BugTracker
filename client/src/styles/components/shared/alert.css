@@ -9,11 +9,11 @@
 }
 
 .alertContainer>p {
-    width: 200px;
+    min-width: 200px;
     color: var(--white);
     font-weight: 600;
     position: absolute;
-    padding: 5px 0;
+    padding: 5px;
 }
 
 

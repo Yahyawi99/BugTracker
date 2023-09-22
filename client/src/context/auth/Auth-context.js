@@ -50,8 +50,11 @@ const AuthProvider = ({ children }) => {
         email,
         password,
       });
+
+      console.log(response.data.msg);
     } catch (error) {
-      console.log(error);
+      const msg = error.response.data.msg;
+      await alertMe(msg, "var(--danger)");
     }
   };
 
