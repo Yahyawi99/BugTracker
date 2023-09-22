@@ -27,7 +27,16 @@ const MainProvider = ({ children }) => {
       backClr: clr,
     });
 
-    await wait(1500);
+    await wait(500);
+  };
+
+  // Loading
+  const loading = async (isLoading) => {
+    setAlert({
+      isOn: isLoading,
+      message: "Loading...",
+      backClr: "var(--warning)",
+    });
   };
 
   return (
@@ -37,6 +46,7 @@ const MainProvider = ({ children }) => {
         setSkin,
         alert,
         alertMe,
+        loading,
       }}
     >
       {children}

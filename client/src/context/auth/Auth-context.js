@@ -4,13 +4,12 @@ import axios from "axios";
 
 const AppContext = React.createContext();
 const AuthProvider = ({ children }) => {
-  const { alertMe } = useMainContext();
+  const { alertMe, loading } = useMainContext();
 
   const [mode, setMode] = useState("login");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errMsg, setErrMsg] = useState("");
 
   // Form handler
   const submitHandler = (e) => {
@@ -28,15 +27,21 @@ const AuthProvider = ({ children }) => {
   //   Login
   const login = async () => {
     try {
+      loading(true);
+
       const response = await axios.post("/api/v1/login", {
         email,
         password,
       });
 
+      loading(false);
+
       await alertMe(response.data.msg, "var(--success)");
 
       window.location = "/dashboard";
     } catch (error) {
+      loading(false);
+
       const msg = error.response.data.msg;
       await alertMe(msg + "!", "var(--danger)");
     }
@@ -45,14 +50,20 @@ const AuthProvider = ({ children }) => {
   //   Register
   const register = async () => {
     try {
+      loading(true);
+
       const response = await axios.post("/api/v1/register", {
         name,
         email,
         password,
       });
 
+      loading(false);
+
       await alertMe(response.data.msg, "var(--success)");
     } catch (error) {
+      loading(false);
+
       const msg = error.response.data.msg;
       await alertMe(msg, "var(--danger)");
     }
@@ -61,13 +72,20 @@ const AuthProvider = ({ children }) => {
   // Log out
   const logout = async () => {
     try {
+      loading(true);
+
       const response = await axios.delete("/api/v1/logout");
 
-      console.log(response);
+      loading(false);
 
-      window.location = "/login/login-form";
+      await alertMe(response.data.msg, "var(--success)");
+
+      window.location = "/login-register/login-form";
     } catch (error) {
-      console.log(error);
+      loading(false);
+
+      const msg = error.response.data.msg;
+      await alertMe(msg + "!", "var(--danger)");
     }
   };
 
@@ -83,7 +101,6 @@ const AuthProvider = ({ children }) => {
         password,
         setPassword,
         submitHandler,
-        errMsg,
         login,
         logout,
       }}
