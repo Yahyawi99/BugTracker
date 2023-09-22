@@ -122,7 +122,7 @@ const Dashboard = () => {
               <FontAwesomeIcon icon={faFolder} />
             </i>
             <p>Projects</p>
-            <p>6</p>
+            <p>{allProjects.length}</p>
           </span>
 
           <span>
@@ -130,7 +130,7 @@ const Dashboard = () => {
               <FontAwesomeIcon icon={faTicket} />
             </i>
             <p>Tickets</p>
-            <p>69</p>
+            <p>{allTickets.length}</p>
           </span>
 
           <span>
