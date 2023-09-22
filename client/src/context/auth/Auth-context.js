@@ -33,15 +33,12 @@ const AuthProvider = ({ children }) => {
         password,
       });
 
-      await alertMe(response.data.msg, "green");
+      await alertMe(response.data.msg, "var(--success)");
 
       window.location = "/dashboard";
     } catch (error) {
-      // const msg = error.response.data.msg;
-      console.log(error);
-      // setErrMsg(msg);
-      // await wait(3000);
-      // setErrMsg("");
+      const msg = error.response.data.msg;
+      await alertMe(msg + "!", "var(--danger)");
     }
   };
 
