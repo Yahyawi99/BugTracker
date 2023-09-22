@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+// hooks
+import useProjects from "../../hooks/useProjects";
+// icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
@@ -16,13 +19,28 @@ import BarChart from "../../components/dashboard/BarChart";
 import "../../styles/containers/dashboard/index.css";
 
 const Dashboard = () => {
+  const { getAllProjects, allProjects } = useProjects();
+
+  useEffect(() => {
+    getAllProjects();
+  }, []);
+
+  useEffect(() => {
+    console.log(allProjects);
+  }, [allProjects]);
+
   return (
     <section className="dashboard-Container">
       <HomeBtn name="Dashboard" />
 
       <div className="number-data">
         <span>
-          <p>0</p>
+          <p>
+            {
+              allProjects.filter((project) => project.status === "active")
+                .length
+            }
+          </p>
           <p>Active Projects</p>
         </span>
 
