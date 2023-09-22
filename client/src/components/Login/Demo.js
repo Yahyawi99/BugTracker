@@ -14,7 +14,9 @@ const DemoAccounts = () => {
         <button>submitter</button>
       </div>
 
-      <Link to="/login-register/login-register-form">login/register</Link>
+      <Link className="loginRegister" to="/login-register/login-register-form">
+        <p>login/register</p>
+      </Link>
     </section>
   );
 };
