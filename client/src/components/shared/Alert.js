@@ -4,11 +4,11 @@ import { useMainContext } from "../../context/global";
 import "../../styles/components/shared/alert.css";
 
 const Alert = () => {
-  const { alert, setAlert } = useMainContext();
+  const { alert } = useMainContext();
 
   return (
-    <section className={`alertContainer ${alert && "alertOn"}`}>
-      <p>my message</p>
+    <section className={`alertContainer ${alert.isOn && "alertOn"}`}>
+      <p>{alert.message}</p>
     </section>
   );
 };
