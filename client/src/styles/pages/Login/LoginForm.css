@@ -103,3 +103,20 @@
     position: absolute;
     top: -25px;
 }
+
+
+/* *********************** */
+/* Scroll-bar */
+.loginFormContainer::-webkit-scrollbar {
+    appearance: none;
+    width: 5px;
+}
+
+.loginFormContainer::-webkit-scrollbar-thumb {
+    background-color: var(--main-clr);
+    border-radius: 25px;
+}
+
+.loginFormContainer::-webkit-scrollbar-button {
+    display: none;
+}
