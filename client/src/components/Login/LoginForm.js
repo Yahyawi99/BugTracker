@@ -75,11 +75,9 @@ const LoginForm = () => {
               </>
             )}
           </p>
-
-          <p className="errorMessage">{errMsg}</p>
         </form>
 
-        <button className="demoBtn">
+        <button type="button" className="demoBtn">
           <Link to="/login-register/demo-accounts">Demo Account</Link>
         </button>
       </div>

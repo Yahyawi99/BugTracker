@@ -80,10 +80,19 @@
     padding: 12px 30px;
 }
 
+.loginFormContainer .demoBtn a {
+    text-decoration: none;
+    color: var(--white);
+}
+
 .loginFormContainer button:hover {
     background-color: var(--white);
     color: var(--main-clr);
     border: 2px solid var(--main-clr);
+}
+
+.loginFormContainer .demoBtn:hover a {
+    color: inherit;
 }
 
 .loginFormContainer .registerLoginQuestion {
@@ -94,14 +103,6 @@
     color: var(--blue);
     text-decoration: underline;
     cursor: pointer;
-}
-
-.loginFormContainer .errorMessage {
-    color: var(--danger);
-    font-weight: 600;
-    font-size: .9rem;
-    position: absolute;
-    top: -25px;
 }
 
 
