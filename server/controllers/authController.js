@@ -55,7 +55,7 @@ const register = async (req, res) => {
 
   res
     .status(StatusCodes.CREATED)
-    .json({ tokenUser, msg: "User created succesfully" });
+    .json({ tokenUser, msg: `Welcome ${tokenUser.name}.` });
 };
 
 // Logout

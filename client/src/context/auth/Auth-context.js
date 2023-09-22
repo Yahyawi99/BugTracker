@@ -51,7 +51,7 @@ const AuthProvider = ({ children }) => {
         password,
       });
 
-      console.log(response.data.msg);
+      await alertMe(response.data.msg, "var(--success)");
     } catch (error) {
       const msg = error.response.data.msg;
       await alertMe(msg, "var(--danger)");
