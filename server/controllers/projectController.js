@@ -1,8 +1,11 @@
 const { StatusCodes } = require("http-status-codes");
+const Project = require("../model/Project");
 
 // get all projects
 const allProjects = async (req, res) => {
-  res.send("all");
+  const projects = await Project.find({});
+
+  res.status(StatusCodes.OK).json({ projects, count: projects.length });
 };
 
 // get single project

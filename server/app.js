@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(cookieParser(process.env.JWT_SECRET));
 
 app.use("/api/v1", AuthRoutes);
-app.use("/api/v1/projects", ProjectRoutes);
+app.use("/api/v1/project", ProjectRoutes);
 
 app.use(NotFoundMiddleware);
 app.use(errHandlerMiddleware);
