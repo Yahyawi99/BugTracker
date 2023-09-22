@@ -1,12 +1,10 @@
 import React, { useContext, useState } from "react";
 import { useMainContext } from "../global";
 import axios from "axios";
-// Utils
-import wait from "../../utils/wait";
 
 const AppContext = React.createContext();
 const AuthProvider = ({ children }) => {
-  const { setAlert } = useMainContext();
+  const { alertMe } = useMainContext();
 
   const [mode, setMode] = useState("login");
   const [name, setName] = useState("");
@@ -35,17 +33,15 @@ const AuthProvider = ({ children }) => {
         password,
       });
 
-      console.log(response);
+      await alertMe(response.data.msg, "green");
 
       window.location = "/dashboard";
-
-      setAlert({ isOn: true, message: response.data.msg, backClr: "green" });
     } catch (error) {
-      const msg = error.response.data.msg;
-
-      setErrMsg(msg);
-      await wait(3000);
-      setErrMsg("");
+      // const msg = error.response.data.msg;
+      console.log(error);
+      // setErrMsg(msg);
+      // await wait(3000);
+      // setErrMsg("");
     }
   };
 
