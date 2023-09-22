@@ -16,6 +16,7 @@ const connectDB = require("./db/connect");
 // Routers
 const AuthRoutes = require("./routes/authRoutes");
 const ProjectRoutes = require("./routes/projectRoutes");
+const TicketRoutes = require("./routes/ticketRoutes");
 
 // ========================================
 // ========================================
@@ -24,6 +25,7 @@ app.use(cookieParser(process.env.JWT_SECRET));
 
 app.use("/api/v1", AuthRoutes);
 app.use("/api/v1/project", ProjectRoutes);
+app.use("/api/v1/ticket", TicketRoutes);
 
 app.use(NotFoundMiddleware);
 app.use(errHandlerMiddleware);

@@ -42,6 +42,11 @@ const TicketSchema = new mongoose.Schema({
     required: true,
   },
 
+  isAssigned: {
+    type: Boolean,
+    default: false,
+  },
+
   project: {
     type: mongoose.Types.ObjectId,
     ref: "project",
