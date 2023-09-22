@@ -19,7 +19,7 @@ const createProject = async (req, res) => {
 };
 
 // update project
-const updateProjects = async (req, res) => {
+const updateProject = async (req, res) => {
   res.send("update");
 };
 
@@ -32,6 +32,6 @@ module.exports = {
   allProjects,
   singleProject,
   createProject,
-  updateProjects,
+  updateProject,
   deleteProject,
 };
