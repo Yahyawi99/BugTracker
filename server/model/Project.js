@@ -10,6 +10,13 @@ const ProjectSchema = new mongoose.Schema(
       required: [true, "Please provide project name"],
     },
 
+    company: {
+      type: String,
+      trim: true,
+      maxlength: 100,
+      required: [true, "Please provide project company"],
+    },
+
     description: {
       type: String,
       trim: true,
@@ -30,16 +37,36 @@ const ProjectSchema = new mongoose.Schema(
       default: "medium",
     },
 
+    progress: {
+      type: Number,
+      default: 0,
+    },
+
     category: {
       type: String,
       trim: true,
       required: [true, "Please provide project category"],
     },
 
+    isArchived: {
+      type: Boolean,
+      default: false,
+    },
+
     createdBy: {
       type: mongoose.Types.ObjectId,
       ref: "user",
       required: true,
+    },
+
+    startDate: {
+      type: Date,
+      required: [true, "Please provide project start date"],
+    },
+
+    endDate: {
+      type: Date,
+      required: [true, "Please provide project end date"],
     },
   },
   { timestamps: true }
