@@ -4,7 +4,7 @@ const TicketSchema = new mongoose.Schema({
   title: {
     type: String,
     trim: true,
-    minlength: 10,
+    minlength: 5,
     maxlength: 100,
     required: [true, "Please provide ticket title"],
   },
