@@ -1,6 +1,11 @@
 .demoAccountsContainer {
     display: flex;
     flex-wrap: wrap;
+    width: 380px;
+    max-height: 440px;
+    background-color: var(--white);
+    padding: 40px 25px 50px 25px;
+    position: relative;
+    left: 50%;
+    border-radius: 10px;
 }
-
-/* demoAccountsContainer button {} */

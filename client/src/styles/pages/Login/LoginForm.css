@@ -75,24 +75,18 @@
 }
 
 .loginFormContainer .demoBtn {
-    align-self: center;
     margin-top: 25px;
     padding: 12px 30px;
 }
 
-.loginFormContainer .demoBtn a {
-    text-decoration: none;
-    color: var(--white);
+.loginFormContainer .demoLinks {
+    align-self: center;
 }
 
 .loginFormContainer button:hover {
     background-color: var(--white);
     color: var(--main-clr);
     border: 2px solid var(--main-clr);
-}
-
-.loginFormContainer .demoBtn:hover a {
-    color: inherit;
 }
 
 .loginFormContainer .registerLoginQuestion {
