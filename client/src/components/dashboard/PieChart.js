@@ -13,7 +13,7 @@ const MyPieChart = () => {
   return (
     <section className="chartContainer">
       <PieChart className="pie-chart" width={270} height={260}>
-        <Pie data={data} cy="45%" outerRadius={75} label>
+        <Pie dataKey="value" data={data} cy="45%" outerRadius={75} label>
           {data.map((_, i) => {
             return <Cell key={`cell-${i}`} fill={COLORS[i]} />;
           })}

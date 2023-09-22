@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Annamarie",
+    "email": "atarzey0@4shared.com",
+    "password": "$2a$04$7ir74IGvFeZHOZj2bo63vu.cbPS95UupGEHLDLRYjnUmFZHyCRore",
+    "role": "PM"
+  },
+  {
+    "name": "Blondie",
+    "email": "btheodore1@google.ca",
+    "password": "$2a$04$qCdG19nlqnT53aRmt1XDse1Cli2LI8ZVBKzvTY8agav5UkX/StFFe",
+    "role": "PM"
+  },
+  {
+    "name": "Delphine",
+    "email": "dlansberry2@opensource.org",
+    "password": "$2a$04$LwilIn2kZEKYN.DFi7tnGeIO5zyIhpPqx6ihuz14DjaumZO1TX4je",
+    "role": "developer"
+  },
+  {
+    "name": "Ann-marie",
+    "email": "abirchill3@vinaora.com",
+    "password": "$2a$04$CEFKiLaewzRcA5dMlG2FOOaf0ml/RHedtZBfp8R6BffP81VYUuTO2",
+    "role": "PM"
+  },
+  {
+    "name": "Deck",
+    "email": "dingarfill4@nymag.com",
+    "password": "$2a$04$y9DsWO/SAVqnwsuw4JlQSeKMnNx5HdtafRX0M5EstVziJGhcQgxE.",
+    "role": "developer"
+  },
+  {
+    "name": "Konrad",
+    "email": "kboundy5@mapquest.com",
+    "password": "$2a$04$PDMFhbctXUSA0o1fYv.EFubULFiFfnsBT4wrulyYlVd5mHxrQkWgO",
+    "role": "developer"
+  },
+  {
+    "name": "Harland",
+    "email": "hmoine6@washington.edu",
+    "password": "$2a$04$PIVzCAwvhMFqL4MTliuXLOXSKEXn1OISq9YN1aR.Wtl/16dkDJgX2",
+    "role": "PM"
+  },
+  {
+    "name": "Fallon",
+    "email": "friatt7@jugem.jp",
+    "password": "$2a$04$UTb/Ih/S6f9NwlMuqQObhOvcckPH4b8WBS48Qh9dNy/RNRhaYr79y",
+    "role": "PM"
+  },
+  {
+    "name": "Bary",
+    "email": "bgarvey8@rediff.com",
+    "password": "$2a$04$6MHG76QRcanc.eTdU1LPcORhrxfPOywMBIoja2FPEcQz9UFFA.W9i",
+    "role": "PM"
+  },
+  {
+    "name": "Andriana",
+    "email": "akitcherside9@theatlantic.com",
+    "password": "$2a$04$VSxHWlA6ybF8a40pvjefpuOx/ycda5.vt3nuBdiaXoC1Hi5yRsxQu",
+    "role": "admin"
+  },
+  {
+    "name": "Natasha",
+    "email": "nallreda@nba.com",
+    "password": "$2a$04$QyhK.SYNkIfLfyRHEVGdbO1ocA7f0qqH81bJ.lQZL/13EUe101NOy",
+    "role": "PM"
+  },
+  {
+    "name": "Ferdie",
+    "email": "fcustyb@blogger.com",
+    "password": "$2a$04$XQclqJNd9RJ1W4fFHIG9HeJaVEBScPsr.ismQNmKhibYr5/XIrpS.",
+    "role": "submitter"
+  },
+  {
+    "name": "Amii",
+    "email": "amcgauganc@amazon.co.uk",
+    "password": "$2a$04$tB78PXlBbnRfry1Rc1hS7.X7VdIhqvEbmFqeICkye8/Y3jCbkRt.e",
+    "role": "developer"
+  },
+  {
+    "name": "Ignacius",
+    "email": "ieadesd@constantcontact.com",
+    "password": "$2a$04$FGtHxl2w9JTQ429oZWBSQ.JF6lzZx.BLWDGMcWf4ReiLoXuCNlkx6",
+    "role": "admin"
+  },
+  {
+    "name": "Cassaundra",
+    "email": "cbraunlee@digg.com",
+    "password": "$2a$04$063sgYm6Qc4hIf7eMdAwp.P2hUdQw9RLWhNfJ5fp1MCvJYxyi78ti",
+    "role": "submitter"
+  },
+  {
+    "name": "Shanie",
+    "email": "sdunphief@about.me",
+    "password": "$2a$04$w.ybfn9R2rxrdOzdCvkSmu/GFzrBvuafP6i50KLBbM4JGwqU5gOFu",
+    "role": "PM"
+  },
+  {
+    "name": "Reagen",
+    "email": "rwalentynowiczg@skyrock.com",
+    "password": "$2a$04$Oz5Vk/KVlCh3hUMh/GbJmeCYUdKpfcYvQasCC9iBCORV6luhPnkja",
+    "role": "admin"
+  },
+  {
+    "name": "Zahara",
+    "email": "znollethh@engadget.com",
+    "password": "$2a$04$OzElGOM/6pvPEkAGSLWteODCVb/vgSU1ieriA4PRnod6MiIrChkZO",
+    "role": "developer"
+  },
+  {
+    "name": "Alaine",
+    "email": "ahindesi@bravesites.com",
+    "password": "$2a$04$TPjQfLHxGFyn.5FLyLn1Ke79mpc6cw9WcSSMoK/JNfM.mXdnBoUsO",
+    "role": "submitter"
+  },
+  {
+    "name": "Dania",
+    "email": "dskacelj@plala.or.jp",
+    "password": "$2a$04$iD2Z5ZTPEDQD1eMlkX8vVe71wf7b7GWCGSSh4htgyBvqiihNIHFrK",
+    "role": "PM"
+  }
+]

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 // hooks
 import useProjects from "../../hooks/useProjects";
+import useTickets from "../../hooks/useTickets";
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -20,14 +21,12 @@ import "../../styles/containers/dashboard/index.css";
 
 const Dashboard = () => {
   const { getAllProjects, allProjects } = useProjects();
+  const { getAllTickets, allTickets } = useTickets();
 
   useEffect(() => {
     getAllProjects();
+    getAllTickets();
   }, []);
-
-  useEffect(() => {
-    console.log(allProjects);
-  }, [allProjects]);
 
   return (
     <section className="dashboard-Container">
@@ -45,17 +44,17 @@ const Dashboard = () => {
         </span>
 
         <span>
-          <p>27</p>
+          <p>{allTickets.length}</p>
           <p>Total Tickets</p>
         </span>
 
         <span>
-          <p>8</p>
+          <p>{allTickets.filter((ticket) => !ticket.isAssigned).length}</p>
           <p>Unassigned Tickets</p>
         </span>
 
         <span>
-          <p>19</p>
+          <p>{allTickets.filter((ticket) => ticket.isAssigned).length}</p>
           <p>Assigned Tickets</p>
         </span>
       </div>

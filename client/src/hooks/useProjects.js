@@ -7,7 +7,6 @@ const useProjects = () => {
   const [allProjects, setAllProjects] = useState([]);
 
   //   get all projects
-  // eslint-disable-next-line no-unused-vars
   const getAllProjects = async () => {
     try {
       loading(true);
