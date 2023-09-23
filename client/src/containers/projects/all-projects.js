@@ -68,7 +68,7 @@ const AllProjects = () => {
 
           <div>
             {allProjects.slice(0, 10).map((project) => {
-              const { name, status, startDate, endDate } = project;
+              const { name, startDate, endDate, status } = project;
 
               return (
                 <div className="project">
@@ -105,6 +105,10 @@ const AllProjects = () => {
                     <img src="/assets/images/avatar.png" alt="pm" />
                     <img src="/assets/images/avatar.png" alt="pm" />
                     <img src="/assets/images/avatar.png" alt="pm" />
+                  </div>
+
+                  <div className="status">
+                    <p className={`${status}`}>{status}</p>
                   </div>
                 </div>
               );
