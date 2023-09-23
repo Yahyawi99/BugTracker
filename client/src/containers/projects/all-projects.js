@@ -72,16 +72,16 @@ const AllProjects = () => {
 
               return (
                 <div className="project">
-                  <div>
+                  <div className="title">
                     <p>{name}</p>
                     <p>Created {formatDate(startDate)}</p>
                   </div>
 
-                  <div>
+                  <div className="endDate">
                     <p>{formatDate(endDate)}</p>
                   </div>
 
-                  <div>
+                  <div className="progress">
                     <div className="progressBar">
                       <div
                         style={{ width: `${progress(endDate, startDate)}%` }}
@@ -89,22 +89,17 @@ const AllProjects = () => {
                     </div>
                     <p>{progress(endDate, startDate)}%</p>
                   </div>
+
+                  <div className="pm">
+                    <img src="/assets/images/avatar.png" alt="pm" />
+                    <p>demo manager</p>
+                  </div>
                 </div>
               );
             })}
-            <div className="projectName"></div>
-
-            {/* <div className="date"></div>
-
-          <div className="progress"></div>
-
-          <div className="projectManager"></div>
-
-          <div className="team"></div>
-
-          <div className="status"></div>
-
-          <div className="btns"></div> */}
+            {/*<div className="team"></div>
+            <div className="status"></div>
+            <div className="btns"></div> */}
           </div>
         </div>
       </div>

@@ -61,7 +61,7 @@
 
 /* Project */
 .allProjectsSection .project {
-    height: 75px;
+    height: 100px;
     display: flex;
     gap: 5px;
     align-items: center;
@@ -100,4 +100,9 @@
 .allProjectsSection .progressBar>div {
     height: 100%;
     background-color: var(--main-clr);
+}
+
+.allProjectsSection .project .pm img {
+    width: 40px;
+    border-radius: 50%;
 }
