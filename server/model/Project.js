@@ -37,11 +37,6 @@ const ProjectSchema = new mongoose.Schema(
       required: [true, "Please provide project priority"],
     },
 
-    progress: {
-      type: Number,
-      default: 0,
-    },
-
     category: {
       type: String,
       trim: true,

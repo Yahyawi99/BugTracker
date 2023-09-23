@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import useProjects from "../../hooks/useProjects";
 // utils
 import formatDate from "../../utils/formatDate";
+import progress from "../../utils/progress";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
 // css
@@ -78,6 +79,10 @@ const AllProjects = () => {
 
                   <div>
                     <p>{formatDate(endDate)}</p>
+                  </div>
+
+                  <div>
+                    <p>{progress(endDate)}</p>
                   </div>
                 </div>
               );

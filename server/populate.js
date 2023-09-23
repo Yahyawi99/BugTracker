@@ -6,13 +6,13 @@ const Project = require("./model/Project");
 const Ticket = require("./model/Ticket");
 const User = require("./model/User");
 
-const mockData = require("./data/mock-users.json");
+const mockData = require("./data/mock-projects.json");
 
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URL);
-    await User.deleteMany();
-    await User.create(mockData);
+    await Project.deleteMany();
+    await Project.create(mockData);
 
     console.log("success");
     process.exit(0);
