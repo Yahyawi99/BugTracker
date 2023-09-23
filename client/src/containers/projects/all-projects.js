@@ -60,34 +60,28 @@ const AllProjects = () => {
                 </div>
               );
             })}
-            {/* <div>
-              <p>Project</p>
-            </div>
-
-            <div>
-              <p>End Date</p>
-            </div>
-
-            <div>
-              <p>Progress</p>
-            </div>
-
-            <div>
-              <p>Project Manager</p>
-            </div>
-
-            <div>
-              <p>Team</p>
-            </div>
-
-            <div>
-              <p>Status</p>
-            </div>
-
-            <div></div> */}
           </div>
 
           <div>
+            {allProjects.slice(0, 10).map((project) => {
+              const { name, status, startDate } = project;
+
+              return (
+                <div className="project">
+                  <div>
+                    <p>{name}</p>
+                    <p>{startDate}</p>
+                  </div>
+                  <p>{name}</p>
+                  <p>{status}</p>
+                  <p>{status}</p>
+                  <p>{status}</p>
+                  <p>{status}</p>
+                  <p>{status}</p>
+                  <p> </p>
+                </div>
+              );
+            })}
             <div className="projectName"></div>
 
             {/* <div className="date"></div>

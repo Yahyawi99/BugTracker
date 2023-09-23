@@ -1,5 +1,6 @@
 .allProjectsSection>div:nth-child(2) {
     background-color: var(--white);
+    border-radius: 10px;
     overflow-x: scroll;
 }
 
@@ -9,19 +10,41 @@
 }
 
 
+/* labels */
 .allProjectsSection .labels {
+    width: fit-content;
     height: 50px;
     display: flex;
     gap: 5px;
     align-items: center;
     justify-content: flex-start;
     font-weight: 600;
+    border-bottom: 3px solid var(--border-color);
 }
 
 .allProjectsSection .labels>div {
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.allProjectsSection .labels>div:nth-child(1) {
+    min-width: 450px;
+}
+
+.allProjectsSection .labels>div:nth-child(2),
+.allProjectsSection .labels>div:nth-child(3),
+.allProjectsSection .labels>div:nth-child(4),
+.allProjectsSection .labels>div:nth-child(6) {
+    min-width: 200px;
+}
+
+.allProjectsSection .labels>div:nth-child(5) {
+    min-width: 250px;
+}
+
+.allProjectsSection .labels>div:nth-child(7) {
+    min-width: fit-content;
 }
 
 .allProjectsSection .labels>div p {
@@ -36,23 +59,31 @@
     width: 20px;
 }
 
-
-
-.allProjectsSection .labels>div:nth-child(1) {
-    width: 450px;
+/* Project */
+.allProjectsSection .project {
+    height: 50px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: flex-start;
+    font-weight: 600;
 }
 
-.allProjectsSection .labels>div:nth-child(2),
-.allProjectsSection .labels>div:nth-child(3),
-.allProjectsSection .labels>div:nth-child(4),
-.allProjectsSection .labels>div:nth-child(6) {
-    width: 200px;
+.allProjectsSection .project>p:nth-child(1) {
+    min-width: 450px;
 }
 
-.allProjectsSection .labels>div:nth-child(5) {
-    width: 250px;
+.allProjectsSection .project>p:nth-child(2),
+.allProjectsSection .project>p:nth-child(3),
+.allProjectsSection .project>p:nth-child(4),
+.allProjectsSection .project>p:nth-child(6) {
+    min-width: 200px;
 }
 
-.allProjectsSection .labels>div:nth-child(7) {
-    width: fit-content;
+.allProjectsSection .project>p:nth-child(5) {
+    min-width: 250px;
+}
+
+.allProjectsSection .project>p:nth-child(7) {
+    min-width: fit-content;
 }
