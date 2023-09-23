@@ -54,6 +54,10 @@ body {
   overflow: hidden;
 }
 
+main::-webkit-scrollbar {
+  appearance: none;
+}
+
 i svg path {
   fill: var(--svg-fill);
 }

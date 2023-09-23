@@ -1,7 +1,11 @@
 .allProjectsSection>div:nth-child(2) {
-    min-width: 500px;
     background-color: var(--white);
     overflow-x: scroll;
+}
+
+.allProjectsSection>div:nth-child(2)>div {
+    width: 1200px;
+    padding: 0px 10px;
 }
 
 
@@ -14,34 +18,46 @@
     font-weight: 600;
 }
 
+.allProjectsSection .labels>div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.allProjectsSection .labels>div p {
+    background-color: red;
+    width: 100%;
+    height: 100%;
+}
+
+.allProjectsSection .labels>div i {
+    display: flex;
+    height: 100%;
+}
+
+.allProjectsSection .labels>div i svg {
+    height: 100%;
+    width: 20px;
+    background-color: green;
+}
+
 
 
 .allProjectsSection .labels>div:nth-child(1) {
+    width: 450px;
     background-color: red;
-    width: 350px;
 }
 
-.allProjectsSection .labels>div:nth-child(2) {
-    background-color: green;
-    width: 175px;
-}
-
-.allProjectsSection .labels>div:nth-child(3) {
-    background-color: yellow;
-    width: 175px;
-}
-
+.allProjectsSection .labels>div:nth-child(2),
+.allProjectsSection .labels>div:nth-child(3),
 .allProjectsSection .labels>div:nth-child(4) {
-    background-color: orange;
     width: 200px;
 }
 
 .allProjectsSection .labels>div:nth-child(5) {
-    background-color: blue;
-    width: 200px;
+    width: 250px;
 }
 
 .allProjectsSection .labels>div:nth-child(6) {
-    background-color: black;
-    flex: 175px;
+    width: fit-content;
 }
