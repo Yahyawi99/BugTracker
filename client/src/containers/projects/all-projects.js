@@ -82,7 +82,12 @@ const AllProjects = () => {
                   </div>
 
                   <div>
-                    <p>{progress(endDate)}</p>
+                    <div className="progressBar">
+                      <div
+                        style={{ width: `${progress(endDate, startDate)}%` }}
+                      ></div>
+                    </div>
+                    <p>{progress(endDate, startDate)}%</p>
                   </div>
                 </div>
               );

@@ -73,7 +73,7 @@
 }
 
 .allProjectsSection .project>div:nth-child(2),
-.allProjectsSection .project>p:nth-child(3),
+.allProjectsSection .project>div:nth-child(3),
 .allProjectsSection .project>p:nth-child(4),
 .allProjectsSection .project>p:nth-child(6) {
     min-width: 200px;
@@ -85,4 +85,19 @@
 
 .allProjectsSection .project>p:nth-child(7) {
     min-width: fit-content;
+}
+
+
+.allProjectsSection .progressBar {
+    width: 100%;
+    height: 5px;
+    background-color: var(--main-clr-hover);
+    border-radius: 5px;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+
+.allProjectsSection .progressBar>div {
+    height: 100%;
+    background-color: var(--main-clr);
 }

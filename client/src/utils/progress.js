@@ -1,8 +1,17 @@
-const progress = (endDate) => {
+const progress = (startDate, endDate) => {
+  const startDateMs = new Date(startDate).getTime();
   const endDateMs = new Date(endDate).getTime();
-  const currentDate = new Date().getTime();
 
-  return (currentDate * 100) / endDateMs;
+  const currentTime = new Date().getTime();
+
+  if (currentTime > endDate) {
+    return 100;
+  }
+
+  const totalDuration = endDateMs - startDateMs;
+  const elapsedTime = currentTime - startDateMs;
+
+  return Math.floor((elapsedTime / totalDuration) * 100);
 };
 
 export default progress;
