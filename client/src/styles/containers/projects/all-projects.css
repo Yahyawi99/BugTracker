@@ -1,0 +1,8 @@
+.allProjectsSection>div:nth-child(2) {
+    background-color: var(--white);
+}
+
+
+.allProjectsSection .labels {
+    display: flex;
+}

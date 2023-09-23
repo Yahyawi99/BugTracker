@@ -6,6 +6,7 @@ import NavbarProvider from "../../context/Navbar";
 import AuthProvider from "../../context/auth/Auth-context";
 // main
 import Dashboard from "../../containers/dashboard";
+import AllProjects from "../../containers/projects/all-projects";
 // components
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
@@ -28,6 +29,7 @@ const Main = () => {
           <Routes>
             <Route element={<RouteProtector />}>
               <Route path="/dashboard" Component={Dashboard} />
+              <Route path="/all-projects" Component={AllProjects} />
             </Route>
           </Routes>
         </main>

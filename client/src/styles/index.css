@@ -67,3 +67,9 @@ i {
 i:hover {
   opacity: .5;
 }
+
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

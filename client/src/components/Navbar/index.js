@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // context
 import { useMainContext } from "../../context/global";
 import { useNavbar } from "../../context/Navbar";
@@ -59,7 +60,9 @@ const NavBar = () => {
                 <i>
                   <FontAwesomeIcon icon={faGauge} />
                 </i>
-                <p>Dashboard</p>
+                <Link to="/dashboard">
+                  <p>Dashboard</p>
+                </Link>
               </li>
 
               <li
@@ -103,7 +106,9 @@ const NavBar = () => {
               >
                 <span>
                   <FontAwesomeIcon icon={faStarOfLife} />
-                  <p>All Projects</p>
+                  <Link to="/all-projects">
+                    <p>All Projects</p>
+                  </Link>
                 </span>
 
                 <span>
