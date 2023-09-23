@@ -1,4 +1,11 @@
 import React, { useEffect } from "react";
+// icons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faEye,
+  faPencil,
+  faBoxArchive,
+} from "@fortawesome/free-solid-svg-icons";
 // hooks
 import useProjects from "../../hooks/useProjects";
 // utils
@@ -110,12 +117,23 @@ const AllProjects = () => {
                   <div className="status">
                     <p className={`${status}`}>{status}</p>
                   </div>
+
+                  <div className="btns">
+                    <button className="details">
+                      <FontAwesomeIcon icon={faEye} />
+                    </button>
+
+                    <button className="edit">
+                      <FontAwesomeIcon icon={faPencil} />
+                    </button>
+
+                    <button className="archive">
+                      <FontAwesomeIcon icon={faBoxArchive} />
+                    </button>
+                  </div>
                 </div>
               );
             })}
-            {/*<div className="team"></div>
-            <div className="status"></div>
-            <div className="btns"></div> */}
           </div>
         </div>
       </div>

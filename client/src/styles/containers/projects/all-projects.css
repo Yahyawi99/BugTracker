@@ -2,18 +2,18 @@
     background-color: var(--white);
     border-radius: 10px;
     overflow-x: scroll;
+    padding: 0 10px 0 10px;
 }
 
 .allProjectsSection>div:nth-child(2)>div {
     width: 1200px;
-    padding: 0px 10px;
 }
 
 
 /* labels */
 .allProjectsSection .labels {
     width: fit-content;
-    height: 50px;
+    height: 75px;
     display: flex;
     gap: 15px;
     align-items: center;
@@ -41,11 +41,11 @@
 }
 
 .allProjectsSection .labels>div:nth-child(6) {
-    min-width: 125px;
+    min-width: 150px;
 }
 
 .allProjectsSection .labels>div:nth-child(7) {
-    min-width: fit-content;
+    min-width: 125px;
 }
 
 .allProjectsSection .labels>div p {
@@ -60,19 +60,24 @@
     width: 20px;
 }
 
+/* =========================== */
+/* =========================== */
+/* =========================== */
 /* Project */
 .allProjectsSection .project {
+    width: fit-content;
     height: 100px;
     display: flex;
     gap: 15px;
     align-items: center;
     justify-content: flex-start;
+    border-bottom: 1px solid var(--border-color);
 }
-
-
 
 .allProjectsSection .project>div {
     min-width: 200px;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .allProjectsSection .project>div:nth-child(1) {
@@ -84,13 +89,18 @@
 }
 
 .allProjectsSection .project>div:nth-child(6) {
-    min-width: 100px;
+    min-width: 150px;
 }
 
-.allProjectsSection .project>p:nth-child(7) {
-    min-width: fit-content;
+.allProjectsSection .project>div:nth-child(7) {
+    min-width: 125px;
 }
 
+
+.allProjectsSection .progress,
+.allProjectsSection .title {
+    flex-direction: column;
+}
 
 .allProjectsSection .progressBar {
     width: 100%;
@@ -127,7 +137,6 @@
 
 .allProjectsSection .project .status {
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
@@ -149,4 +158,50 @@
 .allProjectsSection .project .status .inactive {
     color: var(--gray);
     border-color: var(--gray);
+}
+
+.allProjectsSection .project .btns {
+    display: flex;
+    gap: 5px;
+    padding-right: 10px;
+}
+
+.allProjectsSection .project .btns button {
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 10px;
+}
+
+.allProjectsSection .project .btns .details {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.allProjectsSection .project .btns .details:hover {
+    background-color: var(--blue);
+}
+
+.allProjectsSection .project .btns .edit {
+    border-color: var(--gray);
+    color: var(--gray);
+}
+
+.allProjectsSection .project .btns .edit:hover {
+    background-color: var(--gray);
+}
+
+.allProjectsSection .project .btns .archive {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+.allProjectsSection .project .btns .archive:hover {
+    background-color: var(--danger);
+}
+
+.allProjectsSection .project .btns button:hover {
+    color: var(--white);
 }
