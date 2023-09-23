@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
+// hooks
 import useProjects from "../../hooks/useProjects";
+// utils
+import formatDate from "../../utils/formatDate";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
 // css
@@ -64,21 +67,18 @@ const AllProjects = () => {
 
           <div>
             {allProjects.slice(0, 10).map((project) => {
-              const { name, status, startDate } = project;
+              const { name, status, startDate, endDate } = project;
 
               return (
                 <div className="project">
                   <div>
                     <p>{name}</p>
-                    <p>{startDate}</p>
+                    <p>Created {formatDate(startDate)}</p>
                   </div>
-                  <p>{name}</p>
-                  <p>{status}</p>
-                  <p>{status}</p>
-                  <p>{status}</p>
-                  <p>{status}</p>
-                  <p>{status}</p>
-                  <p> </p>
+
+                  <div>
+                    <p>{formatDate(endDate)}</p>
+                  </div>
                 </div>
               );
             })}

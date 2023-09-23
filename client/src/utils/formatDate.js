@@ -3,7 +3,7 @@ const formatDate = (date) => {
     month: "long",
     day: "2-digit",
     year: "numeric",
-  }).format(date);
+  }).format(new Date(date));
 };
 
 export default formatDate;
