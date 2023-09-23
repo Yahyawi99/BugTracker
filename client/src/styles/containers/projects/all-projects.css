@@ -1,8 +1,47 @@
 .allProjectsSection>div:nth-child(2) {
+    min-width: 500px;
     background-color: var(--white);
+    overflow-x: scroll;
 }
 
 
 .allProjectsSection .labels {
+    height: 50px;
     display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: flex-start;
+    font-weight: 600;
+}
+
+
+
+.allProjectsSection .labels>div:nth-child(1) {
+    background-color: red;
+    width: 350px;
+}
+
+.allProjectsSection .labels>div:nth-child(2) {
+    background-color: green;
+    width: 175px;
+}
+
+.allProjectsSection .labels>div:nth-child(3) {
+    background-color: yellow;
+    width: 175px;
+}
+
+.allProjectsSection .labels>div:nth-child(4) {
+    background-color: orange;
+    width: 200px;
+}
+
+.allProjectsSection .labels>div:nth-child(5) {
+    background-color: blue;
+    width: 200px;
+}
+
+.allProjectsSection .labels>div:nth-child(6) {
+    background-color: black;
+    flex: 175px;
 }
