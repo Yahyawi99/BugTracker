@@ -94,6 +94,18 @@ const AllProjects = () => {
                     <img src="/assets/images/avatar.png" alt="pm" />
                     <p>demo manager</p>
                   </div>
+
+                  <div className="team">
+                    <img
+                      className="first"
+                      src="/assets/images/avatar.png"
+                      alt="pm"
+                    />
+                    <img src="/assets/images/avatar.png" alt="pm" />
+                    <img src="/assets/images/avatar.png" alt="pm" />
+                    <img src="/assets/images/avatar.png" alt="pm" />
+                    <img src="/assets/images/avatar.png" alt="pm" />
+                  </div>
                 </div>
               );
             })}

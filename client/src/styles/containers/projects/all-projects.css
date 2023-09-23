@@ -15,7 +15,7 @@
     width: fit-content;
     height: 50px;
     display: flex;
-    gap: 5px;
+    gap: 15px;
     align-items: center;
     justify-content: flex-start;
     font-weight: 600;
@@ -63,7 +63,7 @@
 .allProjectsSection .project {
     height: 100px;
     display: flex;
-    gap: 5px;
+    gap: 15px;
     align-items: center;
     justify-content: flex-start;
 }
@@ -74,12 +74,12 @@
 
 .allProjectsSection .project>div:nth-child(2),
 .allProjectsSection .project>div:nth-child(3),
-.allProjectsSection .project>p:nth-child(4),
+.allProjectsSection .project>div:nth-child(4),
 .allProjectsSection .project>p:nth-child(6) {
     min-width: 200px;
 }
 
-.allProjectsSection .project>p:nth-child(5) {
+.allProjectsSection .project>div:nth-child(5) {
     min-width: 250px;
 }
 
@@ -102,7 +102,21 @@
     background-color: var(--main-clr);
 }
 
-.allProjectsSection .project .pm img {
+.allProjectsSection .project .pm {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.allProjectsSection img {
     width: 40px;
     border-radius: 50%;
+}
+
+.allProjectsSection .project .team {
+    display: flex;
+}
+
+.allProjectsSection .project .team img:not(.first) {
+    margin-left: -15px;
 }
