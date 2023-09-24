@@ -12,6 +12,11 @@ const UserSchema = new mongoose.Schema(
       required: [true, "Please provide a name"],
     },
 
+    avatar: {
+      type: String,
+      default: "/assets/images/default-avatar.jpg",
+    },
+
     email: {
       type: String,
       unique: true,
