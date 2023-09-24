@@ -5,9 +5,11 @@ const Ticket = require("../model/Ticket");
 // get all projects
 const allProjects = async (req, res) => {
   const projects = await Project.find({}).populate({
-    path: "tickets",
+    path: "managedBy tickets",
+    select: "name avatar assignedTo",
   });
 
+  // await projects.projectTeam();
   console.log(projects);
 
   res.status(StatusCodes.OK).json({ projects, count: projects.length });

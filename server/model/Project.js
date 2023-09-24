@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 
-const ProjectSchema = new Schema(
+const ProjectSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -74,5 +73,11 @@ ProjectSchema.virtual("tickets", {
   foreignField: "project",
   justOne: false,
 });
+
+// const Model =
+
+ProjectSchema.methods.projectTeam = async function () {
+  console.log(2);
+};
 
 module.exports = mongoose.model("Project", ProjectSchema);
