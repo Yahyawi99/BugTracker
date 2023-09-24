@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const ObjectId = mongoose.Types.ObjectId;
 
-const ProjectSchema = new mongoose.Schema(
+const ProjectSchema = new Schema(
   {
     name: {
       type: String,
@@ -65,8 +67,14 @@ const ProjectSchema = new mongoose.Schema(
     },
 
     managedBy: {
-      type: mongoose.Types.ObjectId,
+      type: mongoose.Schema.Types.Mixed,
       ref: "user",
+      validate: {
+        validator: function (value) {
+          return value === "" || ObjectId.isValid(value);
+        },
+        message: "managedBy must be an ObjectId or an empty string.",
+      },
     },
   },
   { timestamps: true }
