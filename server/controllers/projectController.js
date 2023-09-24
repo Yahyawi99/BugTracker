@@ -9,8 +9,10 @@ const allProjects = async (req, res) => {
     select: "name avatar assignedTo",
   });
 
-  // await projects.projectTeam();
-  console.log(projects);
+  projects.forEach(async (project) => {
+    await project.projectTeam();
+  });
+  // console.log(projects);
 
   res.status(StatusCodes.OK).json({ projects, count: projects.length });
 };

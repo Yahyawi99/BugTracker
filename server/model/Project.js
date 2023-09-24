@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const Ticket = require("./Ticket");
+const User = require("./User");
 
 const ProjectSchema = new mongoose.Schema(
   {
@@ -77,7 +79,19 @@ ProjectSchema.virtual("tickets", {
 // const Model =
 
 ProjectSchema.methods.projectTeam = async function () {
-  console.log(2);
+  const associatedTickets = await Ticket.find({ project: this._id });
+
+  const team = associatedTickets
+    .map((ticket) => ticket.assignedTo)
+    .reduce((acc, prev) => {
+      if (!acc.includes(prev)) {
+        acc.push(prev);
+      }
+      return acc;
+    }, []);
+
+  console.log(team);
+  console.log("=========================");
 };
 
 module.exports = mongoose.model("Project", ProjectSchema);
