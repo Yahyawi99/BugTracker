@@ -52,19 +52,19 @@ const TicketSchema = new Schema(
 
     project: {
       type: Schema.Types.ObjectId,
-      ref: "project",
+      ref: "Project",
       required: true,
     },
 
     assignedBy: {
       type: Schema.Types.ObjectId,
-      ref: "user",
+      ref: "User",
       required: true,
     },
 
     assignedTo: {
       type: Schema.Types.Mixed,
-      ref: "user",
+      ref: "User",
       validate: {
         validator: function (value) {
           return value === "" || ObjectId.isValid(value);

@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const ObjectId = mongoose.Types.ObjectId;
 
 const ProjectSchema = new Schema(
   {
@@ -39,12 +38,6 @@ const ProjectSchema = new Schema(
       required: [true, "Please provide project priority"],
     },
 
-    category: {
-      type: String,
-      trim: true,
-      required: [true, "Please provide project category"],
-    },
-
     isArchived: {
       type: Boolean,
       default: false,
@@ -62,19 +55,13 @@ const ProjectSchema = new Schema(
 
     createdBy: {
       type: mongoose.Types.ObjectId,
-      ref: "user",
+      ref: "User",
       required: true,
     },
 
     managedBy: {
-      type: mongoose.Schema.Types.Mixed,
-      ref: "user",
-      validate: {
-        validator: function (value) {
-          return value === "" || ObjectId.isValid(value);
-        },
-        message: "managedBy must be an ObjectId or an empty string.",
-      },
+      type: mongoose.Types.ObjectId,
+      ref: "User",
     },
   },
   { timestamps: true }

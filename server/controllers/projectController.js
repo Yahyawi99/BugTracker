@@ -1,9 +1,12 @@
 const { StatusCodes } = require("http-status-codes");
 const Project = require("../model/Project");
+const Ticket = require("../model/Ticket");
 
 // get all projects
 const allProjects = async (req, res) => {
-  const projects = await Project.find({});
+  const projects = await Project.find({}).populate({ path: "createdBy" });
+
+  console.log(projects);
 
   res.status(StatusCodes.OK).json({ projects, count: projects.length });
 };
