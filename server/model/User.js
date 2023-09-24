@@ -33,13 +33,6 @@ const UserSchema = new mongoose.Schema(
       enum: ["admin", "developer", "PM", "submitter"],
       default: "submitter",
     },
-
-    onProject: {
-      type: mongoose.Types.ObjectId,
-      ref: "project",
-    },
-
-    assignedTo: { type: mongoose.Types.ObjectId, ref: "ticket" },
   },
   { timestamps: true }
 );

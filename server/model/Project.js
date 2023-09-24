@@ -48,12 +48,6 @@ const ProjectSchema = new mongoose.Schema(
       default: false,
     },
 
-    createdBy: {
-      type: mongoose.Types.ObjectId,
-      ref: "user",
-      required: true,
-    },
-
     startDate: {
       type: Date,
       required: [true, "Please provide project start date"],
@@ -62,6 +56,17 @@ const ProjectSchema = new mongoose.Schema(
     endDate: {
       type: Date,
       required: [true, "Please provide project end date"],
+    },
+
+    createdBy: {
+      type: mongoose.Types.ObjectId,
+      ref: "user",
+      required: true,
+    },
+
+    managedBy: {
+      type: mongoose.Types.ObjectId,
+      ref: "user",
     },
   },
   { timestamps: true }
