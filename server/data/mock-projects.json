@@ -44,8 +44,7 @@
     "isArchived": false,
     "startDate": "7/8/2023",
     "endDate": "9/24/2024",
-    "createdBy": "651085cce1baf7ee871ebf83",
-    "managedBy": ""
+    "createdBy": "651085cce1baf7ee871ebf83"
   },
   {
     "name": "Pincas Sharpus",
@@ -56,7 +55,6 @@
     "isArchived": true,
     "startDate": "2/1/2023",
     "endDate": "9/24/2024",
-    "createdBy": "651085cce1baf7ee871ebf82",
-    "managedBy": ""
+    "createdBy": "651085cce1baf7ee871ebf82"
   }
 ]
