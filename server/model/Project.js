@@ -64,7 +64,15 @@ const ProjectSchema = new Schema(
       ref: "User",
     },
   },
-  { timestamps: true }
+  { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
+
+// Virtuels
+ProjectSchema.virtual("tickets", {
+  ref: "Ticket",
+  localField: "_id",
+  foreignField: "project",
+  justOne: false,
+});
 
 module.exports = mongoose.model("Project", ProjectSchema);

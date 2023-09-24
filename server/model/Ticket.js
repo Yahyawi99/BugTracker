@@ -65,12 +65,6 @@ const TicketSchema = new Schema(
     assignedTo: {
       type: Schema.Types.Mixed,
       ref: "User",
-      validate: {
-        validator: function (value) {
-          return value === "" || ObjectId.isValid(value);
-        },
-        message: "assignedTo must be an ObjectId or an empty string.",
-      },
     },
   },
   { timestamps: true }

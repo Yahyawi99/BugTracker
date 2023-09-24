@@ -4,7 +4,9 @@ const Ticket = require("../model/Ticket");
 
 // get all projects
 const allProjects = async (req, res) => {
-  const projects = await Project.find({}).populate({ path: "managedBy" });
+  const projects = await Project.find({}).populate({
+    path: "tickets",
+  });
 
   console.log(projects);
 
