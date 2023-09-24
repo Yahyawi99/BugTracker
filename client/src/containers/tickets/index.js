@@ -14,7 +14,7 @@ import progress from "../../utils/progress";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
 // css
-import "../../styles/containers/projects/all-projects.css";
+import "../../styles/containers/tickets/all-tickets.css";
 
 const AllTickets = () => {
   const { getAllTickets, allTickets } = useTickets();
@@ -24,8 +24,8 @@ const AllTickets = () => {
   }, []);
 
   return (
-    <section className="allProjectsSection">
-      <HomeBtn name="All Projects" />
+    <section className="allTicketsSection">
+      <HomeBtn name="All Tickets" />
 
       <div>
         <div>
@@ -73,49 +73,34 @@ const AllTickets = () => {
             })}
           </div>
 
-          {/* <div>
-            {allTickets.slice(0, 5).map((project) => {
-              const { name, startDate, endDate, status } = project;
+          <div>
+            {allTickets.slice(0, 5).map((ticket) => {
+              const { title, createdAt, status, priority } = ticket;
 
               return (
-                <div className="project">
+                <div className="ticket">
+                  <div className="assignedBy">
+                    <p>Demo Admin</p>
+                  </div>
+
+                  <div className="assignedTo">
+                    <p>Demo Developer</p>
+                  </div>
+
                   <div className="title">
-                    <p>{name}</p>
-                    <p>Created {formatDate(startDate)}</p>
-                  </div>
-
-                  <div className="endDate">
-                    <p>{formatDate(endDate)}</p>
-                  </div>
-
-                  <div className="progress">
-                    <div className="progressBar">
-                      <div
-                        style={{ width: `${progress(endDate, startDate)}%` }}
-                      ></div>
-                    </div>
-                    <p>{progress(endDate, startDate)}%</p>
-                  </div>
-
-                  <div className="pm">
-                    <img src="/assets/images/avatar.png" alt="pm" />
-                    <p>demo manager</p>
-                  </div>
-
-                  <div className="team">
-                    <img
-                      className="first"
-                      src="/assets/images/avatar.png"
-                      alt="pm"
-                    />
-                    <img src="/assets/images/avatar.png" alt="pm" />
-                    <img src="/assets/images/avatar.png" alt="pm" />
-                    <img src="/assets/images/avatar.png" alt="pm" />
-                    <img src="/assets/images/avatar.png" alt="pm" />
+                    <p>{title}</p>
                   </div>
 
                   <div className="status">
                     <p className={`${status}`}>{status}</p>
+                  </div>
+
+                  <div className="priority">
+                    <p className={`${priority}`}>{priority}</p>
+                  </div>
+
+                  <div className="date">
+                    <p>{createdAt ? formatDate(createdAt) : ""}</p>
                   </div>
 
                   <div className="btns">
@@ -134,7 +119,7 @@ const AllTickets = () => {
                 </div>
               );
             })}
-          </div> */}
+          </div>
 
           <div className="sectionFooter">
             <p className="count">5 out of 50 documents</p>
