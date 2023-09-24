@@ -3,18 +3,7 @@
     border-radius: 10px;
     overflow-x: scroll;
     padding: 0 10px 0 10px;
-}
-
-.allProjectsSection>div:nth-child(2)::-webkit-scrollbar {
-    appearance: none;
-    height: 8px;
-    background-color: var(--main-clr-hover);
-    padding-top: 10px;
-}
-
-.allProjectsSection>div:nth-child(2)::-webkit-scrollbar-thumb {
-    background-color: var(--main-clr);
-    border-radius: 10px;
+    margin: 0 0 25px 0;
 }
 
 
@@ -225,5 +214,61 @@
 }
 
 .allProjectsSection .project .btns button:hover {
+    color: var(--white);
+}
+
+
+/* ========================== */
+/* ========================== */
+/* ========================== */
+/* Footer */
+.sectionFooter {
+    width: 1564px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.sectionFooter .pagination {
+    display: flex;
+}
+
+.sectionFooter .pagination .pages {
+    display: flex;
+    align-items: center;
+}
+
+
+.sectionFooter .pagination .pages p {
+    font-weight: 600;
+    color: var(--gray);
+    border: 2px solid var(--main-clr);
+    border-left: none;
+    cursor: pointer;
+    padding: 10px 15px;
+}
+
+.sectionFooter .pagination .pages p:hover {
+    background-color: var(--gray);
+    color: var(--white);
+}
+
+.sectionFooter .pagination button {
+    background-color: transparent;
+    border: 2px solid var(--main-clr);
+    color: var(--main-clr);
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s;
+    padding: 10px;
+}
+
+.sectionFooter .pagination button:nth-child(3) {
+    border-left: none;
+}
+
+.sectionFooter .pagination button:hover {
+    background-color: var(--main-clr);
     color: var(--white);
 }

@@ -74,7 +74,7 @@ const AllProjects = () => {
           </div>
 
           <div>
-            {allProjects.slice(0, 10).map((project) => {
+            {allProjects.slice(0, 5).map((project) => {
               const { name, startDate, endDate, status } = project;
 
               return (
@@ -134,6 +134,21 @@ const AllProjects = () => {
                 </div>
               );
             })}
+          </div>
+
+          <div className="sectionFooter">
+            <p className="count">5 out of 50 documents</p>
+
+            <div className="pagination">
+              <button>previous</button>
+              <div className="pages">
+                <p>1</p>
+                <p>2</p>
+                <p>3</p>
+              </div>
+
+              <button>next</button>
+            </div>
           </div>
         </div>
       </div>
