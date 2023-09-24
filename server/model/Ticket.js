@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const ObjectId = mongoose.Types.ObjectId;
 
-const TicketSchema = new mongoose.Schema(
+const TicketSchema = new Schema(
   {
     title: {
       type: String,
@@ -49,21 +51,26 @@ const TicketSchema = new mongoose.Schema(
     },
 
     project: {
-      type: mongoose.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "project",
       required: true,
     },
 
     assignedBy: {
-      type: mongoose.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "user",
       required: true,
     },
 
     assignedTo: {
-      type: mongoose.Types.ObjectId,
+      type: Schema.Types.Mixed,
       ref: "user",
-      required: true,
+      validate: {
+        validator: function (value) {
+          return value === "" || ObjectId.isValid(value);
+        },
+        message: "assignedTo must be an ObjectId or an empty string.",
+      },
     },
   },
   { timestamps: true }
