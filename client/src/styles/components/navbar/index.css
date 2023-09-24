@@ -85,7 +85,6 @@
 
 .navigationContainer .head i:hover {
     background-color: var(--main-clr-hover);
-    /* change */
     border: 1px solid var(--border-color);
     border-radius: 5px 5px 0 0;
     opacity: .5;
@@ -110,7 +109,7 @@
     flex-direction: column;
 }
 
-.navigationContainer .list>li {
+.navigationContainer .list li {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -120,18 +119,18 @@
     margin-bottom: 10px;
 }
 
-.navigationContainer .list>li:nth-child(3),
-.navigationContainer .list>li:nth-child(5),
-.navigationContainer .list>li:nth-child(7),
-.navigationContainer .list>li:nth-child(9) {
+.navigationContainer .list li:nth-child(3),
+.navigationContainer .list li:nth-child(5),
+.navigationContainer .list li:nth-child(7),
+.navigationContainer .list li:nth-child(9) {
     margin-bottom: 0px;
 }
 
-.navigationContainer .list>li:hover {
+.navigationContainer .list li:hover {
     background-color: var(--main-clr-hover);
 }
 
-.navigationContainer .list>li .arrow {
+.navigationContainer .list li .arrow {
     font-size: .9rem;
     transform-origin: center;
     transform: rotate(90deg);
@@ -140,11 +139,11 @@
 
 }
 
-.navigationContainer .list>li .arrow path {
+.navigationContainer .list li .arrow path {
     fill: var(--gray);
 }
 
-.navigationContainer .list>li i svg path {
+.navigationContainer .list li i svg path {
     fill: var(--main-clr);
 }
 

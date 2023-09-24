@@ -53,17 +53,19 @@ const NavBar = () => {
         {nav === "menu" ? (
           <div className="menu">
             <ul className="list">
-              <li
-                className={`listItem1 ${clicked === "dashboard" && "clicked"}`}
-                onClick={() => setClicked("dashboard")}
-              >
-                <i>
-                  <FontAwesomeIcon icon={faGauge} />
-                </i>
-                <Link to="/dashboard">
+              <Link to="/dashboard">
+                <li
+                  className={`listItem1 ${
+                    clicked === "dashboard" && "clicked"
+                  }`}
+                  onClick={() => setClicked("dashboard")}
+                >
+                  <i>
+                    <FontAwesomeIcon icon={faGauge} />
+                  </i>
                   <p>Dashboard</p>
-                </Link>
-              </li>
+                </li>
+              </Link>
 
               <li
                 className={`listItem2 ${
@@ -79,7 +81,7 @@ const NavBar = () => {
 
               <li
                 className={`listItem3 ${clicked === "projects" && "clicked"}`}
-                onClick={(e) => {
+                onClick={() => {
                   setClicked("projects");
                   dropDownFunctionality("projects");
                 }}
@@ -103,6 +105,9 @@ const NavBar = () => {
                 className={`options ${
                   dropDown === "projects" && "openDropDown"
                 }`}
+                onClick={() => {
+                  setClicked("projects");
+                }}
               >
                 <span>
                   <FontAwesomeIcon icon={faStarOfLife} />
@@ -158,6 +163,9 @@ const NavBar = () => {
                 className={`options ${
                   dropDown === "tickets" && "openDropDown"
                 }`}
+                onClick={() => {
+                  setClicked("tickets");
+                }}
               >
                 <span>
                   <FontAwesomeIcon icon={faStarOfLife} />
