@@ -45,7 +45,7 @@
 }
 
 .allProjectsSection .labels>div:nth-child(7) {
-    min-width: 100px;
+    min-width: 120px;
 }
 
 .allProjectsSection .labels>div p {
@@ -222,7 +222,7 @@
 /* ========================== */
 /* ========================== */
 /* Footer */
-.sectionFooter {
+.allProjectsSection .sectionFooter {
     width: 1564px;
     display: flex;
     align-items: center;
@@ -230,17 +230,17 @@
     padding: 20px 0;
 }
 
-.sectionFooter .pagination {
+.allProjectsSection .sectionFooter .pagination {
     display: flex;
 }
 
-.sectionFooter .pagination .pages {
+.allProjectsSection .sectionFooter .pagination .pages {
     display: flex;
     align-items: center;
 }
 
 
-.sectionFooter .pagination .pages p {
+.allProjectsSection .sectionFooter .pagination .pages p {
     font-weight: 600;
     color: var(--gray);
     border: 2px solid var(--main-clr);
@@ -249,12 +249,12 @@
     padding: 10px 15px;
 }
 
-.sectionFooter .pagination .pages p:hover {
+.allProjectsSection .sectionFooter .pagination .pages p:hover {
     background-color: var(--gray);
     color: var(--white);
 }
 
-.sectionFooter .pagination button {
+.allProjectsSection .sectionFooter .pagination button {
     background-color: transparent;
     border: 2px solid var(--main-clr);
     color: var(--main-clr);
@@ -264,11 +264,11 @@
     padding: 10px;
 }
 
-.sectionFooter .pagination button:nth-child(3) {
+.allProjectsSection .sectionFooter .pagination button:nth-child(3) {
     border-left: none;
 }
 
-.sectionFooter .pagination button:hover {
+.allProjectsSection .sectionFooter .pagination button:hover {
     background-color: var(--main-clr);
     color: var(--white);
 }

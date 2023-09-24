@@ -38,7 +38,7 @@
 
 
 .allTicketsSection .labels>div:nth-child(7) {
-    min-width: 100px;
+    min-width: 120px;
 }
 
 .allTicketsSection .labels>div p {
@@ -90,7 +90,6 @@
 .allTicketsSection .ticket .status p,
 .allTicketsSection .ticket .priority p {
     width: fit-content;
-    text-align: center;
     border: 2px solid transparent;
     border-radius: 5px;
     padding: 5px 10px;
@@ -102,15 +101,30 @@
     border-color: var(--blue);
 }
 
-.allTicketsSection .ticket .status .new {
+.allTicketsSection .ticket .status .resolved {
     color: var(--success);
     border-color: var(--success);
+}
+
+.allTicketsSection .ticket .status .new {
+    color: var(--gray);
+    border-color: var(--gray);
 }
 
 /* Priority */
 .allTicketsSection .ticket .priority .urgent {
     color: var(--danger);
     border-color: var(--danger);
+}
+
+.allTicketsSection .ticket .priority .high {
+    color: var(--orange);
+    border-color: var(--orange);
+}
+
+.allTicketsSection .ticket .priority .low {
+    color: var(--gray);
+    border-color: var(--gray);
 }
 
 /* Buttons */
@@ -169,25 +183,25 @@
 /* ========================== */
 /* ========================== */
 /* Footer */
-.sectionFooter {
-    width: 1564px;
+.allTicketsSection .sectionFooter {
+    width: 1345px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px 0;
 }
 
-.sectionFooter .pagination {
+.allTicketsSection .sectionFooter .pagination {
     display: flex;
 }
 
-.sectionFooter .pagination .pages {
+.allTicketsSection .sectionFooter .pagination .pages {
     display: flex;
     align-items: center;
 }
 
 
-.sectionFooter .pagination .pages p {
+.allTicketsSection .sectionFooter .pagination .pages p {
     font-weight: 600;
     color: var(--gray);
     border: 2px solid var(--main-clr);
@@ -196,12 +210,12 @@
     padding: 10px 15px;
 }
 
-.sectionFooter .pagination .pages p:hover {
+.allTicketsSection .sectionFooter .pagination .pages p:hover {
     background-color: var(--gray);
     color: var(--white);
 }
 
-.sectionFooter .pagination button {
+.allTicketsSection .sectionFooter .pagination button {
     background-color: transparent;
     border: 2px solid var(--main-clr);
     color: var(--main-clr);
@@ -211,11 +225,11 @@
     padding: 10px;
 }
 
-.sectionFooter .pagination button:nth-child(3) {
+.allTicketsSection .sectionFooter .pagination button:nth-child(3) {
     border-left: none;
 }
 
-.sectionFooter .pagination button:hover {
+.allTicketsSection .sectionFooter .pagination button:hover {
     background-color: var(--main-clr);
     color: var(--white);
 }
