@@ -20,13 +20,13 @@ const TicketSchema = new mongoose.Schema(
 
     priority: {
       type: String,
-      enum: ["high", "medium", "low", "urgent"],
+      enum: ["high", "low", "urgent"],
       required: [true, "Please provide ticket priority"],
     },
 
     status: {
       type: String,
-      enum: ["new", "resolved", "testing", "development"],
+      enum: ["new", "resolved", "development"],
       default: "new",
     },
 
@@ -54,7 +54,13 @@ const TicketSchema = new mongoose.Schema(
       required: true,
     },
 
-    user: {
+    assignedBy: {
+      type: mongoose.Types.ObjectId,
+      ref: "user",
+      required: true,
+    },
+
+    assignedTo: {
       type: mongoose.Types.ObjectId,
       ref: "user",
       required: true,

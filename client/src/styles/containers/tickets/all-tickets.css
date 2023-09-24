@@ -71,94 +71,47 @@
     min-width: 150px;
     display: flex;
     justify-content: flex-start;
-    background-color: red;
 }
 
 /* Title */
 .allTicketsSection .ticket .title {
     min-width: 350px;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.allTicketsSection .ticket .title p:nth-child(1) {
     font-weight: 600;
 }
 
-/* progress */
-.allTicketsSection .progress {
-    flex-direction: column;
-    gap: 5px;
-}
-
-.allTicketsSection .progressBar {
-    width: 100%;
-    height: 5px;
-    background-color: var(--main-clr-hover);
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.allTicketsSection .progressBar>div {
-    height: 100%;
-    background-color: var(--main-clr);
-}
-
-/* ticket manager */
-.allTicketsSection .ticket .pm {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.allTicketsSection img {
-    width: 40px;
-    border-radius: 50%;
-}
-
-/* Team */
-.allTicketsSection .ticket .team {
-    min-width: 250px;
-}
-
-.allTicketsSection .ticket .team {
-    display: flex;
-}
-
-.allTicketsSection .ticket .team img:not(.first) {
-    margin-left: -15px;
-}
 
 /* Status */
 .allTicketsSection .ticket .status {
-    min-width: 150px;
-}
-
-.allTicketsSection .ticket .status {
     display: flex;
     align-items: center;
 }
 
 
-.allTicketsSection .ticket .status p {
-    width: 90px;
+.allTicketsSection .ticket .status p,
+.allTicketsSection .ticket .priority p {
+    width: fit-content;
     text-align: center;
     border: 2px solid transparent;
     border-radius: 5px;
-    padding: 5px 0;
+    padding: 5px 10px;
 
 }
 
-.allTicketsSection .ticket .status .active {
+.allTicketsSection .ticket .status .development {
+    color: var(--blue);
+    border-color: var(--blue);
+}
+
+.allTicketsSection .ticket .status .new {
     color: var(--success);
     border-color: var(--success);
 }
 
-.allTicketsSection .ticket .status .inactive {
-    color: var(--gray);
-    border-color: var(--gray);
+/* Priority */
+.allTicketsSection .ticket .priority .urgent {
+    color: var(--danger);
+    border-color: var(--danger);
 }
-
 
 /* Buttons */
 .allTicketsSection .ticket .btns {
