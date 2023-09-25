@@ -64,6 +64,10 @@ const ProjectSchema = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
       ref: "User",
     },
+
+    team: {
+      type: Array,
+    },
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
@@ -76,12 +80,10 @@ ProjectSchema.virtual("tickets", {
   justOne: false,
 });
 
-// const Model =
-
 ProjectSchema.methods.projectTeam = async function () {
   const associatedTickets = await Ticket.find({ project: this._id });
 
-  const teamArray = associatedTickets
+  const teamIds = associatedTickets
     .map((ticket) => ticket.assignedTo)
     .reduce((acc, prev) => {
       if (!acc.includes(prev)) {
@@ -91,17 +93,13 @@ ProjectSchema.methods.projectTeam = async function () {
     }, [])
     .map((team) => new mongoose.Types.ObjectId(team));
 
-  // const teamFormatted = teamArray.forEach(async (userId) => {
-  //   const user = await User.find({ _id: new mongoose.Types.ObjectId(userId) });
-  //   console.log(user);
-  //   return user;
-  // });
+  const team = await User.find({ _id: { $in: teamIds } }).select("avatar");
 
-  // const users = await User.find({ _id: { $in: teamArray } });
+  if (team.length) {
+    this.team = team;
+  }
 
-  console.log(teamArray);
-
-  console.log("=========================");
+  console.log("=============================");
 };
 
 module.exports = mongoose.model("Project", ProjectSchema);
