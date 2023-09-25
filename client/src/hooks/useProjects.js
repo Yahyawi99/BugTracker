@@ -15,7 +15,7 @@ const useProjects = () => {
 
       loading(false);
 
-      setAllProjects(response.data.projects);
+      setAllProjects(response.data);
 
       await alertMe("Done.", "var(--success)");
     } catch (error) {

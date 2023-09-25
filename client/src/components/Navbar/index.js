@@ -29,7 +29,7 @@ const NavBar = () => {
   return (
     <nav className="navbarContainer">
       <div className="info">
-        <img src="/assets/images/avatar.png" alt="avatar" />
+        <img src="/assets/images/default-avatar-2.jpg" alt="avatar" />
         <div>
           <p>Welcome,</p>
           <p className="name">Demo Admin</p>

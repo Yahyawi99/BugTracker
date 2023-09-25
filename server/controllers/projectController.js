@@ -4,17 +4,28 @@ const Ticket = require("../model/Ticket");
 
 // get all projects
 const allProjects = async (req, res) => {
-  const projects = await Project.find({}).populate({
-    path: "managedBy",
-    select: "name avatar",
-  });
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 5;
+  const skip = (page - 1) * limit;
+
+  const projects = await Project.find({})
+    .populate({
+      path: "managedBy",
+      select: "name avatar",
+    })
+    .skip(skip)
+    .limit(limit);
 
   projects.forEach(async (project) => {
     await project.projectTeam();
     await project.save();
   });
 
-  res.status(StatusCodes.OK).json({ projects, count: projects.length });
+  const numOfPages = Math.ceil(projects.length / limit);
+
+  res
+    .status(StatusCodes.OK)
+    .json({ projects, numOfPages, count: projects.length });
 };
 
 // get single project

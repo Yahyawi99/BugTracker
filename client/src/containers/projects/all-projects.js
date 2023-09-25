@@ -23,6 +23,8 @@ const AllProjects = () => {
     getAllProjects();
   }, []);
 
+  const { projects, numOfPages } = allProjects;
+
   return (
     <section className="allProjectsSection">
       <HomeBtn name="All Projects" />
@@ -74,99 +76,114 @@ const AllProjects = () => {
           </div>
 
           <div>
-            {allProjects.map((project) => {
-              const { _id, name, startDate, endDate, status, managedBy, team } =
-                project;
+            {projects.length &&
+              projects.map((project) => {
+                const {
+                  _id,
+                  name,
+                  startDate,
+                  endDate,
+                  status,
+                  managedBy,
+                  team,
+                } = project;
 
-              return (
-                <div key={_id} className="project">
-                  <div className="title">
-                    <p>{name && name}</p>
-                    <p>Created {formatDate(startDate)}</p>
-                  </div>
+                return (
+                  <div key={_id} className="project">
+                    <div className="title">
+                      <p>{name && name}</p>
+                      <p>Created {formatDate(startDate)}</p>
+                    </div>
 
-                  <div className="endDate">
-                    {endDate && <p> {formatDate(endDate)}</p>}
-                  </div>
+                    <div className="endDate">
+                      {endDate && <p> {formatDate(endDate)}</p>}
+                    </div>
 
-                  <div className="progress">
-                    {endDate && startDate && (
-                      <>
-                        <div className="progressBar">
-                          <div
-                            style={{
-                              width: `${progress(endDate, startDate)}%`,
-                            }}
-                          ></div>
-                        </div>
-                        <p>
-                          {endDate && startDate && progress(endDate, startDate)}
-                          %
+                    <div className="progress">
+                      {endDate && startDate && (
+                        <>
+                          <div className="progressBar">
+                            <div
+                              style={{
+                                width: `${progress(endDate, startDate)}%`,
+                              }}
+                            ></div>
+                          </div>
+                          <p>
+                            {endDate &&
+                              startDate &&
+                              progress(endDate, startDate)}
+                            %
+                          </p>
+                        </>
+                      )}
+                    </div>
+
+                    <div className="pm">
+                      {managedBy ? (
+                        <>
+                          <img src={`${managedBy.avatar}`} alt="pm" />
+                          <p>{managedBy.name}</p>
+                        </>
+                      ) : (
+                        <p
+                          style={{
+                            width: "100%",
+                            textAlign: "center",
+                          }}
+                        >
+                          Unassigned
                         </p>
-                      </>
-                    )}
+                      )}
+                    </div>
+
+                    <div className="team">
+                      {team.length > 0 &&
+                        team.map((user) => {
+                          const { _id, avatar } = user;
+                          return <img key={_id} src={`${avatar}`} alt="user" />;
+                        })}
+                    </div>
+
+                    <div className="status">
+                      <p className={`${status}`}>{status}</p>
+                    </div>
+
+                    <div className="btns">
+                      <button className="details">
+                        <FontAwesomeIcon icon={faEye} />
+                      </button>
+
+                      <button className="edit">
+                        <FontAwesomeIcon icon={faPencil} />
+                      </button>
+
+                      <button className="archive">
+                        <FontAwesomeIcon icon={faBoxArchive} />
+                      </button>
+                    </div>
                   </div>
-
-                  <div className="pm">
-                    {managedBy ? (
-                      <>
-                        <img src={`${managedBy.avatar}`} alt="pm" />
-                        <p>{managedBy.name}</p>
-                      </>
-                    ) : (
-                      <p
-                        style={{
-                          width: "100%",
-                          textAlign: "center",
-                        }}
-                      >
-                        Unassigned
-                      </p>
-                    )}
-                  </div>
-
-                  <div className="team">
-                    {team.length > 0 &&
-                      team.map((user) => {
-                        const { _id, avatar } = user;
-                        return <img key={_id} src={`${avatar}`} alt="user" />;
-                      })}
-                  </div>
-
-                  <div className="status">
-                    <p className={`${status}`}>{status}</p>
-                  </div>
-
-                  <div className="btns">
-                    <button className="details">
-                      <FontAwesomeIcon icon={faEye} />
-                    </button>
-
-                    <button className="edit">
-                      <FontAwesomeIcon icon={faPencil} />
-                    </button>
-
-                    <button className="archive">
-                      <FontAwesomeIcon icon={faBoxArchive} />
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })}
           </div>
 
           <div className="sectionFooter">
-            <p className="count">5 out of {allProjects.length} documents</p>
+            <p className="count">
+              5 out of {projects.length && projects.length} documents
+            </p>
 
             <div className="pagination">
-              <button>previous</button>
-              <div className="pages">
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-              </div>
-
-              <button>next</button>
+              {projects.length && numOfPages > 1 && (
+                <>
+                  <button>previous</button>
+                  <div className="pages">
+                    <p>1</p>
+                    <p>2</p>
+                    <p>3</p>
+                  </div>
+                  <button>next</button>{" "}
+                </>
+              )}
             </div>
           </div>
         </div>
