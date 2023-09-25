@@ -21,11 +21,14 @@ const allProjects = async (req, res) => {
     await project.save();
   });
 
-  const numOfPages = Math.ceil(projects.length / limit);
+  const totalProjects = await Project.countDocuments();
+  const numOfPages = Math.ceil(totalProjects / limit);
+
+  const count = projects.length;
 
   res
     .status(StatusCodes.OK)
-    .json({ projects, numOfPages, count: projects.length });
+    .json({ projects, numOfPages, currentPage: page, count, totalProjects });
 };
 
 // get single project

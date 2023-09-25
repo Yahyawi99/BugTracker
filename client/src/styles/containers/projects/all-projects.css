@@ -272,3 +272,8 @@
     background-color: var(--main-clr);
     color: var(--white);
 }
+
+.allProjectsSection .sectionFooter .pagination .pages .viewedPage {
+    background-color: var(--gray);
+    color: var(--white);
+}

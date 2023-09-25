@@ -23,7 +23,8 @@ const AllProjects = () => {
     getAllProjects();
   }, []);
 
-  const { projects, numOfPages } = allProjects;
+  const { projects, numOfPages, totalProjects, count, currentPage } =
+    allProjects;
 
   return (
     <section className="allProjectsSection">
@@ -76,7 +77,7 @@ const AllProjects = () => {
           </div>
 
           <div>
-            {projects.length &&
+            {projects &&
               projects.map((project) => {
                 const {
                   _id,
@@ -169,17 +170,23 @@ const AllProjects = () => {
 
           <div className="sectionFooter">
             <p className="count">
-              5 out of {projects.length && projects.length} documents
+              {count} out of {totalProjects} documents
             </p>
 
             <div className="pagination">
-              {projects.length && numOfPages > 1 && (
+              {projects && numOfPages > 1 && (
                 <>
                   <button>previous</button>
                   <div className="pages">
-                    <p>1</p>
-                    <p>2</p>
-                    <p>3</p>
+                    {projects.map((project, i) => {
+                      return (
+                        i > 0 && (
+                          <p className={`${currentPage == i && "viewedPage"}`}>
+                            {i}
+                          </p>
+                        )
+                      );
+                    })}
                   </div>
                   <button>next</button>{" "}
                 </>

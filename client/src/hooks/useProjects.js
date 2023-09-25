@@ -11,7 +11,7 @@ const useProjects = () => {
     try {
       loading(true);
 
-      const response = await axios.get("/api/v1/project");
+      const response = await axios.get("/api/v1/project?page=1&&limit=3");
 
       loading(false);
 
