@@ -42,9 +42,9 @@ const AllProjects = () => {
               "Team",
               "Status",
               "",
-            ].map((label) => {
+            ].map((label, i) => {
               return (
-                <div>
+                <div key={i}>
                   <p>{label}</p>
 
                   {label && (
@@ -156,7 +156,7 @@ const AllProjects = () => {
           </div>
 
           <div className="sectionFooter">
-            <p className="count">5 out of 50 documents</p>
+            <p className="count">5 out of {allProjects.length} documents</p>
 
             <div className="pagination">
               <button>previous</button>
