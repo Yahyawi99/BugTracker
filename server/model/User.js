@@ -14,7 +14,10 @@ const UserSchema = new mongoose.Schema(
 
     avatar: {
       type: String,
-      default: "/assets/images/default-avatar.jpg",
+      default: function () {
+        const rndmInt = Math.ceil(Math.random() * 5);
+        return `/assets/images/default-avatar-${rndmInt}.jpg`;
+      },
     },
 
     email: {
