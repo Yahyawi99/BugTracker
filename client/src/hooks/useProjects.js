@@ -11,7 +11,9 @@ const useProjects = () => {
     try {
       loading(true);
 
-      const response = await axios.get(`/api/v1/project?page=${page}&&limit=3`);
+      const response = await axios.get(
+        `/api/v1/project?page=${page}&limit=3&sort=name,endDate,progress,managedBy,team`
+      );
 
       loading(false);
 
