@@ -61,7 +61,25 @@ const AllProjects = () => {
       <div>
         <div>
           <div>
-            <div className="sectionHeader"></div>
+            <div className="sectionHeader">
+              <div className="limitControl">
+                <p>show</p>
+                <div className="dropdownContainer">
+                  <p className="dropDownValue">3</p>
+                  <div className="dropDown">
+                    <p>3</p>
+                    <p>5</p>
+                    <p>10</p>
+                  </div>
+                </div>
+                <p>documents</p>
+              </div>
+
+              <div className="searchBar">
+                <p>search</p>
+                <input type="text" />
+              </div>
+            </div>
           </div>
 
           <div className="labels">
