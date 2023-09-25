@@ -81,16 +81,26 @@ ProjectSchema.virtual("tickets", {
 ProjectSchema.methods.projectTeam = async function () {
   const associatedTickets = await Ticket.find({ project: this._id });
 
-  const team = associatedTickets
+  const teamArray = associatedTickets
     .map((ticket) => ticket.assignedTo)
     .reduce((acc, prev) => {
       if (!acc.includes(prev)) {
         acc.push(prev);
       }
       return acc;
-    }, []);
+    }, [])
+    .map((team) => new mongoose.Types.ObjectId(team));
 
-  console.log(team);
+  // const teamFormatted = teamArray.forEach(async (userId) => {
+  //   const user = await User.find({ _id: new mongoose.Types.ObjectId(userId) });
+  //   console.log(user);
+  //   return user;
+  // });
+
+  // const users = await User.find({ _id: { $in: teamArray } });
+
+  console.log(teamArray);
+
   console.log("=========================");
 };
 
