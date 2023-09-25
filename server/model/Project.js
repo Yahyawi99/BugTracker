@@ -96,7 +96,6 @@ ProjectSchema.methods.projectTeam = async function () {
   const team = await User.find({ _id: { $in: teamIds } }).select("avatar");
 
   if (team.length) {
-    console.log(team);
     this.team = team;
   }
 };

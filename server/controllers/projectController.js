@@ -11,6 +11,7 @@ const allProjects = async (req, res) => {
 
   projects.forEach(async (project) => {
     await project.projectTeam();
+    await project.save();
   });
 
   res.status(StatusCodes.OK).json({ projects, count: projects.length });

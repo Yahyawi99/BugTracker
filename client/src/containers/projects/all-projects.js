@@ -126,20 +126,11 @@ const AllProjects = () => {
                   </div>
 
                   <div className="team">
-                    {team &&
+                    {team.length > 0 &&
                       team.map((user) => {
-                        const {} = team;
-                        return <img src="" alt="user" />;
+                        const { _id, avatar } = user;
+                        return <img key={_id} src={`${avatar}`} alt="user" />;
                       })}
-                    <img
-                      className="first"
-                      src="/assets/images/avatar.png"
-                      alt="pm"
-                    />
-                    <img src="/assets/images/avatar.png" alt="pm" />
-                    <img src="/assets/images/avatar.png" alt="pm" />
-                    <img src="/assets/images/avatar.png" alt="pm" />
-                    <img src="/assets/images/avatar.png" alt="pm" />
                   </div>
 
                   <div className="status">
