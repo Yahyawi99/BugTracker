@@ -7,12 +7,12 @@ const useProjects = () => {
   const [allProjects, setAllProjects] = useState([]);
 
   //   get all projects
-  const getAllProjects = async (page) => {
+  const getAllProjects = async (page, sortOption) => {
     try {
       loading(true);
 
       const response = await axios.get(
-        `/api/v1/project?page=${page}&limit=3&sort=name,endDate,progress,managedBy,team`
+        `/api/v1/project?page=${page}&limit=3&sort=${sortOption}`
       );
 
       loading(false);

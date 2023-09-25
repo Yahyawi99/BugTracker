@@ -19,6 +19,16 @@ import "../../styles/containers/projects/all-projects.css";
 const AllProjects = () => {
   const { getAllProjects, allProjects } = useProjects();
 
+  const labels = [
+    "Project",
+    "End Date",
+    "Progress",
+    "Project Manager",
+    "Team",
+    "Status",
+    "Action",
+  ];
+
   useEffect(() => {
     getAllProjects(1);
   }, []);
@@ -27,6 +37,22 @@ const AllProjects = () => {
     allProjects;
 
   const numOfpagesArr = Array.from({ length: numOfPages }, (_, i) => i + 1);
+
+  // sort
+  const sort = (element, label) => {
+    const sibling =
+      element.nextElementSibling || element.previousElementSibling;
+
+    if (element.classList.contains("on")) {
+      element.classList.remove("on");
+      sibling.classList.add("on");
+    } else {
+      element.classList.add("on");
+      sibling.classList.remove("on");
+    }
+
+    getAllProjects(currentPage, label);
+  };
 
   return (
     <section className="allProjectsSection">
@@ -39,39 +65,44 @@ const AllProjects = () => {
           </div>
 
           <div className="labels">
-            {[
-              "Project",
-              "End Date",
-              "Progress",
-              "Project Manager",
-              "Team",
-              "Status",
-              "",
-            ].map((label, i) => {
+            {labels.map((label, i) => {
               return (
                 <div key={i}>
                   <p>{label}</p>
 
-                  {label && (
-                    <i>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
+                  {["Project", "End Date"].includes(label) && (
+                    <>
+                      <i
+                        onClick={(e) => {
+                          sort(e.currentTarget, label);
+                        }}
+                        className="on"
                       >
-                        <path d="M12 0l-8 10h16l-8-10zm3.839 16l-3.839 4.798-3.839-4.798h7.678zm4.161-2h-16l8 10 8-10z" />
-                      </svg>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M12 0l-8 10h16l-8-10zm3.839 16l-3.839 4.798-3.839-4.798h7.678zm4.161-2h-16l8 10 8-10z" />
+                        </svg>
+                      </i>
 
-                      {/* <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 3.202l3.839 4.798h-7.678l3.839-4.798zm0-3.202l-8 10h16l-8-10zm8 14h-16l8 10 8-10z" />
-                    </svg> */}
-                    </i>
+                      <i
+                        onClick={(e) => {
+                          sort(e.currentTarget, `-${label}`);
+                        }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M12 3.202l3.839 4.798h-7.678l3.839-4.798zm0-3.202l-8 10h16l-8-10zm8 14h-16l8 10 8-10z" />
+                        </svg>
+                      </i>
+                    </>
                   )}
                 </div>
               );

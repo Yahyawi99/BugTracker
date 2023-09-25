@@ -19,16 +19,32 @@ const allProjects = async (req, res) => {
     .skip(skip)
     .limit(limit);
 
+  // **************
+  // sorting
+  if (sort) {
+    if (sort === "Project") {
+      projects = projects.sort("name");
+    }
+
+    if (sort === "-Project") {
+      projects = projects.sort("-name");
+    }
+
+    if (sort === "End Date") {
+      projects = projects.sort("endDate");
+    }
+
+    if (sort === "-End Date") {
+      projects = projects.sort("-endDate");
+    }
+  }
+
+  projects = await projects;
+
   projects.forEach(async (project) => {
     await project.projectTeam();
     await project.save();
   });
-
-  // **************
-  // sorting
-  if (sort) {
-    console.log(sort);
-  }
 
   const totalProjects = await Project.countDocuments();
   const numOfPages = Math.ceil(totalProjects / limit);

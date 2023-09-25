@@ -53,6 +53,10 @@
 }
 
 .allProjectsSection .labels>div i {
+    display: none;
+}
+
+.allProjectsSection .labels>div .on {
     display: flex;
 }
 
