@@ -178,7 +178,10 @@ const AllProjects = () => {
             <div className="pagination">
               {projects && numOfPages > 1 && (
                 <>
-                  <button>previous</button>
+                  {currentPage > 1 && (
+                    <button className="prevPage">previous</button>
+                  )}
+
                   <div className="pages">
                     {numOfpagesArr.map((num) => {
                       return (
@@ -191,7 +194,10 @@ const AllProjects = () => {
                       );
                     })}
                   </div>
-                  <button>next</button>{" "}
+
+                  {currentPage == 1 && (
+                    <button className="nextPage">next</button>
+                  )}
                 </>
               )}
             </div>

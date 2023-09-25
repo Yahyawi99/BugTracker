@@ -249,6 +249,10 @@
     padding: 10px 15px;
 }
 
+.allProjectsSection .sectionFooter .pagination .pages p:nth-child(1) {
+    border-left: 2px solid var(--main-clr);
+}
+
 .allProjectsSection .sectionFooter .pagination .pages p:hover {
     background-color: var(--gray);
     color: var(--white);
@@ -264,8 +268,12 @@
     padding: 10px;
 }
 
-.allProjectsSection .sectionFooter .pagination button:nth-child(3) {
+.allProjectsSection .sectionFooter .pagination .nextPage {
     border-left: none;
+}
+
+.allProjectsSection .sectionFooter .pagination .prevPage {
+    border-right: none;
 }
 
 .allProjectsSection .sectionFooter .pagination button:hover {
