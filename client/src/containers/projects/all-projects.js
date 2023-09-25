@@ -75,31 +75,53 @@ const AllProjects = () => {
 
           <div>
             {allProjects.slice(0, 5).map((project) => {
-              const { name, startDate, endDate, status } = project;
+              const { name, startDate, endDate, status, managedBy } = project;
 
               return (
                 <div className="project">
                   <div className="title">
-                    <p>{name}</p>
+                    <p>{name && name}</p>
                     <p>Created {formatDate(startDate)}</p>
                   </div>
 
                   <div className="endDate">
-                    <p>{formatDate(endDate)}</p>
+                    {endDate && <p> {formatDate(endDate)}</p>}
                   </div>
 
                   <div className="progress">
-                    <div className="progressBar">
-                      <div
-                        style={{ width: `${progress(endDate, startDate)}%` }}
-                      ></div>
-                    </div>
-                    <p>{progress(endDate, startDate)}%</p>
+                    {endDate && startDate && (
+                      <>
+                        <div className="progressBar">
+                          <div
+                            style={{
+                              width: `${progress(endDate, startDate)}%`,
+                            }}
+                          ></div>
+                        </div>
+                        <p>
+                          {endDate && startDate && progress(endDate, startDate)}
+                          %
+                        </p>
+                      </>
+                    )}
                   </div>
 
                   <div className="pm">
-                    <img src="/assets/images/avatar.png" alt="pm" />
-                    <p>demo manager</p>
+                    {managedBy ? (
+                      <>
+                        <img src={`${managedBy.avatar}`} alt="pm" />
+                        <p>{managedBy.name}</p>
+                      </>
+                    ) : (
+                      <p
+                        style={{
+                          width: "100%",
+                          textAlign: "center",
+                        }}
+                      >
+                        Unassigned
+                      </p>
+                    )}
                   </div>
 
                   <div className="team">

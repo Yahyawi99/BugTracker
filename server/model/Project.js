@@ -64,10 +64,6 @@ const ProjectSchema = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
       ref: "User",
     },
-
-    team: {
-      type: Array,
-    },
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
@@ -98,8 +94,6 @@ ProjectSchema.methods.projectTeam = async function () {
   if (team.length) {
     this.team = team;
   }
-
-  console.log("=============================");
 };
 
 module.exports = mongoose.model("Project", ProjectSchema);
