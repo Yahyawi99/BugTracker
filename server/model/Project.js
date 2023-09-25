@@ -64,6 +64,10 @@ const ProjectSchema = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
       ref: "User",
     },
+
+    team: {
+      type: Array,
+    },
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
@@ -92,6 +96,7 @@ ProjectSchema.methods.projectTeam = async function () {
   const team = await User.find({ _id: { $in: teamIds } }).select("avatar");
 
   if (team.length) {
+    console.log(team);
     this.team = team;
   }
 };

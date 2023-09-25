@@ -74,11 +74,12 @@ const AllProjects = () => {
           </div>
 
           <div>
-            {allProjects.slice(0, 5).map((project) => {
-              const { name, startDate, endDate, status, managedBy } = project;
+            {allProjects.map((project) => {
+              const { _id, name, startDate, endDate, status, managedBy, team } =
+                project;
 
               return (
-                <div className="project">
+                <div key={_id} className="project">
                   <div className="title">
                     <p>{name && name}</p>
                     <p>Created {formatDate(startDate)}</p>
@@ -125,6 +126,11 @@ const AllProjects = () => {
                   </div>
 
                   <div className="team">
+                    {team &&
+                      team.map((user) => {
+                        const {} = team;
+                        return <img src="" alt="user" />;
+                      })}
                     <img
                       className="first"
                       src="/assets/images/avatar.png"
