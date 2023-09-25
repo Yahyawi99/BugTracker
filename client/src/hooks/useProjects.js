@@ -7,11 +7,11 @@ const useProjects = () => {
   const [allProjects, setAllProjects] = useState([]);
 
   //   get all projects
-  const getAllProjects = async () => {
+  const getAllProjects = async (page) => {
     try {
       loading(true);
 
-      const response = await axios.get("/api/v1/project?page=1&&limit=3");
+      const response = await axios.get(`/api/v1/project?page=${page}&&limit=3`);
 
       loading(false);
 

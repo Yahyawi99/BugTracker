@@ -20,11 +20,13 @@ const AllProjects = () => {
   const { getAllProjects, allProjects } = useProjects();
 
   useEffect(() => {
-    getAllProjects();
+    getAllProjects(1);
   }, []);
 
   const { projects, numOfPages, totalProjects, count, currentPage } =
     allProjects;
+
+  const numOfpagesArr = Array.from({ length: numOfPages }, (_, i) => i + 1);
 
   return (
     <section className="allProjectsSection">
@@ -178,13 +180,14 @@ const AllProjects = () => {
                 <>
                   <button>previous</button>
                   <div className="pages">
-                    {projects.map((project, i) => {
+                    {numOfpagesArr.map((num) => {
                       return (
-                        i > 0 && (
-                          <p className={`${currentPage == i && "viewedPage"}`}>
-                            {i}
-                          </p>
-                        )
+                        <p
+                          onClick={() => getAllProjects(num)}
+                          className={`${currentPage == num && "viewedPage"}`}
+                        >
+                          {num}
+                        </p>
                       );
                     })}
                   </div>

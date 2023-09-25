@@ -276,4 +276,5 @@
 .allProjectsSection .sectionFooter .pagination .pages .viewedPage {
     background-color: var(--gray);
     color: var(--white);
+    pointer-events: none;
 }
