@@ -28,6 +28,8 @@ const Dashboard = () => {
     getAllTickets();
   }, []);
 
+  const { projects } = allProjects;
+
   return (
     <section className="dashboard-Container">
       <HomeBtn name="Dashboard" />
@@ -35,10 +37,8 @@ const Dashboard = () => {
       <div className="number-data">
         <span>
           <p>
-            {
-              allProjects.filter((project) => project.status === "active")
-                .length
-            }
+            {projects &&
+              projects.filter((project) => project.status === "active").length}
           </p>
           <p>Active Projects</p>
         </span>
