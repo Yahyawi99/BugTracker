@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEye,
   faPencil,
   faBoxArchive,
+  faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
 // hooks
 import useProjects from "../../hooks/useProjects";
@@ -18,6 +19,8 @@ import "../../styles/containers/projects/all-projects.css";
 
 const AllProjects = () => {
   const { getAllProjects, allProjects } = useProjects();
+  const [limit, setLimit] = useState(3);
+  const [dropDown, setDropDown] = useState(false);
 
   const labels = [
     "Project",
@@ -39,7 +42,7 @@ const AllProjects = () => {
   const numOfpagesArr = Array.from({ length: numOfPages }, (_, i) => i + 1);
 
   // sort
-  const sort = (element, label) => {
+  const sort = async (element, label) => {
     const sibling =
       element.nextElementSibling || element.previousElementSibling;
 
@@ -54,6 +57,14 @@ const AllProjects = () => {
     getAllProjects(currentPage, label);
   };
 
+  // limit
+  const changeLimit = (element) => {
+    if (element.dataset.value) {
+      setLimit(element.dataset.value);
+    }
+    setDropDown(false);
+  };
+
   return (
     <section className="allProjectsSection">
       <HomeBtn name="All Projects" />
@@ -64,19 +75,30 @@ const AllProjects = () => {
             <div className="sectionHeader">
               <div className="limitControl">
                 <p>show</p>
+
                 <div className="dropdownContainer">
-                  <p className="dropDownValue">3</p>
-                  <div className="dropDown">
-                    <p>3</p>
-                    <p>5</p>
-                    <p>10</p>
+                  <p className="dropDownValue">
+                    <span>{limit}</span>
+
+                    <i onClick={() => setDropDown(!dropDown)}>
+                      <FontAwesomeIcon icon={faChevronDown} />
+                    </i>
+                  </p>
+
+                  <div
+                    className={`${dropDown && "showDropDown"} dropDown`}
+                    onClick={(e) => changeLimit(e.target)}
+                  >
+                    <p data-value="3">3</p>
+                    <p data-value="5">5</p>
+                    <p data-value="10">10</p>
                   </div>
                 </div>
                 <p>documents</p>
               </div>
 
               <div className="searchBar">
-                <p>search</p>
+                <p>search :</p>
                 <input type="text" />
               </div>
             </div>
@@ -92,7 +114,7 @@ const AllProjects = () => {
                     <>
                       <i
                         onClick={(e) => {
-                          sort(e.currentTarget, label);
+                          sort(e.currentTarget, `-${label}`);
                         }}
                         className="on"
                       >
@@ -108,7 +130,7 @@ const AllProjects = () => {
 
                       <i
                         onClick={(e) => {
-                          sort(e.currentTarget, `-${label}`);
+                          sort(e.currentTarget, label);
                         }}
                       >
                         <svg
