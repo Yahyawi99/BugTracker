@@ -33,7 +33,7 @@ const AllProjects = () => {
   ];
 
   useEffect(() => {
-    getAllProjects(1);
+    getAllProjects(1, "", limit);
   }, []);
 
   const { projects, numOfPages, totalProjects, count, currentPage } =
@@ -64,6 +64,10 @@ const AllProjects = () => {
     }
     setDropDown(false);
   };
+
+  useEffect(() => {
+    getAllProjects(currentPage, "", limit);
+  }, [limit]);
 
   return (
     <section className="allProjectsSection">
