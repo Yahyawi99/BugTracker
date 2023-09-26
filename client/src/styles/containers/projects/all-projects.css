@@ -22,12 +22,12 @@
 .allProjectsSection .sectionHeader>div {
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 
 .allProjectsSection .dropdownContainer {
     position: relative;
     border: 2px solid var(--border-color);
+    margin: 0px 10px;
     padding: 5px 10px;
 }
 
@@ -75,11 +75,33 @@
     width: 200px;
     height: 40px;
     border: 2px solid var(--border-color);
-    outline-color: var(--main-clr);
-    outline-width: 2px;
-    padding: 0 0 0 5px;
+    border-right: none;
     font-size: 1rem;
-    border-radius: 5px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    padding: 0 0 0 5px;
+    margin: 0 0 0 10px;
+}
+
+.allProjectsSection .searchBar input:focus {
+    border-color: var(--main-clr);
+}
+
+.allProjectsSection .searchBar button {
+    height: 40px;
+    background-color: var(--main-clr);
+    color: var(--white);
+    border: 2px solid transparent;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: .25s;
+    padding: 0 10px;
+}
+
+.allProjectsSection .searchBar button:hover {
+    border-color: var(--main-clr);
+    background-color: var(--main-clr-hover);
+    color: var(--main-clr);
 }
 
 /* ================================ */

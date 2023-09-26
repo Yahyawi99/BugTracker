@@ -6,6 +6,7 @@ import {
   faPencil,
   faBoxArchive,
   faChevronDown,
+  faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 // hooks
 import useProjects from "../../hooks/useProjects";
@@ -21,6 +22,7 @@ const AllProjects = () => {
   const { getAllProjects, allProjects } = useProjects();
   const [limit, setLimit] = useState(3);
   const [dropDown, setDropDown] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
 
   const labels = [
     "Project",
@@ -69,6 +71,11 @@ const AllProjects = () => {
     getAllProjects(currentPage, "", limit);
   }, [limit]);
 
+  // search
+  const search = () => {
+    getAllProjects(currentPage, "", limit, searchInput);
+  };
+
   return (
     <section className="allProjectsSection">
       <HomeBtn name="All Projects" />
@@ -103,7 +110,12 @@ const AllProjects = () => {
 
               <div className="searchBar">
                 <p>search :</p>
+
                 <input type="text" />
+
+                <button type="button" onClick={() => search}>
+                  <FontAwesomeIcon icon={faMagnifyingGlass} />
+                </button>
               </div>
             </div>
           </div>

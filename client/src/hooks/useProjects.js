@@ -7,7 +7,7 @@ const useProjects = () => {
   const [allProjects, setAllProjects] = useState([]);
 
   //   get all projects
-  const getAllProjects = async (page, sortOption, limit) => {
+  const getAllProjects = async (page, sortOption, limit, searchInput) => {
     try {
       loading(true);
 
