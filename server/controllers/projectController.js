@@ -54,8 +54,6 @@ const allProjects = async (req, res) => {
   const totalProjects = await Project.countDocuments();
   const numOfPages = Math.ceil(totalProjects / limit);
 
-  console.log(count);
-
   res
     .status(StatusCodes.OK)
     .json({ projects, numOfPages, currentPage: page, count, totalProjects });
