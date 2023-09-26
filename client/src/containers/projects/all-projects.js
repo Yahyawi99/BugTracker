@@ -111,9 +111,12 @@ const AllProjects = () => {
               <div className="searchBar">
                 <p>search :</p>
 
-                <input type="text" />
+                <input
+                  type="text"
+                  onChange={(e) => setSearchInput(e.currentTarget.value)}
+                />
 
-                <button type="button" onClick={() => search}>
+                <button type="button" onClick={search}>
                   <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
               </div>

@@ -12,7 +12,7 @@ const useProjects = () => {
       loading(true);
 
       const response = await axios.get(
-        `/api/v1/project?page=${page}&limit=${limit}&sort=${sortOption}`
+        `/api/v1/project?page=${page}&limit=${limit}&sort=${sortOption}&search=${searchInput}`
       );
 
       loading(false);

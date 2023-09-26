@@ -4,7 +4,7 @@ const Ticket = require("../model/Ticket");
 
 // get all projects
 const allProjects = async (req, res) => {
-  const { sort } = req.query;
+  const { sort, search } = req.query;
 
   // pagination
   const page = Number(req.query.page) || 1;
@@ -39,6 +39,11 @@ const allProjects = async (req, res) => {
     }
   }
 
+  // search
+  if (search) {
+    projects = projects.find({ name: { $regex: search, $options: "i" } });
+  }
+
   projects = await projects;
 
   projects.forEach(async (project) => {
@@ -49,7 +54,7 @@ const allProjects = async (req, res) => {
   const totalProjects = await Project.countDocuments();
   const numOfPages = Math.ceil(totalProjects / limit);
 
-  const count = projects.length;
+  console.log(count);
 
   res
     .status(StatusCodes.OK)
