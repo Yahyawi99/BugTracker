@@ -61,8 +61,8 @@ const AllProjects = () => {
   const changeLimit = (element) => {
     if (element.dataset.value) {
       setLimit(element.dataset.value);
+      setDropDown(false);
     }
-    setDropDown(false);
   };
 
   useEffect(() => {
