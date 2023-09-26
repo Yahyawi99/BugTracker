@@ -35,7 +35,7 @@ const AllProjects = () => {
   ];
 
   useEffect(() => {
-    getAllProjects(1, "", limit);
+    getAllProjects(1, "", limit, searchInput);
   }, []);
 
   const { projects, numOfPages, totalProjects, count, currentPage } =
@@ -56,7 +56,7 @@ const AllProjects = () => {
       sibling.classList.remove("on");
     }
 
-    getAllProjects(currentPage, label);
+    getAllProjects(currentPage, label, limit, searchInput);
   };
 
   // limit
@@ -68,7 +68,7 @@ const AllProjects = () => {
   };
 
   useEffect(() => {
-    getAllProjects(currentPage, "", limit);
+    getAllProjects(currentPage, "", limit, searchInput);
   }, [limit]);
 
   // search
