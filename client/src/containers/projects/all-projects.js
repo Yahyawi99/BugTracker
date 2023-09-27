@@ -73,7 +73,8 @@ const AllProjects = () => {
 
   // search
   const search = () => {
-    getAllProjects(currentPage, "", limit, searchInput);
+    getAllProjects(1, "", limit, searchInput);
+    console.log(numOfPages);
   };
 
   return (
@@ -266,18 +267,27 @@ const AllProjects = () => {
             </p>
 
             <div className="pagination">
-              {projects && numOfPages > 1 && (
+              {projects.length / limit >= 1 && (
                 <>
                   {currentPage > 1 && (
-                    <button className="prevPage">previous</button>
+                    <button
+                      className="prevPage"
+                      onClick={() =>
+                        getAllProjects(currentPage - 1, "", limit, searchInput)
+                      }
+                    >
+                      previous
+                    </button>
                   )}
 
                   <div className="pages">
                     {numOfpagesArr.map((num) => {
                       return (
                         <p
-                          onClick={() => getAllProjects(num)}
-                          className={`${currentPage == num && "viewedPage"}`}
+                          onClick={() =>
+                            getAllProjects(num, "", limit, searchInput)
+                          }
+                          className={`${currentPage === num && "viewedPage"}`}
                         >
                           {num}
                         </p>
@@ -285,8 +295,15 @@ const AllProjects = () => {
                     })}
                   </div>
 
-                  {currentPage == 1 && (
-                    <button className="nextPage">next</button>
+                  {currentPage < numOfPages && (
+                    <button
+                      className="nextPage"
+                      onClick={() =>
+                        getAllProjects(currentPage + 1, "", limit, searchInput)
+                      }
+                    >
+                      next
+                    </button>
                   )}
                 </>
               )}
