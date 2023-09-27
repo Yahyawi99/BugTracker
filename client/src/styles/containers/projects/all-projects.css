@@ -165,16 +165,6 @@
 /* =========================== */
 /* =========================== */
 /* Project */
-.allProjectsSection .project {
-    width: fit-content;
-    height: 100px;
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    justify-content: flex-start;
-    border-bottom: 1px solid var(--border-color);
-}
-
 .allProjectsSection .project>div {
     min-width: 200px;
     display: flex;
@@ -266,133 +256,10 @@
     border-color: var(--gray);
 }
 
-
-/* Buttons */
-.allProjectsSection .project .btns {
-    min-width: 100px;
-}
-
-.allProjectsSection .project .btns {
-    display: flex;
-    gap: 5px;
-    padding-right: 10px;
-}
-
-.allProjectsSection .project .btns button {
-    background-color: transparent;
-    border: 2px solid transparent;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: .25s;
-    padding: 10px;
-}
-
-.allProjectsSection .project .btns .details {
-    border-color: var(--blue);
-    color: var(--blue);
-}
-
-.allProjectsSection .project .btns .details:hover {
-    background-color: var(--blue);
-}
-
-.allProjectsSection .project .btns .edit {
-    border-color: var(--gray);
-    color: var(--gray);
-}
-
-.allProjectsSection .project .btns .edit:hover {
-    background-color: var(--gray);
-}
-
-.allProjectsSection .project .btns .archive {
-    border-color: var(--danger);
-    color: var(--danger);
-}
-
-.allProjectsSection .project .btns .archive:hover {
-    background-color: var(--danger);
-}
-
-.allProjectsSection .project .btns button:hover {
-    color: var(--white);
-}
-
-
 /* ========================== */
 /* ========================== */
 /* ========================== */
 /* Footer */
 .allProjectsSection .sectionFooter {
     width: 1595px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 0;
-}
-
-.allProjectsSection .sectionFooter .pagination {
-    display: flex;
-}
-
-.allProjectsSection .sectionFooter .pagination .pages {
-    display: flex;
-    align-items: center;
-}
-
-
-.allProjectsSection .sectionFooter .pagination .pages p {
-    font-weight: 600;
-    color: var(--gray);
-    border: 2px solid var(--main-clr);
-    border-left: none;
-    cursor: pointer;
-    padding: 10px 15px;
-}
-
-.allProjectsSection .sectionFooter .pagination .pages p:nth-child(1) {
-    border-left: 2px solid var(--main-clr);
-}
-
-.allProjectsSection .sectionFooter .pagination .pages p:hover {
-    background-color: var(--gray);
-    color: var(--white);
-}
-
-.allProjectsSection .sectionFooter .pagination button {
-    background-color: transparent;
-    border: 2px solid var(--main-clr);
-    color: var(--main-clr);
-    font-weight: 600;
-    cursor: pointer;
-    transition: .25s;
-    padding: 10px;
-}
-
-.allProjectsSection .sectionFooter .pagination .nextPage {
-    border-left: none;
-}
-
-.allProjectsSection .sectionFooter .pagination .prevPage {
-    border-right: none;
-}
-
-.allProjectsSection .sectionFooter .pagination button:hover {
-    background-color: var(--main-clr);
-    color: var(--white);
-}
-
-.allProjectsSection .sectionFooter .pagination .pages .viewedPage {
-    background-color: var(--gray);
-    color: var(--white);
-    pointer-events: none;
-}
-
-/* **************************** */
-/* **************************** */
-/* **************************** */
-/* **************************** */
-/* Javascript classes */
-.allProjectsSection .limitControl .showDropDown {
-    transform: scaleY(1);
 }

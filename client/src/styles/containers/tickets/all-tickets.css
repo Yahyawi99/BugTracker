@@ -13,95 +13,6 @@
 /* Drop down */
 .allTicketsSection .sectionHeader {
     width: 1345px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 0 25px 0;
-}
-
-.allTicketsSection .sectionHeader>div {
-    display: flex;
-    align-items: center;
-}
-
-.allTicketsSection .dropdownContainer {
-    position: relative;
-    border: 2px solid var(--border-color);
-    margin: 0px 10px;
-    padding: 5px 10px;
-}
-
-.allTicketsSection .dropdownContainer:active {
-    border-color: var(--main-clr);
-}
-
-.allTicketsSection .dropdownContainer i {
-    font-size: .8rem;
-}
-
-.allTicketsSection .dropDownValue {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.allTicketsSection .limitControl .dropDown {
-    background-color: var(--white);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    border-radius: 0px;
-    position: absolute;
-    left: -2px;
-    top: 35px;
-    box-shadow: 0px 0px 5px rgb(0, 0, 0, .5);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: .25s;
-    padding: 5px 20px;
-}
-
-.allTicketsSection .limitControl .dropDown p {
-    cursor: pointer;
-}
-
-.allTicketsSection .limitControl .dropDown p:hover {
-    text-decoration: underline 2px;
-}
-
-/* Search */
-.allTicketsSection .searchBar input {
-    width: 200px;
-    height: 40px;
-    border: 2px solid var(--border-color);
-    border-right: none;
-    font-size: 1rem;
-    border-radius: 5px 0 0 5px;
-    outline: none;
-    padding: 0 0 0 5px;
-    margin: 0 0 0 10px;
-}
-
-.allTicketsSection .searchBar input:focus {
-    border-color: var(--main-clr);
-}
-
-.allTicketsSection .searchBar button {
-    height: 40px;
-    background-color: var(--main-clr);
-    color: var(--white);
-    border: 2px solid transparent;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    transition: .25s;
-    padding: 0 10px;
-}
-
-.allTicketsSection .searchBar button:hover {
-    border-color: var(--main-clr);
-    background-color: var(--main-clr-hover);
-    color: var(--main-clr);
 }
 
 
@@ -159,16 +70,6 @@
 /* =========================== */
 /* =========================== */
 /* Ticket */
-.allTicketsSection .ticket {
-    width: fit-content;
-    height: 100px;
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    justify-content: flex-start;
-    border-bottom: 1px solid var(--border-color);
-}
-
 .allTicketsSection .ticket>div {
     min-width: 150px;
     display: flex;
@@ -281,85 +182,11 @@
 }
 
 
+
 /* ========================== */
 /* ========================== */
 /* ========================== */
 /* Footer */
 .allTicketsSection .sectionFooter {
     width: 1345px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 0;
-}
-
-.allTicketsSection .sectionFooter .pagination {
-    display: flex;
-}
-
-.allTicketsSection .sectionFooter .pagination .pages {
-    display: flex;
-    align-items: center;
-}
-
-
-.allTicketsSection .sectionFooter .pagination .pages p {
-    font-weight: 600;
-    color: var(--gray);
-    border: 2px solid var(--main-clr);
-    border-left: none;
-    cursor: pointer;
-    padding: 10px 15px;
-}
-
-.allTicketsSection .sectionFooter .pagination .pages p:hover {
-    background-color: var(--gray);
-    color: var(--white);
-}
-
-.allTicketsSection .sectionFooter .pagination button {
-    background-color: transparent;
-    border: 2px solid var(--main-clr);
-    color: var(--main-clr);
-    font-weight: 600;
-    cursor: pointer;
-    transition: .25s;
-    padding: 10px;
-}
-
-.allTicketsSection .sectionFooter .pagination .pages p:nth-child(1) {
-    border-left: 2px solid var(--main-clr);
-}
-
-.allTicketsSection .sectionFooter .pagination button:hover {
-    background-color: var(--main-clr);
-    color: var(--white);
-}
-
-.allTicketsSection .sectionFooter .pagination .nextPage {
-    border-left: none;
-}
-
-.allTicketsSection .sectionFooter .pagination .prevPage {
-    border-right: none;
-}
-
-.allTicketsSection .sectionFooter .pagination button:hover {
-    background-color: var(--main-clr);
-    color: var(--white);
-}
-
-.allTicketsSection .sectionFooter .pagination .pages .viewedPage {
-    background-color: var(--gray);
-    color: var(--white);
-    pointer-events: none;
-}
-
-/* **************************** */
-/* **************************** */
-/* **************************** */
-/* **************************** */
-/* Javascript classes */
-.allTicketsSection .limitControl .showDropDown {
-    transform: scaleY(1);
 }
