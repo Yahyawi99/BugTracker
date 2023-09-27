@@ -65,7 +65,7 @@ const allProjects = async (req, res) => {
 const singleProject = async (req, res) => {
   const { id: projectId } = req.params;
 
-  const project = await Project.find({ _id: projectId }).populate("tickets");
+  const project = await Project.findOne({ _id: projectId }).populate("tickets");
 
   if (!project) {
     throw new CustomErros.NotFoundError(`No project with id :${projectId}`);

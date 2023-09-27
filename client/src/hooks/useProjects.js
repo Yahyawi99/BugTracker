@@ -32,10 +32,20 @@ const useProjects = () => {
   // get single project
   const getSingleProject = async (projectId) => {
     try {
+      loading(true);
+
       const response = await axios.get(`/api/v1/project/${projectId}`);
-      console.log(response);
+
+      loading(false);
+
+      setSingleProject(response.data.project);
+
+      await alertMe("Done.", "var(--success)");
     } catch (error) {
-      console.log(error);
+      loading(false);
+
+      const msg = error.response.data.msg;
+      await alertMe(msg + "!", "var(--danger)");
     }
   };
 
