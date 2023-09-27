@@ -5,6 +5,8 @@ import {
   faEye,
   faPencil,
   faBoxArchive,
+  faChevronDown,
+  faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 // hooks
 import useTickets from "../../hooks/useTickets";
@@ -55,6 +57,23 @@ const AllTickets = () => {
     getAllTickets(currentPage, label, limit, searchInput);
   };
 
+  // limit
+  const changeLimit = (element) => {
+    if (element.dataset.value) {
+      setLimit(element.dataset.value);
+      setDropDown(false);
+    }
+  };
+
+  useEffect(() => {
+    getAllTickets(currentPage, "", limit, searchInput);
+  }, [limit]);
+
+  // search
+  const search = () => {
+    getAllTickets(1, "", limit, searchInput);
+  };
+
   return (
     tickets && (
       <section className="allTicketsSection">
@@ -63,7 +82,44 @@ const AllTickets = () => {
         <div>
           <div>
             <div>
-              <div className="sectionHeader"></div>
+              <div className="sectionHeader">
+                <div className="limitControl">
+                  <p>show</p>
+
+                  <div className="dropdownContainer">
+                    <p className="dropDownValue">
+                      <span>{limit}</span>
+
+                      <i onClick={() => setDropDown(!dropDown)}>
+                        <FontAwesomeIcon icon={faChevronDown} />
+                      </i>
+                    </p>
+
+                    <div
+                      className={`${dropDown && "showDropDown"} dropDown`}
+                      onClick={(e) => changeLimit(e.target)}
+                    >
+                      <p data-value="3">3</p>
+                      <p data-value="5">5</p>
+                      <p data-value="10">10</p>
+                    </div>
+                  </div>
+                  <p>documents</p>
+                </div>
+
+                <div className="searchBar">
+                  <p>search :</p>
+
+                  <input
+                    type="text"
+                    onChange={(e) => setSearchInput(e.currentTarget.value)}
+                  />
+
+                  <button type="button" onClick={search}>
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+                  </button>
+                </div>
+              </div>
             </div>
 
             <div className="labels">
@@ -112,52 +168,51 @@ const AllTickets = () => {
             </div>
 
             <div>
-              {tickets &&
-                tickets.map((ticket) => {
-                  const { title, createdAt, status, priority } = ticket;
+              {tickets.map((ticket) => {
+                const { title, createdAt, status, priority } = ticket;
 
-                  return (
-                    <div className="ticket">
-                      <div className="assignedBy">
-                        <p>Demo Admin</p>
-                      </div>
-
-                      <div className="assignedTo">
-                        <p>Demo Developer</p>
-                      </div>
-
-                      <div className="title">
-                        <p>{title}</p>
-                      </div>
-
-                      <div className="status">
-                        <p className={`${status}`}>{status}</p>
-                      </div>
-
-                      <div className="priority">
-                        <p className={`${priority}`}>{priority}</p>
-                      </div>
-
-                      <div className="date">
-                        <p>{createdAt ? formatDate(createdAt) : ""}</p>
-                      </div>
-
-                      <div className="btns">
-                        <button className="details">
-                          <FontAwesomeIcon icon={faEye} />
-                        </button>
-
-                        <button className="edit">
-                          <FontAwesomeIcon icon={faPencil} />
-                        </button>
-
-                        <button className="archive">
-                          <FontAwesomeIcon icon={faBoxArchive} />
-                        </button>
-                      </div>
+                return (
+                  <div className="ticket">
+                    <div className="assignedBy">
+                      <p>Demo Admin</p>
                     </div>
-                  );
-                })}
+
+                    <div className="assignedTo">
+                      <p>Demo Developer</p>
+                    </div>
+
+                    <div className="title">
+                      <p>{title}</p>
+                    </div>
+
+                    <div className="status">
+                      <p className={`${status}`}>{status}</p>
+                    </div>
+
+                    <div className="priority">
+                      <p className={`${priority}`}>{priority}</p>
+                    </div>
+
+                    <div className="date">
+                      <p>{createdAt ? formatDate(createdAt) : ""}</p>
+                    </div>
+
+                    <div className="btns">
+                      <button className="details">
+                        <FontAwesomeIcon icon={faEye} />
+                      </button>
+
+                      <button className="edit">
+                        <FontAwesomeIcon icon={faPencil} />
+                      </button>
+
+                      <button className="archive">
+                        <FontAwesomeIcon icon={faBoxArchive} />
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
             <div className="sectionFooter">

@@ -41,6 +41,11 @@ const allTickets = async (req, res) => {
     }
   }
 
+  // search
+  if (search) {
+    tickets = tickets.find({ title: { $regex: search, $options: "i" } });
+  }
+
   // ***************
   tickets = await tickets;
 
