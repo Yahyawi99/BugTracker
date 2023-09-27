@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -299,9 +300,11 @@ const Projects = ({ projects }) => {
               </div>
 
               <div className="btns">
-                <button className="details">
-                  <FontAwesomeIcon icon={faEye} />
-                </button>
+                <Link to={`/projects/project-details/${_id}`}>
+                  <button className="details">
+                    <FontAwesomeIcon icon={faEye} />
+                  </button>
+                </Link>
 
                 <button className="edit">
                   <FontAwesomeIcon icon={faPencil} />
