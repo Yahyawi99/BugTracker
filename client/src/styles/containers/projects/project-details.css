@@ -154,4 +154,5 @@
 .DocumentDetails .details .second-column {
     background-color: green;
     flex: 1;
+    height: fit-content;
 }
