@@ -1,130 +1,15 @@
-.allProjectsSection>div:nth-child(2) {
-    background-color: var(--white);
-    border-radius: 10px;
-    overflow-x: scroll;
-    padding: 0 10px 0 10px;
-    margin: 0 0 25px 0;
-}
-
-
 /* *********************** */
 /* *********************** */
 /* Header */
 /* Drop down */
 .allProjectsSection .sectionHeader {
     width: 1595px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 0 25px 0;
-}
-
-.allProjectsSection .sectionHeader>div {
-    display: flex;
-    align-items: center;
-}
-
-.allProjectsSection .dropdownContainer {
-    position: relative;
-    border: 2px solid var(--border-color);
-    margin: 0px 10px;
-    padding: 5px 10px;
-}
-
-.allProjectsSection .dropdownContainer:active {
-    border-color: var(--main-clr);
-}
-
-.allProjectsSection .dropdownContainer i {
-    font-size: .8rem;
-}
-
-.allProjectsSection .dropDownValue {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.allProjectsSection .limitControl .dropDown {
-    background-color: var(--white);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    border-radius: 0px;
-    position: absolute;
-    left: -2px;
-    top: 35px;
-    box-shadow: 0px 0px 5px rgb(0, 0, 0, .5);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: .25s;
-    padding: 5px 20px;
-}
-
-.allProjectsSection .limitControl .dropDown p {
-    cursor: pointer;
-}
-
-.allProjectsSection .limitControl .dropDown p:hover {
-    text-decoration: underline 2px;
-}
-
-/* Search */
-.allProjectsSection .searchBar input {
-    width: 200px;
-    height: 40px;
-    border: 2px solid var(--border-color);
-    border-right: none;
-    font-size: 1rem;
-    border-radius: 5px 0 0 5px;
-    outline: none;
-    padding: 0 0 0 5px;
-    margin: 0 0 0 10px;
-}
-
-.allProjectsSection .searchBar input:focus {
-    border-color: var(--main-clr);
-}
-
-.allProjectsSection .searchBar button {
-    height: 40px;
-    background-color: var(--main-clr);
-    color: var(--white);
-    border: 2px solid transparent;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    transition: .25s;
-    padding: 0 10px;
-}
-
-.allProjectsSection .searchBar button:hover {
-    border-color: var(--main-clr);
-    background-color: var(--main-clr-hover);
-    color: var(--main-clr);
 }
 
 /* ================================ */
 /* ================================ */
 /* ================================ */
 /* labels */
-.allProjectsSection .labels {
-    width: fit-content;
-    height: 75px;
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    justify-content: flex-start;
-    font-weight: 600;
-    border-bottom: 3px solid var(--border-color);
-}
-
-.allProjectsSection .labels>div {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
 .allProjectsSection .labels>div {
     min-width: 200px;
 }
@@ -145,21 +30,7 @@
     min-width: 120px;
 }
 
-.allProjectsSection .labels>div p {
-    flex: 1;
-}
 
-.allProjectsSection .labels>div i {
-    display: none;
-}
-
-.allProjectsSection .labels>div .on {
-    display: flex;
-}
-
-.allProjectsSection .labels>div i svg {
-    width: 20px;
-}
 
 /* =========================== */
 /* =========================== */

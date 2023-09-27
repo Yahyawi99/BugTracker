@@ -124,6 +124,10 @@
     align-items: center;
 }
 
+.getAllDocuments .labels>div p {
+    flex: 1;
+}
+
 .getAllDocuments .labels>div i {
     display: none;
 }
