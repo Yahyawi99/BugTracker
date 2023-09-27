@@ -111,7 +111,7 @@ const NavBar = () => {
               >
                 <span>
                   <FontAwesomeIcon icon={faStarOfLife} />
-                  <Link to="/all-projects">
+                  <Link to="/projects/all-projects">
                     <p>All Projects</p>
                   </Link>
                 </span>
@@ -170,7 +170,7 @@ const NavBar = () => {
                 <span>
                   <FontAwesomeIcon icon={faStarOfLife} />
 
-                  <Link to="/all-tickets">
+                  <Link to="/tickets/all-tickets">
                     <p>All Tickets</p>
                   </Link>
                 </span>

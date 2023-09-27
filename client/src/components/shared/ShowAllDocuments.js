@@ -258,12 +258,12 @@ const Projects = ({ projects }) => {
                     <div className="progressBar">
                       <div
                         style={{
-                          width: `${progress(endDate, startDate)}%`,
+                          width: `${progress(startDate, endDate)}%`,
                         }}
                       ></div>
                     </div>
                     <p>
-                      {endDate && startDate && progress(endDate, startDate)}%
+                      {endDate && startDate && progress(startDate, endDate)}%
                     </p>
                   </>
                 )}
