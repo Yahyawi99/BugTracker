@@ -9,8 +9,8 @@ const ProjectDetails = () => {
     <section className="DocumentDetails">
       <HomeBtn name="Details" />
 
-      <div>
-        <div>
+      <div className="details">
+        <div className="first-column">
           <div className="row-one">
             <h1>Electricity Usage Application</h1>
             <p>
@@ -19,8 +19,12 @@ const ProjectDetails = () => {
             </p>
 
             <div className="progress">
-              <p>Project Status:</p>
-              <div></div>
+              <p>Progress Status:</p>
+              <div>
+                <div className="thumb">
+                  <p>50%</p>
+                </div>
+              </div>
             </div>
 
             <div className="action">
@@ -42,12 +46,12 @@ const ProjectDetails = () => {
 
             <div className="priority">
               <p>Priority</p>
-              <p>Urgent</p>
+              <p className="urgent">Urgent</p>
             </div>
 
             <div className="status">
               <p>Status</p>
-              <p>Active</p>
+              <p className="active">active</p>
             </div>
           </div>
 
@@ -57,7 +61,9 @@ const ProjectDetails = () => {
           </div>
         </div>
 
-        <div></div>
+        <div className="second-column">
+          <p>Tickets</p>
+        </div>
       </div>
     </section>
   );

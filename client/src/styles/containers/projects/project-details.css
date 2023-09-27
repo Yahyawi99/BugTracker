@@ -1,0 +1,157 @@
+.DocumentDetails .details {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+
+/* ================================ */
+/* ================================ */
+/* ================================ */
+/* First Column */
+.DocumentDetails .details .first-column {
+    flex: .6;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.DocumentDetails .details .first-column>div {
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* row one */
+.details .row-one h1 {
+    font-size: 2.5rem;
+}
+
+.details .row-one .progress {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.details .row-one .progress>div {
+    width: 100%;
+    height: 20px;
+    background-color: var(--main-clr-hover);
+    position: relative;
+}
+
+.details .row-one .progress .thumb {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-clr);
+    position: absolute;
+}
+
+.details .row-one .progress .thumb p {
+    color: var(--white);
+    font-weight: 600;
+}
+
+.details .row-one .action {
+    display: flex;
+    gap: 5px;
+}
+
+.details .row-one button {
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: .25s;
+    cursor: pointer;
+    padding: 10px 15px;
+}
+
+.details .row-one .action button:nth-child(1) {
+    border-color: var(--orange);
+    color: var(--orange);
+}
+
+.details .row-one .action button:nth-child(1):hover {
+    color: var(--white);
+    background-color: var(--orange);
+}
+
+.details .row-one .action button:nth-child(2) {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+.details .row-one .action button:nth-child(2):hover {
+    color: var(--white);
+    background-color: var(--danger);
+}
+
+/* row-two */
+.details .row-two>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.details .row-two>div p:nth-child(2) {
+    border-radius: 5px;
+    font-size: .75rem;
+    font-weight: 600;
+    padding: 5px 10px;
+}
+
+.details .row-two .created p:nth-child(2),
+.details .row-two .deadline p:nth-child(2) {
+    color: var(--gray);
+    border: 2px solid var(--border-color);
+
+}
+
+.details .row-two .priority p:nth-child(2),
+.details .row-two .status p:nth-child(2) {
+    border: 2px solid;
+}
+
+.details .row-two .priority .urgent {
+    color: var(--danger);
+    border-color: var(--danger);
+}
+
+.details .row-two .priority .high {
+    color: var(--orange);
+    border-color: var(--orange);
+}
+
+.details .row-two .priority .low {
+    color: var(--gray);
+    border-color: var(--gray);
+}
+
+.details .row-two .status .active {
+    color: var(--success);
+    border-color: var(--success);
+}
+
+.details .row-two .status .inactive {
+    color: var(--gray);
+    border-color: var(--gray);
+}
+
+
+/* ================================ */
+/* ================================ */
+/* ================================ */
+/* second Column */
+.DocumentDetails .details .second-column {
+    background-color: green;
+    flex: 1;
+}
