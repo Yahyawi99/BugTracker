@@ -5,6 +5,7 @@ import { useMainContext } from "../context/global";
 const useProjects = () => {
   const { alertMe, loading } = useMainContext();
   const [allProjects, setAllProjects] = useState([]);
+  const [singleProject, setSingleProject] = useState({});
 
   //   get all projects
   const getAllProjects = async (page, sortOption, limit, searchInput) => {
@@ -28,7 +29,17 @@ const useProjects = () => {
     }
   };
 
-  return { getAllProjects, allProjects };
+  // get single project
+  const getSingleProject = async (projectId) => {
+    try {
+      const response = await axios.get(`/api/v1/project/${projectId}`);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return { getAllProjects, allProjects, getSingleProject, singleProject };
 };
 
 export default useProjects;

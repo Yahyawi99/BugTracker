@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+// hooks
+import useProjects from "../../hooks/useProjects";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
 // css
 import "../../styles/containers/projects/project-details.css";
 
 const ProjectDetails = () => {
+  const { getSingleProject, singleProject } = useProjects();
+
+  useEffect(() => {
+    getSingleProject();
+  }, []);
+
+  console.log(singleProject);
+
   return (
     <section className="DocumentDetails">
       <HomeBtn name="Details" />
