@@ -29,6 +29,7 @@ const Dashboard = () => {
   }, []);
 
   const { projects } = allProjects;
+  const { tickets } = allTickets;
 
   return (
     <section className="dashboard-Container">
@@ -44,17 +45,21 @@ const Dashboard = () => {
         </span>
 
         <span>
-          <p>{allTickets.length}</p>
+          <p>{tickets && tickets.length}</p>
           <p>Total Tickets</p>
         </span>
 
         <span>
-          <p>{allTickets.filter((ticket) => !ticket.isAssigned).length}</p>
+          <p>
+            {tickets && tickets.filter((ticket) => !ticket.isAssigned).length}
+          </p>
           <p>Unassigned Tickets</p>
         </span>
 
         <span>
-          <p>{allTickets.filter((ticket) => ticket.isAssigned).length}</p>
+          <p>
+            {tickets && tickets.filter((ticket) => ticket.isAssigned).length}
+          </p>
           <p>Assigned Tickets</p>
         </span>
       </div>

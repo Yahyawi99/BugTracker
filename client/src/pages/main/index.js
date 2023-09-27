@@ -7,7 +7,7 @@ import AuthProvider from "../../context/auth/Auth-context";
 // main
 import Dashboard from "../../containers/dashboard";
 import AllProjects from "../../containers/projects/all-projects";
-import AllTickets from "../../containers/tickets";
+import AllTickets from "../../containers/tickets/all-tickets";
 // components
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";

@@ -46,6 +46,10 @@
 }
 
 .allTicketsSection .labels>div i {
+    display: none;
+}
+
+.allTicketsSection .labels>div .on {
     display: flex;
 }
 
@@ -225,11 +229,30 @@
     padding: 10px;
 }
 
-.allTicketsSection .sectionFooter .pagination button:nth-child(3) {
-    border-left: none;
+.allTicketsSection .sectionFooter .pagination .pages p:nth-child(1) {
+    border-left: 2px solid var(--main-clr);
 }
 
 .allTicketsSection .sectionFooter .pagination button:hover {
     background-color: var(--main-clr);
     color: var(--white);
+}
+
+.allTicketsSection .sectionFooter .pagination .nextPage {
+    border-left: none;
+}
+
+.allTicketsSection .sectionFooter .pagination .prevPage {
+    border-right: none;
+}
+
+.allTicketsSection .sectionFooter .pagination button:hover {
+    background-color: var(--main-clr);
+    color: var(--white);
+}
+
+.allTicketsSection .sectionFooter .pagination .pages .viewedPage {
+    background-color: var(--gray);
+    color: var(--white);
+    pointer-events: none;
 }
