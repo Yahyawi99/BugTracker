@@ -1,6 +1,6 @@
 const { StatusCodes } = require("http-status-codes");
 const Project = require("../model/Project");
-const Ticket = require("../model/Ticket");
+const CustomErros = require("../errors");
 
 // get all projects
 const allProjects = async (req, res) => {
@@ -63,7 +63,15 @@ const allProjects = async (req, res) => {
 
 // get single project
 const singleProject = async (req, res) => {
-  res.send("one");
+  const { id: projectId } = req.params;
+
+  const project = await Project.find({ _id: projectId }).populate("tickets");
+
+  if (!project) {
+    throw new CustomErros.NotFoundError(`No project with id :${projectId}`);
+  }
+
+  res.status(StatusCodes.OK).json({ project });
 };
 
 // create project

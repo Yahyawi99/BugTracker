@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 // hooks
 import useProjects from "../../hooks/useProjects";
+import { useParams } from "react-router-dom";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
 // css
@@ -8,12 +9,13 @@ import "../../styles/containers/projects/project-details.css";
 
 const ProjectDetails = () => {
   const { getSingleProject, singleProject } = useProjects();
+  const { projectId } = useParams();
 
   useEffect(() => {
-    getSingleProject();
+    getSingleProject(projectId);
   }, []);
 
-  console.log(singleProject);
+  // console.log(projectId);
 
   return (
     <section className="DocumentDetails">
