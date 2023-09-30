@@ -21,12 +21,15 @@
     background-color: var(--white);
     display: flex;
     flex-direction: column;
-    gap: 25px;
     border-radius: 10px;
     padding: 20px;
 }
 
 /* row one */
+.details .row-one {
+    gap: 25px;
+}
+
 .details .row-one h1 {
     font-size: 2.5rem;
 }
@@ -96,6 +99,10 @@
 }
 
 /* row-two */
+.details .row-two {
+    gap: 25px;
+}
+
 .details .row-two>div {
     display: flex;
     justify-content: space-between;
@@ -146,6 +153,70 @@
     color: var(--gray);
     border-color: var(--gray);
 }
+
+/* row-three */
+.details .row-three {
+    gap: 5px;
+}
+
+.details .row-three .manager,
+.details .row-three .user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid var(--border-color);
+    padding: 15px 0;
+}
+
+.details .row-three .manager img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+.details .row-three .managerInfo p {
+    color: var(--gray);
+}
+
+.details .row-three .managerInfo .name {
+    color: var(--black);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.details .row-three .user img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.details .row-three .user {
+    border-bottom: none;
+}
+
+.details .row-three .user .role {
+    color: var(--gray);
+    opacity: .75;
+}
+
+.details .row-three>button {
+    width: fit-content;
+    background-color: var(--main-clr);
+    color: var(--white);
+    border: 2px solid transparent;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s;
+    padding: 10px 15px;
+}
+
+.details .row-three>button:hover {
+    background-color: transparent;
+    color: var(--main-clr);
+    border-color: var(--main-clr);
+}
+
 
 
 /* ================================ */

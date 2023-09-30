@@ -93,7 +93,7 @@ ProjectSchema.methods.projectTeam = async function () {
     }, [])
     .map((team) => new mongoose.Types.ObjectId(team));
 
-  const team = await User.find({ _id: { $in: teamIds } }).select("avatar");
+  const team = await User.find({ _id: { $in: teamIds } });
 
   if (team.length) {
     this.team = team;

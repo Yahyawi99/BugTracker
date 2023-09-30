@@ -46,11 +46,13 @@ const allProjects = async (req, res) => {
 
   projects = await projects;
 
+  // Create Team Arr
   projects.forEach(async (project) => {
     await project.projectTeam();
     await project.save();
   });
 
+  // *************
   const totalProjects = await Project.countDocuments();
   const numOfPages = Math.ceil(totalProjects / limit);
 
@@ -70,6 +72,10 @@ const singleProject = async (req, res) => {
   if (!project) {
     throw new CustomErros.NotFoundError(`No project with id :${projectId}`);
   }
+
+  // create team Arr
+  await project.projectTeam();
+  await project.save();
 
   res.status(StatusCodes.OK).json({ project });
 };

@@ -18,8 +18,10 @@ const ProjectDetails = () => {
     getSingleProject(projectId);
   }, []);
 
-  const { name, description, startDate, endDate, priority, status } =
+  const { name, description, startDate, endDate, priority, status, team } =
     singleProject;
+
+  const manager = team && team.filter((user) => user.role === "PM");
 
   return (
     singleProject && (
@@ -90,7 +92,49 @@ const ProjectDetails = () => {
 
             <div className="row-three">
               <h3>Project Team</h3>
-              <p>6 team members</p>
+              <p>{team && team.length} team members</p>
+
+              {manager && !!manager.length ? (
+                manager.map((info) => {
+                  const { _id, avatar, name, email } = info;
+
+                  return (
+                    <>
+                      <div key={_id} className="manager">
+                        <img src={avatar} alt="manager" className="avatar" />
+
+                        <div className="managerInfo">
+                          <p className="name">{name}</p>
+                          <p>{email}</p>
+                          <p>Project Manager</p>
+                        </div>
+                      </div>
+                    </>
+                  );
+                })
+              ) : (
+                <p>No Project Manager Assigned</p>
+              )}
+
+              <div className="team">
+                {team &&
+                  team.map((user) => {
+                    const { _id, name, avatar, role } = user;
+
+                    return (
+                      <div key={_id} className="user">
+                        <img src={avatar} alt="user" className="avatar" />
+
+                        <div className="userInfo">
+                          <p>{name}</p>
+                          <p className="role">{role}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
+
+              <button type="button">Manage Team</button>
             </div>
           </div>
 
