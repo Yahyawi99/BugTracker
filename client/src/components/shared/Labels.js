@@ -1,8 +1,10 @@
 import React from "react";
 // css
+import "../../styles/components/shared/labels.css";
 
 const Labels = (props) => {
-  const { labels, sortLabels, controller } = props;
+  const { labels, sortLabels, controller, data } = props;
+  const { searchInput, limit } = props.states;
 
   // sort
   const sort = (element, label) => {

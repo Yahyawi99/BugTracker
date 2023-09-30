@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // utils
 import formatDate from "../../utils/formatDate";
 import progress from "../../utils/progress";
@@ -7,12 +7,18 @@ import useProjects from "../../hooks/useProjects";
 import { useParams } from "react-router-dom";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
+import LimitAndSearch from "../../components/shared/LimitAndSearch";
+import Labels from "../../components/shared/Labels";
 // css
 import "../../styles/containers/projects/project-details.css";
 
 const ProjectDetails = () => {
   const { getSingleProject, singleProject } = useProjects();
   const { projectId } = useParams();
+
+  const [limit, setLimit] = useState(3);
+  const [dropDown, setDropDown] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     getSingleProject(projectId);
@@ -149,12 +155,44 @@ const ProjectDetails = () => {
           </div>
 
           <div className="second-column">
-            <div className="searchAndLimit"></div>
+            <div>
+              <LimitAndSearch
+                controller={getSingleProject}
+                currentPage={1}
+                states={{
+                  limit,
+                  setLimit,
+                  dropDown,
+                  setDropDown,
+                  searchInput,
+                  setSearchInput,
+                }}
+              />
 
-            <div className="head"></div>
-            <div className="tickets"></div>
+              <Labels
+                labels={[
+                  "Title",
+                  "Developer",
+                  "Status",
+                  "Priority",
+                  "Date",
+                  "Action",
+                ]}
+                sortLabels={[
+                  "Title",
+                  "Developer",
+                  "Status",
+                  "Priority",
+                  "Date",
+                ]}
+                controller={getSingleProject}
+                data={singleProject}
+                states={{ limit, searchInput }}
+              />
 
-            <div className="pagination"></div>
+              <div className="tickets"></div>
+              <div className="pagination"></div>
+            </div>
           </div>
         </div>
       </section>

@@ -57,11 +57,12 @@ const ShowAllDocuments = (props) => {
                 }}
               />
 
-              {/*  Labels */}
               <Labels
                 labels={labels}
                 sortLabels={sortLabels}
                 controller={controller}
+                data={data}
+                states={{ limit, searchInput }}
               />
 
               {/* Data */}
@@ -71,7 +72,6 @@ const ShowAllDocuments = (props) => {
                 <Projects projects={data.projects} />
               )}
 
-              {/* pagination */}
               <Pagination
                 controller={controller}
                 states={{ limit, searchInput }}

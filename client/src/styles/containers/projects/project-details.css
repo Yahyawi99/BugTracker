@@ -1,7 +1,6 @@
 .DocumentDetails .details {
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
     gap: 25px;
 }
 
@@ -11,7 +10,7 @@
 /* ================================ */
 /* First Column */
 .DocumentDetails .details .first-column {
-    flex: .6;
+    flex: .4;
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -237,8 +236,45 @@
 /* second Column */
 .DocumentDetails .details .second-column {
     flex: 1;
-    height: fit-content;
+    max-width: 800px;
+    background-color: var(--white);
+    overflow-x: scroll;
+    border-radius: 10px;
 }
+
+.DocumentDetails .details .second-column>div {
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+}
+
+.DocumentDetails .labels {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 0px 5px;
+}
+
+.DocumentDetails .labels div:nth-child(1) {
+    min-width: 250px;
+}
+
+.DocumentDetails .labels div:nth-child(2) {
+    min-width: 150px;
+}
+
+.DocumentDetails .labels div:nth-child(3) {
+    min-width: 150px;
+}
+
+.DocumentDetails .labels div:nth-child(4) {
+    min-width: 150px;
+}
+
+.DocumentDetails .labels div:nth-child(5) {
+    min-width: 100px;
+}
+
+/* tickets */
 
 
 /* *************************** */

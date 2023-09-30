@@ -93,3 +93,13 @@
     background-color: var(--main-clr-hover);
     color: var(--main-clr);
 }
+
+
+/* **************************** */
+/* **************************** */
+/* **************************** */
+/* **************************** */
+/* Javascript classes */
+.limitControl .showDropDown {
+    transform: scaleY(1);
+}
