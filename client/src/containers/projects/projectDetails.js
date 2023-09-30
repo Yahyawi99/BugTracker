@@ -99,21 +99,22 @@ const ProjectDetails = () => {
                   const { _id, avatar, name, email } = info;
 
                   return (
-                    <>
-                      <div key={_id} className="manager">
-                        <img src={avatar} alt="manager" className="avatar" />
+                    <div key={_id} className="manager">
+                      <img src={avatar} alt="manager" className="avatar" />
 
-                        <div className="managerInfo">
-                          <p className="name">{name}</p>
-                          <p>{email}</p>
-                          <p>Project Manager</p>
-                        </div>
+                      <div className="managerInfo">
+                        <p className="name">{name}</p>
+                        <p>{email}</p>
+                        <p>Project Manager</p>
                       </div>
-                    </>
+                    </div>
                   );
                 })
               ) : (
-                <p>No Project Manager Assigned</p>
+                <div className="noManager">
+                  <p>No Project Manager Assigned</p>
+                  <button>Assign Project Manager</button>
+                </div>
               )}
 
               <div className="team">
