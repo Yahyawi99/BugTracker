@@ -18,6 +18,8 @@ const useProjects = () => {
 
       loading(false);
 
+      console.log(response.data);
+
       setAllProjects(response.data);
 
       await alertMe("Done.", "var(--success)");
