@@ -22,6 +22,7 @@ const AllTickets = () => {
         "Date",
         "Action",
       ]}
+      sortLabels={["Title", "Date", "Priority"]}
       data={allTickets}
     />
   );

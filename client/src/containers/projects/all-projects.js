@@ -22,6 +22,7 @@ const AllProjects = () => {
         "Status",
         "Action",
       ]}
+      sortLabels={["Project", "End Date"]}
       data={allProjects}
     />
   );
