@@ -18,9 +18,18 @@ const ProjectDetails = () => {
     getSingleProject(projectId);
   }, []);
 
-  const { name, description, startDate, endDate, priority, status, team } =
-    singleProject;
+  const {
+    name,
+    description,
+    startDate,
+    endDate,
+    priority,
+    status,
+    team,
+    tickets,
+  } = singleProject;
 
+  // manager
   const manager = team && team.filter((user) => user.role === "PM");
 
   return (
@@ -140,7 +149,12 @@ const ProjectDetails = () => {
           </div>
 
           <div className="second-column">
-            <p>Tickets</p>
+            <div className="searchAndLimit"></div>
+
+            <div className="head"></div>
+            <div className="tickets"></div>
+
+            <div className="pagination"></div>
           </div>
         </div>
       </section>
