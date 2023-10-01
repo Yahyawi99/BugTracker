@@ -19,7 +19,11 @@ const Labels = (props) => {
       sibling.classList.remove("on");
     }
 
-    controller(data.currentPage, label, limit, searchInput);
+    if (projectId) {
+      controller(projectId, data.currentPage, label, limit, searchInput);
+    } else {
+      controller(data.currentPage, label, limit, searchInput);
+    }
   };
 
   return (
