@@ -37,7 +37,11 @@ const LimitAndSearch = (props) => {
 
   // search
   const search = () => {
-    controller(1, "", limit, searchInput);
+    if (projectId) {
+      controller(projectId, 1, "", limit, searchInput);
+    } else {
+      controller(1, "", limit, searchInput);
+    }
   };
 
   //   *************************************
