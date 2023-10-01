@@ -415,7 +415,7 @@
 
 /* pagination */
 .DocumentDetails .sectionFooter {
-    width: fit-content;
+    width: 100%;
 }
 
 /* *************************** */
