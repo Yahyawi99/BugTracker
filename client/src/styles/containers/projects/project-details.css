@@ -413,6 +413,10 @@
     color: var(--white);
 }
 
+/* pagination */
+.DocumentDetails .sectionFooter {
+    width: fit-content;
+}
 
 /* *************************** */
 /* *************************** */

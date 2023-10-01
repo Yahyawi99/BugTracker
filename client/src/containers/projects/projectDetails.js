@@ -17,6 +17,7 @@ import { useParams } from "react-router-dom";
 import HomeBtn from "../../components/shared/HomeBtn";
 import LimitAndSearch from "../../components/shared/LimitAndSearch";
 import Labels from "../../components/shared/Labels";
+import Pagination from "../../components/shared/Pagination";
 // css
 import "../../styles/containers/projects/project-details.css";
 
@@ -240,7 +241,12 @@ const ProjectDetails = () => {
                     );
                   })}
               </div>
-              <div className="pagination"></div>
+
+              <Pagination
+                controller={getSingleProject}
+                states={{ limit, searchInput }}
+                data={singleProject}
+              />
             </div>
           </div>
         </div>
