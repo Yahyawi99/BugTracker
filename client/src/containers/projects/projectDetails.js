@@ -210,17 +210,31 @@ const ProjectDetails = () => {
 
                     return (
                       <div key={_id}>
-                        <p>{title}</p>
-                        <p>{assignedTo.name}</p>
-                        <p>{status}</p>
-                        <p>{priority}</p>
-                        <p>
-                          {formatDate(createdAt, {
-                            day: "2-digit",
-                            month: "2-digit",
-                            year: "2-digit",
-                          })}
-                        </p>
+                        <div className="title">
+                          <p>{title}</p>
+                        </div>
+
+                        <div className="dev">
+                          <p>{assignedTo.name}</p>
+                        </div>
+
+                        <div className="status">
+                          <p className={`${status}`}>{status}</p>
+                        </div>
+
+                        <div className="priority">
+                          <p className={`${priority}`}>{priority}</p>
+                        </div>
+
+                        <div>
+                          <p>
+                            {formatDate(createdAt, {
+                              day: "2-digit",
+                              month: "2-digit",
+                              year: "2-digit",
+                            })}
+                          </p>
+                        </div>
                         <ActionBtn />
                       </div>
                     );
