@@ -30,11 +30,19 @@ const useProjects = () => {
   };
 
   // get single project
-  const getSingleProject = async (projectId) => {
+  const getSingleProject = async (
+    projectId,
+    page,
+    sortOption,
+    limit,
+    searchInput
+  ) => {
     try {
       loading(true);
 
-      const response = await axios.get(`/api/v1/project/${projectId}`);
+      const response = await axios.get(
+        `/api/v1/project/${projectId}?page=${page}&limit=${limit}&sort=${sortOption}&search=${searchInput}`
+      );
 
       loading(false);
 

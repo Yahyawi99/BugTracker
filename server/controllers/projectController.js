@@ -67,6 +67,7 @@ const allProjects = async (req, res) => {
 // get single project
 const singleProject = async (req, res) => {
   const { id: projectId } = req.params;
+  const { sort, search } = req.query;
 
   const project = await Project.findOne({ _id: projectId }).populate(
     "managedBy"
@@ -92,6 +93,13 @@ const singleProject = async (req, res) => {
     .populate("assignedTo")
     .limit(limit)
     .skip(skip);
+
+  // search
+  if (search) {
+    associatedTickets = associatedTickets.find({
+      title: { $regex: search, $options: "i" },
+    });
+  }
 
   associatedTickets = await associatedTickets;
 
