@@ -53,7 +53,8 @@ const ProjectDetails = () => {
   }
 
   return (
-    singleProject && (
+    singleProject.tickets &&
+    singleProject.project && (
       <section className="DocumentDetails">
         <HomeBtn name="Details" />
 
@@ -203,9 +204,9 @@ const ProjectDetails = () => {
                 states={{ limit, searchInput }}
                 projectId={projectId}
               />
-
-              {tickets && <Tickets tickets={tickets.associatedTickets} />}
-
+              <div className="tickets">
+                <Tickets tickets={tickets.associatedTickets} />
+              </div>
               {tickets && (
                 <Pagination
                   controller={getSingleProject}
@@ -243,46 +244,40 @@ const ActionBtn = () => {
 };
 
 const Tickets = ({ tickets }) => {
-  return (
-    <div className="tickets">
-      {tickets &&
-        tickets.map((ticket) => {
-          const { _id, title, assignedTo, status, priority, createdAt } =
-            ticket;
+  return tickets.map((ticket) => {
+    const { _id, title, assignedTo, status, priority, createdAt } = ticket;
 
-          return (
-            <div key={_id}>
-              <div className="title">
-                <p>{title}</p>
-              </div>
+    return (
+      <div key={_id}>
+        <div className="title">
+          <p>{title}</p>
+        </div>
 
-              <div className="dev">
-                <p>{assignedTo.name}</p>
-              </div>
+        <div className="dev">
+          <p>{assignedTo.name}</p>
+        </div>
 
-              <div className="status">
-                <p className={`${status}`}>{status}</p>
-              </div>
+        <div className="status">
+          <p className={`${status}`}>{status}</p>
+        </div>
 
-              <div className="priority">
-                <p className={`${priority}`}>{priority}</p>
-              </div>
+        <div className="priority">
+          <p className={`${priority}`}>{priority}</p>
+        </div>
 
-              <div>
-                <p>
-                  {formatDate(createdAt, {
-                    day: "2-digit",
-                    month: "2-digit",
-                    year: "2-digit",
-                  })}
-                </p>
-              </div>
-              <ActionBtn />
-            </div>
-          );
-        })}
-    </div>
-  );
+        <div>
+          <p>
+            {formatDate(createdAt, {
+              day: "2-digit",
+              month: "2-digit",
+              year: "2-digit",
+            })}
+          </p>
+        </div>
+        <ActionBtn />
+      </div>
+    );
+  });
 };
 
 export default ProjectDetails;

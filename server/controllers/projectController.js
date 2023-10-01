@@ -101,6 +101,55 @@ const singleProject = async (req, res) => {
     });
   }
 
+  // sort
+  if (sort) {
+    switch (sort) {
+      case "Title":
+        associatedTickets = associatedTickets.sort("title");
+        break;
+
+      case "-Title":
+        associatedTickets = associatedTickets.sort("-title");
+        break;
+
+      case "Developer":
+        associatedTickets = associatedTickets.sort("assignedTo.name");
+        break;
+
+      case "-Developer":
+        associatedTickets = associatedTickets.sort("-assignedTo.name");
+        break;
+
+      case "Status":
+        associatedTickets = associatedTickets.sort("status");
+        break;
+
+      case "-Status":
+        associatedTickets = associatedTickets.sort("-status");
+        break;
+
+      case "Priority":
+        associatedTickets = associatedTickets.sort("priority");
+        break;
+
+      case "-Priority":
+        associatedTickets = associatedTickets.sort("-priority");
+        break;
+
+      case "Date":
+        associatedTickets = associatedTickets.sort("createdAt");
+        break;
+
+      case "-Date":
+        associatedTickets = associatedTickets.sort("-createdAt");
+        break;
+
+      default:
+        associatedTickets = associatedTickets.sort("");
+        break;
+    }
+  }
+
   associatedTickets = await associatedTickets;
 
   // ***********************
