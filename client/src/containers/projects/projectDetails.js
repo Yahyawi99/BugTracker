@@ -179,7 +179,9 @@ const ProjectDetails = () => {
                   searchInput,
                   setSearchInput,
                 }}
+                projectId={projectId}
               />
+
               <Labels
                 labels={[
                   "Title",
@@ -199,6 +201,7 @@ const ProjectDetails = () => {
                 controller={getSingleProject}
                 data={singleProject}
                 states={{ limit, searchInput }}
+                projectId={projectId}
               />
 
               {tickets && <Tickets tickets={tickets.associatedTickets} />}
@@ -208,6 +211,7 @@ const ProjectDetails = () => {
                   controller={getSingleProject}
                   states={{ limit, searchInput }}
                   data={singleProject.tickets}
+                  projectId={projectId}
                 />
               )}
             </div>
