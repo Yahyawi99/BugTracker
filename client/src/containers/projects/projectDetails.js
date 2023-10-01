@@ -33,17 +33,19 @@ const ProjectDetails = () => {
     getSingleProject(projectId);
   }, []);
 
-  const {
-    name,
-    description,
-    startDate,
-    endDate,
-    priority,
-    status,
-    team,
-    managedBy,
-    tickets,
-  } = singleProject;
+  if (singleProject.hasOwnProperty("project")) {
+    var {
+      name,
+      description,
+      startDate,
+      endDate,
+      priority,
+      status,
+      team,
+      managedBy,
+      tickets,
+    } = singleProject.project;
+  }
 
   return (
     singleProject && (
@@ -195,52 +197,7 @@ const ProjectDetails = () => {
                 states={{ limit, searchInput }}
               />
 
-              <div className="tickets">
-                {tickets &&
-                  tickets.map((ticket) => {
-                    const {
-                      _id,
-                      title,
-                      assignedTo,
-                      status,
-                      priority,
-                      createdAt,
-                    } = ticket;
-
-                    console.log(assignedTo);
-
-                    return (
-                      <div key={_id}>
-                        <div className="title">
-                          <p>{title}</p>
-                        </div>
-
-                        <div className="dev">
-                          <p>{assignedTo.name}</p>
-                        </div>
-
-                        <div className="status">
-                          <p className={`${status}`}>{status}</p>
-                        </div>
-
-                        <div className="priority">
-                          <p className={`${priority}`}>{priority}</p>
-                        </div>
-
-                        <div>
-                          <p>
-                            {formatDate(createdAt, {
-                              day: "2-digit",
-                              month: "2-digit",
-                              year: "2-digit",
-                            })}
-                          </p>
-                        </div>
-                        <ActionBtn />
-                      </div>
-                    );
-                  })}
-              </div>
+              <Tickets tickets={tickets} />
 
               <Pagination
                 controller={getSingleProject}
@@ -271,6 +228,49 @@ const ActionBtn = () => {
       <button className="archive">
         <FontAwesomeIcon icon={faBoxArchive} />
       </button>
+    </div>
+  );
+};
+
+const Tickets = ({ tickets }) => {
+  return (
+    <div className="tickets">
+      {tickets &&
+        tickets.map((ticket) => {
+          const { _id, title, assignedTo, status, priority, createdAt } =
+            ticket;
+
+          return (
+            <div key={_id}>
+              <div className="title">
+                <p>{title}</p>
+              </div>
+
+              <div className="dev">
+                <p>{assignedTo.name}</p>
+              </div>
+
+              <div className="status">
+                <p className={`${status}`}>{status}</p>
+              </div>
+
+              <div className="priority">
+                <p className={`${priority}`}>{priority}</p>
+              </div>
+
+              <div>
+                <p>
+                  {formatDate(createdAt, {
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "2-digit",
+                  })}
+                </p>
+              </div>
+              <ActionBtn />
+            </div>
+          );
+        })}
     </div>
   );
 };

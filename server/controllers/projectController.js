@@ -1,5 +1,6 @@
 const { StatusCodes } = require("http-status-codes");
 const Project = require("../model/Project");
+const Ticket = require("../model/Ticket");
 const CustomErros = require("../errors");
 
 // get all projects
@@ -66,6 +67,7 @@ const allProjects = async (req, res) => {
 // get single project
 const singleProject = async (req, res) => {
   const { id: projectId } = req.params;
+  const { limit, search } = req.query;
 
   const project = await Project.findOne({ _id: projectId }).populate("tickets");
 
@@ -80,7 +82,20 @@ const singleProject = async (req, res) => {
   await project.projectTeam();
   await project.save();
 
-  res.status(StatusCodes.OK).json({ project });
+  // ********************
+  const totalAssociatedTickets = await Ticket.countDocuments({
+    project: projectId,
+  });
+  const numOfPages = Math.ceil(totalAssociatedTickets / limit);
+
+  // count
+
+  res
+    .status(StatusCodes.OK)
+    .json({ project, numOfPages, totalAssociatedTickets });
+  //  res
+  //    .status(StatusCodes.OK)
+  //    .json({ project, numOfPages, currentPage: page, count, totalProjects });
 };
 
 // create project
