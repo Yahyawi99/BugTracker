@@ -65,6 +65,7 @@ const TicketSchema = new Schema(
     assignedTo: {
       type: Schema.Types.Mixed,
       ref: "User",
+      default: null,
     },
   },
   { timestamps: true }

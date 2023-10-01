@@ -235,6 +235,7 @@
 /* ================================ */
 /* second Column */
 .DocumentDetails .details .second-column {
+    height: fit-content;
     flex: 1;
     max-width: 800px;
     background-color: var(--white);
@@ -249,6 +250,7 @@
 }
 
 .DocumentDetails .labels {
+    width: 100%;
     background-color: var(--black);
     color: var(--white);
     padding: 0px 5px;
@@ -274,7 +276,88 @@
     min-width: 100px;
 }
 
+.DocumentDetails .labels div:nth-child(6) {
+    flex: 1;
+}
+
 /* tickets */
+.second-column .tickets>div {
+    display: flex;
+    gap: 20px;
+    padding: 0px 5px;
+    margin: 20px 0;
+}
+
+.DocumentDetails .tickets>div p:nth-child(1) {
+    min-width: 250px;
+}
+
+.DocumentDetails .tickets>div p:nth-child(2) {
+    min-width: 150px;
+}
+
+.DocumentDetails .tickets>div p:nth-child(3) {
+    min-width: 150px;
+}
+
+.DocumentDetails .tickets>div p:nth-child(4) {
+    min-width: 150px;
+}
+
+.DocumentDetails .tickets>div p:nth-child(5) {
+    min-width: 100px;
+}
+
+/* Buttons */
+.DocumentDetails .tickets .btns {
+    min-width: 100px;
+}
+
+.DocumentDetails .tickets .btns {
+    display: flex;
+    gap: 5px;
+    padding-right: 10px;
+}
+
+.DocumentDetails .tickets .btns button {
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 10px;
+}
+
+.DocumentDetails .tickets .btns .details {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.DocumentDetails .tickets .btns .details:hover {
+    background-color: var(--blue);
+}
+
+.DocumentDetails .tickets .btns .edit {
+    border-color: var(--gray);
+    color: var(--gray);
+}
+
+.DocumentDetails .tickets .btns .edit:hover {
+    background-color: var(--gray);
+}
+
+.DocumentDetails .tickets .btns .archive {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+.DocumentDetails .tickets .btns .archive:hover {
+    background-color: var(--danger);
+}
+
+.DocumentDetails .tickets .btns button:hover {
+    color: var(--white);
+}
 
 
 /* *************************** */

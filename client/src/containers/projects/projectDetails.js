@@ -1,4 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+// icons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faEye,
+  faPencil,
+  faBoxArchive,
+} from "@fortawesome/free-solid-svg-icons";
 // utils
 import formatDate from "../../utils/formatDate";
 import progress from "../../utils/progress";
@@ -32,11 +40,9 @@ const ProjectDetails = () => {
     priority,
     status,
     team,
+    managedBy,
     tickets,
   } = singleProject;
-
-  // manager
-  const manager = team && team.filter((user) => user.role === "PM");
 
   return (
     singleProject && (
@@ -109,22 +115,20 @@ const ProjectDetails = () => {
               <h3>Project Team</h3>
               <p>{team && team.length} team members</p>
 
-              {manager && !!manager.length ? (
-                manager.map((info) => {
-                  const { _id, avatar, name, email } = info;
+              {managedBy ? (
+                <div key={managedBy._id} className="manager">
+                  <img
+                    src={managedBy.avatar}
+                    alt="manager"
+                    className="avatar"
+                  />
 
-                  return (
-                    <div key={_id} className="manager">
-                      <img src={avatar} alt="manager" className="avatar" />
-
-                      <div className="managerInfo">
-                        <p className="name">{name}</p>
-                        <p>{email}</p>
-                        <p>Project Manager</p>
-                      </div>
-                    </div>
-                  );
-                })
+                  <div className="managerInfo">
+                    <p className="name">{managedBy.name}</p>
+                    <p>{managedBy.email}</p>
+                    <p>Project Manager</p>
+                  </div>
+                </div>
               ) : (
                 <div className="noManager">
                   <p>No Project Manager Assigned</p>
@@ -190,13 +194,64 @@ const ProjectDetails = () => {
                 states={{ limit, searchInput }}
               />
 
-              <div className="tickets"></div>
+              <div className="tickets">
+                {tickets &&
+                  tickets.map((ticket) => {
+                    const {
+                      _id,
+                      title,
+                      assignedTo,
+                      status,
+                      priority,
+                      createdAt,
+                    } = ticket;
+
+                    console.log(assignedTo);
+
+                    return (
+                      <div key={_id}>
+                        <p>{title}</p>
+                        <p>{assignedTo.name}</p>
+                        <p>{status}</p>
+                        <p>{priority}</p>
+                        <p>
+                          {formatDate(createdAt, {
+                            day: "2-digit",
+                            month: "2-digit",
+                            year: "2-digit",
+                          })}
+                        </p>
+                        <ActionBtn />
+                      </div>
+                    );
+                  })}
+              </div>
               <div className="pagination"></div>
             </div>
           </div>
         </div>
       </section>
     )
+  );
+};
+
+const ActionBtn = () => {
+  return (
+    <div className="btns">
+      <Link to={``}>
+        <button className="details">
+          <FontAwesomeIcon icon={faEye} />
+        </button>
+      </Link>
+
+      <button className="edit">
+        <FontAwesomeIcon icon={faPencil} />
+      </button>
+
+      <button className="archive">
+        <FontAwesomeIcon icon={faBoxArchive} />
+      </button>
+    </div>
   );
 };
 

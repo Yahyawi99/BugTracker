@@ -95,9 +95,7 @@ ProjectSchema.methods.projectTeam = async function () {
 
   const team = await User.find({ _id: { $in: teamIds } });
 
-  if (team.length) {
-    this.team = team;
-  }
+  this.team = team;
 };
 
 module.exports = mongoose.model("Project", ProjectSchema);

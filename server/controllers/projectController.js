@@ -73,6 +73,9 @@ const singleProject = async (req, res) => {
     throw new CustomErros.NotFoundError(`No project with id :${projectId}`);
   }
 
+  // populate the each ticket
+  project.tickets.forEach((ticket) => ticket.populate("assignedTo"));
+
   // create team Arr
   await project.projectTeam();
   await project.save();
