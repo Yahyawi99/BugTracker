@@ -25,7 +25,7 @@ const ProjectDetails = () => {
   const { getSingleProject, singleProject } = useProjects();
   const { projectId } = useParams();
 
-  const [limit, setLimit] = useState(1);
+  const [limit, setLimit] = useState(3);
   const [dropDown, setDropDown] = useState(false);
   const [searchInput, setSearchInput] = useState("");
 
