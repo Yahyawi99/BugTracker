@@ -10,7 +10,7 @@
 /* ================================ */
 /* First Column */
 .DocumentDetails .details .first-column {
-    flex: .4;
+    flex: .6;
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -236,8 +236,8 @@
 /* second Column */
 .DocumentDetails .details .second-column {
     height: fit-content;
-    flex: 1;
     max-width: 800px;
+    flex: 1;
     background-color: var(--white);
     overflow-x: scroll;
     border-radius: 10px;
@@ -422,12 +422,17 @@
 /* *************************** */
 /* *************************** */
 /* media queries */
-@media screen and (max-width:800px) {
+@media screen and (max-width:1000px) {
     .DocumentDetails .details {
         width: 100%;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
         gap: 25px;
+    }
+
+    /* second Column */
+    .DocumentDetails .details .second-column {
+        max-width: 100%;
     }
 }

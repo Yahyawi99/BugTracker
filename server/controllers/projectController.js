@@ -68,39 +68,48 @@ const allProjects = async (req, res) => {
 const singleProject = async (req, res) => {
   const { id: projectId } = req.params;
 
-  const project = await Project.findOne({ _id: projectId }).populate("tickets");
+  const project = await Project.findOne({ _id: projectId });
 
   if (!project) {
     throw new CustomErros.NotFoundError(`No project with id :${projectId}`);
   }
 
-  // populate the each ticket
-  project.tickets.forEach((ticket) => ticket.populate("assignedTo"));
-
   // create team Arr
   await project.projectTeam();
   await project.save();
 
+  // tickets
   // pagination
   const page = Number(req.query.page) || 1;
   const limit = Number(req.query.limit) || 3;
   const skip = (page - 1) * limit;
 
-  // ***************
+  let associatedTickets = Ticket.find({
+    project: projectId,
+  })
+    .populate("assignedTo")
+    .limit(limit)
+    .skip(skip);
+
+  associatedTickets = await associatedTickets;
+
+  // ***********************
   const totalAssociatedTickets = await Ticket.countDocuments({
     project: projectId,
   });
   const numOfPages = Math.ceil(totalAssociatedTickets / limit);
 
-  // count
-  count = project.tickets.split(skip, totalAssociatedTickets);
+  const count = associatedTickets.length;
 
   res.status(StatusCodes.OK).json({
     project,
-    numOfPages,
-    currentPage: page,
-    count,
-    totalAssociatedTickets,
+    tickets: {
+      associatedTickets,
+      numOfPages,
+      currentPage: page,
+      count,
+      totalAssociatedTickets,
+    },
   });
   //  res
   //    .status(StatusCodes.OK)

@@ -33,18 +33,23 @@ const ProjectDetails = () => {
     getSingleProject(projectId);
   }, []);
 
-  if (singleProject.hasOwnProperty("project")) {
+  if (
+    singleProject.hasOwnProperty("project") &&
+    singleProject.hasOwnProperty("tickets")
+  ) {
     var {
-      name,
-      description,
-      startDate,
-      endDate,
-      priority,
-      status,
-      team,
-      managedBy,
+      project: {
+        name,
+        description,
+        startDate,
+        endDate,
+        priority,
+        status,
+        team,
+        managedBy,
+      },
       tickets,
-    } = singleProject.project;
+    } = singleProject;
   }
 
   return (
@@ -175,7 +180,6 @@ const ProjectDetails = () => {
                   setSearchInput,
                 }}
               />
-
               <Labels
                 labels={[
                   "Title",
@@ -197,13 +201,15 @@ const ProjectDetails = () => {
                 states={{ limit, searchInput }}
               />
 
-              <Tickets tickets={tickets} />
+              {tickets && <Tickets tickets={tickets.associatedTickets} />}
 
-              <Pagination
-                controller={getSingleProject}
-                states={{ limit, searchInput }}
-                data={singleProject}
-              />
+              {tickets && (
+                <Pagination
+                  controller={getSingleProject}
+                  states={{ limit, searchInput }}
+                  data={singleProject.tickets}
+                />
+              )}
             </div>
           </div>
         </div>

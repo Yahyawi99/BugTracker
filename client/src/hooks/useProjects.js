@@ -39,7 +39,6 @@ const useProjects = () => {
       loading(false);
 
       setSingleProject(response.data);
-      console.log(response.data);
 
       await alertMe("Done.", "var(--success)");
     } catch (error) {
