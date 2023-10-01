@@ -24,19 +24,19 @@ const allProjects = async (req, res) => {
   // sorting
   if (sort) {
     if (sort === "Project") {
-      projects = projects.sort("name");
-    }
-
-    if (sort === "-Project") {
       projects = projects.sort("-name");
     }
 
+    if (sort === "-Project") {
+      projects = projects.sort("name");
+    }
+
     if (sort === "End Date") {
-      projects = projects.sort("endDate");
+      projects = projects.sort("-endDate");
     }
 
     if (sort === "-End Date") {
-      projects = projects.sort("-endDate");
+      projects = projects.sort("endDate");
     }
   }
 
@@ -105,43 +105,43 @@ const singleProject = async (req, res) => {
   if (sort) {
     switch (sort) {
       case "Title":
-        associatedTickets = associatedTickets.sort("title");
-        break;
-
-      case "-Title":
         associatedTickets = associatedTickets.sort("-title");
         break;
 
-      case "Developer":
-        associatedTickets = associatedTickets.sort("assignedTo.name");
+      case "-Title":
+        associatedTickets = associatedTickets.sort("title");
         break;
 
-      case "-Developer":
+      case "Developer":
         associatedTickets = associatedTickets.sort("-assignedTo.name");
         break;
 
-      case "Status":
-        associatedTickets = associatedTickets.sort("status");
+      case "-Developer":
+        associatedTickets = associatedTickets.sort("assignedTo.name");
         break;
 
-      case "-Status":
+      case "Status":
         associatedTickets = associatedTickets.sort("-status");
         break;
 
-      case "Priority":
-        associatedTickets = associatedTickets.sort("priority");
+      case "-Status":
+        associatedTickets = associatedTickets.sort("status");
         break;
 
-      case "-Priority":
+      case "Priority":
         associatedTickets = associatedTickets.sort("-priority");
         break;
 
+      case "-Priority":
+        associatedTickets = associatedTickets.sort("priority");
+        break;
+
       case "Date":
-        associatedTickets = associatedTickets.sort("createdAt");
+        associatedTickets = associatedTickets.sort("-createdAt");
         break;
 
       case "-Date":
-        associatedTickets = associatedTickets.sort("-createdAt");
+        associatedTickets = associatedTickets.sort("createdAt");
         break;
 
       default:
