@@ -3,7 +3,7 @@ import React from "react";
 import "../../styles/components/shared/pagination.css";
 
 const Pagination = (props) => {
-  const { data, controller } = props;
+  const { data, controller, projectId } = props;
   const { count, numOfPages, currentPage } = props.data;
   const { limit, searchInput } = props.states;
 
@@ -23,9 +23,19 @@ const Pagination = (props) => {
             {currentPage > 1 && (
               <button
                 className="prevPage"
-                onClick={() =>
-                  controller(currentPage - 1, "", limit, searchInput)
-                }
+                onClick={() => {
+                  if (projectId) {
+                    controller(
+                      projectId,
+                      currentPage - 1,
+                      "",
+                      limit,
+                      searchInput
+                    );
+                  } else {
+                    controller(currentPage - 1, "", limit, searchInput);
+                  }
+                }}
               >
                 previous
               </button>
@@ -36,7 +46,13 @@ const Pagination = (props) => {
                 return (
                   <p
                     key={num}
-                    onClick={() => controller(num, "", limit, searchInput)}
+                    onClick={() => {
+                      if (projectId) {
+                        controller(projectId, num, "", limit, searchInput);
+                      } else {
+                        controller(num, "", limit, searchInput);
+                      }
+                    }}
                     className={`${currentPage === num && "viewedPage"}`}
                   >
                     {num}
@@ -48,9 +64,19 @@ const Pagination = (props) => {
             {currentPage < numOfPages && (
               <button
                 className="nextPage"
-                onClick={() =>
-                  controller(currentPage + 1, "", limit, searchInput)
-                }
+                onClick={() => {
+                  if (projectId) {
+                    controller(
+                      projectId,
+                      currentPage + 1,
+                      "",
+                      limit,
+                      searchInput
+                    );
+                  } else {
+                    controller(currentPage + 1, "", limit, searchInput);
+                  }
+                }}
               >
                 next
               </button>

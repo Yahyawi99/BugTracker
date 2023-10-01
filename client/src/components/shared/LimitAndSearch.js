@@ -9,7 +9,7 @@ import {
 import "../../styles/components/shared/limiAndSearch.css";
 
 const LimitAndSearch = (props) => {
-  const { controller, currentPage } = props;
+  const { controller, currentPage, projectId } = props;
   const {
     limit,
     setLimit,
@@ -28,7 +28,11 @@ const LimitAndSearch = (props) => {
   };
 
   useEffect(() => {
-    controller(currentPage, "", limit, searchInput);
+    if (projectId) {
+      controller(projectId, currentPage, "", limit, searchInput);
+    } else {
+      controller(currentPage, "", limit, searchInput);
+    }
   }, [limit]);
 
   // search
