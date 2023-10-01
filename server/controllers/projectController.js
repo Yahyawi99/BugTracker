@@ -67,7 +67,6 @@ const allProjects = async (req, res) => {
 // get single project
 const singleProject = async (req, res) => {
   const { id: projectId } = req.params;
-  const { limit, search } = req.query;
 
   const project = await Project.findOne({ _id: projectId }).populate("tickets");
 
@@ -82,17 +81,27 @@ const singleProject = async (req, res) => {
   await project.projectTeam();
   await project.save();
 
-  // ********************
+  // pagination
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 3;
+  const skip = (page - 1) * limit;
+
+  // ***************
   const totalAssociatedTickets = await Ticket.countDocuments({
     project: projectId,
   });
   const numOfPages = Math.ceil(totalAssociatedTickets / limit);
 
   // count
+  count = project.tickets.split(skip, totalAssociatedTickets);
 
-  res
-    .status(StatusCodes.OK)
-    .json({ project, numOfPages, totalAssociatedTickets });
+  res.status(StatusCodes.OK).json({
+    project,
+    numOfPages,
+    currentPage: page,
+    count,
+    totalAssociatedTickets,
+  });
   //  res
   //    .status(StatusCodes.OK)
   //    .json({ project, numOfPages, currentPage: page, count, totalProjects });
