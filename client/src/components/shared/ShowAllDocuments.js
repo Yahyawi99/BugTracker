@@ -159,9 +159,11 @@ const Projects = ({ projects }) => {
                   </button>
                 </Link>
 
-                <button className="edit">
-                  <FontAwesomeIcon icon={faPencil} />
-                </button>
+                <Link to={`/projects/edit-project/${_id}`}>
+                  <button className="edit">
+                    <FontAwesomeIcon icon={faPencil} />
+                  </button>
+                </Link>
 
                 <button className="archive">
                   <FontAwesomeIcon icon={faBoxArchive} />
