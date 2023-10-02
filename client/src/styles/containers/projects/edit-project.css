@@ -1,12 +1,16 @@
-.editProject .editForm {
-    width: fit-content;
+.editProject {
+    width: 100%;
+    max-width: 800px;
     background-color: var(--white);
+    border-radius: 10px;
+    margin: 0 0 25px 0;
+    padding: 20px;
+}
+
+.editProject .editForm {
     display: flex;
     flex-direction: column;
     gap: 35px;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 0 0 25px 0;
 }
 
 
@@ -47,9 +51,13 @@
 /* date */
 .editForm .date {
     flex-direction: row;
+    justify-content: flex-start;
+    overflow-y: scroll;
 }
 
 .editForm .date>div {
+    width: 50%;
+    min-width: 250px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -102,7 +110,7 @@
 }
 
 /* save button */
-.editForm>button {
+.editProject>button {
     width: fit-content;
     background-color: var(--main-clr);
     color: var(--white);
@@ -113,12 +121,32 @@
     cursor: pointer;
     transition: .25s;
     padding: 10px 20px;
+    margin: 20px 0;
 }
 
-.editForm>button:hover {
+.editProject>button:hover {
     background-color: transparent;
     border-color: var(--main-clr);
     color: var(--main-clr);
+}
+
+/* Links */
+.editProject .links {
+    display: flex;
+    gap: 5px;
+}
+
+.editProject .links a {
+    color: var(--main-clr);
+}
+
+.editProject .links a:hover {
+    text-decoration: 2px underline;
+}
+
+.editProject .links p {
+    width: 3px;
+    background-color: var(--black);
 }
 
 

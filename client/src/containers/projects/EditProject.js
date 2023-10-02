@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 // packages
 import ReactQuill from "react-quill";
 import Calendar from "react-calendar";
@@ -56,7 +57,7 @@ const EditProject = () => {
   //   **************************
   //   **************************
   return (
-    !!project && (
+    project && (
       <section className="editProject">
         <HomeBtn name="Edit" />
 
@@ -118,10 +119,20 @@ const EditProject = () => {
           <div>
             <label htmlFor="manager">Project Manager</label>
 
-            <DropDown initialValue={project.managedBy.name} data={managers} />
+            {project.managedBy && (
+              <DropDown initialValue={project.managedBy.name} data={managers} />
+            )}
           </div>
+        </div>
 
-          <button type="button">Save Changes</button>
+        <button type="button">Save Changes</button>
+
+        <div className="links">
+          <Link to="/projects/all-projects">Return to All Projects</Link>
+          <p>|</p>
+          <Link to={`/projects/project-details/${projectId}`}>
+            Return to Details
+          </Link>
         </div>
       </section>
     )
