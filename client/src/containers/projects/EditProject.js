@@ -55,17 +55,27 @@ const EditProject = () => {
 
           <div className="note-editor">
             <label htmlFor="description">Project Description</label>
+
             <ReactQuill
               modules={modules}
               theme="snow"
               style={{ height: "200px" }}
               placeholder="Your project description..."
+              value={project.description}
+              onChange={(value) =>
+                setProject({ ...project, description: value })
+              }
             />
           </div>
 
-          <div>
-            <div className="startDate"></div>
-            <div className="endDate"></div>
+          <div className="date">
+            <div>
+              <label htmlFor="startDate">Start Date</label>
+            </div>
+
+            <div>
+              <label htmlFor="endDate">End Date</label>
+            </div>
           </div>
 
           <div>
