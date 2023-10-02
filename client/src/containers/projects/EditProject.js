@@ -95,14 +95,28 @@ const EditProject = () => {
             <div>
               <label htmlFor="startDate">Start Date</label>
               <div className="calendar">
-                <Calendar />
+                {project.startDate && (
+                  <Calendar
+                    defaultValue={new Date(project.startDate)}
+                    onChange={(value) =>
+                      setProject({ ...project, startDate: value })
+                    }
+                  />
+                )}
               </div>
             </div>
 
             <div>
               <label htmlFor="endDate">End Date</label>
               <div className="calendar">
-                <Calendar />
+                {project.endDate && (
+                  <Calendar
+                    defaultValue={new Date(project.endDate)}
+                    onChange={(value) =>
+                      setProject({ ...project, endDate: value })
+                    }
+                  />
+                )}
               </div>
             </div>
           </div>
