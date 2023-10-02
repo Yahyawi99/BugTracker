@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
+// packages
 import ReactQuill from "react-quill";
+import Calendar from "react-calendar";
+// hooks
 import useProjects from "../../hooks/useProjects";
 // compenents
 import HomeBtn from "../../components/shared/HomeBtn";
@@ -7,6 +10,7 @@ import HomeBtn from "../../components/shared/HomeBtn";
 import "../../styles/containers/projects/edit-project.css";
 import "react-quill/dist/quill.snow.css";
 import { useParams } from "react-router-dom";
+import "react-calendar/dist/Calendar.css";
 
 const modules = {
   toolbar: [
@@ -34,6 +38,8 @@ const EditProject = () => {
     setProject(singleProject.project);
   }, [singleProject]);
 
+  //   **************************
+  //   **************************
   return (
     !!project && (
       <section className="editProject">
@@ -56,25 +62,32 @@ const EditProject = () => {
           <div className="note-editor">
             <label htmlFor="description">Project Description</label>
 
-            <ReactQuill
-              modules={modules}
-              theme="snow"
-              style={{ height: "200px" }}
-              placeholder="Your project description..."
-              value={project.description}
-              onChange={(value) =>
-                setProject({ ...project, description: value })
-              }
-            />
+            <div className="quill-editor">
+              <ReactQuill
+                modules={modules}
+                theme="snow"
+                placeholder="Your project description..."
+                value={project.description}
+                onChange={(value) =>
+                  setProject({ ...project, description: value })
+                }
+              />
+            </div>
           </div>
 
           <div className="date">
             <div>
               <label htmlFor="startDate">Start Date</label>
+              <div className="calender">
+                <Calendar />
+              </div>
             </div>
 
             <div>
               <label htmlFor="endDate">End Date</label>
+              <div className="calender">
+                <Calendar />
+              </div>
             </div>
           </div>
 

@@ -20,6 +20,8 @@
     font-weight: 600;
 }
 
+
+/* name */
 .editForm input {
     width: 100%;
     height: 40px;
@@ -33,4 +35,14 @@
 .editForm input::placeholder {
     color: var(--gray);
     opacity: .25;
+}
+
+/* note-editor */
+.editForm .quill-editor>div>div:nth-child(2) {
+    min-height: 200px;
+}
+
+/* date */
+.editForm .date {
+    flex-direction: row;
 }
