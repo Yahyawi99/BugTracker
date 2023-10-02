@@ -46,3 +46,7 @@
 .editForm .date {
     flex-direction: row;
 }
+
+.editForm .react-calendar {
+    min-height: 308px;
+}

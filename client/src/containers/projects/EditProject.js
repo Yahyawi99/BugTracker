@@ -78,14 +78,14 @@ const EditProject = () => {
           <div className="date">
             <div>
               <label htmlFor="startDate">Start Date</label>
-              <div className="calender">
+              <div className="calendar">
                 <Calendar />
               </div>
             </div>
 
             <div>
               <label htmlFor="endDate">End Date</label>
-              <div className="calender">
+              <div className="calendar">
                 <Calendar />
               </div>
             </div>
@@ -93,6 +93,15 @@ const EditProject = () => {
 
           <div>
             <label htmlFor="priority">Choose a priority</label>
+
+            <div className="DropDownContainer">
+              <p className="drpDownValue">{""}</p>
+              <div className="dropDown">
+                {["high", "medium", "low", "urgent"].map((value, i) => (
+                  <p key={i}>{value}</p>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div>
