@@ -4,6 +4,7 @@ import ReactQuill from "react-quill";
 import Calendar from "react-calendar";
 // hooks
 import useProjects from "../../hooks/useProjects";
+import useUsers from "../../hooks/useUsers";
 // compenents
 import HomeBtn from "../../components/shared/HomeBtn";
 // css
@@ -25,19 +26,32 @@ const modules = {
 };
 
 const EditProject = () => {
-  const { getSingleProject, singleProject } = useProjects();
   const { projectId } = useParams();
 
+  const { getSingleProject, singleProject } = useProjects();
+  const { getAllUsers, allUsers } = useUsers();
+
   const [project, setProject] = useState({});
-  const [users, setUsers] = useState({});
+  const [managers, setManagers] = useState([""]);
 
   useEffect(() => {
     getSingleProject(projectId);
+    getAllUsers();
   }, []);
 
   useEffect(() => {
     setProject(singleProject.project);
   }, [singleProject]);
+
+  useEffect(() => {
+    if (allUsers.users) {
+      setManagers((prev) =>
+        allUsers.users
+          .filter((user) => user.role == "PM")
+          .map((manager) => manager.name)
+      );
+    }
+  }, [allUsers]);
 
   //   **************************
   //   **************************
@@ -95,13 +109,31 @@ const EditProject = () => {
           <div>
             <label htmlFor="priority">Choose a priority</label>
 
-            <DropDown data={["high", "medium", "low", "urgent"]} />
+            <DropDown
+              data={[
+                "high",
+                "medium",
+                "low",
+                "urgent",
+                "medium",
+                "low",
+                "urgent",
+                ,
+                "medium",
+                "low",
+                "urgent",
+                ,
+                "medium",
+                "low",
+                "urgent",
+              ]}
+            />
           </div>
 
           <div>
             <label htmlFor="manager">Project Manager</label>
 
-            <DropDown data={["high", "medium", "low", "urgent"]} />
+            <DropDown data={managers} />
           </div>
 
           <button type="button">Save Changes</button>
