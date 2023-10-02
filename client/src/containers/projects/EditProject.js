@@ -29,7 +29,7 @@ const EditProject = () => {
   const { projectId } = useParams();
 
   const [project, setProject] = useState({});
-  const [dropDown, setDropDown] = useState(false);
+  const [users, setUsers] = useState({});
 
   useEffect(() => {
     getSingleProject(projectId);
@@ -95,21 +95,13 @@ const EditProject = () => {
           <div>
             <label htmlFor="priority">Choose a priority</label>
 
-            <DropDown
-              setDropDown={setDropDown}
-              dropDown={dropDown}
-              data={["high", "medium", "low", "urgent"]}
-            />
+            <DropDown data={["high", "medium", "low", "urgent"]} />
           </div>
 
           <div>
             <label htmlFor="manager">Project Manager</label>
 
-            <DropDown
-              setDropDown={setDropDown}
-              dropDown={dropDown}
-              data={["high", "medium", "low", "urgent"]}
-            />
+            <DropDown data={["high", "medium", "low", "urgent"]} />
           </div>
 
           <button type="button">Save Changes</button>
@@ -119,7 +111,9 @@ const EditProject = () => {
   );
 };
 
-const DropDown = ({ setDropDown, dropDown, data }) => {
+const DropDown = ({ data }) => {
+  const [dropDown, setDropDown] = useState(false);
+
   return (
     <div className="DropDownContainer">
       <p className="dropDownValue" onClick={() => setDropDown(!dropDown)}>
