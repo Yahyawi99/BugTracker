@@ -1,4 +1,6 @@
 import React from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 // compenents
 import HomeBtn from "../../components/shared/HomeBtn";
 // css
@@ -17,6 +19,7 @@ const EditProject = () => {
 
         <div>
           <label htmlFor="description">Project Description</label>
+          <ReactQuill theme="snow" />
         </div>
 
         <div>
