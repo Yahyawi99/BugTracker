@@ -125,11 +125,11 @@ const EditProject = () => {
             <label htmlFor="priority">Choose a priority</label>
 
             <DropDown
-              key={"priority"}
               initialValue={project.priority}
               data={["high", "medium", "low", "urgent"]}
               setProject={setProject}
               project={project}
+              type="priority"
             />
           </div>
 
@@ -138,11 +138,11 @@ const EditProject = () => {
 
             {project.managedBy && (
               <DropDown
-                key={"managedBy"}
                 initialValue={project.managedBy.name}
                 data={managers}
                 setProject={setProject}
                 project={project}
+                type="managedBy"
               />
             )}
           </div>
@@ -162,22 +162,25 @@ const EditProject = () => {
   );
 };
 
-const DropDown = ({ initialValue, data, key, setProject, project }) => {
+const DropDown = (props) => {
+  const { initialValue, data, type, setProject, project } = props;
   const [dropDown, setDropDown] = useState(false);
 
-  useEffect(() => {
-    if (key === "managedBy") {
+  const changeDropDownValue = (value) => {
+    if (type === "managedBy") {
       setProject({
         ...project,
-        managedBy: { ...project.managedBy, name: dropDown },
+        managedBy: { ...project.managedBy, name: value },
       });
     } else {
       setProject({
         ...project,
-        priority: dropDown,
+        priority: value,
       });
     }
-  }, [dropDown]);
+
+    setDropDown(false);
+  };
 
   return (
     <div className="DropDownContainer">
@@ -187,7 +190,9 @@ const DropDown = ({ initialValue, data, key, setProject, project }) => {
 
       <div className={`${dropDown && "showDropDown"} dropDown`}>
         {data.map((value, i) => (
-          <p key={i}>{value}</p>
+          <p key={i} onClick={() => changeDropDownValue(value)}>
+            {value}
+          </p>
         ))}
       </div>
     </div>
