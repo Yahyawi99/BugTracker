@@ -110,30 +110,15 @@ const EditProject = () => {
             <label htmlFor="priority">Choose a priority</label>
 
             <DropDown
-              data={[
-                "high",
-                "medium",
-                "low",
-                "urgent",
-                "medium",
-                "low",
-                "urgent",
-                ,
-                "medium",
-                "low",
-                "urgent",
-                ,
-                "medium",
-                "low",
-                "urgent",
-              ]}
+              initialValue={project.priority}
+              data={["high", "medium", "low", "urgent"]}
             />
           </div>
 
           <div>
             <label htmlFor="manager">Project Manager</label>
 
-            <DropDown data={managers} />
+            <DropDown initialValue={project.managedBy.name} data={managers} />
           </div>
 
           <button type="button">Save Changes</button>
@@ -143,13 +128,13 @@ const EditProject = () => {
   );
 };
 
-const DropDown = ({ data }) => {
+const DropDown = ({ initialValue, data }) => {
   const [dropDown, setDropDown] = useState(false);
 
   return (
     <div className="DropDownContainer">
       <p className="dropDownValue" onClick={() => setDropDown(!dropDown)}>
-        {"test"}
+        {initialValue}
       </p>
 
       <div className={`${dropDown && "showDropDown"} dropDown`}>

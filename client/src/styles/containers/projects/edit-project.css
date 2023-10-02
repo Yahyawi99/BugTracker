@@ -6,6 +6,7 @@
     gap: 35px;
     border-radius: 10px;
     padding: 20px;
+    margin: 0 0 25px 0;
 }
 
 
@@ -59,6 +60,10 @@
 }
 
 /* DRop downs */
+.editForm .DropDownContainer {
+    position: relative;
+}
+
 .editForm .DropDownContainer .dropDownValue {
     height: 45px;
     border: 2px solid var(--border-color);
@@ -78,10 +83,13 @@
     gap: 5px;
     font-size: 1.1rem;
     border-radius: 5px;
-    transition: .25s;
+    position: absolute;
+    top: Calc(100% + 5px);
     transform-origin: top;
     transform: scaleY(0);
+    transition: .25s;
     overflow-y: scroll;
+    z-index: 10;
     padding: 10px 20px;
 }
 
@@ -91,6 +99,26 @@
 
 .editForm .DropDownContainer .dropDown p:hover {
     text-decoration: 2px underline;
+}
+
+/* save button */
+.editForm>button {
+    width: fit-content;
+    background-color: var(--main-clr);
+    color: var(--white);
+    font-weight: 600;
+    font-size: .9rem;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 10px 20px;
+}
+
+.editForm>button:hover {
+    background-color: transparent;
+    border-color: var(--main-clr);
+    color: var(--main-clr);
 }
 
 
