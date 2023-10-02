@@ -29,6 +29,7 @@ const EditProject = () => {
   const { projectId } = useParams();
 
   const [project, setProject] = useState({});
+  const [dropDown, setDropDown] = useState(false);
 
   useEffect(() => {
     getSingleProject(projectId);
@@ -94,24 +95,43 @@ const EditProject = () => {
           <div>
             <label htmlFor="priority">Choose a priority</label>
 
-            <div className="DropDownContainer">
-              <p className="drpDownValue">{""}</p>
-              <div className="dropDown">
-                {["high", "medium", "low", "urgent"].map((value, i) => (
-                  <p key={i}>{value}</p>
-                ))}
-              </div>
-            </div>
+            <DropDown
+              setDropDown={setDropDown}
+              dropDown={dropDown}
+              data={["high", "medium", "low", "urgent"]}
+            />
           </div>
 
           <div>
             <label htmlFor="manager">Project Manager</label>
+
+            <DropDown
+              setDropDown={setDropDown}
+              dropDown={dropDown}
+              data={["high", "medium", "low", "urgent"]}
+            />
           </div>
 
           <button type="button">Save Changes</button>
         </div>
       </section>
     )
+  );
+};
+
+const DropDown = ({ setDropDown, dropDown, data }) => {
+  return (
+    <div className="DropDownContainer">
+      <p className="dropDownValue" onClick={() => setDropDown(!dropDown)}>
+        {"test"}
+      </p>
+
+      <div className={`${dropDown && "showDropDown"} dropDown`}>
+        {data.map((value, i) => (
+          <p key={i}>{value}</p>
+        ))}
+      </div>
+    </div>
   );
 };
 
