@@ -147,6 +147,7 @@
 .editProject .links p {
     width: 3px;
     background-color: var(--black);
+    margin: 0px 5px;
 }
 
 

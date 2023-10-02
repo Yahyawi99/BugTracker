@@ -53,11 +53,46 @@ const useProjects = () => {
       loading(false);
 
       const msg = error.response.data.msg;
+      // const msg = "Something went wrong please try again later!";
       await alertMe(msg + "!", "var(--danger)");
     }
   };
 
-  return { getAllProjects, allProjects, getSingleProject, singleProject };
+  // Edit project
+  const editProject = async (projectId) => {
+    if (!singleProject.project.description || !singleProject.project.name) {
+      await alertMe("All fields are required!" + "!", "var(--danger)");
+      return;
+    }
+
+    try {
+      loading(true);
+
+      const response = await axios.patch(
+        `/api/v1/project/${projectId}`,
+        singleProject.project
+      );
+
+      loading(false);
+
+      setSingleProject({ ...singleProject, project: response.data });
+
+      await alertMe("Done.", "var(--success)");
+    } catch (error) {
+      loading(false);
+
+      const msg = error.response.data.msg;
+      await alertMe(msg + "!", "var(--danger)");
+    }
+  };
+
+  return {
+    getAllProjects,
+    allProjects,
+    getSingleProject,
+    singleProject,
+    editProject,
+  };
 };
 
 export default useProjects;

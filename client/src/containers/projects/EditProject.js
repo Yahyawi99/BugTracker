@@ -29,7 +29,7 @@ const modules = {
 const EditProject = () => {
   const { projectId } = useParams();
 
-  const { getSingleProject, singleProject } = useProjects();
+  const { getSingleProject, singleProject, editProject } = useProjects();
   const { getAllUsers, allUsers } = useUsers();
 
   const [project, setProject] = useState({});
@@ -148,7 +148,9 @@ const EditProject = () => {
           </div>
         </div>
 
-        <button type="button">Save Changes</button>
+        <button type="button" onClick={() => editProject(projectId)}>
+          Save Changes
+        </button>
 
         <div className="links">
           <Link to="/projects/all-projects">Return to All Projects</Link>
