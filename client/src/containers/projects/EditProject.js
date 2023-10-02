@@ -125,8 +125,11 @@ const EditProject = () => {
             <label htmlFor="priority">Choose a priority</label>
 
             <DropDown
+              key={"priority"}
               initialValue={project.priority}
               data={["high", "medium", "low", "urgent"]}
+              setProject={setProject}
+              project={project}
             />
           </div>
 
@@ -134,7 +137,13 @@ const EditProject = () => {
             <label htmlFor="manager">Project Manager</label>
 
             {project.managedBy && (
-              <DropDown initialValue={project.managedBy.name} data={managers} />
+              <DropDown
+                key={"managedBy"}
+                initialValue={project.managedBy.name}
+                data={managers}
+                setProject={setProject}
+                project={project}
+              />
             )}
           </div>
         </div>
@@ -153,8 +162,22 @@ const EditProject = () => {
   );
 };
 
-const DropDown = ({ initialValue, data }) => {
+const DropDown = ({ initialValue, data, key, setProject, project }) => {
   const [dropDown, setDropDown] = useState(false);
+
+  useEffect(() => {
+    if (key === "managedBy") {
+      setProject({
+        ...project,
+        managedBy: { ...project.managedBy, name: dropDown },
+      });
+    } else {
+      setProject({
+        ...project,
+        priority: dropDown,
+      });
+    }
+  }, [dropDown]);
 
   return (
     <div className="DropDownContainer">
