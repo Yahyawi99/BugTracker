@@ -184,9 +184,7 @@ const createProject = async (req, res) => {
 const updateProject = async (req, res) => {
   const newProject = req.body;
 
-  console.log(req.body);
-
-  const project = await Project.findOne({ _id: req.body._id }).populate(
+  const project = await Project.findOneAndUpdate({ ...newProject }).populate(
     "managedBy"
   );
 
