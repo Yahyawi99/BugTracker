@@ -75,14 +75,16 @@ const useProjects = () => {
 
       loading(false);
 
-      setSingleProject({ ...singleProject, project: response.data.project });
-
       await alertMe("Done.", "var(--success)");
+
+      window.history.back();
+
+      // setSingleProject({ ...singleProject, project: response.data.project });
     } catch (error) {
       loading(false);
-
-      const msg = error.response.data.msg;
-      await alertMe(msg + "!", "var(--danger)");
+      console.log(error);
+      // const msg = error.response.data.msg;
+      await alertMe("msg" + "!", "var(--danger)");
     }
   };
 

@@ -50,6 +50,7 @@ const EditProject = () => {
     }
   }, [allUsers]);
 
+  // change state when drop down value clicked
   const changeDropDownValue = (type, value, setDropDown) => {
     if (type === "managedBy") {
       setProject({
