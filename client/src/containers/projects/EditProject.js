@@ -46,13 +46,11 @@ const EditProject = () => {
 
   useEffect(() => {
     if (allUsers.users) {
-      setManagers((prev) =>
-        allUsers.users
-          .filter((user) => user.role == "PM")
-          .map((manager) => manager.name)
-      );
+      setManagers((prev) => allUsers.users.filter((user) => user.role == "PM"));
     }
   }, [allUsers]);
+
+  console.log(project);
 
   //   **************************
   //   **************************
@@ -164,6 +162,7 @@ const EditProject = () => {
   );
 };
 
+// dropDown component
 const DropDown = (props) => {
   const { initialValue, data, type, setProject, project } = props;
   const [dropDown, setDropDown] = useState(false);
@@ -172,7 +171,7 @@ const DropDown = (props) => {
     if (type === "managedBy") {
       setProject({
         ...project,
-        managedBy: { ...project.managedBy, name: value },
+        managedBy: value,
       });
     } else {
       setProject({
@@ -193,7 +192,7 @@ const DropDown = (props) => {
       <div className={`${dropDown && "showDropDown"} dropDown`}>
         {data.map((value, i) => (
           <p key={i} onClick={() => changeDropDownValue(value)}>
-            {value}
+            {value.name}
           </p>
         ))}
       </div>
