@@ -79,7 +79,7 @@ const useProjects = () => {
 
       window.history.back();
 
-      // setSingleProject({ ...singleProject, project: response.data.project });
+      setSingleProject({ ...singleProject, project: response.data.project });
     } catch (error) {
       loading(false);
       console.log(error);
