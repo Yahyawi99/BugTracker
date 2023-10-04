@@ -113,11 +113,11 @@ const singleProject = async (req, res) => {
         break;
 
       case "Developer":
-        associatedTickets = associatedTickets.sort("-assignedTo.name");
+        associatedTickets = associatedTickets.sort("-assignedTo");
         break;
 
       case "-Developer":
-        associatedTickets = associatedTickets.sort("assignedTo.name");
+        associatedTickets = associatedTickets.sort("assignedTo");
         break;
 
       case "Status":

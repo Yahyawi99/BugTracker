@@ -33,6 +33,7 @@ const ProjectDetails = () => {
     getSingleProject(projectId);
   }, []);
 
+  // handle the undefined errors
   if (
     singleProject.hasOwnProperty("project") &&
     singleProject.hasOwnProperty("tickets")
@@ -79,7 +80,10 @@ const ProjectDetails = () => {
               </div>
 
               <div className="action">
-                <button>Edit Project</button>
+                <Link to={`/projects/edit-project/${projectId}`}>
+                  <button>Edit Project</button>
+                </Link>
+
                 <button>Archive Project</button>
               </div>
             </div>
