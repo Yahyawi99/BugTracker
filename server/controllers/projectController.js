@@ -183,10 +183,12 @@ const createProject = async (req, res) => {
 // update project
 const updateProject = async (req, res) => {
   const updates = req.body;
+  const { id } = req.params;
 
-  const project = await Project.findOneAndUpdate({ ...updates }).populate(
-    "managedBy"
-  );
+  const project = await Project.findOneAndUpdate(
+    { _id: id },
+    { ...updates }
+  ).populate("managedBy");
 
   res.status(StatusCodes.OK).json({ project });
 };

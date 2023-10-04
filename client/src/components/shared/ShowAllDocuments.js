@@ -19,7 +19,8 @@ import Labels from "./Labels";
 import "../../styles/components/shared/showAllDocuments.css";
 
 const ShowAllDocuments = (props) => {
-  const { sectionName, controller, labels, data, sortLabels } = props;
+  const { sectionName, controller, labels, data, sortLabels, editController } =
+    props;
   const { currentPage } = props.data;
 
   const [limit, setLimit] = useState(3);
@@ -69,7 +70,10 @@ const ShowAllDocuments = (props) => {
               {sectionName === "All Tickets" ? (
                 data && <Tickets tickets={data.tickets} />
               ) : (
-                <Projects projects={data.projects} />
+                <Projects
+                  projects={data.projects}
+                  editController={editController}
+                />
               )}
 
               <Pagination
@@ -86,7 +90,7 @@ const ShowAllDocuments = (props) => {
 };
 
 // *******************
-const Projects = ({ projects }) => {
+const Projects = ({ projects, editController }) => {
   return (
     projects && (
       <div>
@@ -165,7 +169,14 @@ const Projects = ({ projects }) => {
                   </button>
                 </Link>
 
-                <button className="archive">
+                <button
+                  onClick={() => {
+                    editController(_id, { isArchived: true });
+
+                    window.location.reload();
+                  }}
+                  className="archive"
+                >
                   <FontAwesomeIcon icon={faBoxArchive} />
                 </button>
               </div>
