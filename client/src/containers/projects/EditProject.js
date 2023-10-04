@@ -46,11 +46,25 @@ const EditProject = () => {
 
   useEffect(() => {
     if (allUsers.users) {
-      setManagers((prev) => allUsers.users.filter((user) => user.role == "PM"));
+      setManagers(() => allUsers.users.filter((user) => user.role == "PM"));
     }
   }, [allUsers]);
 
-  console.log(project);
+  const changeDropDownValue = (type, value, setDropDown) => {
+    if (type === "managedBy") {
+      setProject({
+        ...project,
+        managedBy: value,
+      });
+    } else {
+      setProject({
+        ...project,
+        priority: value,
+      });
+    }
+
+    setDropDown(false);
+  };
 
   //   **************************
   //   **************************
@@ -128,6 +142,7 @@ const EditProject = () => {
               setProject={setProject}
               project={project}
               type="priority"
+              changeDropDownValue={changeDropDownValue}
             />
           </div>
 
@@ -141,12 +156,13 @@ const EditProject = () => {
                 setProject={setProject}
                 project={project}
                 type="managedBy"
+                changeDropDownValue={changeDropDownValue}
               />
             )}
           </div>
         </div>
 
-        <button type="button" onClick={() => editProject(projectId)}>
+        <button type="button" onClick={() => editProject(projectId, project)}>
           Save Changes
         </button>
 
@@ -164,24 +180,9 @@ const EditProject = () => {
 
 // dropDown component
 const DropDown = (props) => {
-  const { initialValue, data, type, setProject, project } = props;
+  const { initialValue, data, changeDropDownValue } = props;
+
   const [dropDown, setDropDown] = useState(false);
-
-  const changeDropDownValue = (value) => {
-    if (type === "managedBy") {
-      setProject({
-        ...project,
-        managedBy: value,
-      });
-    } else {
-      setProject({
-        ...project,
-        priority: value,
-      });
-    }
-
-    setDropDown(false);
-  };
 
   return (
     <div className="DropDownContainer">
@@ -191,8 +192,15 @@ const DropDown = (props) => {
 
       <div className={`${dropDown && "showDropDown"} dropDown`}>
         {data.map((value, i) => (
-          <p key={i} onClick={() => changeDropDownValue(value)}>
-            {value.name}
+          <p
+            key={i}
+            onClick={() => {
+              value.name
+                ? changeDropDownValue("managedBy", value, setDropDown)
+                : changeDropDownValue("priority", value, setDropDown);
+            }}
+          >
+            {value.name || value}
           </p>
         ))}
       </div>

@@ -59,23 +59,25 @@ const useProjects = () => {
   };
 
   // Edit project
-  const editProject = async (projectId) => {
+  const editProject = async (projectId, newProject) => {
     if (!singleProject.project.description || !singleProject.project.name) {
       await alertMe("All fields are required!" + "!", "var(--danger)");
       return;
     }
+
+    console.log(newProject.managedBy);
 
     try {
       loading(true);
 
       const response = await axios.patch(
         `/api/v1/project/${projectId}`,
-        singleProject.project
+        newProject
       );
 
       loading(false);
 
-      setSingleProject({ ...singleProject, project: response.data });
+      setSingleProject({ ...singleProject, project: response.data.project });
 
       await alertMe("Done.", "var(--success)");
     } catch (error) {

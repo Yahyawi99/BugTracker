@@ -182,11 +182,15 @@ const createProject = async (req, res) => {
 
 // update project
 const updateProject = async (req, res) => {
-  const { name, description, startDate, endDate, priority, managedBy } =
-    req.body;
-  const project = await Project.findOne({ _id: req.body._id });
-  console.log(project.managedBy);
-  res.send(StatusCodes.OK).json({ project });
+  const newProject = req.body;
+
+  console.log(req.body);
+
+  const project = await Project.findOne({ _id: req.body._id }).populate(
+    "managedBy"
+  );
+
+  res.status(StatusCodes.OK).json({ project });
 };
 
 // delete project
