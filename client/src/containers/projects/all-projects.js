@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 // hooks
 import useProjects from "../../hooks/useProjects";
 // Components

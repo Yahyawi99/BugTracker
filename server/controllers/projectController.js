@@ -12,7 +12,7 @@ const allProjects = async (req, res) => {
   const limit = Number(req.query.limit) || 5;
   const skip = (page - 1) * limit;
 
-  let projects = Project.find({})
+  let projects = Project.find({ isArchived: false })
     .populate({
       path: "managedBy",
       select: "name avatar",
@@ -54,7 +54,7 @@ const allProjects = async (req, res) => {
   });
 
   // *************
-  const totalProjects = await Project.countDocuments();
+  const totalProjects = await Project.countDocuments({ isArchived: false });
   const numOfPages = Math.ceil(totalProjects / limit);
 
   const count = projects.length;
@@ -182,9 +182,9 @@ const createProject = async (req, res) => {
 
 // update project
 const updateProject = async (req, res) => {
-  const newProject = req.body;
+  const updates = req.body;
 
-  const project = await Project.findOneAndUpdate({ ...newProject }).populate(
+  const project = await Project.findOneAndUpdate({ ...updates }).populate(
     "managedBy"
   );
 
