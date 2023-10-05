@@ -165,3 +165,18 @@
 .getAllDocuments .project .btns button:hover {
     color: var(--white);
 }
+
+
+/* No documents */
+.getAllDocuments .noDocuments {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
+}
+
+.getAllDocuments .noDocuments p {
+    color: var(--gray);
+    font-size: 1.5rem;
+    font-weight: 600;
+}

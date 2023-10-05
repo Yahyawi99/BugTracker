@@ -97,154 +97,156 @@ const ShowAllDocuments = (props) => {
 
 // *******************
 const Projects = ({ projects, archiveController }) => {
-  return (
-    projects && (
-      <div>
-        {projects.map((project) => {
-          const { _id, name, startDate, endDate, status, managedBy, team } =
-            project;
+  return projects.length ? (
+    <div>
+      {projects.map((project) => {
+        const { _id, name, startDate, endDate, status, managedBy, team } =
+          project;
 
-          return (
-            <div key={_id} className="document project">
-              <div className="title">
-                <p>{name && name}</p>
-                <p>Created {formatDate(startDate)}</p>
-              </div>
-
-              <div className="endDate">
-                {endDate && <p> {formatDate(endDate)}</p>}
-              </div>
-
-              <div className="progress">
-                {endDate && startDate && (
-                  <>
-                    <div className="progressBar">
-                      <div
-                        style={{
-                          width: `${progress(startDate, endDate)}%`,
-                        }}
-                      ></div>
-                    </div>
-                    <p>
-                      {endDate && startDate && progress(startDate, endDate)}%
-                    </p>
-                  </>
-                )}
-              </div>
-
-              <div className="pm">
-                {managedBy ? (
-                  <>
-                    <img src={`${managedBy.avatar}`} alt="pm" />
-                    <p>{managedBy.name}</p>
-                  </>
-                ) : (
-                  <p
-                    style={{
-                      width: "100%",
-                      textAlign: "center",
-                    }}
-                  >
-                    Unassigned
-                  </p>
-                )}
-              </div>
-
-              <div className="team">
-                {team.length > 0 &&
-                  team.map((user) => {
-                    const { _id, avatar } = user;
-                    return <img key={_id} src={`${avatar}`} alt="user" />;
-                  })}
-              </div>
-
-              <div className="status">
-                <p className={`${status}`}>{status}</p>
-              </div>
-
-              <div className="btns">
-                <Link to={`/projects/project-details/${_id}`}>
-                  <button className="details">
-                    <FontAwesomeIcon icon={faEye} />
-                  </button>
-                </Link>
-
-                <Link to={`/projects/edit-project/${_id}`}>
-                  <button className="edit">
-                    <FontAwesomeIcon icon={faPencil} />
-                  </button>
-                </Link>
-
-                <button
-                  onClick={() => {
-                    archiveController(_id);
-
-                    window.location.reload();
-                  }}
-                  className="archive"
-                >
-                  <FontAwesomeIcon icon={faBoxArchive} />
-                </button>
-              </div>
+        return (
+          <div key={_id} className="document project">
+            <div className="title">
+              <p>{name && name}</p>
+              <p>Created {formatDate(startDate)}</p>
             </div>
-          );
-        })}
-      </div>
-    )
+
+            <div className="endDate">
+              {endDate && <p> {formatDate(endDate)}</p>}
+            </div>
+
+            <div className="progress">
+              {endDate && startDate && (
+                <>
+                  <div className="progressBar">
+                    <div
+                      style={{
+                        width: `${progress(startDate, endDate)}%`,
+                      }}
+                    ></div>
+                  </div>
+                  <p>{endDate && startDate && progress(startDate, endDate)}%</p>
+                </>
+              )}
+            </div>
+
+            <div className="pm">
+              {managedBy ? (
+                <>
+                  <img src={`${managedBy.avatar}`} alt="pm" />
+                  <p>{managedBy.name}</p>
+                </>
+              ) : (
+                <p
+                  style={{
+                    width: "100%",
+                    textAlign: "center",
+                  }}
+                >
+                  Unassigned
+                </p>
+              )}
+            </div>
+
+            <div className="team">
+              {team.length > 0 &&
+                team.map((user) => {
+                  const { _id, avatar } = user;
+                  return <img key={_id} src={`${avatar}`} alt="user" />;
+                })}
+            </div>
+
+            <div className="status">
+              <p className={`${status}`}>{status}</p>
+            </div>
+
+            <div className="btns">
+              <Link to={`/projects/project-details/${_id}`}>
+                <button className="details">
+                  <FontAwesomeIcon icon={faEye} />
+                </button>
+              </Link>
+
+              <Link to={`/projects/edit-project/${_id}`}>
+                <button className="edit">
+                  <FontAwesomeIcon icon={faPencil} />
+                </button>
+              </Link>
+
+              <button
+                onClick={() => {
+                  archiveController(_id);
+
+                  window.location.reload();
+                }}
+                className="archive"
+              >
+                <FontAwesomeIcon icon={faBoxArchive} />
+              </button>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  ) : (
+    <div className="noDocuments">
+      <p>No documents to show</p>
+    </div>
   );
 };
 
 const Tickets = ({ tickets }) => {
-  return (
-    tickets && (
-      <div>
-        {tickets.map((ticket) => {
-          const { _id, title, createdAt, status, priority } = ticket;
+  return tickets ? (
+    <div>
+      {tickets.map((ticket) => {
+        const { _id, title, createdAt, status, priority } = ticket;
 
-          return (
-            <div key={_id} className="document ticket">
-              <div className="assignedBy">
-                <p>Demo Admin</p>
-              </div>
-
-              <div className="assignedTo">
-                <p>Demo Developer</p>
-              </div>
-
-              <div className="title">
-                <p>{title}</p>
-              </div>
-
-              <div className="status">
-                <p className={`${status}`}>{status}</p>
-              </div>
-
-              <div className="priority">
-                <p className={`${priority}`}>{priority}</p>
-              </div>
-
-              <div className="date">
-                <p>{createdAt ? formatDate(createdAt) : ""}</p>
-              </div>
-
-              <div className="btns">
-                <button className="details">
-                  <FontAwesomeIcon icon={faEye} />
-                </button>
-
-                <button className="edit">
-                  <FontAwesomeIcon icon={faPencil} />
-                </button>
-
-                <button className="archive">
-                  <FontAwesomeIcon icon={faBoxArchive} />
-                </button>
-              </div>
+        return (
+          <div key={_id} className="document ticket">
+            <div className="assignedBy">
+              <p>Demo Admin</p>
             </div>
-          );
-        })}
-      </div>
-    )
+
+            <div className="assignedTo">
+              <p>Demo Developer</p>
+            </div>
+
+            <div className="title">
+              <p>{title}</p>
+            </div>
+
+            <div className="status">
+              <p className={`${status}`}>{status}</p>
+            </div>
+
+            <div className="priority">
+              <p className={`${priority}`}>{priority}</p>
+            </div>
+
+            <div className="date">
+              <p>{createdAt ? formatDate(createdAt) : ""}</p>
+            </div>
+
+            <div className="btns">
+              <button className="details">
+                <FontAwesomeIcon icon={faEye} />
+              </button>
+
+              <button className="edit">
+                <FontAwesomeIcon icon={faPencil} />
+              </button>
+
+              <button className="archive">
+                <FontAwesomeIcon icon={faBoxArchive} />
+              </button>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  ) : (
+    <div className="noDocuments">
+      <p>No documents to show</p>
+    </div>
   );
 };
 

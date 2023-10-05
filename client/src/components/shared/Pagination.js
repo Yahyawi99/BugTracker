@@ -13,7 +13,10 @@ const Pagination = (props) => {
     <div className="sectionFooter">
       <p className="count">
         {count} out of{" "}
-        {data.totalTickets || data.totalProjects || data.totalAssociatedTickets}{" "}
+        {data.totalTickets ||
+          data.totalProjects ||
+          data.totalAssociatedTickets ||
+          0}{" "}
         documents
       </p>
 
