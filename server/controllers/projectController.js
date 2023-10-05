@@ -207,11 +207,14 @@ const updateProject = async (req, res) => {
 
 // archive project
 const archiveProject = async (req, res) => {
+  const { isArchived } = req.body;
   const { id } = req.params;
+
+  console.log(isArchived);
 
   const project = await Project.findOne({ _id: id });
 
-  project.isArchived = true;
+  // project.isArchived = isArchived;
 
   await project.save();
 

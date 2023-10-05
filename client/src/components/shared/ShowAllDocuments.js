@@ -187,9 +187,9 @@ const Projects = ({ projects, archiveController }) => {
 
               <button
                 onClick={() => {
-                  archiveController(_id);
-
-                  window.location.reload();
+                  isArchived
+                    ? archiveController(_id, false)
+                    : archiveController(_id, true);
                 }}
                 className={`${isArchived ? "unarchive" : "archive"}`}
               >

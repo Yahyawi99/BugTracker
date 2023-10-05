@@ -109,11 +109,13 @@ const useProjects = () => {
   };
 
   // // Archive project
-  const archiveProject = async (projectId) => {
+  const archiveProject = async (projectId, isArchived) => {
     try {
       loading(true);
 
-      await axios.patch(`/api/v1/project/archive/${projectId}`);
+      await axios.patch(`/api/v1/project/archive/${projectId}`, {
+        isArchived,
+      });
 
       loading(false);
 
