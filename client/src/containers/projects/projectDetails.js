@@ -22,7 +22,7 @@ import Pagination from "../../components/shared/Pagination";
 import "../../styles/containers/projects/project-details.css";
 
 const ProjectDetails = () => {
-  const { getSingleProject, singleProject } = useProjects();
+  const { getSingleProject, singleProject, archiveProject } = useProjects();
   const { projectId } = useParams();
 
   const [limit, setLimit] = useState(3);
@@ -84,7 +84,15 @@ const ProjectDetails = () => {
                   <button>Edit Project</button>
                 </Link>
 
-                <button>Archive Project</button>
+                <button
+                  onClick={() => {
+                    archiveProject(projectId);
+
+                    window.location.reload();
+                  }}
+                >
+                  Archive Project
+                </button>
               </div>
             </div>
 
