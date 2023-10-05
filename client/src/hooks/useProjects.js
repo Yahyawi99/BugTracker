@@ -66,14 +66,30 @@ const useProjects = () => {
 
   // Edit project
   const editProject = async (projectId, updates) => {
-    // if (!singleProject.project.name || !singleProject.project.name) {
-    //   await alertMe("All fields are required!" + "!", "var(--danger)");
-    // }
+    if (!singleProject.project.name || !singleProject.project.name) {
+      await alertMe("All fields are required!" + "!", "var(--danger)");
+    }
+
+    const {
+      name,
+      description,
+      startDate,
+      endDate,
+      priority,
+      managedBy: { _id: managedBy },
+    } = updates;
 
     try {
       loading(true);
 
-      const response = await axios.put(`/api/v1/project/${projectId}`, updates);
+      const response = await axios.patch(`/api/v1/project/${projectId}`, {
+        name,
+        description,
+        startDate,
+        endDate,
+        priority,
+        managedBy,
+      });
 
       loading(false);
 
@@ -84,8 +100,6 @@ const useProjects = () => {
       setSingleProject({ ...singleProject, project: response.data.project });
     } catch (error) {
       loading(false);
-
-      console.log(error);
 
       await alertMe(
         "something went wrong please try again!" + "!",

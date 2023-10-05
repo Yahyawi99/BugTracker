@@ -19,7 +19,7 @@ router
 router
   .route("/:id")
   .get(authenticateUser, singleProject)
-  .put(authenticateUser, updateProject)
+  .patch(authenticateUser, updateProject)
   .delete(authenticateUser, deleteProject);
 
 module.exports = router;
