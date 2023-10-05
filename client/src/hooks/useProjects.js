@@ -8,12 +8,18 @@ const useProjects = () => {
   const [singleProject, setSingleProject] = useState({});
 
   //   get all projects
-  const getAllProjects = async (page, sortOption, limit, searchInput) => {
+  const getAllProjects = async (
+    page,
+    sortOption,
+    limit,
+    searchInput,
+    isArchived
+  ) => {
     try {
       loading(true);
 
       const response = await axios.get(
-        `/api/v1/project?page=${page}&limit=${limit}&sort=${sortOption}&search=${searchInput}`
+        `/api/v1/project?page=${page}&limit=${limit}&sort=${sortOption}&search=${searchInput}&isArchived=${isArchived}`
       );
 
       loading(false);
