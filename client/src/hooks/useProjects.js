@@ -60,11 +60,6 @@ const useProjects = () => {
 
   // Edit project
   const editProject = async (projectId, updates) => {
-    if (!singleProject.project.description || !singleProject.project.name) {
-      await alertMe("All fields are required!" + "!", "var(--danger)");
-      return;
-    }
-
     try {
       loading(true);
 
