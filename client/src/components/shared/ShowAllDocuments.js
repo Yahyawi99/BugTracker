@@ -6,6 +6,7 @@ import {
   faEye,
   faPencil,
   faBoxArchive,
+  faBoxOpen,
 } from "@fortawesome/free-solid-svg-icons";
 // utils
 import formatDate from "../../utils/formatDate";
@@ -104,8 +105,16 @@ const Projects = ({ projects, archiveController }) => {
   return projects && projects.length ? (
     <div>
       {projects.map((project) => {
-        const { _id, name, startDate, endDate, status, managedBy, team } =
-          project;
+        const {
+          _id,
+          name,
+          startDate,
+          endDate,
+          status,
+          managedBy,
+          team,
+          isArchived,
+        } = project;
 
         return (
           <div key={_id} className="document project">
@@ -182,9 +191,13 @@ const Projects = ({ projects, archiveController }) => {
 
                   window.location.reload();
                 }}
-                className="archive"
+                className={`${isArchived ? "unarchive" : "archive"}`}
               >
-                <FontAwesomeIcon icon={faBoxArchive} />
+                {isArchived ? (
+                  <FontAwesomeIcon icon={faBoxOpen} />
+                ) : (
+                  <FontAwesomeIcon icon={faBoxArchive} />
+                )}
               </button>
             </div>
           </div>

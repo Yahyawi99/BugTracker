@@ -162,6 +162,16 @@
     background-color: var(--danger);
 }
 
+
+.getAllDocuments .project .btns .unarchive {
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.getAllDocuments .project .btns .unarchive:hover {
+    background-color: var(--success);
+}
+
 .getAllDocuments .project .btns button:hover {
     color: var(--white);
 }
