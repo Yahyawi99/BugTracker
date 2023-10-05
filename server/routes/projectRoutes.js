@@ -9,12 +9,15 @@ const {
   createProject,
   updateProject,
   deleteProject,
+  archiveProject,
 } = require("../controllers/projectController");
 
 router
   .route("/")
   .get(authenticateUser, allProjects)
   .post(authenticateUser, createProject);
+
+router.route("/archive/:id").patch(archiveProject);
 
 router
   .route("/:id")

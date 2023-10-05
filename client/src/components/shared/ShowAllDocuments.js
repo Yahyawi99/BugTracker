@@ -19,8 +19,14 @@ import Labels from "./Labels";
 import "../../styles/components/shared/showAllDocuments.css";
 
 const ShowAllDocuments = (props) => {
-  const { sectionName, controller, labels, data, sortLabels, editController } =
-    props;
+  const {
+    sectionName,
+    controller,
+    labels,
+    data,
+    sortLabels,
+    archiveController,
+  } = props;
   const { currentPage } = props.data;
 
   const [limit, setLimit] = useState(3);
@@ -72,7 +78,7 @@ const ShowAllDocuments = (props) => {
               ) : (
                 <Projects
                   projects={data.projects}
-                  editController={editController}
+                  archiveController={archiveController}
                 />
               )}
 
@@ -90,7 +96,7 @@ const ShowAllDocuments = (props) => {
 };
 
 // *******************
-const Projects = ({ projects, editController }) => {
+const Projects = ({ projects, archiveController }) => {
   return (
     projects && (
       <div>
@@ -171,7 +177,7 @@ const Projects = ({ projects, editController }) => {
 
                 <button
                   onClick={() => {
-                    editController(_id, { isArchived: true });
+                    archiveController(_id);
 
                     window.location.reload();
                   }}

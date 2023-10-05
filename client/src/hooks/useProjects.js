@@ -109,26 +109,26 @@ const useProjects = () => {
   };
 
   // // Archive project
-  // const archiveProject = async (projectId) => {
-  //   try {
-  //     loading(true);
+  const archiveProject = async (projectId) => {
+    try {
+      loading(true);
 
-  //     await axios.patch(`/api/v1/project/archive/${projectId}`);
+      await axios.patch(`/api/v1/project/archive/${projectId}`);
 
-  //     loading(false);
+      loading(false);
 
-  //     await alertMe("Done.", "var(--success)");
+      await alertMe("Done.", "var(--success)");
 
-  //     window.location.reload();
-  //   } catch (error) {
-  //     loading(false);
+      window.location.reload();
+    } catch (error) {
+      loading(false);
 
-  //     await alertMe(
-  //       "something went wrong please try again!" + "!",
-  //       "var(--danger)"
-  //     );
-  //   }
-  // };
+      await alertMe(
+        "something went wrong please try again!" + "!",
+        "var(--danger)"
+      );
+    }
+  };
 
   return {
     getAllProjects,
@@ -136,6 +136,7 @@ const useProjects = () => {
     getSingleProject,
     singleProject,
     editProject,
+    archiveProject,
   };
 };
 

@@ -204,6 +204,19 @@ const updateProject = async (req, res) => {
   res.status(StatusCodes.OK).json({ project });
 };
 
+// archive project
+const archiveProject = async (req, res) => {
+  const { id } = req.params;
+
+  const project = await Project.findOne({ _id: id });
+
+  project.isArchived = true;
+
+  await project.save();
+
+  res.status(StatusCodes.OK).json({ project });
+};
+
 // delete project
 const deleteProject = async (req, res) => {
   res.send("delete");
@@ -215,4 +228,5 @@ module.exports = {
   createProject,
   updateProject,
   deleteProject,
+  archiveProject,
 };
