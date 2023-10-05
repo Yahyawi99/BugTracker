@@ -7,14 +7,12 @@ const CustomErros = require("../errors");
 const allProjects = async (req, res) => {
   const { sort, search, isArchived } = req.query;
 
-  // isArchived
-
   // pagination
   const page = Number(req.query.page) || 1;
   const limit = Number(req.query.limit) || 5;
   const skip = (page - 1) * limit;
 
-  let projects = Project.find({ isArchived: Boolean(isArchived) })
+  let projects = Project.find({ isArchived: false })
     .populate({
       path: "managedBy",
       select: "name avatar",
@@ -57,13 +55,11 @@ const allProjects = async (req, res) => {
 
   // *************
   const totalProjects = await Project.countDocuments({
-    isArchived: Boolean(isArchived),
+    isArchived: false,
   });
   const numOfPages = Math.ceil(totalProjects / limit);
 
   const count = projects.length;
-
-  console.log(totalProjects);
 
   res
     .status(StatusCodes.OK)

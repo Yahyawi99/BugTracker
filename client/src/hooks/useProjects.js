@@ -66,13 +66,14 @@ const useProjects = () => {
 
   // Edit project
   const editProject = async (projectId, updates) => {
+    // if (!singleProject.project.name || !singleProject.project.name) {
+    //   await alertMe("All fields are required!" + "!", "var(--danger)");
+    // }
+
     try {
       loading(true);
 
-      const response = await axios.patch(
-        `/api/v1/project/${projectId}`,
-        updates
-      );
+      const response = await axios.put(`/api/v1/project/${projectId}`, updates);
 
       loading(false);
 
@@ -83,11 +84,37 @@ const useProjects = () => {
       setSingleProject({ ...singleProject, project: response.data.project });
     } catch (error) {
       loading(false);
+
       console.log(error);
-      // const msg = error.response.data.msg;
-      await alertMe("msg" + "!", "var(--danger)");
+
+      await alertMe(
+        "something went wrong please try again!" + "!",
+        "var(--danger)"
+      );
     }
   };
+
+  // // Archive project
+  // const archiveProject = async (projectId) => {
+  //   try {
+  //     loading(true);
+
+  //     await axios.patch(`/api/v1/project/archive/${projectId}`);
+
+  //     loading(false);
+
+  //     await alertMe("Done.", "var(--success)");
+
+  //     window.location.reload();
+  //   } catch (error) {
+  //     loading(false);
+
+  //     await alertMe(
+  //       "something went wrong please try again!" + "!",
+  //       "var(--danger)"
+  //     );
+  //   }
+  // };
 
   return {
     getAllProjects,

@@ -9,7 +9,7 @@ import {
 import "../../styles/components/shared/limiAndSearch.css";
 
 const LimitAndSearch = (props) => {
-  const { controller, currentPage, projectId, isArchived } = props;
+  const { controller, currentPage, projectId } = props;
   const {
     limit,
     setLimit,
@@ -31,7 +31,7 @@ const LimitAndSearch = (props) => {
     if (projectId) {
       controller(projectId, currentPage, "", limit, searchInput);
     } else {
-      controller(currentPage, "", limit, searchInput, isArchived);
+      controller(currentPage, "", limit, searchInput);
     }
   }, [limit]);
 
@@ -40,7 +40,7 @@ const LimitAndSearch = (props) => {
     if (projectId) {
       controller(projectId, 1, "", limit, searchInput);
     } else {
-      controller(1, "", limit, searchInput, isArchived);
+      controller(1, "", limit, searchInput);
     }
   };
 
