@@ -2,6 +2,7 @@ const { StatusCodes } = require("http-status-codes");
 const Project = require("../model/Project");
 const Ticket = require("../model/Ticket");
 const CustomErros = require("../errors");
+const { default: isBoolean } = require("validator/lib/isBoolean");
 
 // get all projects
 const allProjects = async (req, res) => {
@@ -12,9 +13,7 @@ const allProjects = async (req, res) => {
   const limit = Number(req.query.limit) || 5;
   const skip = (page - 1) * limit;
 
-  console.log(await Project.find({ isArchived: Boolean(isArchived) }));
-
-  let projects = Project.find({ isArchived: false })
+  let projects = Project.find({ isArchived: isBoolean(isArchived) })
     .populate({
       path: "managedBy",
       select: "name avatar",
@@ -57,7 +56,7 @@ const allProjects = async (req, res) => {
 
   // *************
   const totalProjects = await Project.countDocuments({
-    isArchived: false,
+    isArchived: isBoolean(isArchived),
   });
   const numOfPages = Math.ceil(totalProjects / limit);
 

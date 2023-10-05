@@ -26,6 +26,7 @@ const ShowAllDocuments = (props) => {
     data,
     sortLabels,
     archiveController,
+    isArchived,
   } = props;
   const { currentPage } = props.data;
 
@@ -34,7 +35,7 @@ const ShowAllDocuments = (props) => {
   const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
-    controller(1, "", limit, searchInput);
+    controller(1, "", limit, searchInput, isArchived);
   }, []);
 
   return (
@@ -62,6 +63,7 @@ const ShowAllDocuments = (props) => {
                   searchInput,
                   setSearchInput,
                 }}
+                isArchived={isArchived}
               />
 
               <Labels
@@ -70,6 +72,7 @@ const ShowAllDocuments = (props) => {
                 controller={controller}
                 data={data}
                 states={{ limit, searchInput }}
+                isArchived={isArchived}
               />
 
               {/* Data */}
@@ -86,6 +89,7 @@ const ShowAllDocuments = (props) => {
                 controller={controller}
                 states={{ limit, searchInput }}
                 data={data}
+                isArchived={isArchived}
               />
             </div>
           </div>

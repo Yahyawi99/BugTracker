@@ -25,7 +25,6 @@ const AllProjects = () => {
       ]}
       sortLabels={["Project", "End Date"]}
       data={allProjects}
-      isArchived={false}
     />
   );
 };
