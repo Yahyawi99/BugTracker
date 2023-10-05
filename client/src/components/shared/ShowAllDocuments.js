@@ -19,8 +19,15 @@ import Labels from "./Labels";
 import "../../styles/components/shared/showAllDocuments.css";
 
 const ShowAllDocuments = (props) => {
-  const { sectionName, controller, labels, data, sortLabels, editController } =
-    props;
+  const {
+    sectionName,
+    controller,
+    labels,
+    data,
+    sortLabels,
+    editController,
+    isArchived,
+  } = props;
   const { currentPage } = props.data;
 
   const [limit, setLimit] = useState(3);
@@ -28,7 +35,7 @@ const ShowAllDocuments = (props) => {
   const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
-    controller(1, "", limit, searchInput);
+    controller(1, "", limit, searchInput, isArchived);
   }, []);
 
   return (
@@ -56,6 +63,7 @@ const ShowAllDocuments = (props) => {
                   searchInput,
                   setSearchInput,
                 }}
+                isArchived={true}
               />
 
               <Labels
@@ -64,6 +72,7 @@ const ShowAllDocuments = (props) => {
                 controller={controller}
                 data={data}
                 states={{ limit, searchInput }}
+                isArchived={true}
               />
 
               {/* Data */}

@@ -3,7 +3,7 @@ import React from "react";
 import "../../styles/components/shared/pagination.css";
 
 const Pagination = (props) => {
-  const { data, controller, projectId } = props;
+  const { data, controller, projectId, isArchived } = props;
   const { count, numOfPages, currentPage } = props.data;
   const { limit, searchInput } = props.states;
 
@@ -33,7 +33,13 @@ const Pagination = (props) => {
                       searchInput
                     );
                   } else {
-                    controller(currentPage - 1, "", limit, searchInput);
+                    controller(
+                      currentPage - 1,
+                      "",
+                      limit,
+                      searchInput,
+                      isArchived
+                    );
                   }
                 }}
               >
@@ -50,7 +56,7 @@ const Pagination = (props) => {
                       if (projectId) {
                         controller(projectId, num, "", limit, searchInput);
                       } else {
-                        controller(num, "", limit, searchInput);
+                        controller(num, "", limit, searchInput, isArchived);
                       }
                     }}
                     className={`${currentPage === num && "viewedPage"}`}
@@ -74,7 +80,13 @@ const Pagination = (props) => {
                       searchInput
                     );
                   } else {
-                    controller(currentPage + 1, "", limit, searchInput);
+                    controller(
+                      currentPage + 1,
+                      "",
+                      limit,
+                      searchInput,
+                      isArchived
+                    );
                   }
                 }}
               >

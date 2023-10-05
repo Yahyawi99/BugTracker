@@ -3,7 +3,7 @@ import React from "react";
 import "../../styles/components/shared/labels.css";
 
 const Labels = (props) => {
-  const { labels, sortLabels, controller, data, projectId } = props;
+  const { labels, sortLabels, controller, data, projectId, isArchived } = props;
   const { searchInput, limit } = props.states;
 
   // sort
@@ -22,7 +22,7 @@ const Labels = (props) => {
     if (projectId) {
       controller(projectId, data.currentPage, label, limit, searchInput);
     } else {
-      controller(data.currentPage, label, limit, searchInput);
+      controller(data.currentPage, label, limit, searchInput, isArchived);
     }
   };
 
