@@ -12,6 +12,8 @@ const allProjects = async (req, res) => {
   const limit = Number(req.query.limit) || 5;
   const skip = (page - 1) * limit;
 
+  console.log(await Project.find({ isArchived: Boolean(isArchived) }));
+
   let projects = Project.find({ isArchived: false })
     .populate({
       path: "managedBy",

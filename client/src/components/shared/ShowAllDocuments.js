@@ -97,7 +97,7 @@ const ShowAllDocuments = (props) => {
 
 // *******************
 const Projects = ({ projects, archiveController }) => {
-  return projects.length ? (
+  return projects && projects.length ? (
     <div>
       {projects.map((project) => {
         const { _id, name, startDate, endDate, status, managedBy, team } =
@@ -195,7 +195,7 @@ const Projects = ({ projects, archiveController }) => {
 };
 
 const Tickets = ({ tickets }) => {
-  return tickets ? (
+  return tickets && tickets.length ? (
     <div>
       {tickets.map((ticket) => {
         const { _id, title, createdAt, status, priority } = ticket;
