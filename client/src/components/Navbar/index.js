@@ -123,7 +123,9 @@ const NavBar = () => {
 
                 <span>
                   <FontAwesomeIcon icon={faStarOfLife} />
-                  <p> Add Projects</p>
+                  <Link to="/projects/create-project">
+                    <p> Add Projects</p>
+                  </Link>
                 </span>
 
                 <span>
