@@ -9,7 +9,7 @@ const progress = (startDate, endDate) => {
   }
 
   const totalDuration = endDateMs - startDateMs;
-  const elapsedTime = currentTime - startDateMs;
+  const elapsedTime = Math.abs(currentTime - startDateMs);
 
   return Math.floor((elapsedTime / totalDuration) * 100) < 0
     ? 0

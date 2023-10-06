@@ -197,7 +197,7 @@ const createProject = async (req, res) => {
     data.managedBy = managedBy._id;
   }
 
-  // await Project.create(data);
+  await Project.create(data);
 
   res.status(StatusCodes.CREATED).json({ msg: "Project Created" });
 };
