@@ -9,7 +9,7 @@ import useUsers from "../../hooks/useUsers";
 // compenents
 import HomeBtn from "../../components/shared/HomeBtn";
 // css
-import "../../styles/containers/projects/edit-project.css";
+import "../../styles/containers/projects/edit-create-project.css";
 import "react-quill/dist/quill.snow.css";
 import { useParams } from "react-router-dom";
 import "react-calendar/dist/Calendar.css";
@@ -183,7 +183,7 @@ const EditProject = () => {
 
 // dropDown component
 const DropDown = (props) => {
-  const { initialValue, data, changeDropDownValue } = props;
+  const { initialValue, data, changeDropDownValue, type } = props;
 
   const [dropDown, setDropDown] = useState(false);
 
@@ -198,9 +198,7 @@ const DropDown = (props) => {
           <p
             key={i}
             onClick={() => {
-              value.name
-                ? changeDropDownValue("managedBy", value, setDropDown)
-                : changeDropDownValue("priority", value, setDropDown);
+              changeDropDownValue(type, value, setDropDown);
             }}
           >
             {value.name || value}

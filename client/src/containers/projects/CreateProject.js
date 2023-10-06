@@ -8,7 +8,7 @@ import useUsers from "../../hooks/useUsers";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
 // css
-import "../../styles/containers/projects/create-project.css";
+import "../../styles/containers/projects/edit-create-project.css";
 
 const modules = {
   toolbar: [
@@ -152,14 +152,6 @@ const CreateProject = () => {
         </div>
 
         <button type="button">Create Project</button>
-
-        {/* <div className="links">
-        <Link to="/projects/all-projects">Return to All Projects</Link>
-        <p>|</p>
-        <Link to={`/projects/project-details/${projectId}`}>
-          Return to Details
-        </Link>
-      </div> */}
       </section>
     </>
   );
