@@ -87,14 +87,24 @@
     background-color: var(--orange);
 }
 
-.details .row-one .action button:nth-child(2) {
+.details .row-one .action .archive {
     border-color: var(--danger);
     color: var(--danger);
 }
 
-.details .row-one .action button:nth-child(2):hover {
+.details .row-one .action .archive:hover {
     color: var(--white);
     background-color: var(--danger);
+}
+
+.details .row-one .action .unarchive {
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.details .row-one .action .unarchive:hover {
+    color: var(--white);
+    background-color: var(--success);
 }
 
 /* row-two */

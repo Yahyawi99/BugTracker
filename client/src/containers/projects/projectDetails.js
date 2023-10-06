@@ -84,15 +84,25 @@ const ProjectDetails = () => {
                   <button>Edit Project</button>
                 </Link>
 
-                <button
-                  onClick={() => {
-                    archiveProject(projectId);
-
-                    window.location.reload();
-                  }}
-                >
-                  Archive Project
-                </button>
+                {singleProject.project.isArchived ? (
+                  <button
+                    onClick={() => {
+                      archiveProject(projectId, false);
+                    }}
+                    className="unarchive"
+                  >
+                    Unarchive Project
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      archiveProject(projectId, true);
+                    }}
+                    className="archive"
+                  >
+                    Archive Project
+                  </button>
+                )}
               </div>
             </div>
 
