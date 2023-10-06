@@ -26,8 +26,6 @@ const MainProvider = ({ children }) => {
       message: msgTxt,
       backClr: clr,
     });
-
-    await wait(1000);
   };
 
   // Loading

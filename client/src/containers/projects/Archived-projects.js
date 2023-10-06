@@ -11,7 +11,7 @@ const ArchivedProjects = () => {
 
   return (
     <ShowAllDocuments
-      sectionName="All Projects"
+      sectionName="Archived Projects"
       controller={getAllProjects}
       archiveController={archiveProject}
       labels={[
