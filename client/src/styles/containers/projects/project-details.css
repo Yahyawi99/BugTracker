@@ -181,6 +181,7 @@
     width: 75px;
     height: 75px;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .details .row-three .managerInfo p {
@@ -208,7 +209,14 @@
 .details .row-three .user img {
     width: 40px;
     height: 40px;
+    border: 2px solid transparent;
     border-radius: 50%;
+    transition: .25s;
+    cursor: pointer;
+}
+
+.details .row-three .user img:hover {
+    border-color: var(--main-clr);
 }
 
 .details .row-three .user {
