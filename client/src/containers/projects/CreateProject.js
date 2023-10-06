@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // packages
 import ReactQuill from "react-quill";
 import Calendar from "react-calendar";
 // hooks
-import useProjects from "../../hooks/useProjects";
+import useUsers from "../../hooks/useUsers";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
 // css
@@ -22,7 +22,10 @@ const modules = {
   ],
 };
 
+// *********************
 const CreateProject = () => {
+  const { getAllUsers, allUsers } = useUsers();
+
   const [newProject, setNewProject] = useState({
     name: "",
     description: "",
@@ -31,9 +34,22 @@ const CreateProject = () => {
     priority: "",
     managedBy: "",
   });
+  const [managers, setManagers] = useState([""]);
+
+  //   managers
+  useEffect(() => {
+    getAllUsers();
+  }, []);
+
+  useEffect(() => {
+    if (allUsers.users) {
+      setManagers(() => allUsers.users.filter((user) => user.role == "PM"));
+    }
+  }, [allUsers]);
 
   // change state when drop down value clicked
   const changeDropDownValue = (type, value, setDropDown) => {
+    console.log(type);
     if (type === "managedBy") {
       setNewProject({
         ...newProject,
@@ -88,7 +104,9 @@ const CreateProject = () => {
             <label htmlFor="startDate">Start Date</label>
             <div className="calendar">
               <Calendar
-                defaultValue={new Date(newProject.startDate)}
+                defaultValue={
+                  newProject.startDate && new Date(newProject.startDate)
+                }
                 onChange={(value) =>
                   setNewProject({ ...newProject, startDate: value })
                 }
@@ -100,7 +118,9 @@ const CreateProject = () => {
             <label htmlFor="endDate">End Date</label>
             <div className="calendar">
               <Calendar
-                defaultValue={new Date(newProject.endDate)}
+                defaultValue={
+                  newProject.endDate && new Date(newProject.endDate)
+                }
                 onChange={(value) =>
                   setNewProject({ ...newProject, endDate: value })
                 }
@@ -127,7 +147,7 @@ const CreateProject = () => {
 
           <DropDown
             initialValue={"___"}
-            // data={managers}
+            data={managers}
             setProject={setNewProject}
             project={newProject}
             type="managedBy"
@@ -151,7 +171,7 @@ const CreateProject = () => {
 
 // dropDown component
 const DropDown = (props) => {
-  const { initialValue, data, changeDropDownValue } = props;
+  const { initialValue, data, changeDropDownValue, type } = props;
 
   const [dropDown, setDropDown] = useState(false);
 
@@ -165,11 +185,7 @@ const DropDown = (props) => {
         {data.map((value, i) => (
           <p
             key={i}
-            onClick={() => {
-              value.name
-                ? changeDropDownValue("managedBy", value, setDropDown)
-                : changeDropDownValue("priority", value, setDropDown);
-            }}
+            onClick={() => changeDropDownValue(type, value, setDropDown)}
           >
             {value.name || value}
           </p>
