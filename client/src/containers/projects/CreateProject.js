@@ -29,10 +29,10 @@ const CreateProject = () => {
   const [newProject, setNewProject] = useState({
     name: "",
     description: "",
-    startDate: "",
-    endDate: "",
-    priority: "",
-    managedBy: "",
+    startDate: new Date(),
+    endDate: new Date(),
+    priority: "___",
+    managedBy: "___",
   });
   const [managers, setManagers] = useState([""]);
 
@@ -49,11 +49,10 @@ const CreateProject = () => {
 
   // change state when drop down value clicked
   const changeDropDownValue = (type, value, setDropDown) => {
-    console.log(type);
     if (type === "managedBy") {
       setNewProject({
         ...newProject,
-        managedBy: value,
+        managedBy: value.name,
       });
     } else {
       setNewProject({
@@ -104,9 +103,7 @@ const CreateProject = () => {
             <label htmlFor="startDate">Start Date</label>
             <div className="calendar">
               <Calendar
-                defaultValue={
-                  newProject.startDate && new Date(newProject.startDate)
-                }
+                defaultValue={newProject.startDate}
                 onChange={(value) =>
                   setNewProject({ ...newProject, startDate: value })
                 }
@@ -118,9 +115,7 @@ const CreateProject = () => {
             <label htmlFor="endDate">End Date</label>
             <div className="calendar">
               <Calendar
-                defaultValue={
-                  newProject.endDate && new Date(newProject.endDate)
-                }
+                defaultValue={newProject.endDate}
                 onChange={(value) =>
                   setNewProject({ ...newProject, endDate: value })
                 }
@@ -133,7 +128,7 @@ const CreateProject = () => {
           <label htmlFor="priority">Choose a priority</label>
 
           <DropDown
-            initialValue={"___"}
+            initialValue={newProject.priority}
             data={["high", "medium", "low", "urgent"]}
             setProject={setNewProject}
             project={newProject}
@@ -146,7 +141,7 @@ const CreateProject = () => {
           <label htmlFor="manager">Project Manager</label>
 
           <DropDown
-            initialValue={"___"}
+            initialValue={newProject.managedBy}
             data={managers}
             setProject={setNewProject}
             project={newProject}
