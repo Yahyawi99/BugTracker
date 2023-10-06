@@ -65,102 +65,103 @@ const CreateProject = () => {
   };
 
   return (
-    <section className="editProject">
-      <HomeBtn name="Edit" />
-
-      <div className="editForm">
-        <div>
-          <label htmlFor="name">Project Name</label>
-          <input
-            type="text"
-            id="name"
-            placeholder="project name"
-            value={newProject.name}
-            onChange={(e) =>
-              setNewProject({ ...newProject, name: e.currentTarget.value })
-            }
-          />
-        </div>
-
-        <div className="note-editor">
-          <label htmlFor="description">Project Description</label>
-
-          <div className="quill-editor">
-            <ReactQuill
-              modules={modules}
-              theme="snow"
-              placeholder="Your project description..."
-              value={newProject.description}
-              onChange={(value) =>
-                setNewProject({ ...newProject, description: value })
+    <>
+      <HomeBtn name="Create" />
+      <section className="editProject">
+        <div className="editForm">
+          <div>
+            <label htmlFor="name">Project Name</label>
+            <input
+              type="text"
+              id="name"
+              placeholder="project name"
+              value={newProject.name}
+              onChange={(e) =>
+                setNewProject({ ...newProject, name: e.currentTarget.value })
               }
+            />
+          </div>
+
+          <div className="note-editor">
+            <label htmlFor="description">Project Description</label>
+
+            <div className="quill-editor">
+              <ReactQuill
+                modules={modules}
+                theme="snow"
+                placeholder="Your project description..."
+                value={newProject.description}
+                onChange={(value) =>
+                  setNewProject({ ...newProject, description: value })
+                }
+              />
+            </div>
+          </div>
+
+          <div className="date">
+            <div>
+              <label htmlFor="startDate">Start Date</label>
+              <div className="calendar">
+                <Calendar
+                  defaultValue={newProject.startDate}
+                  onChange={(value) =>
+                    setNewProject({ ...newProject, startDate: value })
+                  }
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="endDate">End Date</label>
+              <div className="calendar">
+                <Calendar
+                  defaultValue={newProject.endDate}
+                  onChange={(value) =>
+                    setNewProject({ ...newProject, endDate: value })
+                  }
+                />
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor="priority">Choose a priority</label>
+
+            <DropDown
+              initialValue={newProject.priority}
+              data={["high", "medium", "low", "urgent"]}
+              setProject={setNewProject}
+              project={newProject}
+              type="priority"
+              changeDropDownValue={changeDropDownValue}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="manager">Project Manager</label>
+
+            <DropDown
+              initialValue={newProject.managedBy}
+              data={managers}
+              setProject={setNewProject}
+              project={newProject}
+              type="managedBy"
+              changeDropDownValue={changeDropDownValue}
             />
           </div>
         </div>
 
-        <div className="date">
-          <div>
-            <label htmlFor="startDate">Start Date</label>
-            <div className="calendar">
-              <Calendar
-                defaultValue={newProject.startDate}
-                onChange={(value) =>
-                  setNewProject({ ...newProject, startDate: value })
-                }
-              />
-            </div>
-          </div>
+        <button type="button">Create Project</button>
 
-          <div>
-            <label htmlFor="endDate">End Date</label>
-            <div className="calendar">
-              <Calendar
-                defaultValue={newProject.endDate}
-                onChange={(value) =>
-                  setNewProject({ ...newProject, endDate: value })
-                }
-              />
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <label htmlFor="priority">Choose a priority</label>
-
-          <DropDown
-            initialValue={newProject.priority}
-            data={["high", "medium", "low", "urgent"]}
-            setProject={setNewProject}
-            project={newProject}
-            type="priority"
-            changeDropDownValue={changeDropDownValue}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="manager">Project Manager</label>
-
-          <DropDown
-            initialValue={newProject.managedBy}
-            data={managers}
-            setProject={setNewProject}
-            project={newProject}
-            type="managedBy"
-            changeDropDownValue={changeDropDownValue}
-          />
-        </div>
-      </div>
-
-      <button type="button">Create Project</button>
-
-      {/* <div className="links">
+        {/* <div className="links">
         <Link to="/projects/all-projects">Return to All Projects</Link>
         <p>|</p>
         <Link to={`/projects/project-details/${projectId}`}>
           Return to Details
         </Link>
       </div> */}
-    </section>
+      </section>
+    </>
   );
 };
 

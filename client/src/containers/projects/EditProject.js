@@ -70,112 +70,114 @@ const EditProject = () => {
   //   **************************
   //   **************************
   return (
-    project && (
-      <section className="editProject">
-        <HomeBtn name="Edit" />
+    <>
+      <HomeBtn name="Edit" />
 
-        <div className="editForm">
-          <div>
-            <label htmlFor="name">Project Name</label>
-            <input
-              type="text"
-              id="name"
-              placeholder="project name"
-              value={project.name}
-              onChange={(e) =>
-                setProject({ ...project, name: e.currentTarget.value })
-              }
-            />
-          </div>
-
-          <div className="note-editor">
-            <label htmlFor="description">Project Description</label>
-
-            <div className="quill-editor">
-              <ReactQuill
-                modules={modules}
-                theme="snow"
-                placeholder="Your project description..."
-                value={project.description}
-                onChange={(value) =>
-                  setProject({ ...project, description: value })
+      {project && (
+        <section className="editProject">
+          <div className="editForm">
+            <div>
+              <label htmlFor="name">Project Name</label>
+              <input
+                type="text"
+                id="name"
+                placeholder="project name"
+                value={project.name}
+                onChange={(e) =>
+                  setProject({ ...project, name: e.currentTarget.value })
                 }
               />
             </div>
-          </div>
 
-          <div className="date">
-            <div>
-              <label htmlFor="startDate">Start Date</label>
-              <div className="calendar">
-                {project.startDate && (
-                  <Calendar
-                    defaultValue={new Date(project.startDate)}
-                    onChange={(value) =>
-                      setProject({ ...project, startDate: value })
-                    }
-                  />
-                )}
+            <div className="note-editor">
+              <label htmlFor="description">Project Description</label>
+
+              <div className="quill-editor">
+                <ReactQuill
+                  modules={modules}
+                  theme="snow"
+                  placeholder="Your project description..."
+                  value={project.description}
+                  onChange={(value) =>
+                    setProject({ ...project, description: value })
+                  }
+                />
+              </div>
+            </div>
+
+            <div className="date">
+              <div>
+                <label htmlFor="startDate">Start Date</label>
+                <div className="calendar">
+                  {project.startDate && (
+                    <Calendar
+                      defaultValue={new Date(project.startDate)}
+                      onChange={(value) =>
+                        setProject({ ...project, startDate: value })
+                      }
+                    />
+                  )}
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="endDate">End Date</label>
+                <div className="calendar">
+                  {project.endDate && (
+                    <Calendar
+                      defaultValue={new Date(project.endDate)}
+                      onChange={(value) =>
+                        setProject({ ...project, endDate: value })
+                      }
+                    />
+                  )}
+                </div>
               </div>
             </div>
 
             <div>
-              <label htmlFor="endDate">End Date</label>
-              <div className="calendar">
-                {project.endDate && (
-                  <Calendar
-                    defaultValue={new Date(project.endDate)}
-                    onChange={(value) =>
-                      setProject({ ...project, endDate: value })
-                    }
-                  />
-                )}
-              </div>
-            </div>
-          </div>
+              <label htmlFor="priority">Choose a priority</label>
 
-          <div>
-            <label htmlFor="priority">Choose a priority</label>
-
-            <DropDown
-              initialValue={project.priority}
-              data={["high", "medium", "low", "urgent"]}
-              setProject={setProject}
-              project={project}
-              type="priority"
-              changeDropDownValue={changeDropDownValue}
-            />
-          </div>
-
-          <div>
-            <label htmlFor="manager">Project Manager</label>
-
-            {project.managedBy && (
               <DropDown
-                initialValue={project.managedBy.name}
-                data={managers}
+                initialValue={project.priority}
+                data={["high", "medium", "low", "urgent"]}
                 setProject={setProject}
                 project={project}
-                type="managedBy"
+                type="priority"
                 changeDropDownValue={changeDropDownValue}
               />
-            )}
+            </div>
+
+            <div>
+              <label htmlFor="manager">Project Manager</label>
+
+              {project.managedBy && (
+                <DropDown
+                  initialValue={project.managedBy.name}
+                  data={managers}
+                  setProject={setProject}
+                  project={project}
+                  type="managedBy"
+                  changeDropDownValue={changeDropDownValue}
+                />
+              )}
+            </div>
           </div>
-        </div>
 
-        <button type="button" onClick={() => editProject(projectId, project)}>
-          Save Changes
-        </button>
+          <button type="button" onClick={() => editProject(projectId, project)}>
+            Save Changes
+          </button>
 
-        <div className="links">
-          <Link to="/projects/all-projects">Return to All Projects</Link>
-          <p>|</p>
-          <Link to={`/projects/project-details/${projectId}`}>
-            Return to Details
-          </Link>
-        </div>
-      </section>
-    )
+          <div className="links">
+            <Link to="/projects/all-projects">Return to All Projects</Link>
+            <p>|</p>
+            <Link to={`/projects/project-details/${projectId}`}>
+              Return to Details
+            </Link>
+          </div>
+        </section>
+      )}
+    </>
   );
 };
 
