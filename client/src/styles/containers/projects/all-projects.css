@@ -94,8 +94,18 @@
     display: flex;
 }
 
+.allProjectsSection .project .team img {
+    cursor: pointer;
+    transition: .25s;
+}
+
 .allProjectsSection .project .team img:not(.first) {
     margin-left: -15px;
+}
+
+.allProjectsSection .project .team img:hover {
+    transform: translateY(-10px);
+    z-index: 100;
 }
 
 /* Status */

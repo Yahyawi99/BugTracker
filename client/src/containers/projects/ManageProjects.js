@@ -24,7 +24,9 @@ const ManageProjects = () => {
 
             return (
               <div key={_id} className="project">
-                {name}
+                <div></div>
+                <div></div>
+                <div></div>
               </div>
             );
           })}
