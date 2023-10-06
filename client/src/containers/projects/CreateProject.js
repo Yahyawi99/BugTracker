@@ -33,8 +33,8 @@ const CreateProject = () => {
     description: "",
     startDate: "",
     endDate: "",
-    priority: "___",
-    managedBy: "___",
+    priority: "",
+    managedBy: {},
   });
   const [managers, setManagers] = useState([""]);
 
@@ -54,7 +54,7 @@ const CreateProject = () => {
     if (type === "managedBy") {
       setNewProject({
         ...newProject,
-        managedBy: value.name,
+        managedBy: value,
       });
     } else {
       setNewProject({
@@ -159,7 +159,9 @@ const CreateProject = () => {
             <label htmlFor="manager">Project Manager</label>
 
             <DropDown
-              initialValue={newProject.managedBy}
+              initialValue={
+                newProject.managedBy ? newProject.managedBy.name : ""
+              }
               data={managers}
               setProject={setNewProject}
               project={newProject}

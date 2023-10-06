@@ -67,6 +67,7 @@ const ProjectSchema = new mongoose.Schema(
 
     team: {
       type: Array,
+      default: [],
     },
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }

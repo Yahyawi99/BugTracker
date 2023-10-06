@@ -180,9 +180,26 @@ const singleProject = async (req, res) => {
 
 // create project
 const createProject = async (req, res) => {
-  console.log(req.body);
-  // c+reatedBy;
-  res.send("create");
+  const { name, description, startDate, endDate, priority, managedBy } =
+    req.body;
+  const { userId } = req.user;
+
+  const data = {
+    name,
+    description,
+    startDate,
+    endDate,
+    priority,
+    createdBy: userId,
+  };
+
+  if (managedBy) {
+    data.managedBy = managedBy._id;
+  }
+
+  await Project.create(data);
+
+  res.status(StatusCodes.CREATED).json({ msg: "Project Created" });
 };
 
 // update project

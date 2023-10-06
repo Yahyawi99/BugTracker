@@ -26,12 +26,11 @@ const useProjects = () => {
 
       setAllProjects(response.data);
 
-      await alertMe("Done.", "var(--success)");
+      alertMe("Done.", "var(--success)");
     } catch (error) {
       loading(false);
 
-      const msg = error.response.data.msg;
-      await alertMe(msg + "!", "var(--danger)");
+      alertMe("Something went wrong please try again later!", "var(--danger)");
     }
   };
 
@@ -54,13 +53,11 @@ const useProjects = () => {
 
       setSingleProject(response.data);
 
-      await alertMe("Done.", "var(--success)");
+      alertMe("Done.", "var(--success)");
     } catch (error) {
       loading(false);
 
-      const msg = error.response.data.msg;
-      // const msg = "Something went wrong please try again later!";
-      await alertMe(msg + "!", "var(--danger)");
+      alertMe("Something went wrong please try again later!", "var(--danger)");
     }
   };
 
@@ -93,7 +90,7 @@ const useProjects = () => {
 
       loading(false);
 
-      await alertMe("Done.", "var(--success)");
+      alertMe("Done.", "var(--success)");
 
       window.history.back();
 
@@ -101,10 +98,7 @@ const useProjects = () => {
     } catch (error) {
       loading(false);
 
-      await alertMe(
-        "something went wrong please try again!" + "!",
-        "var(--danger)"
-      );
+      alertMe("something went wrong please try again!" + "!", "var(--danger)");
     }
   };
 
@@ -119,16 +113,13 @@ const useProjects = () => {
 
       loading(false);
 
-      await alertMe("Done.", "var(--success)");
+      alertMe("Done.", "var(--success)");
 
       window.location.reload();
     } catch (error) {
       loading(false);
 
-      await alertMe(
-        "something went wrong please try again!" + "!",
-        "var(--danger)"
-      );
+      alertMe("something went wrong please try again!" + "!", "var(--danger)");
     }
   };
 
@@ -142,10 +133,24 @@ const useProjects = () => {
       !newProject.endDate
     ) {
       alertMe("Please fill out the required fields", "var(--danger)");
+      return;
     }
 
     try {
-    } catch (error) {}
+      loading(true);
+
+      await axios.post("/api/v1/project", newProject);
+
+      loading(false);
+
+      await alertMe("Project Created", "var(--success)");
+
+      window.location.href = "/projects/all-projects";
+    } catch (error) {
+      loading(false);
+
+      alertMe("Something went wrong please try again later", "var(--danger)");
+    }
   };
 
   return {
