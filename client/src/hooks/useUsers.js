@@ -2,11 +2,11 @@ import { useState } from "react";
 import axios from "axios";
 import { useMainContext } from "../context/global";
 
-const useProjects = () => {
+const useUsers = () => {
   const { alertMe, loading } = useMainContext();
   const [allUsers, setAllUsers] = useState([]);
 
-  //   get all projects
+  //   get all users
   const getAllUsers = async () => {
     try {
       loading(true);
@@ -29,4 +29,4 @@ const useProjects = () => {
   return { getAllUsers, allUsers };
 };
 
-export default useProjects;
+export default useUsers;

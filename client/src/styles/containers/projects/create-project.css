@@ -1,0 +1,3 @@
+.createProject label span {
+    color: var(--danger);
+}

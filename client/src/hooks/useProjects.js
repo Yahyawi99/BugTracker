@@ -108,7 +108,7 @@ const useProjects = () => {
     }
   };
 
-  // // Archive project
+  //Archive project
   const archiveProject = async (projectId, isArchived) => {
     try {
       loading(true);
@@ -132,6 +132,22 @@ const useProjects = () => {
     }
   };
 
+  // create project
+  const createProject = async (newProject) => {
+    if (
+      !newProject.name ||
+      !newProject.description ||
+      !newProject.priority ||
+      !newProject.startDate ||
+      !newProject.endDate
+    ) {
+      alertMe("Please fill out the required fields", "var(--danger)");
+    }
+
+    try {
+    } catch (error) {}
+  };
+
   return {
     getAllProjects,
     allProjects,
@@ -139,6 +155,7 @@ const useProjects = () => {
     singleProject,
     editProject,
     archiveProject,
+    createProject,
   };
 };
 

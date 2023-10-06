@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 // packages
 import ReactQuill from "react-quill";
 import Calendar from "react-calendar";
 // hooks
 import useUsers from "../../hooks/useUsers";
+import useProjects from "../../hooks/useProjects";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
 // css
 import "../../styles/containers/projects/edit-create-project.css";
+import "../../styles/containers/projects/create-project.css";
 
 const modules = {
   toolbar: [
@@ -25,12 +26,13 @@ const modules = {
 // *********************
 const CreateProject = () => {
   const { getAllUsers, allUsers } = useUsers();
+  const { createProject } = useProjects();
 
   const [newProject, setNewProject] = useState({
     name: "",
     description: "",
-    startDate: new Date(),
-    endDate: new Date(),
+    startDate: "",
+    endDate: "",
     priority: "___",
     managedBy: "___",
   });
@@ -67,10 +69,14 @@ const CreateProject = () => {
   return (
     <>
       <HomeBtn name="Create" />
-      <section className="editProject">
+
+      <section className="editProject createProject">
         <div className="editForm">
           <div>
-            <label htmlFor="name">Project Name</label>
+            <label htmlFor="name">
+              Project Name
+              <span> *</span>
+            </label>
             <input
               type="text"
               id="name"
@@ -83,7 +89,10 @@ const CreateProject = () => {
           </div>
 
           <div className="note-editor">
-            <label htmlFor="description">Project Description</label>
+            <label htmlFor="description">
+              Project Description
+              <span> *</span>
+            </label>
 
             <div className="quill-editor">
               <ReactQuill
@@ -100,7 +109,10 @@ const CreateProject = () => {
 
           <div className="date">
             <div>
-              <label htmlFor="startDate">Start Date</label>
+              <label htmlFor="startDate">
+                Start Date
+                <span> *</span>
+              </label>
               <div className="calendar">
                 <Calendar
                   defaultValue={newProject.startDate}
@@ -112,7 +124,10 @@ const CreateProject = () => {
             </div>
 
             <div>
-              <label htmlFor="endDate">End Date</label>
+              <label htmlFor="endDate">
+                End Date
+                <span> *</span>
+              </label>
               <div className="calendar">
                 <Calendar
                   defaultValue={newProject.endDate}
@@ -125,7 +140,10 @@ const CreateProject = () => {
           </div>
 
           <div>
-            <label htmlFor="priority">Choose a priority</label>
+            <label htmlFor="priority">
+              Choose a priority
+              <span> *</span>
+            </label>
 
             <DropDown
               initialValue={newProject.priority}
@@ -151,7 +169,9 @@ const CreateProject = () => {
           </div>
         </div>
 
-        <button type="button">Create Project</button>
+        <button type="button" onClick={() => createProject(newProject)}>
+          Create Project
+        </button>
       </section>
     </>
   );

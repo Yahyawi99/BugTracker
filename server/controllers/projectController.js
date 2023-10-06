@@ -180,6 +180,8 @@ const singleProject = async (req, res) => {
 
 // create project
 const createProject = async (req, res) => {
+  console.log(req.body);
+  // c+reatedBy;
   res.send("create");
 };
 

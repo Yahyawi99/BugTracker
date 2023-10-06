@@ -16,7 +16,7 @@ const ProjectSchema = new mongoose.Schema(
       type: String,
       trim: true,
       maxlength: 100,
-      required: [true, "Please provide project company"],
+      // required: [true, "Please provide project company"],
     },
 
     description: {
