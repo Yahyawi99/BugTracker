@@ -63,7 +63,7 @@ const ProjectDetails = () => {
           <div className="first-column">
             <div className="row-one">
               <h1>{name}</h1>
-              <p>{description}</p>
+              <p dangerouslySetInnerHTML={{ __html: description }} />
 
               <div className="progress">
                 <p>Progress Status:</p>
