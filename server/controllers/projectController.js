@@ -193,11 +193,11 @@ const createProject = async (req, res) => {
     createdBy: userId,
   };
 
-  if (managedBy) {
+  if (managedBy._id) {
     data.managedBy = managedBy._id;
   }
 
-  await Project.create(data);
+  // await Project.create(data);
 
   res.status(StatusCodes.CREATED).json({ msg: "Project Created" });
 };
