@@ -210,7 +210,6 @@ const Projects = ({ projects, archiveController }) => {
     </div>
   );
 };
-
 const Tickets = ({ tickets }) => {
   return tickets && tickets.length ? (
     <div>

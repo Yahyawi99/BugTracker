@@ -6,6 +6,7 @@ import ProjectDetails from "./projectDetails";
 import EditProject from "./EditProject";
 import ArchivedProjects from "./Archived-projects";
 import CreateProject from "./CreateProject";
+import ManageProjects from "./ManageProjects";
 
 const Projects = () => {
   return (
@@ -16,6 +17,7 @@ const Projects = () => {
         <Route path="/edit-project/:projectId" Component={EditProject} />
         <Route path="/archived-projects" Component={ArchivedProjects} />
         <Route path="/create-project" Component={CreateProject} />
+        <Route path="/manage-projects" Component={ManageProjects} />
       </Routes>
     </>
   );

@@ -13,7 +13,15 @@ const allProjects = async (req, res) => {
   const limit = Number(req.query.limit) || 5;
   const skip = (page - 1) * limit;
 
-  let projects = Project.find({ isArchived: isBoolean(isArchived) })
+  let projects;
+
+  if (isArchived === "all") {
+    projects = Project.find({});
+  } else {
+    projects = Project.find({ isArchived: isBoolean(isArchived) });
+  }
+
+  projects = projects
     .populate({
       path: "managedBy",
       select: "name avatar",
