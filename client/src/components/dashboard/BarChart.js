@@ -13,67 +13,36 @@ const MyBarChart = ({ projects }) => {
   let data = [];
 
   if (projects) {
-    data = projects.slice(0, 5).reduce(
-      (acc, project) => {
-        for (let i = 0; i < acc.length; i++) {
-          // project.team.forEach((user) => {
-          //   if (user.role === "developer") {
-          //     acc[i].Developers++;
-          //   }
+    data = projects.reduce((acc, project, index) => {
+      const value = {
+        name: `P${index + 1}`,
+        Submitters: 0,
+        Developers: 0,
+        PMs: 0,
+      };
 
-          //   if (user.role === "PM") {
-          //     acc[i].PMs++;
-          //   }
-
-          //   if (user.role === "submitter") {
-          //     acc[i].Submitters++;
-          //   }
-          // });
-
-          acc[i].Developers = project.team.filter(
-            (user) => user.role == "developer"
-          ).length;
-
-          if (project.managedBy) {
-            acc[i].PMs++;
-          }
+      project.team.forEach((user) => {
+        if (user.role === "developer") {
+          value.Developers++;
         }
-        console.log(acc);
-        return acc;
-      },
-      [
-        {
-          name: "P1",
-          Submitters: 0,
-          Developers: 0,
-          PMs: 0,
-        },
-        {
-          name: "P2",
-          Submitters: 0,
-          Developers: 0,
-          PMs: 0,
-        },
-        {
-          name: "P3",
-          Submitters: 0,
-          Developers: 0,
-          PMs: 0,
-        },
-        {
-          name: "P4",
-          Submitters: 0,
-          Developers: 0,
-          PMs: 0,
-        },
-        {
-          name: "P5",
-          Submitters: 0,
-          Developers: 0,
-          PMs: 0,
-        },
-      ]
-    );
+
+        if (user.role === "PM") {
+          value.PMs++;
+        }
+
+        if (user.role === "submitter") {
+          value.Submitters++;
+        }
+      });
+
+      if (project.managedBy) {
+        value.PMs++;
+      }
+
+      !acc.includes(value) && acc.push(value);
+
+      return acc;
+    }, []);
   }
 
   return (
