@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+// utils
+import progress from "../../utils/progress";
 // icons
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -32,6 +34,8 @@ const ManageProjects = () => {
               description,
               team,
               tickets,
+              startDate,
+              endDate,
             } = project;
 
             return (
@@ -75,6 +79,8 @@ const ManageProjects = () => {
 
                   <button type="button">Manage Team</button>
                 </div>
+
+                <div className="progress"></div>
 
                 <div>
                   <p>Tickets :</p>

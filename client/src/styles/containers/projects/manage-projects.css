@@ -1,6 +1,8 @@
 /* Projects */
 .ManageProjectsSection .projectsContainer {
     display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-rows: auto-fill;
     gap: 25px;
     margin: 0 0 25px 0;
 }
@@ -71,6 +73,8 @@
 
 /* description */
 .ManageProjectsSection .project>div:nth-child(2) {
+    height: 100%;
+    align-items: flex-start;
     font-size: 1rem;
     margin: 15px 0;
 }
@@ -124,6 +128,25 @@
     color: var(--gray);
     font-size: 1.1rem;
     font-weight: 600;
+}
+
+/* Progress */
+.ManageProjectsSection .project .progress {
+    height: 15px;
+    background-color: var(--main-clr-hover);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.ManageProjectsSection .project .progress>p {
+    width: 0%;
+    height: 100%;
+    background-color: var(--main-clr);
+    border-radius: 5px;
+    position: absolute;
+    transition: .5s ease-in-out;
+    transition-delay: .5s;
 }
 
 /* Tickets */
