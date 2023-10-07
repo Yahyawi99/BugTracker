@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 // hooks
 import useProjects from "../../hooks/useProjects";
 import useTickets from "../../hooks/useTickets";
+import useUsers from "../../hooks/useUsers";
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -22,14 +23,17 @@ import "../../styles/containers/dashboard/index.css";
 const Dashboard = () => {
   const { getAllProjects, allProjects } = useProjects();
   const { getAllTickets, allTickets } = useTickets();
+  const { getAllUsers, allUsers } = useUsers();
 
   useEffect(() => {
-    getAllProjects();
-    getAllTickets();
+    getAllProjects(1, "", "", "", "all");
+    getAllTickets(1, "", "", "");
+    getAllUsers();
   }, []);
 
   const { projects } = allProjects;
   const { tickets } = allTickets;
+  const { users } = allUsers;
 
   return (
     <section className="dashboard-Container">
@@ -84,7 +88,7 @@ const Dashboard = () => {
 
             <span>
               <p>Total Users</p>
-              <p className="num">0</p>
+              <p className="num">{users.length}</p>
             </span>
           </div>
 
@@ -95,7 +99,11 @@ const Dashboard = () => {
 
             <span>
               <p>Tickets in Development</p>
-              <p className="num">0</p>
+              <p className="num">
+                {tickets &&
+                  tickets.filter((ticket) => ticket.status === "development")
+                    .length}
+              </p>
             </span>
           </div>
 
@@ -106,7 +114,10 @@ const Dashboard = () => {
 
             <span>
               <p>Total Developers</p>
-              <p className="num">0</p>
+              <p className="num">
+                {users &&
+                  users.filter((user) => user.role === "developer").length}
+              </p>
             </span>
           </div>
         </div>
@@ -119,7 +130,7 @@ const Dashboard = () => {
               <FontAwesomeIcon icon={faUsers} />
             </i>
             <p>Members</p>
-            <p>18</p>
+            <p>{users.length}</p>
           </span>
 
           <span>
@@ -127,7 +138,7 @@ const Dashboard = () => {
               <FontAwesomeIcon icon={faFolder} />
             </i>
             <p>Projects</p>
-            <p>{allProjects.length}</p>
+            <p>{projects.length}</p>
           </span>
 
           <span>
@@ -135,7 +146,7 @@ const Dashboard = () => {
               <FontAwesomeIcon icon={faTicket} />
             </i>
             <p>Tickets</p>
-            <p>{allTickets.length}</p>
+            <p>{tickets.length}</p>
           </span>
 
           <span>
@@ -143,12 +154,13 @@ const Dashboard = () => {
               <FontAwesomeIcon icon={faBell} />
             </i>
             <p>Notifications</p>
-            <p>56</p>
+            <p>0</p>
           </span>
         </div>
 
         <div className="priority-project">
           <h3>Priority Projects</h3>
+
           <PieChart />
         </div>
 
