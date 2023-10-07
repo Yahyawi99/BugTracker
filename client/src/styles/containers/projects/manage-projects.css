@@ -121,7 +121,7 @@
 }
 
 .ManageProjectsSection .project>div:nth-child(3) .noTeam {
-    color: var(--dark);
+    color: var(--gray);
     font-size: 1.1rem;
     font-weight: 600;
 }
