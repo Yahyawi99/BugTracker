@@ -41,6 +41,10 @@
     font-size: 1rem;
 }
 
+.ManageProjectsSection .project>div:nth-child(1) i path {
+    fill: var(--main-clr);
+}
+
 .ManageProjectsSection .project .dropDown {
     width: 90px;
     background-color: var(--gray-dark);
@@ -152,4 +156,12 @@
 .ManageProjectsSection .project>div:nth-child(4) {
     display: flex;
     gap: 5px;
+}
+
+/* *************************** */
+/* *************************** */
+/* *************************** */
+
+.ManageProjectsSection .project .showDropDown {
+    transform: scaleY(1);
 }

@@ -20,6 +20,11 @@ const ManageProjects = () => {
     getAllProjects(1, "", "", "", "all");
   }, []);
 
+  // Drop down
+  const toggleDropDown = (icon) => {
+    icon.nextSibling.classList.toggle("showDropDown");
+  };
+
   return (
     <section className="ManageProjectsSection">
       <HomeBtn name="Manage Projects" />
@@ -47,7 +52,10 @@ const ManageProjects = () => {
                     <p className="priority">{priority}</p>
                   </div>
 
-                  <i className="arrow-down">
+                  <i
+                    onClick={(e) => toggleDropDown(e.currentTarget)}
+                    className="arrow-down"
+                  >
                     <FontAwesomeIcon icon={faAngleDown} />
                   </i>
 
@@ -65,12 +73,13 @@ const ManageProjects = () => {
                 <div>
                   <div>
                     <p>Team :</p>
+
                     {team.length ? (
                       <div className="team">
                         {team.map((user) => {
-                          const { avatar } = user;
+                          const { _id, avatar } = user;
 
-                          return <img src={avatar} alt="user" />;
+                          return <img key={_id} src={avatar} alt="user" />;
                         })}
                       </div>
                     ) : (
