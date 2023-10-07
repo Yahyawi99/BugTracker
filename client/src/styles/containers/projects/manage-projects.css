@@ -140,13 +140,12 @@
 }
 
 .ManageProjectsSection .project .progress>p {
-    width: 0%;
     height: 100%;
     background-color: var(--main-clr);
     border-radius: 5px;
     position: absolute;
     transition: .5s ease-in-out;
-    transition-delay: .5s;
+    transition-delay: .25s;
 }
 
 /* Tickets */

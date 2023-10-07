@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 // utils
 import progress from "../../utils/progress";
@@ -80,7 +81,13 @@ const ManageProjects = () => {
                   <button type="button">Manage Team</button>
                 </div>
 
-                <div className="progress"></div>
+                <div className="progress">
+                  <motion.p
+                    initial={{ width: 0 }}
+                    animate={{ width: `${progress(startDate, endDate)}%` }}
+                    transition={{ duration: 1 }}
+                  ></motion.p>
+                </div>
 
                 <div>
                   <p>Tickets :</p>
