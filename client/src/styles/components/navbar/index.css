@@ -8,6 +8,8 @@
     overflow-y: scroll;
     position: sticky;
     top: 83px;
+    display: none;
+
 }
 
 .navbarContainer::-webkit-scrollbar {
