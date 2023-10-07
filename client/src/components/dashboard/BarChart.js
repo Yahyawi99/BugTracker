@@ -9,45 +9,72 @@ import {
   Legend,
 } from "recharts";
 
-const MyBarChart = () => {
-  const data = [
-    {
-      name: "P1",
-      Submitters: 5,
-      Developers: 8,
-      PMs: 3,
-    },
-    {
-      name: "P2",
-      Submitters: 5,
-      Developers: 9,
-      PMs: 5,
-    },
-    {
-      name: "P3",
-      Submitters: 3,
-      Developers: 7,
-      PMs: 2,
-    },
-    {
-      name: "P4",
-      Submitters: 9,
-      Developers: 6,
-      PMs: 4,
-    },
-    {
-      name: "P5",
-      Submitters: 5,
-      Developers: 5,
-      PMs: 1,
-    },
-    {
-      name: "P6",
-      Submitters: 4,
-      Developers: 6,
-      PMs: 2,
-    },
-  ];
+const MyBarChart = ({ projects }) => {
+  let data = [];
+
+  if (projects) {
+    data = projects.slice(0, 5).reduce(
+      (acc, project) => {
+        for (let i = 0; i < acc.length; i++) {
+          // project.team.forEach((user) => {
+          //   if (user.role === "developer") {
+          //     acc[i].Developers++;
+          //   }
+
+          //   if (user.role === "PM") {
+          //     acc[i].PMs++;
+          //   }
+
+          //   if (user.role === "submitter") {
+          //     acc[i].Submitters++;
+          //   }
+          // });
+
+          acc[i].Developers = project.team.filter(
+            (user) => user.role == "developer"
+          ).length;
+
+          if (project.managedBy) {
+            acc[i].PMs++;
+          }
+        }
+        console.log(acc);
+        return acc;
+      },
+      [
+        {
+          name: "P1",
+          Submitters: 0,
+          Developers: 0,
+          PMs: 0,
+        },
+        {
+          name: "P2",
+          Submitters: 0,
+          Developers: 0,
+          PMs: 0,
+        },
+        {
+          name: "P3",
+          Submitters: 0,
+          Developers: 0,
+          PMs: 0,
+        },
+        {
+          name: "P4",
+          Submitters: 0,
+          Developers: 0,
+          PMs: 0,
+        },
+        {
+          name: "P5",
+          Submitters: 0,
+          Developers: 0,
+          PMs: 0,
+        },
+      ]
+    );
+  }
 
   return (
     <BarChart
