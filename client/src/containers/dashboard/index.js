@@ -166,7 +166,7 @@ const Dashboard = () => {
 
         <div className="team-statistics">
           <h3>Team Distribution</h3>
-          <BarChart />
+          <BarChart projects={projects} />
         </div>
       </div>
 
