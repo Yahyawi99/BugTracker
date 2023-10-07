@@ -88,7 +88,7 @@ const Dashboard = () => {
 
             <span>
               <p>Total Users</p>
-              <p className="num">{users.length}</p>
+              <p className="num">{users && users.length}</p>
             </span>
           </div>
 
@@ -130,7 +130,7 @@ const Dashboard = () => {
               <FontAwesomeIcon icon={faUsers} />
             </i>
             <p>Members</p>
-            <p>{users.length}</p>
+            <p>{users && users.length}</p>
           </span>
 
           <span>
@@ -138,7 +138,7 @@ const Dashboard = () => {
               <FontAwesomeIcon icon={faFolder} />
             </i>
             <p>Projects</p>
-            <p>{projects.length}</p>
+            <p>{projects && projects.length}</p>
           </span>
 
           <span>
@@ -146,7 +146,7 @@ const Dashboard = () => {
               <FontAwesomeIcon icon={faTicket} />
             </i>
             <p>Tickets</p>
-            <p>{tickets.length}</p>
+            <p>{tickets && tickets.length}</p>
           </span>
 
           <span>
