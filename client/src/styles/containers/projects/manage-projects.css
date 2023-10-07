@@ -2,6 +2,7 @@
 .ManageProjectsSection .projectsContainer {
     display: grid;
     gap: 25px;
+    margin: 0 0 25px 0;
 }
 
 .ManageProjectsSection .project {
@@ -26,12 +27,12 @@
 
 .ManageProjectsSection .project>div:nth-child(1) .name {
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1.25rem;
 }
 
 .ManageProjectsSection .project>div:nth-child(1) .priority {
     font-weight: 400;
-    font-size: .9rem;
+    font-size: .8rem;
 }
 
 .ManageProjectsSection .project>div:nth-child(1) i {
@@ -68,6 +69,12 @@
     text-decoration: 2px underline;
 }
 
+/* description */
+.ManageProjectsSection .project>div:nth-child(2) {
+    font-size: 1rem;
+    margin: 15px 0;
+}
+
 /* Team */
 .ManageProjectsSection .project>div:nth-child(3) {
     justify-content: space-between;
@@ -77,6 +84,7 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    font-size: .9rem;
 }
 
 .ManageProjectsSection .project img {
@@ -93,4 +101,33 @@
 
 .ManageProjectsSection .project img:hover {
     transform: translateY(-10px);
+}
+
+.ManageProjectsSection .project>div:nth-child(3) button {
+    background-color: var(--main-clr);
+    color: var(--white);
+    font-weight: 600;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 5px;
+}
+
+.ManageProjectsSection .project>div:nth-child(3) button:hover {
+    background-color: transparent;
+    color: var(--main-clr);
+    border-color: var(--main-clr);
+}
+
+.ManageProjectsSection .project>div:nth-child(3) .noTeam {
+    color: var(--dark);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Tickets */
+.ManageProjectsSection .project>div:nth-child(4) {
+    display: flex;
+    gap: 5px;
 }

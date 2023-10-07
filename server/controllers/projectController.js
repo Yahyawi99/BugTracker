@@ -23,7 +23,7 @@ const allProjects = async (req, res) => {
 
   projects = projects
     .populate({
-      path: "managedBy",
+      path: "managedBy tickets",
       select: "name avatar",
     })
     .skip(skip)

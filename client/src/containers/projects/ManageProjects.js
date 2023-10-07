@@ -24,8 +24,15 @@ const ManageProjects = () => {
       <div className="projectsContainer">
         {allProjects.projects &&
           allProjects.projects.map((project) => {
-            const { _id, name, priority, isArchive, description, team } =
-              project;
+            const {
+              _id,
+              name,
+              priority,
+              isArchive,
+              description,
+              team,
+              tickets,
+            } = project;
 
             return (
               <div key={_id} className="project">
@@ -53,21 +60,25 @@ const ManageProjects = () => {
                 <div>
                   <div>
                     <p>Team :</p>
-                    <div className="team">
-                      {team.map((user) => {
-                        const { avatar } = user;
+                    {team.length ? (
+                      <div className="team">
+                        {team.map((user) => {
+                          const { avatar } = user;
 
-                        return <img src={avatar} alt="user" />;
-                      })}
-                    </div>
+                          return <img src={avatar} alt="user" />;
+                        })}
+                      </div>
+                    ) : (
+                      <div className="noTeam">No Assigned Members</div>
+                    )}
                   </div>
 
                   <button type="button">Manage Team</button>
                 </div>
 
                 <div>
-                  <p>Tickets</p>
-                  <p>0</p>
+                  <p>Tickets :</p>
+                  <p>{tickets.length}</p>
                 </div>
               </div>
             );
