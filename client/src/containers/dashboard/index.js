@@ -161,7 +161,7 @@ const Dashboard = () => {
         <div className="priority-project">
           <h3>Priority Projects</h3>
 
-          <PieChart />
+          <PieChart projects={projects} />
         </div>
 
         <div className="team-statistics">

@@ -46,7 +46,8 @@
 /* *********************************** */
 /* Second row */
 .company {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
     gap: 15px;
     flex-wrap: wrap;
     margin-bottom: 25px;

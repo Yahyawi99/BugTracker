@@ -6,9 +6,15 @@ const MyPieChart = () => {
     { name: "High", value: 3 },
     { name: "Medium", value: 2 },
     { name: "Low", value: 1 },
+    { name: "urgent", value: 2 },
   ];
 
-  const COLORS = ["var(--red)", "var(--orange)", "var(--blue)"];
+  const COLORS = [
+    "var(--orange)",
+    "var(--black)",
+    "var(--gray)",
+    "var(--danger)",
+  ];
 
   return (
     <section className="chartContainer">
