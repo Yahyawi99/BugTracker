@@ -149,7 +149,7 @@
     border-radius: 5px;
     position: absolute;
     transition: .5s ease-in-out;
-    transition-delay: .25s;
+    transition-delay: .1s;
 }
 
 /* Tickets */
