@@ -5,6 +5,7 @@ import { useMainContext } from "../context/global";
 const useTickets = () => {
   const { alertMe, loading } = useMainContext();
   const [allTickets, setAllTickets] = useState([]);
+  const [singleTicket, setSingleTicket] = useState({});
 
   //   get all tickets
   const getAllTickets = async (page, sortOptions, limit, search) => {
@@ -28,7 +29,26 @@ const useTickets = () => {
     }
   };
 
-  return { getAllTickets, allTickets };
+  // get sindle ticket
+  const getSingleTicket = async (ticketId) => {
+    try {
+      loading(true);
+
+      const response = await axios.get(`/api/v1/ticket/${ticketId}`);
+
+      loading(false);
+
+      setSingleTicket(response.data);
+
+      alertMe("Done.", "var(--success)");
+    } catch (error) {
+      loading(false);
+
+      alertMe("Something went wrong please try again later!", "var(--danger)");
+    }
+  };
+
+  return { getAllTickets, allTickets, getSingleTicket, singleTicket };
 };
 
 export default useTickets;
