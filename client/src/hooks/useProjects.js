@@ -6,6 +6,7 @@ const useProjects = () => {
   const { alertMe, loading } = useMainContext();
   const [allProjects, setAllProjects] = useState([]);
   const [singleProject, setSingleProject] = useState({});
+  const [userProjects, setUserProjects] = useState({});
 
   //   get all projects
   const getAllProjects = async (
@@ -153,6 +154,25 @@ const useProjects = () => {
     }
   };
 
+  // user projects
+  const getUserProjects = async (page, sortOption, limit, searchInput) => {
+    try {
+      loading(true);
+
+      const response = await axios.get(`/api/v1/project/user-projects/`);
+
+      setUserProjects(response.data);
+
+      loading(false);
+
+      alertMe("Done.", "var(--success)");
+    } catch (error) {
+      loading(false);
+
+      alertMe("something went wrong please try again!" + "!", "var(--danger)");
+    }
+  };
+
   return {
     getAllProjects,
     allProjects,
@@ -161,6 +181,8 @@ const useProjects = () => {
     editProject,
     archiveProject,
     createProject,
+    getUserProjects,
+    userProjects,
   };
 };
 

@@ -246,6 +246,11 @@ const archiveProject = async (req, res) => {
   res.status(StatusCodes.OK).json({ project });
 };
 
+// My projects
+const userProjects = async () => {
+  res.send("mine");
+};
+
 // delete project
 const deleteProject = async (req, res) => {
   res.send("delete");
@@ -258,4 +263,5 @@ module.exports = {
   updateProject,
   deleteProject,
   archiveProject,
+  userProjects,
 };

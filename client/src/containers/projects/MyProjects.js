@@ -1,14 +1,31 @@
 import React from "react";
+// hooks
+import useProjects from "../../hooks/useProjects";
 // compenent
-import HomeBtn from "../../components/shared/HomeBtn";
+import ShowAllDocuments from "../../components/shared/ShowAllDocuments";
 // css
 import "../../styles/containers/projects/my-projects.css";
 
 const MyProjects = () => {
+  const {} = useProjects();
+
   return (
-    <section className="myProjectSection">
-      <HomeBtn name="My Projects" />
-    </section>
+    <ShowAllDocuments
+      sectionName="My Projects"
+      controller={getAllProjects}
+      archiveController={archiveProject}
+      labels={[
+        "Project",
+        "End Date",
+        "Progress",
+        "Project Manager",
+        "Team",
+        "Status",
+        "Action",
+      ]}
+      sortLabels={["Project", "End Date"]}
+      data={allProjects}
+    />
   );
 };
 
