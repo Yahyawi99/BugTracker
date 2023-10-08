@@ -118,7 +118,9 @@ const NavBar = () => {
 
                 <span>
                   <FontAwesomeIcon icon={faStarOfLife} />
-                  <p> My Projects</p>
+                  <Link to="/projects/my-projects">
+                    <p>My Projects</p>
+                  </Link>
                 </span>
 
                 <span>
