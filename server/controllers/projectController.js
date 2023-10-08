@@ -181,9 +181,6 @@ const singleProject = async (req, res) => {
       totalAssociatedTickets,
     },
   });
-  //  res
-  //    .status(StatusCodes.OK)
-  //    .json({ project, numOfPages, currentPage: page, count, totalProjects });
 };
 
 // create project

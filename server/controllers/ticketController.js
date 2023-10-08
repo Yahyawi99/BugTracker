@@ -64,7 +64,9 @@ const allTickets = async (req, res) => {
 const singleTicket = async (req, res) => {
   const { id } = req.params;
 
-  const ticket = await Ticket.findOne({ _id: id }).populate("project");
+  const ticket = await Ticket.findOne({ _id: id }).populate(
+    "project assingedTo"
+  );
 
   if (!ticket) {
     throw new CustomError.NotFoundError(`No Ticket with id :${id}`);

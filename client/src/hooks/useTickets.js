@@ -38,7 +38,7 @@ const useTickets = () => {
 
       loading(false);
 
-      setSingleTicket(response.data);
+      setSingleTicket(response.data.ticket);
 
       alertMe("Done.", "var(--success)");
     } catch (error) {
