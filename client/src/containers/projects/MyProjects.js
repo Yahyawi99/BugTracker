@@ -7,12 +7,12 @@ import ShowAllDocuments from "../../components/shared/ShowAllDocuments";
 import "../../styles/containers/projects/my-projects.css";
 
 const MyProjects = () => {
-  const {} = useProjects();
+  const { getUserProjects, userProjects, archiveProject } = useProjects();
 
   return (
     <ShowAllDocuments
       sectionName="My Projects"
-      controller={getAllProjects}
+      controller={getUserProjects}
       archiveController={archiveProject}
       labels={[
         "Project",
@@ -24,7 +24,7 @@ const MyProjects = () => {
         "Action",
       ]}
       sortLabels={["Project", "End Date"]}
-      data={allProjects}
+      data={userProjects}
     />
   );
 };

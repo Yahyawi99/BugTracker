@@ -247,8 +247,67 @@ const archiveProject = async (req, res) => {
 };
 
 // My projects
-const userProjects = async () => {
-  res.send("mine");
+const userProjects = async (req, res) => {
+  const { sort, search } = req.query;
+  const { userId } = req.user;
+
+  // pagination
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 5;
+  const skip = (page - 1) * limit;
+
+  let projects = Project.find({ createdBy: userId })
+    .populate({
+      path: "managedBy tickets",
+      select: "name avatar",
+    })
+    .skip(skip)
+    .limit(limit);
+
+  // **************
+  // sorting
+  if (sort) {
+    if (sort === "Project") {
+      projects = projects.sort("-name");
+    }
+
+    if (sort === "-Project") {
+      projects = projects.sort("name");
+    }
+
+    if (sort === "End Date") {
+      projects = projects.sort("-endDate");
+    }
+
+    if (sort === "-End Date") {
+      projects = projects.sort("endDate");
+    }
+  }
+
+  // search
+  if (search) {
+    projects = projects.find({ name: { $regex: search, $options: "i" } });
+  }
+
+  projects = await projects;
+
+  // Create Team Arr
+  projects.forEach(async (project) => {
+    await project.projectTeam();
+    await project.save();
+  });
+
+  // *************
+  const totalProjects = await Project.countDocuments({
+    createdBy: userId,
+  });
+  const numOfPages = Math.ceil(totalProjects / limit);
+
+  const count = projects.length;
+
+  res
+    .status(StatusCodes.OK)
+    .json({ projects, numOfPages, currentPage: page, count, totalProjects });
 };
 
 // delete project

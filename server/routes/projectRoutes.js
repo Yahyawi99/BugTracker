@@ -18,9 +18,9 @@ router
   .get(authenticateUser, allProjects)
   .post(authenticateUser, createProject);
 
-router.route("/user-projects").get(userProjects);
+router.route("/user-projects").get(authenticateUser, userProjects);
 
-router.route("/archive/:id").patch(archiveProject);
+router.route("/archive/:id").patch(authenticateUser, archiveProject);
 
 router
   .route("/:id")
