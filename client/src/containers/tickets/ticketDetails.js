@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 // utils
 import progress from "../../utils/progress";
+import formatDate from "../../utils/formatDate";
 // hooks
 import useTickets from "../../hooks/useTickets";
 // components
@@ -18,8 +19,18 @@ const TicketDetails = () => {
     getSingleTicket(ticketId);
   }, []);
 
-  const { _id, title, description, project, isArchived, assignedTo } =
-    singleTicket;
+  const {
+    _id,
+    title,
+    description,
+    project,
+    isArchived,
+    assignedTo,
+    createdAt,
+    type,
+    priority,
+    status,
+  } = singleTicket;
 
   return (
     singleTicket &&
@@ -79,12 +90,12 @@ const TicketDetails = () => {
               </div>
             </div>
 
-            {/* <div className="row-two">
+            <div className="row-two">
               <div className="created">
                 <p>Created</p>
                 <p>
-                  {startDate &&
-                    formatDate(startDate, {
+                  {createdAt &&
+                    formatDate(createdAt, {
                       month: "2-digit",
                       day: "2-digit",
                       year: "numeric",
@@ -93,15 +104,19 @@ const TicketDetails = () => {
               </div>
 
               <div className="deadline">
-                <p>Deadline</p>
+                <p>Project Deadline</p>
                 <p>
-                  {endDate &&
-                    formatDate(endDate, {
-                      month: "2-digit",
-                      day: "2-digit",
-                      year: "numeric",
-                    })}
+                  {formatDate(project.endDate, {
+                    month: "2-digit",
+                    day: "2-digit",
+                    year: "numeric",
+                  })}
                 </p>
+              </div>
+
+              <div className="type">
+                <p>Type</p>
+                <p className={`${type}`}>{type}</p>
               </div>
 
               <div className="priority">
@@ -113,7 +128,7 @@ const TicketDetails = () => {
                 <p>Status</p>
                 <p className={`${status}`}>{status}</p>
               </div>
-            </div> */}
+            </div>
 
             {/* <div className="row-three">
               <h3>Project Team</h3>
