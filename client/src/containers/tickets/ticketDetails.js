@@ -18,7 +18,8 @@ const TicketDetails = () => {
     getSingleTicket(ticketId);
   }, []);
 
-  const { _id, title, description, project, isArchived } = singleTicket;
+  const { _id, title, description, project, isArchived, assignedTo } =
+    singleTicket;
 
   return (
     singleTicket &&
@@ -26,14 +27,14 @@ const TicketDetails = () => {
       <section className="DocumentDetails">
         <HomeBtn name="Ticket Details" />
 
-        <div className="details">
+        <div className="details ticketDetails">
           <div className="first-column">
             <div className="row-one">
               <h1>{title}</h1>
 
               <p dangerouslySetInnerHTML={{ __html: description }} />
 
-              <div className="assiciatedProject">
+              <div className="project">
                 <p>Project :</p>
                 <p>{project.name}</p>
               </div>
@@ -52,6 +53,14 @@ const TicketDetails = () => {
                       <p>{progress(project.startDate, project.endDate)}%</p>
                     </div>
                   )}
+                </div>
+              </div>
+
+              <div className="dev">
+                <p>Developer :</p>
+                <div>
+                  <img src={assignedTo.avatar} alt="developer" />
+                  <p className="devName">{assignedTo.name}</p>
                 </div>
               </div>
 
