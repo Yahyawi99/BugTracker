@@ -115,7 +115,7 @@ const TicketDetails = () => {
               </div>
 
               <div className="type">
-                <p>Type</p>
+                <p>Type </p>
                 <p className={`${type}`}>{type}</p>
               </div>
 

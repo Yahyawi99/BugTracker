@@ -35,3 +35,22 @@
     color: var(--white);
     background-color: var(--blue);
 }
+
+/* status & type*/
+.ticketDetails .status .new,
+.ticketDetails .type .changeRequest {
+    color: var(--gray);
+    border: 2px solid var(--gray);
+}
+
+.ticketDetails .status .development,
+.ticketDetails .type .enhancement {
+    color: var(--blue);
+    border: 2px solid var(--blue);
+}
+
+.ticketDetails .status .resolved,
+.ticketDetails .type .newDevelopment {
+    color: var(--success);
+    border: 2px solid var(--success);
+}
