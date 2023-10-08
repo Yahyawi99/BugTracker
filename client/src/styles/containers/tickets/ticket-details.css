@@ -24,3 +24,14 @@
     width: 35px;
     border-radius: 50%;
 }
+
+/* buttons */
+.ticketDetails .action .assignBtn {
+    color: var(--blue);
+    border: 2px solid var(--blue);
+}
+
+.ticketDetails .action .assignBtn:hover {
+    color: var(--white);
+    background-color: var(--blue);
+}

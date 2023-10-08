@@ -81,7 +81,7 @@ const ProjectDetails = () => {
 
               <div className="action">
                 <Link to={`/projects/edit-project/${projectId}`}>
-                  <button>Edit Project</button>
+                  <button className="editBtn">Edit Project</button>
                 </Link>
 
                 {singleProject.project.isArchived ? (

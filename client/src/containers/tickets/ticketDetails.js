@@ -65,8 +65,10 @@ const TicketDetails = () => {
               </div>
 
               <div className="action">
+                <button className="assignBtn">Assign Developer</button>
+
                 <Link to={`/tickets/edit-ticket/${_id}`}>
-                  <button>Edit Ticket</button>
+                  <button className="editBtn">Edit Ticket</button>
                 </Link>
 
                 {isArchived ? (
