@@ -135,7 +135,7 @@ const TicketDetails = () => {
           </div>
 
           <div className="second-column">
-            <div className="row-one">
+            <div id="row-one">
               <h3>Ticket Comments</h3>
               <form>
                 <div className="quill-editor">

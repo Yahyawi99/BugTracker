@@ -61,3 +61,36 @@
     color: var(--danger);
     border: 2px solid var(--danger);
 }
+
+/* ************************** */
+/* second column */
+/* comments */
+.second-column #row-one {
+    padding: 20px;
+}
+
+.second-column #row-one .quill-editor {
+    margin: 20px 0 10px 0;
+}
+
+.second-column #row-one .quill-editor>div>div:nth-child(2) {
+    min-height: 150px;
+    font-size: 1rem;
+}
+
+.second-column form button {
+    background-color: var(--main-clr);
+    color: var(--white);
+    border: 2px solid transparent;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s;
+    padding: 7px 15px;
+}
+
+.second-column form button:hover {
+    background-color: transparent;
+    color: var(--main-clr);
+    border-color: var(--main-clr);
+}
