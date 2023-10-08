@@ -38,7 +38,9 @@
 
 /* status & type*/
 .ticketDetails .status .new,
-.ticketDetails .type .changeRequest {
+.ticketDetails .type .changeRequest,
+.ticketDetails .type .generalTask,
+.ticketDetails .type .workTask {
     color: var(--gray);
     border: 2px solid var(--gray);
 }
@@ -53,4 +55,9 @@
 .ticketDetails .type .newDevelopment {
     color: var(--success);
     border: 2px solid var(--success);
+}
+
+.ticketDetails .type .defect {
+    color: var(--danger);
+    border: 2px solid var(--danger);
 }

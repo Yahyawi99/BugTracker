@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+// React quill
+import reactQuillModules from "../../utils/reactQuill-modules";
+import ReactQuill from "react-quill";
 // utils
 import progress from "../../utils/progress";
 import formatDate from "../../utils/formatDate";
@@ -129,55 +132,27 @@ const TicketDetails = () => {
                 <p className={`${status}`}>{status}</p>
               </div>
             </div>
-
-            {/* <div className="row-three">
-              <h3>Project Team</h3>
-              <p>{team && team.length} team members</p>
-
-              {managedBy ? (
-                <div key={managedBy._id} className="manager">
-                  <img
-                    src={managedBy.avatar}
-                    alt="manager"
-                    className="avatar"
-                  />
-
-                  <div className="managerInfo">
-                    <p className="name">{managedBy.name}</p>
-                    <p>{managedBy.email}</p>
-                    <p>Project Manager</p>
-                  </div>
-                </div>
-              ) : (
-                <div className="noManager">
-                  <p>No Project Manager Assigned</p>
-                  <button>Assign Project Manager</button>
-                </div>
-              )}
-
-              <div className="team">
-                {team &&
-                  team.map((user) => {
-                    const { _id, name, avatar, role } = user;
-
-                    return (
-                      <div key={_id} className="user">
-                        <img src={avatar} alt="user" className="avatar" />
-
-                        <div className="userInfo">
-                          <p>{name}</p>
-                          <p className="role">{role}</p>
-                        </div>
-                      </div>
-                    );
-                  })}
-              </div>
-
-              <button type="button">Manage Team</button>
-            </div> */}
           </div>
 
-          <div className="second-column"></div>
+          <div className="second-column">
+            <div className="row-one">
+              <h3>Ticket Comments</h3>
+              <form>
+                <div className="quill-editor">
+                  <ReactQuill
+                    modules={reactQuillModules}
+                    theme="snow"
+                    placeholder="Your comment..."
+                    // value={newProject.description}
+                    // onChange={(value) =>
+                    //   setNewProject({ ...newProject, description: value })
+                    // }
+                  />
+                </div>
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
         </div>
       </section>
     )

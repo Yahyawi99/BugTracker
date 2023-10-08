@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import reactQuillModules from "../../utils/reactQuill-modules";
 // packages
 import ReactQuill from "react-quill";
 import Calendar from "react-calendar";
@@ -10,18 +11,6 @@ import HomeBtn from "../../components/shared/HomeBtn";
 // css
 import "../../styles/containers/projects/edit-create-project.css";
 import "../../styles/containers/projects/create-project.css";
-
-const modules = {
-  toolbar: [
-    [{ font: [] }],
-    [{ header: [1, 2, 3, 4, 5, 6, false] }],
-    ["bold", "italic", "underline", "strike"],
-    [{ color: [] }, { background: [] }],
-    ["blockquote", "code-block"],
-    [{ list: "ordered" }, { list: "bullet" }],
-    [{ indent: "-1" }, { indent: "+1" }, { align: [] }],
-  ],
-};
 
 // *********************
 const CreateProject = () => {
@@ -96,7 +85,7 @@ const CreateProject = () => {
 
             <div className="quill-editor">
               <ReactQuill
-                modules={modules}
+                modules={reactQuillModules}
                 theme="snow"
                 placeholder="Your project description..."
                 value={newProject.description}
