@@ -137,6 +137,7 @@ const TicketDetails = () => {
           <div className="second-column">
             <div id="row-one">
               <h3>Ticket Comments</h3>
+
               <form>
                 <div className="quill-editor">
                   <ReactQuill
@@ -151,12 +152,18 @@ const TicketDetails = () => {
                 </div>
                 <button type="submit">Submit</button>
               </form>
+
+              <div className="comments"></div>
             </div>
           </div>
         </div>
       </section>
     )
   );
+};
+
+const Comment = () => {
+  return "";
 };
 
 export default TicketDetails;
