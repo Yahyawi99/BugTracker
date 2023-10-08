@@ -243,9 +243,11 @@ const Tickets = ({ tickets }) => {
             </div>
 
             <div className="btns">
-              <button className="details">
-                <FontAwesomeIcon icon={faEye} />
-              </button>
+              <Link to={`/tickets/ticket-details/${_id}`}>
+                <button className="details">
+                  <FontAwesomeIcon icon={faEye} />
+                </button>
+              </Link>
 
               <button className="edit">
                 <FontAwesomeIcon icon={faPencil} />
