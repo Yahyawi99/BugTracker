@@ -70,7 +70,6 @@
 }
 
 .second-column form {
-    border-bottom: 2px solid var(--border-color);
     padding-bottom: 40px;
 }
 
@@ -98,4 +97,9 @@
     background-color: transparent;
     color: var(--main-clr);
     border-color: var(--main-clr);
+}
+
+/* Comments */
+.second-column .comments {
+    border-top: 2px solid var(--border-color);
 }

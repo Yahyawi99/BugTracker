@@ -15,7 +15,7 @@ const useComments = () => {
 
       loading(false);
 
-      setComments(response.data);
+      setComments(response.data.comments);
 
       await alertMe("Done.", "var(--success)");
     } catch (error) {
@@ -29,13 +29,18 @@ const useComments = () => {
   };
 
   //   create comments
-  const createComments = async (e, ticketId) => {
+  const createComments = async (e, ticketId, value) => {
     e.preventDefault();
+
+    if (!value) {
+      await alertMe("Please provide a comment!", "var(--danger)");
+      return;
+    }
 
     try {
       loading(true);
 
-      await axios.post(`/api/v1/comment/${ticketId}`);
+      await axios.post(`/api/v1/comment/${ticketId}`, { value });
 
       loading(false);
 

@@ -6,7 +6,9 @@ const { StatusCodes } = require("http-status-codes");
 const getComments = async (req, res) => {
   const { id: ticketId } = req.params;
 
-  const comments = await Comment.find({ ticket: ticketId });
+  const comments = await Comment.find({ ticket: ticketId }).populate(
+    "createdBy"
+  );
 
   res.status(StatusCodes.OK).json({ comments });
 };

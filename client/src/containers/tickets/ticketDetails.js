@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 // React quill
@@ -17,11 +17,15 @@ import "../../styles/containers/tickets/ticket-details.css";
 
 const TicketDetails = () => {
   const { getSingleTicket, singleTicket } = useTickets();
-  const { createComments } = useComments();
+  const { createComments, getComments, comments } = useComments();
+
+  const [commentValue, setCommentValue] = useState("");
+
   const { ticketId } = useParams();
 
   useEffect(() => {
     getSingleTicket(ticketId);
+    getComments(ticketId);
   }, []);
 
   const {
@@ -140,23 +144,45 @@ const TicketDetails = () => {
             <div id="row-one">
               <h3>Ticket Comments</h3>
 
-              <form onSubmit={(e) => createComments(e, _id)}>
+              <form onSubmit={(e) => createComments(e, ticketId, commentValue)}>
                 <div className="quill-editor">
                   <ReactQuill
                     modules={reactQuillModules}
                     theme="snow"
                     placeholder="Your comment..."
-                    // value={newProject.description}
-                    // onChange={(value) =>
-                    //   setNewProject({ ...newProject, description: value })
-                    // }
+                    value={commentValue}
+                    onChange={(value) => setCommentValue(value)}
                   />
                 </div>
 
                 <button type="submit">Submit</button>
               </form>
 
-              <div className="comments"></div>
+              <div className="comments">
+                {comments &&
+                  comments.map((comment) => {
+                    const {
+                      _id,
+                      value,
+                      createdAt,
+                      createdBy: { name, avatar },
+                    } = comment;
+
+                    return (
+                      <div key={_id}>
+                        <div>
+                          <img src={avatar} alt="user" />
+                          <div>
+                            <p>{name}</p>
+                            <p>{createdAt}</p>
+                          </div>
+                        </div>
+
+                        <p>{value}</p>
+                      </div>
+                    );
+                  })}
+              </div>
             </div>
           </div>
         </div>
