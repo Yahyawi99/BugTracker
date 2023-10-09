@@ -22,12 +22,12 @@ import skins from "../../data/colors.json";
 import "../../styles/components/navbar/index.css";
 
 const NavBar = () => {
-  const { skin: skinChoice, setSkin } = useMainContext();
+  const { skin: skinChoice, setSkin, isHamOpen } = useMainContext();
   const { nav, setNav, clicked, setClicked, dropDown, dropDownFunctionality } =
     useNavbar();
 
   return (
-    <nav className="navbarContainer">
+    <nav className={`${isHamOpen && "showNavbarContainer"} navbarContainer`}>
       <div className="info">
         <img src="/assets/images/default-avatar-2.jpg" alt="avatar" />
         <div>
