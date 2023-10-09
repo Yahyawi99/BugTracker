@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 
-const TicketSchema = new Schema(
+const History = require("./History");
+
+const TicketSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -50,24 +51,38 @@ const TicketSchema = new Schema(
     },
 
     project: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Project",
       required: true,
     },
 
     assignedBy: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
 
     assignedTo: {
-      type: Schema.Types.Mixed,
+      type: mongoose.Schema.Types.Mixed,
       ref: "User",
       default: null,
     },
   },
   { timestamps: true }
 );
+
+TicketSchema.pre("save", async function () {
+  if (this.isNew) {
+    const historyDocument = {
+      title: `New Ticket Created`,
+      description: "A new ticket was added.",
+      actionBy: this.assignedBy,
+      ticket: this._id,
+      createdAt: this.createdAt,
+    };
+
+    await History.create(historyDocument);
+  }
+});
 
 module.exports = mongoose.model("Ticket", TicketSchema);

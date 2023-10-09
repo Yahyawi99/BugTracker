@@ -221,7 +221,7 @@ const TicketDetails = () => {
                           </p>
                           <p className="title">{title}</p>
                           <p className="name">
-                            By : <span>{actionBy.name}</span>
+                            By : <span>{actionBy && actionBy.name}</span>
                           </p>
                           <p
                             dangerouslySetInnerHTML={{ __html: description }}
