@@ -9,6 +9,7 @@ import progress from "../../utils/progress";
 import formatDate from "../../utils/formatDate";
 // hooks
 import useTickets from "../../hooks/useTickets";
+import useComments from "../../hooks/useComments";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
 // css
@@ -16,6 +17,7 @@ import "../../styles/containers/tickets/ticket-details.css";
 
 const TicketDetails = () => {
   const { getSingleTicket, singleTicket } = useTickets();
+  const { createComments } = useComments();
   const { ticketId } = useParams();
 
   useEffect(() => {
