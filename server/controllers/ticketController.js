@@ -73,7 +73,7 @@ const singleTicket = async (req, res) => {
     throw new CustomError.NotFoundError(`No Ticket with id :${id}`);
   }
 
-  const history = await History.find({ ticket: id });
+  const history = await History.find({ ticket: id }).populate("actionBy");
 
   res.status(StatusCodes.OK).json({ ticket, history });
 };

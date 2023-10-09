@@ -28,19 +28,23 @@ const TicketDetails = () => {
     getComments(ticketId);
   }, []);
 
-  const {
-    _id,
-    title,
-    description,
-    project,
-    isArchived,
-    assignedTo,
-    createdAt,
-    type,
-    priority,
-    status,
-    history,
-  } = singleTicket;
+  if (singleTicket.ticket) {
+    var {
+      ticket: {
+        _id,
+        title,
+        description,
+        project,
+        isArchived,
+        assignedTo,
+        createdAt,
+        type,
+        priority,
+        status,
+      },
+      history,
+    } = singleTicket;
+  }
 
   return (
     singleTicket &&
@@ -197,7 +201,34 @@ const TicketDetails = () => {
             <div id="row-two">
               <h3>Ticket History</h3>
 
-              <div className="historyContainer"></div>
+              <div className="historyContainer">
+                {history &&
+                  history.map((data) => {
+                    const { _id, createdAt, title, actionBy, description } =
+                      data;
+
+                    return (
+                      <div key={_id}>
+                        <div className="pin"></div>
+
+                        <div className="singleHistory">
+                          <p className="date">
+                            {formatDate(createdAt, {
+                              month: "short",
+                              day: "2-digit",
+                              year: "numeric",
+                            })}
+                          </p>
+                          <p className="title">{title}</p>
+                          <p className="name">
+                            By : <span>{actionBy.name}</span>
+                          </p>
+                          <p>{description}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
             </div>
           </div>
         </div>

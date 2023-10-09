@@ -158,3 +158,26 @@
     width: 100%;
     padding: 20px;
 }
+
+.second-column #row-two h3 {
+    margin-bottom: 25px;
+}
+
+.second-column .historyContainer {
+    border-left: 2px solid var(--border-color);
+    padding: 10px 0;
+}
+
+.second-column .historyContainer>div {
+    display: flex;
+    gap: 10px;
+    margin-left: -8px;
+}
+
+.second-column .historyContainer>div .pin {
+    width: 15px;
+    height: 15px;
+    background-color: var(--white);
+    border-radius: 50%;
+    border: 4px solid var(--main-clr);
+}
