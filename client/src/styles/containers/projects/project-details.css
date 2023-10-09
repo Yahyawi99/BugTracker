@@ -261,7 +261,6 @@
     height: fit-content;
     max-width: 800px;
     flex: 1;
-    background-color: var(--white);
     overflow-x: scroll;
     border-radius: 10px;
 }
@@ -269,6 +268,7 @@
 .DocumentDetails .details .second-column>div {
     width: fit-content;
     height: fit-content;
+    background-color: var(--white);
     padding: 10px;
 }
 

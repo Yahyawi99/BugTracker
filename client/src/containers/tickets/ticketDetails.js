@@ -39,6 +39,7 @@ const TicketDetails = () => {
     type,
     priority,
     status,
+    history,
   } = singleTicket;
 
   return (
@@ -193,16 +194,16 @@ const TicketDetails = () => {
               </div>
             </div>
 
-            <div className="row-two"></div>
+            <div id="row-two">
+              <h3>Ticket History</h3>
+
+              <div className="historyContainer"></div>
+            </div>
           </div>
         </div>
       </section>
     )
   );
-};
-
-const Comment = () => {
-  return "";
 };
 
 export default TicketDetails;

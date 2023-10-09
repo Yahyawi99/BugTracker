@@ -65,7 +65,15 @@
 /* ************************** */
 /* second column */
 /* comments */
+.second-column {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    gap: 25px;
+}
+
 .second-column #row-one {
+    width: 100%;
     padding: 20px;
 }
 
@@ -142,4 +150,11 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
+}
+
+
+/* History */
+.second-column #row-two {
+    width: 100%;
+    padding: 20px;
 }
