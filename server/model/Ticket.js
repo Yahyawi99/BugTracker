@@ -49,11 +49,6 @@ const TicketSchema = new Schema(
       default: false,
     },
 
-    comments: {
-      type: Array,
-      default: [],
-    },
-
     project: {
       type: Schema.Types.ObjectId,
       ref: "Project",

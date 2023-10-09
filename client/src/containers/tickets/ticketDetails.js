@@ -138,7 +138,7 @@ const TicketDetails = () => {
             <div id="row-one">
               <h3>Ticket Comments</h3>
 
-              <form>
+              <form onSubmit={(e) => createComments(e, _id)}>
                 <div className="quill-editor">
                   <ReactQuill
                     modules={reactQuillModules}
@@ -150,6 +150,7 @@ const TicketDetails = () => {
                     // }
                   />
                 </div>
+
                 <button type="submit">Submit</button>
               </form>
 
