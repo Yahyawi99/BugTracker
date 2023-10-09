@@ -18,6 +18,7 @@ const AuthRoutes = require("./routes/authRoutes");
 const ProjectRoutes = require("./routes/projectRoutes");
 const TicketRoutes = require("./routes/ticketRoutes");
 const UserRoutes = require("./routes/userRoutes");
+const CommentRoutes = require("./routes/commentRoutes");
 
 // ========================================
 // ========================================
@@ -25,9 +26,10 @@ app.use(express.json());
 app.use(cookieParser(process.env.JWT_SECRET));
 
 app.use("/api/v1", AuthRoutes);
+app.use("/api/v1/user", UserRoutes);
 app.use("/api/v1/project", ProjectRoutes);
 app.use("/api/v1/ticket", TicketRoutes);
-app.use("/api/v1/user", UserRoutes);
+app.use("/api/v1/comment", CommentRoutes);
 
 app.use(NotFoundMiddleware);
 app.use(errHandlerMiddleware);
