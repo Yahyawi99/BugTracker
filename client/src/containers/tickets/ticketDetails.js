@@ -211,7 +211,7 @@ const TicketDetails = () => {
                       <div key={_id}>
                         <div className="pin"></div>
 
-                        <div className="singleHistory">
+                        <div className="historyData">
                           <p className="date">
                             {formatDate(createdAt, {
                               month: "short",
@@ -223,7 +223,9 @@ const TicketDetails = () => {
                           <p className="name">
                             By : <span>{actionBy.name}</span>
                           </p>
-                          <p>{description}</p>
+                          <p
+                            dangerouslySetInnerHTML={{ __html: description }}
+                          />
                         </div>
                       </div>
                     );
