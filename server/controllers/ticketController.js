@@ -1,5 +1,6 @@
 const { StatusCodes } = require("http-status-codes");
 const Ticket = require("../model/Ticket");
+const History = require("../model/History");
 const CustomError = require("../errors");
 
 // get all tickets
@@ -72,7 +73,9 @@ const singleTicket = async (req, res) => {
     throw new CustomError.NotFoundError(`No Ticket with id :${id}`);
   }
 
-  res.status(StatusCodes.OK).json({ ticket });
+  const history = await History.find({ ticket: id });
+
+  res.status(StatusCodes.OK).json({ ticket, history });
 };
 
 // create Ticket

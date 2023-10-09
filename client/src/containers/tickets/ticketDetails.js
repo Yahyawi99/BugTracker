@@ -192,6 +192,8 @@ const TicketDetails = () => {
                   })}
               </div>
             </div>
+
+            <div className="row-two"></div>
           </div>
         </div>
       </section>
