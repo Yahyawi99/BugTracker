@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const History = require("./History");
 
 const TicketSchema = new mongoose.Schema(

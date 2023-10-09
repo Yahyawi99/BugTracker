@@ -32,7 +32,7 @@ CommentSchema.pre("save", async function () {
 
   const historyDocument = {
     title: `New comment added to ticket : ${ticket.title}`,
-    description: "The ticket comment was added.",
+    description: "The ticket <b>comment</b> was added.",
     actionBy: this.createdBy,
     ticket: ticket._id,
   };

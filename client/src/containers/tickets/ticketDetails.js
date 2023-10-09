@@ -202,34 +202,30 @@ const TicketDetails = () => {
               <h3>Ticket History</h3>
 
               <div className="historyContainer">
-                {history &&
-                  history.map((data) => {
-                    const { _id, createdAt, title, actionBy, description } =
-                      data;
+                {history.map((data) => {
+                  const { _id, createdAt, title, actionBy, description } = data;
 
-                    return (
-                      <div key={_id}>
-                        <div className="pin"></div>
+                  return (
+                    <div key={_id}>
+                      <div className="pin"></div>
 
-                        <div className="historyData">
-                          <p className="date">
-                            {formatDate(createdAt, {
-                              month: "short",
-                              day: "2-digit",
-                              year: "numeric",
-                            })}
-                          </p>
-                          <p className="title">{title}</p>
-                          <p className="name">
-                            By : <span>{actionBy && actionBy.name}</span>
-                          </p>
-                          <p
-                            dangerouslySetInnerHTML={{ __html: description }}
-                          />
-                        </div>
+                      <div className="historyData">
+                        <p className="date">
+                          {formatDate(createdAt, {
+                            month: "short",
+                            day: "2-digit",
+                            year: "numeric",
+                          })}
+                        </p>
+                        <p className="title">{title}</p>
+                        <p className="name">
+                          By : <span>{actionBy && actionBy.name}</span>
+                        </p>
+                        <p dangerouslySetInnerHTML={{ __html: description }} />
                       </div>
-                    );
-                  })}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
