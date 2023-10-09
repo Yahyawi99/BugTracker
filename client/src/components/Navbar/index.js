@@ -14,6 +14,7 @@ import {
   faStarOfLife,
   faCircle,
   faCheck,
+  faBriefcase,
 } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope, faGem } from "@fortawesome/free-regular-svg-icons";
 // data
@@ -249,7 +250,7 @@ const NavBar = () => {
                 }}
               >
                 <i>
-                  <FontAwesomeIcon icon={faGem} />
+                  <FontAwesomeIcon icon={faBriefcase} />
                 </i>
                 <p>Project Manager</p>
                 <i
