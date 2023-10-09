@@ -8,7 +8,6 @@
     overflow-y: scroll;
     position: sticky;
     top: 83px;
-    display: none;
 }
 
 .navbarContainer::-webkit-scrollbar {
@@ -286,3 +285,9 @@
 .navigationContainer .menuOffHead i path {
     fill: var(--main-clr);
 }
+
+
+/* *************************** */
+/* *************************** */
+/* *************************** */
+/* media queries */

@@ -1,4 +1,5 @@
 import React from "react";
+import Hamburger from "hamburger-react";
 // context
 import { useAuth } from "../../context/auth/Auth-context";
 // Icons

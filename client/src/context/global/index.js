@@ -10,6 +10,7 @@ const MainProvider = ({ children }) => {
     message: "",
     backClr: "",
   });
+  const [isHamOpen, setIsHamOpen] = useState(false);
 
   // Alert functionality
   const alertMe = async (msgTxt, clr) => {
@@ -45,6 +46,8 @@ const MainProvider = ({ children }) => {
         alert,
         alertMe,
         loading,
+        isHamOpen,
+        setIsHamOpen,
       }}
     >
       {children}
