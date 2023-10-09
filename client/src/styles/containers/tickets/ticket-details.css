@@ -101,5 +101,45 @@
 
 /* Comments */
 .second-column .comments {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
     border-top: 2px solid var(--border-color);
+    padding: 15px 0;
+}
+
+.second-column .comments>div img {
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transform: .25s;
+}
+
+.second-column .comments>div img:hover {
+    opacity: .5;
+}
+
+.second-column .comments .name {
+    font-weight: 600;
+}
+
+.second-column .comments .date {
+    font-size: .8rem;
+}
+
+.second-column .comments>div>div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.second-column .comments>div>p {
+    color: var(--gray-dark);
+}
+
+.second-column .comments>div>div>div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }

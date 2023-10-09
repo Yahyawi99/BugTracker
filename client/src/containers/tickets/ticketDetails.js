@@ -173,12 +173,20 @@ const TicketDetails = () => {
                         <div>
                           <img src={avatar} alt="user" />
                           <div>
-                            <p>{name}</p>
-                            <p>{createdAt}</p>
+                            <p className="name">{name}</p>
+                            <p className="date">
+                              {formatDate(createdAt, {
+                                year: "numeric",
+                                month: "2-digit",
+                                day: "2-digit",
+                                hour: "numeric",
+                                minute: "numeric",
+                              })}
+                            </p>
                           </div>
                         </div>
 
-                        <p>{value}</p>
+                        <p dangerouslySetInnerHTML={{ __html: value }} />
                       </div>
                     );
                   })}
