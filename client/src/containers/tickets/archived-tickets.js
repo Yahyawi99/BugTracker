@@ -3,13 +3,13 @@ import React from "react";
 import useTickets from "../../hooks/useTickets";
 
 const ArchivedTickets = () => {
-  const { getAllTickets, allTickets /* archiveTickets*/ } = useTickets();
+  const { getAllTickets, allTickets, archiveTicket } = useTickets();
 
   return (
     <ShowAllDocuments
       sectionName="Archived Tickets"
       controller={getAllTickets}
-      archiveController={"archiveProject"}
+      archiveController={archiveTicket}
       labels={[
         "Assigned by",
         "Assigned to",

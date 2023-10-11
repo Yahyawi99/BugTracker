@@ -201,7 +201,9 @@ const NavBar = () => {
 
                 <span>
                   <FontAwesomeIcon icon={faStarOfLife} />
-                  <p> Ticket Archive</p>
+                  <Link to="/tickets/archived-tickets">
+                    <p> Ticket Archive</p>
+                  </Link>
                 </span>
               </div>
 
