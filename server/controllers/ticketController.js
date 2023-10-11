@@ -85,6 +85,20 @@ const createTicket = async (req, res) => {
   res.send("create");
 };
 
+// archive ticket
+const archiveTicket = async (req, res) => {
+  const { isArchived } = req.body;
+  const { id } = req.params;
+
+  const ticket = await Ticket.findOne({ _id: id });
+
+  ticket.isArchived = isArchived;
+
+  await ticket.save();
+
+  res.status(StatusCodes.OK).json({ ticket });
+};
+
 // update Ticket
 const updateTicket = async (req, res) => {
   res.send("update");
@@ -101,4 +115,5 @@ module.exports = {
   createTicket,
   updateTicket,
   deleteTicket,
+  archiveTicket,
 };

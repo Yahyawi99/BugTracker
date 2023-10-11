@@ -48,7 +48,34 @@ const useTickets = () => {
     }
   };
 
-  return { getAllTickets, allTickets, getSingleTicket, singleTicket };
+  //Archive project
+  const archiveTicket = async (ticketId, isArchived) => {
+    try {
+      loading(true);
+
+      await axios.patch(`/api/v1/ticket/archive/${ticketId}`, {
+        isArchived,
+      });
+
+      loading(false);
+
+      alertMe("Done.", "var(--success)");
+
+      window.location.reload();
+    } catch (error) {
+      loading(false);
+
+      alertMe("something went wrong please try again!" + "!", "var(--danger)");
+    }
+  };
+
+  return {
+    getAllTickets,
+    allTickets,
+    getSingleTicket,
+    singleTicket,
+    archiveTicket,
+  };
 };
 
 export default useTickets;
