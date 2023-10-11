@@ -1,6 +1,8 @@
 import React from "react";
 // hooks
 import useTickets from "../../hooks/useTickets";
+// components
+import ShowAllDocuments from "../../components/shared/ShowAllDocuments";
 
 const ArchivedTickets = () => {
   const { getAllTickets, allTickets, archiveTicket } = useTickets();

@@ -1,19 +1,28 @@
 const { StatusCodes } = require("http-status-codes");
+const { default: isBoolean } = require("validator/lib/isBoolean");
 const Ticket = require("../model/Ticket");
 const History = require("../model/History");
 const CustomError = require("../errors");
 
 // get all tickets
 const allTickets = async (req, res) => {
-  const { sort, search } = req.query;
+  const { sort, search, isArchived } = req.query;
 
   // pagination
   const page = Number(req.query.page) || 1;
   const limit = Number(req.query.limit) || 5;
   const skip = (page - 1) * limit;
 
-  let tickets = Ticket.find({}).skip(skip).limit(limit);
-  // const tickets = await Ticket.find({});
+  let tickets;
+  console.log(isArchived);
+
+  if (isArchived === "all") {
+    tickets = Ticket.find({});
+  } else {
+    tickets = Ticket.find({ isArchived: isBoolean(isArchived + "") });
+  }
+
+  tickets = tickets.skip(skip).limit(limit);
 
   // **************
   // sorting
@@ -51,7 +60,9 @@ const allTickets = async (req, res) => {
   // ***************
   tickets = await tickets;
 
-  const totalTickets = await Ticket.countDocuments();
+  const totalTickets = await Ticket.countDocuments({
+    isArchived: isBoolean(isArchived + ""),
+  });
   const numOfPages = Math.ceil(totalTickets / limit);
 
   const count = tickets.length;

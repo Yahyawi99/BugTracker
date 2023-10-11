@@ -78,7 +78,12 @@ const ShowAllDocuments = (props) => {
 
               {/* Data */}
               {sectionName === "All Tickets" ? (
-                data && <Tickets tickets={data.tickets} />
+                data && (
+                  <Tickets
+                    tickets={data.tickets}
+                    archiveController={archiveController}
+                  />
+                )
               ) : (
                 <Projects
                   projects={data.projects}
@@ -186,11 +191,7 @@ const Projects = ({ projects, archiveController }) => {
               </Link>
 
               <button
-                onClick={() => {
-                  isArchived
-                    ? archiveController(_id, false)
-                    : archiveController(_id, true);
-                }}
+                onClick={() => archiveController(_id, !isArchived)}
                 className={`${isArchived ? "unarchive" : "archive"}`}
               >
                 {isArchived ? (
@@ -210,11 +211,12 @@ const Projects = ({ projects, archiveController }) => {
     </div>
   );
 };
-const Tickets = ({ tickets }) => {
+
+const Tickets = ({ tickets, archiveController }) => {
   return tickets && tickets.length ? (
     <div>
       {tickets.map((ticket) => {
-        const { _id, title, createdAt, status, priority } = ticket;
+        const { _id, title, createdAt, status, priority, isArchived } = ticket;
 
         return (
           <div key={_id} className="document ticket">
@@ -253,7 +255,10 @@ const Tickets = ({ tickets }) => {
                 <FontAwesomeIcon icon={faPencil} />
               </button>
 
-              <button className="archive">
+              <button
+                className={`${isArchived ? "unarchive" : "archive"}`}
+                onClick={() => archiveController(_id, !isArchived)}
+              >
                 <FontAwesomeIcon icon={faBoxArchive} />
               </button>
             </div>

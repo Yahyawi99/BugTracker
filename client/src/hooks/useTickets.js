@@ -8,12 +8,18 @@ const useTickets = () => {
   const [singleTicket, setSingleTicket] = useState({});
 
   //   get all tickets
-  const getAllTickets = async (page, sortOptions, limit, search) => {
+  const getAllTickets = async (
+    page,
+    sortOptions,
+    limit,
+    search,
+    isArchived
+  ) => {
     try {
       loading(true);
 
       const response = await axios.get(
-        `/api/v1/ticket?page=${page}&sort=${sortOptions}&limit=${limit}&search=${search}`
+        `/api/v1/ticket?page=${page}&sort=${sortOptions}&limit=${limit}&search=${search}&isArchived=${isArchived}`
       );
 
       loading(false);
