@@ -29,7 +29,7 @@ const useTickets = () => {
     }
   };
 
-  // get sindle ticket
+  // get single ticket
   const getSingleTicket = async (ticketId) => {
     try {
       loading(true);
