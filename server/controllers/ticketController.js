@@ -14,12 +14,12 @@ const allTickets = async (req, res) => {
   const skip = (page - 1) * limit;
 
   let tickets;
-  console.log(isArchived);
+  console.log(isBoolean(isArchived));
 
   if (isArchived === "all") {
     tickets = Ticket.find({});
   } else {
-    tickets = Ticket.find({ isArchived: isBoolean(isArchived + "") });
+    tickets = Ticket.find({ isArchived: isBoolean(isArchived) });
   }
 
   tickets = tickets.skip(skip).limit(limit);
