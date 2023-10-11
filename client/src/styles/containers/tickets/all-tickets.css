@@ -88,59 +88,6 @@
     border-color: var(--gray);
 }
 
-/* Buttons */
-.allTicketsSection .ticket .btns {
-    min-width: 100px;
-}
-
-.allTicketsSection .ticket .btns {
-    display: flex;
-    gap: 5px;
-    padding-right: 10px;
-}
-
-.allTicketsSection .ticket .btns button {
-    background-color: transparent;
-    border: 2px solid transparent;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: .25s;
-    padding: 10px;
-}
-
-.allTicketsSection .ticket .btns .details {
-    border-color: var(--blue);
-    color: var(--blue);
-}
-
-.allTicketsSection .ticket .btns .details:hover {
-    background-color: var(--blue);
-}
-
-.allTicketsSection .ticket .btns .edit {
-    border-color: var(--gray);
-    color: var(--gray);
-}
-
-.allTicketsSection .ticket .btns .edit:hover {
-    background-color: var(--gray);
-}
-
-.allTicketsSection .ticket .btns .archive {
-    border-color: var(--danger);
-    color: var(--danger);
-}
-
-.allTicketsSection .ticket .btns .archive:hover {
-    background-color: var(--danger);
-}
-
-.allTicketsSection .ticket .btns button:hover {
-    color: var(--white);
-}
-
-
-
 /* ========================== */
 /* ========================== */
 /* ========================== */

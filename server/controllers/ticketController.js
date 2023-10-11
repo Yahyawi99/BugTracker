@@ -14,7 +14,6 @@ const allTickets = async (req, res) => {
   const skip = (page - 1) * limit;
 
   let tickets;
-  console.log(isBoolean(isArchived));
 
   if (isArchived === "all") {
     tickets = Ticket.find({});

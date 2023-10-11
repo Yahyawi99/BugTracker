@@ -116,17 +116,17 @@
 
 
 /* Buttons */
-.getAllDocuments .project .btns {
+.getAllDocuments .btns {
     min-width: 100px;
 }
 
-.getAllDocuments .project .btns {
+.getAllDocuments .btns {
     display: flex;
     gap: 5px;
     padding-right: 10px;
 }
 
-.getAllDocuments .project .btns button {
+.getAllDocuments .btns button {
     background-color: transparent;
     border: 2px solid transparent;
     border-radius: 5px;
@@ -135,44 +135,44 @@
     padding: 10px;
 }
 
-.getAllDocuments .project .btns .details {
+.getAllDocuments .btns .details {
     border-color: var(--blue);
     color: var(--blue);
 }
 
-.getAllDocuments .project .btns .details:hover {
+.getAllDocuments .btns .details:hover {
     background-color: var(--blue);
 }
 
-.getAllDocuments .project .btns .edit {
+.getAllDocuments .btns .edit {
     border-color: var(--gray);
     color: var(--gray);
 }
 
-.getAllDocuments .project .btns .edit:hover {
+.getAllDocuments .btns .edit:hover {
     background-color: var(--gray);
 }
 
-.getAllDocuments .project .btns .archive {
+.getAllDocuments .btns .archive {
     border-color: var(--danger);
     color: var(--danger);
 }
 
-.getAllDocuments .project .btns .archive:hover {
+.getAllDocuments .btns .archive:hover {
     background-color: var(--danger);
 }
 
 
-.getAllDocuments .project .btns .unarchive {
+.getAllDocuments .btns .unarchive {
     border-color: var(--success);
     color: var(--success);
 }
 
-.getAllDocuments .project .btns .unarchive:hover {
+.getAllDocuments .btns .unarchive:hover {
     background-color: var(--success);
 }
 
-.getAllDocuments .project .btns button:hover {
+.getAllDocuments .btns button:hover {
     color: var(--white);
 }
 

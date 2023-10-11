@@ -7,12 +7,13 @@ import ShowAllDocuments from "../../components/shared/ShowAllDocuments";
 import "../../styles/containers/tickets/all-tickets.css";
 
 const AllTickets = () => {
-  const { getAllTickets, allTickets } = useTickets();
+  const { getAllTickets, allTickets, archiveTicket } = useTickets();
 
   return (
     <ShowAllDocuments
       sectionName="All Tickets"
       controller={getAllTickets}
+      archiveController={archiveTicket}
       labels={[
         "Assigned by",
         "Assigned to",

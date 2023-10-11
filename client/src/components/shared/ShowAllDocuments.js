@@ -43,7 +43,7 @@ const ShowAllDocuments = (props) => {
     data && (
       <section
         className={`getAllDocuments ${
-          sectionName === "All Tickets"
+          sectionName.indexOf("Tickets") !== -1
             ? "allTicketsSection"
             : "allProjectsSection"
         }`}
@@ -77,13 +77,11 @@ const ShowAllDocuments = (props) => {
               />
 
               {/* Data */}
-              {sectionName === "All Tickets" ? (
-                data && (
-                  <Tickets
-                    tickets={data.tickets}
-                    archiveController={archiveController}
-                  />
-                )
+              {sectionName.indexOf("Tickets") !== -1 ? (
+                <Tickets
+                  tickets={data.tickets}
+                  archiveController={archiveController}
+                />
               ) : (
                 <Projects
                   projects={data.projects}
@@ -213,6 +211,7 @@ const Projects = ({ projects, archiveController }) => {
 };
 
 const Tickets = ({ tickets, archiveController }) => {
+  console.log(tickets);
   return tickets && tickets.length ? (
     <div>
       {tickets.map((ticket) => {
