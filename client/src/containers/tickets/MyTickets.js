@@ -1,28 +1,28 @@
 import React from "react";
 // hooks
-import useTickets from "../../hooks/useProjects";
+import useTickets from "../../hooks/useTickets";
 // compenent
 import ShowAllDocuments from "../../components/shared/ShowAllDocuments";
 
 const MyTickets = () => {
-  const { getUserProjects, userProjects, archiveProject } = useProjects();
+  const { getUserTickets, userTickets, archiveTicket } = useTickets();
 
   return (
     <ShowAllDocuments
       sectionName="My Projects"
-      controller={getUserProjects}
-      archiveController={archiveProject}
+      controller={getUserTickets}
+      archiveController={archiveTicket}
       labels={[
-        "Project",
-        "End Date",
-        "Progress",
-        "Project Manager",
-        "Team",
+        "Assigned by",
+        "Assigned to",
+        "Title",
         "Status",
+        "Priority",
+        "Date",
         "Action",
       ]}
-      sortLabels={["Project", "End Date"]}
-      data={userProjects}
+      sortLabels={["Title", "Date", "Priority"]}
+      data={userTickets}
     />
   );
 };
