@@ -116,7 +116,8 @@
 
 
 /* Buttons */
-.getAllDocuments .btns {
+.getAllDocuments .document>.btns {
+    width: fit-content;
     min-width: 100px;
 }
 
