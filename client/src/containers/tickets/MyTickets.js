@@ -9,7 +9,7 @@ const MyTickets = () => {
 
   return (
     <ShowAllDocuments
-      sectionName="My Projects"
+      sectionName="My Tickets"
       controller={getUserTickets}
       archiveController={archiveTicket}
       labels={[
