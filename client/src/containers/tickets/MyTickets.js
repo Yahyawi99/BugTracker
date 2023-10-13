@@ -1,10 +1,10 @@
 import React from "react";
 // hooks
-import useProjects from "../../hooks/useProjects";
+import useTickets from "../../hooks/useProjects";
 // compenent
 import ShowAllDocuments from "../../components/shared/ShowAllDocuments";
 
-const MyProjects = () => {
+const MyTickets = () => {
   const { getUserProjects, userProjects, archiveProject } = useProjects();
 
   return (
@@ -27,4 +27,4 @@ const MyProjects = () => {
   );
 };
 
-export default MyProjects;
+export default MyTickets;

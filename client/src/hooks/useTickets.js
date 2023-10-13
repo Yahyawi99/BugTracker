@@ -6,6 +6,7 @@ const useTickets = () => {
   const { alertMe, loading } = useMainContext();
   const [allTickets, setAllTickets] = useState([]);
   const [singleTicket, setSingleTicket] = useState({});
+  const [userTickets, setUserTickets] = useState({});
 
   //   get all tickets
   const getAllTickets = async (
@@ -75,12 +76,35 @@ const useTickets = () => {
     }
   };
 
+  // user tickets
+  const getUserTickets = async (page, sortOption, limit, searchInput) => {
+    try {
+      loading(true);
+
+      const response = await axios.get(
+        `/api/v1/ticket/user-tickets/page=${page}&limit=${limit}&sort=${sortOption}&search=${searchInput}`
+      );
+
+      setUserTickets(response.data);
+
+      loading(false);
+
+      alertMe("Done.", "var(--success)");
+    } catch (error) {
+      loading(false);
+
+      alertMe("something went wrong please try again!" + "!", "var(--danger)");
+    }
+  };
+
   return {
     getAllTickets,
     allTickets,
     getSingleTicket,
     singleTicket,
     archiveTicket,
+    getUserTickets,
+    userTickets,
   };
 };
 
