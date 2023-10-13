@@ -211,7 +211,6 @@ const Projects = ({ projects, archiveController }) => {
 };
 
 const Tickets = ({ tickets, archiveController }) => {
-  console.log(tickets);
   return tickets && tickets.length ? (
     <div>
       {tickets.map((ticket) => {

@@ -77,12 +77,12 @@ const useTickets = () => {
   };
 
   // user tickets
-  const getUserTickets = async (page, sortOption, limit, searchInput) => {
+  const getUserTickets = async (page, sortOption, limit, search) => {
     try {
       loading(true);
 
       const response = await axios.get(
-        `/api/v1/ticket/user-tickets/page=${page}&limit=${limit}&sort=${sortOption}&search=${searchInput}`
+        `/api/v1/ticket/user-tickets?page=${page}&sort=${sortOption}&limit=${limit}&search=${search}`
       );
 
       setUserTickets(response.data);
