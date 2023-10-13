@@ -10,12 +10,15 @@ const {
   updateTicket,
   deleteTicket,
   archiveTicket,
+  userTickets,
 } = require("../controllers/ticketController");
 
 router
   .route("/")
   .get(authenticateUser, allTickets)
   .post(authenticateUser, createTicket);
+
+router.route("/user-tickets").get(authenticateUser, userTickets);
 
 router.route("/archive/:id").patch(authenticateUser, archiveTicket);
 
