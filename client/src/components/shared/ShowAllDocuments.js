@@ -214,7 +214,15 @@ const Tickets = ({ tickets, archiveController }) => {
   return tickets && tickets.length ? (
     <div>
       {tickets.map((ticket) => {
-        const { _id, title, createdAt, status, priority, isArchived } = ticket;
+        const {
+          _id,
+          title,
+          createdAt,
+          status,
+          priority,
+          isArchived,
+          assignedTo,
+        } = ticket;
 
         return (
           <div key={_id} className="document ticket">
@@ -223,7 +231,11 @@ const Tickets = ({ tickets, archiveController }) => {
             </div>
 
             <div className="assignedTo">
-              <p>Demo Developer</p>
+              {assignedTo ? (
+                <p>Demo Developer</p>
+              ) : (
+                <p className="unassigned">Unassigned</p>
+              )}
             </div>
 
             <div className="title">
