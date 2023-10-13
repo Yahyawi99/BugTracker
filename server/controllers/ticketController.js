@@ -21,7 +21,7 @@ const allTickets = async (req, res) => {
     tickets = Ticket.find({ isArchived: isBoolean(isArchived) });
   }
 
-  tickets = tickets.populate("assignedTo assignedBy").skip(skip).limit(limit);
+  tickets = tickets.populate("project").skip(skip).limit(limit);
 
   // **************
   // sorting
