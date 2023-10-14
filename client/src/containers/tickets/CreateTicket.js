@@ -14,20 +14,25 @@ import "../../styles/containers/projects/create-project.css";
 
 const CreateTicket = () => {
   const { createTicket } = useTickets();
-  const { getAllProjects } = useProjects();
+  const { getAllProjects, allProjects } = useProjects();
 
   const [newTicket, setNewTicket] = useState({
     title: "",
     description: "",
     type: "",
     priority: "",
-    project: "",
+    project: {},
   });
+  const [projects, setProjects] = useState([]);
 
-  //   managers
+  //   projects
   useEffect(() => {
     getAllProjects(1, 100 * 100, "", "", "all");
   }, []);
+
+  useEffect(() => {
+    setProjects(allProjects.projects);
+  }, [allProjects]);
 
   // change state when drop down value clicked
   const changeDropDownValue = (property, value, setDropDown) => {
@@ -69,7 +74,7 @@ const CreateTicket = () => {
             <input
               type="text"
               id="name"
-              placeholder="project name"
+              placeholder="ticket title"
               value={newTicket.title}
               onChange={(e) =>
                 setNewTicket({ ...newTicket, title: e.currentTarget.value })
@@ -87,7 +92,7 @@ const CreateTicket = () => {
               <ReactQuill
                 modules={reactQuillModules}
                 theme="snow"
-                placeholder="Your project description..."
+                placeholder="Your ticket description..."
                 value={newTicket.description}
                 onChange={(value) =>
                   setNewTicket({ ...newTicket, description: value })
@@ -98,7 +103,7 @@ const CreateTicket = () => {
 
           <div>
             <label htmlFor="priority">
-              Choose a priority
+              Ticket Priority
               <span> *</span>
             </label>
 
@@ -111,7 +116,9 @@ const CreateTicket = () => {
           </div>
 
           <div>
-            <label htmlFor="manager">Project Manager</label>
+            <label htmlFor="manager">
+              Ticket Type <span>*</span>
+            </label>
 
             <DropDown
               initialValue={newTicket.type}
@@ -127,10 +134,25 @@ const CreateTicket = () => {
               changeDropDownValue={changeDropDownValue}
             />
           </div>
+
+          <div>
+            <label htmlFor="manager">
+              Project <span>*</span>
+            </label>
+
+            {projects && (
+              <DropDown
+                initialValue={newTicket.project.name}
+                data={projects}
+                property="project"
+                changeDropDownValue={changeDropDownValue}
+              />
+            )}
+          </div>
         </div>
 
-        <button type="button" onClick={() => createProject(newProject)}>
-          Create Project
+        <button type="button" onClick={() => createTicket(newTicket)}>
+          Create Ticket
         </button>
       </section>
     </>
@@ -139,7 +161,7 @@ const CreateTicket = () => {
 
 // dropDown component
 const DropDown = (props) => {
-  const { initialValue, data, changeDropDownValue, type } = props;
+  const { initialValue, data, changeDropDownValue, property } = props;
 
   const [dropDown, setDropDown] = useState(false);
 
@@ -153,7 +175,7 @@ const DropDown = (props) => {
         {data.map((value, i) => (
           <p
             key={i}
-            onClick={() => changeDropDownValue(type, value, setDropDown)}
+            onClick={() => changeDropDownValue(property, value, setDropDown)}
           >
             {value.name || value}
           </p>
