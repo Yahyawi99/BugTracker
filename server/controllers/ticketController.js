@@ -21,7 +21,10 @@ const allTickets = async (req, res) => {
     tickets = Ticket.find({ isArchived: isBoolean(isArchived) });
   }
 
-  tickets = tickets.populate("project").skip(skip).limit(limit);
+  tickets = tickets
+    .populate("project assignedBy assignedTo")
+    .skip(skip)
+    .limit(limit);
 
   // **************
   // sorting
@@ -120,7 +123,7 @@ const userTickets = async (req, res) => {
   const skip = (page - 1) * limit;
 
   let tickets = Ticket.find({ assignedBy: userId })
-    .populate("assignedTo")
+    .populate("assignedTo assignedBy")
     .skip(skip)
     .limit(limit);
 

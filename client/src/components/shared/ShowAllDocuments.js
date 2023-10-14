@@ -221,6 +221,7 @@ const Tickets = ({ tickets, archiveController }) => {
           status,
           priority,
           isArchived,
+          isAssigned,
           assignedTo,
           assignedBy,
         } = ticket;
@@ -228,15 +229,11 @@ const Tickets = ({ tickets, archiveController }) => {
         return (
           <div key={_id} className="document ticket">
             <div className="assignedBy">
-              {assignedBy ? (
-                <p>{assignedBy.name}</p>
-              ) : (
-                <p className="unassigned">Unassigned</p>
-              )}
+              <p>{assignedBy.name}</p>
             </div>
 
             <div className="assignedTo">
-              {assignedTo ? (
+              {isAssigned ? (
                 <p>{assignedTo.name}</p>
               ) : (
                 <p className="unassigned">Unassigned</p>
