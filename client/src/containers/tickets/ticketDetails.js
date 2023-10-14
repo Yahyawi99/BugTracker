@@ -82,11 +82,19 @@ const TicketDetails = () => {
               </div>
 
               <div className="dev">
-                <p>Developer :</p>
-                <div>
-                  <img src={assignedTo.avatar} alt="developer" />
-                  <p className="devName">{assignedTo.name}</p>
-                </div>
+                {assignedTo ? (
+                  <>
+                    <p>Developer :</p>
+                    <div>
+                      <img src={assignedTo.avatar} alt="developer" />
+                      <p className="devName">{assignedTo.name}</p>
+                    </div>
+                  </>
+                ) : (
+                  <p className="unassigned">
+                    Developer : <span>Unassigned</span>
+                  </p>
+                )}
               </div>
 
               <div className="action">

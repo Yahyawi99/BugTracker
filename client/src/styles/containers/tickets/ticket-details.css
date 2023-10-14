@@ -25,6 +25,10 @@
     border-radius: 50%;
 }
 
+.ticketDetails .unassigned span {
+    font-weight: normal;
+}
+
 /* buttons */
 .ticketDetails .action .assignBtn {
     color: var(--blue);
