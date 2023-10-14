@@ -64,7 +64,7 @@ const useProjects = () => {
 
   // Edit project
   const editProject = async (projectId, updates) => {
-    if (!singleProject.project.name || !singleProject.project.name) {
+    if (!singleProject.project.name || !singleProject.project.description) {
       await alertMe("All fields are required!" + "!", "var(--danger)");
     }
 
@@ -94,8 +94,6 @@ const useProjects = () => {
       alertMe("Done.", "var(--success)");
 
       window.history.back();
-
-      setSingleProject({ ...singleProject, project: response.data.project });
     } catch (error) {
       loading(false);
 

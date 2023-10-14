@@ -55,6 +55,37 @@ const useTickets = () => {
     }
   };
 
+  // Edit ticket
+  const editTicket = async (ticketId, updates) => {
+    if (!singleTicket.ticket.title || !singleTicket.ticket.description) {
+      await alertMe("All fields are required!" + "!", "var(--danger)");
+    }
+
+    const { title, description, status, type, priority } = updates;
+
+    try {
+      loading(true);
+
+      await axios.patch(`/api/v1/ticket/${ticketId}`, {
+        title,
+        description,
+        status,
+        type,
+        priority,
+      });
+
+      loading(false);
+
+      alertMe("Done.", "var(--success)");
+
+      window.history.back();
+    } catch (error) {
+      loading(false);
+
+      alertMe("something went wrong please try again!" + "!", "var(--danger)");
+    }
+  };
+
   //Archive project
   const archiveTicket = async (ticketId, isArchived) => {
     try {
