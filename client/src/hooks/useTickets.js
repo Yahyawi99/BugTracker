@@ -107,6 +107,36 @@ const useTickets = () => {
     }
   };
 
+  // create ticket
+  const createTicket = async (newTicket) => {
+    if (
+      !newTicket.title ||
+      !newTicket.description ||
+      !newTicket.priority ||
+      !newTicket.type ||
+      !newTicket.project
+    ) {
+      alertMe("Please fill out the required fields", "var(--danger)");
+      return;
+    }
+
+    try {
+      loading(true);
+
+      await axios.post("/api/v1/ticket", newTicket);
+
+      loading(false);
+
+      await alertMe("Ticket Created", "var(--success)");
+
+      window.location.href = "/tickets/all-tickets";
+    } catch (error) {
+      loading(false);
+
+      alertMe("Something went wrong please try again later", "var(--danger)");
+    }
+  };
+
   // user tickets
   const getUserTickets = async (page, sortOption, limit, search) => {
     try {
@@ -137,6 +167,7 @@ const useTickets = () => {
     getUserTickets,
     userTickets,
     editTicket,
+    createTicket,
   };
 };
 

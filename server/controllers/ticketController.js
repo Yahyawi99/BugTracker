@@ -95,7 +95,21 @@ const singleTicket = async (req, res) => {
 
 // create Ticket
 const createTicket = async (req, res) => {
-  res.send("create");
+  const { title, description, type, priority, project } = req.body;
+  const { userId } = req.user;
+
+  const data = {
+    title,
+    description,
+    type,
+    priority,
+    project: project._id,
+    assignedBy: userId,
+  };
+
+  await Ticket.create(data);
+
+  res.status(StatusCodes.CREATED).json({ msg: "Ticket Created" });
 };
 
 // archive ticket

@@ -140,14 +140,12 @@ const CreateTicket = () => {
               Project <span>*</span>
             </label>
 
-            {projects && (
-              <DropDown
-                initialValue={newTicket.project.name}
-                data={projects}
-                property="project"
-                changeDropDownValue={changeDropDownValue}
-              />
-            )}
+            <DropDown
+              initialValue={newTicket.project.name}
+              data={projects ? projects : []}
+              property="project"
+              changeDropDownValue={changeDropDownValue}
+            />
           </div>
         </div>
 
