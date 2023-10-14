@@ -175,7 +175,24 @@ const userTickets = async (req, res) => {
 
 // update Ticket
 const updateTicket = async (req, res) => {
-  res.send("update");
+  const { title, description, status, type, priority } = req.body;
+  const { id: ticketId } = req.params;
+
+  const ticket = await Ticket.findOne({ _id: ticketId });
+
+  if (!ticket) {
+    throw new CustomError.NotFoundError(`No ticket with id : ${ticketId}`);
+  }
+
+  ticket.title = title;
+  ticket.description = description;
+  ticket.status = status;
+  ticket.type = type;
+  ticket.priority = priority;
+
+  await ticket.save();
+
+  res.status(StatusCodes.OK).json({ ticket });
 };
 
 // delete Ticket

@@ -136,6 +136,7 @@ const useTickets = () => {
     archiveTicket,
     getUserTickets,
     userTickets,
+    editTicket,
   };
 };
 

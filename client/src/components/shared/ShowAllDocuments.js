@@ -262,11 +262,11 @@ const Tickets = ({ tickets, archiveController }) => {
                 </button>
               </Link>
 
-              <button className="edit">
-                <Link to={`/tickets/edit-ticket/${_id}`}>
+              <Link to={`/tickets/edit-ticket/${_id}`}>
+                <button className="edit">
                   <FontAwesomeIcon icon={faPencil} />
-                </Link>
-              </button>
+                </button>
+              </Link>
 
               <button
                 className={`${isArchived ? "unarchive" : "archive"}`}

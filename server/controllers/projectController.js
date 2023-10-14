@@ -1,7 +1,7 @@
 const { StatusCodes } = require("http-status-codes");
 const Project = require("../model/Project");
 const Ticket = require("../model/Ticket");
-const CustomErros = require("../errors");
+const CustomErrors = require("../errors");
 const { default: isBoolean } = require("validator/lib/isBoolean");
 
 // get all projects
@@ -85,7 +85,7 @@ const singleProject = async (req, res) => {
   );
 
   if (!project) {
-    throw new CustomErros.NotFoundError(`No project with id :${projectId}`);
+    throw new CustomErrors.NotFoundError(`No project with id :${projectId}`);
   }
 
   // create team Arr
@@ -213,9 +213,11 @@ const updateProject = async (req, res) => {
     req.body;
   const { id } = req.params;
 
-  console.log();
-
   const project = await Project.findOne({ _id: id });
+
+  if (!project) {
+    throw new CustomErrors.NotFoundError(`No project with id : ${id}`);
+  }
 
   project.name = name;
   project.description = description;
