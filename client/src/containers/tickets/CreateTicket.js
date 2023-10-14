@@ -174,7 +174,7 @@ const DropDown = (props) => {
       <div className={`${dropDown && "showDropDown"} dropDown`}>
         {data.map((value, i) => (
           <p
-            key={i}
+            key={value._id || i}
             onClick={() => changeDropDownValue(property, value, setDropDown)}
           >
             {value.name || value}
