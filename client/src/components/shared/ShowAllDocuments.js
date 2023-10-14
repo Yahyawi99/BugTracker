@@ -263,7 +263,9 @@ const Tickets = ({ tickets, archiveController }) => {
               </Link>
 
               <button className="edit">
-                <FontAwesomeIcon icon={faPencil} />
+                <Link to={`/tickets/edit-ticket/${_id}`}>
+                  <FontAwesomeIcon icon={faPencil} />
+                </Link>
               </button>
 
               <button

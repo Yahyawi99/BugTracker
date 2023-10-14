@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import reactQuillModules from "../../utils/reactQuill-modules";
 // packages
 import ReactQuill from "react-quill";
 import Calendar from "react-calendar";
@@ -13,18 +14,6 @@ import "../../styles/containers/projects/edit-create-project.css";
 import "react-quill/dist/quill.snow.css";
 import { useParams } from "react-router-dom";
 import "react-calendar/dist/Calendar.css";
-
-const modules = {
-  toolbar: [
-    [{ font: [] }],
-    [{ header: [1, 2, 3, 4, 5, 6, false] }],
-    ["bold", "italic", "underline", "strike"],
-    [{ color: [] }, { background: [] }],
-    ["blockquote", "code-block"],
-    [{ list: "ordered" }, { list: "bullet" }],
-    [{ indent: "-1" }, { indent: "+1" }, { align: [] }],
-  ],
-};
 
 const EditProject = () => {
   const { projectId } = useParams();
@@ -71,7 +60,7 @@ const EditProject = () => {
   //   **************************
   return (
     <>
-      <HomeBtn name="Edit" />
+      <HomeBtn name="Edit Project" />
 
       {project && (
         <section className="editProject">
@@ -94,7 +83,7 @@ const EditProject = () => {
 
               <div className="quill-editor">
                 <ReactQuill
-                  modules={modules}
+                  modules={reactQuillModules}
                   theme="snow"
                   placeholder="Your project description..."
                   value={project.description}
