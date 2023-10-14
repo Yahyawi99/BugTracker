@@ -160,7 +160,7 @@ const useProjects = () => {
       loading(true);
 
       const response = await axios.get(
-        `/api/v1/project/user-projects/page=${page}&limit=${limit}&sort=${sortOption}&search=${searchInput}`
+        `/api/v1/project/user-projects/?page=${page}&limit=${limit}&sort=${sortOption}&search=${searchInput}`
       );
 
       setUserProjects(response.data);
