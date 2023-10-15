@@ -150,11 +150,14 @@ const useTickets = () => {
 
       loading(false);
 
-      alertMe("Done.", "var(--success)");
+      await alertMe("Done.", "var(--success)");
     } catch (error) {
       loading(false);
 
-      alertMe("something went wrong please try again!" + "!", "var(--danger)");
+      await alertMe(
+        "something went wrong please try again!" + "!",
+        "var(--danger)"
+      );
     }
   };
 
@@ -170,14 +173,23 @@ const useTickets = () => {
       loading(true);
 
       const response = await axios.get(
-        `/api/v1/unassigned-tickets?page=${page}&sort=${sortOptions}&limit=${limit}&search=${search}&isArchived=${isArchived}`
+        `/api/v1/ticket/unassigned-tickets?page=${page}&sort=${sortOptions}&limit=${limit}&search=${search}&isArchived=${isArchived}`
       );
 
+      console.log(response.data);
+
       setAllTickets(response.data);
+
+      await alertMe("Done" + "!", "var(--success)");
 
       loading(false);
     } catch (error) {
       loading(false);
+
+      await alertMe(
+        "something went wrong please try again!" + "!",
+        "var(--danger)"
+      );
     }
   };
 

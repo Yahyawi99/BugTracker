@@ -118,11 +118,7 @@ const Tickets = ({ tickets, archiveController }) => {
             </div>
 
             <div className="assignedTo">
-              {assignedTo ? (
-                <p>{assignedTo.name}</p>
-              ) : (
-                <p className="unassigned">Unassigned</p>
-              )}
+              <button className="assignDevBtn">Assign Dev</button>
             </div>
 
             <div className="title">
