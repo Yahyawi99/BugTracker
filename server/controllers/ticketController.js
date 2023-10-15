@@ -8,6 +8,8 @@ const CustomError = require("../errors");
 const allTickets = async (req, res) => {
   const { sort, search, isArchived, isAssigned } = req.query;
 
+  console.log(isAssigned);
+
   // pagination
   const page = Number(req.query.page) || 1;
   const limit = Number(req.query.limit) || 5;
