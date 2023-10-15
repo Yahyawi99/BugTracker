@@ -159,6 +159,21 @@ const useTickets = () => {
     }
   };
 
+  // Unassigned Tickets
+  const unassignedTickets = async () => {
+    try {
+      loading(true);
+
+      const response = await axios.get("/api/v1/unassigned-tickets");
+
+      setAllTickets(response.data);
+
+      loading(false);
+    } catch (error) {
+      loading(false);
+    }
+  };
+
   return {
     getAllTickets,
     allTickets,
@@ -169,6 +184,7 @@ const useTickets = () => {
     userTickets,
     editTicket,
     createTicket,
+    unassignedTickets,
   };
 };
 

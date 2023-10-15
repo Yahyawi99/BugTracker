@@ -187,6 +187,68 @@ const userTickets = async (req, res) => {
     .json({ tickets, numOfPages, currentPage: page, count, totalTickets });
 };
 
+// get unassigned tickets
+const unassignedTickets = async (req, res) => {
+  const { sort, search } = req.query;
+
+  // pagination
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 5;
+  const skip = (page - 1) * limit;
+
+  let tickets = Ticket.find({ isAssigned: false })
+    .populate("project assignedBy assignedTo")
+    .skip(skip)
+    .limit(limit);
+
+  // **************
+  // sorting
+  if (sort) {
+    if (sort === "Title") {
+      tickets = tickets.sort("title");
+    }
+
+    if (sort === "-Title") {
+      tickets = tickets.sort("-title");
+    }
+
+    if (sort === "Date") {
+      tickets = tickets.sort("createdAt");
+    }
+
+    if (sort === "-Date") {
+      tickets = tickets.sort("-createdAt");
+    }
+
+    if (sort === "Priority") {
+      tickets = tickets.sort("priority");
+    }
+
+    if (sort === "-Priority") {
+      tickets = tickets.sort("-priority");
+    }
+  }
+
+  // search
+  if (search) {
+    tickets = tickets.find({ title: { $regex: search, $options: "i" } });
+  }
+
+  // ***************
+  tickets = await tickets;
+
+  const totalTickets = await Ticket.countDocuments({
+    isAssigned: false,
+  });
+  const numOfPages = Math.ceil(totalTickets / limit);
+
+  const count = tickets.length;
+
+  res
+    .status(StatusCodes.OK)
+    .json({ tickets, numOfPages, currentPage: page, count, totalTickets });
+};
+
 // update Ticket
 const updateTicket = async (req, res) => {
   const { title, description, status, type, priority } = req.body;
@@ -222,4 +284,5 @@ module.exports = {
   deleteTicket,
   archiveTicket,
   userTickets,
+  unassignedTickets,
 };

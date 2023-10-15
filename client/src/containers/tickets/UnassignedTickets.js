@@ -20,7 +20,7 @@ import "../../styles/containers/tickets/all-tickets.css";
 import "../../styles/components/shared/showAllDocuments.css";
 
 const UnassignedTickets = () => {
-  const { getAllTickets, allTickets, archiveTicket } = useTickets();
+  const { unassignedTickets, allTickets, archiveTicket } = useTickets();
 
   const labels = [
     "Assigned by",
@@ -40,7 +40,7 @@ const UnassignedTickets = () => {
   const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
-    getAllTickets(1, "", limit, searchInput, "all", false);
+    unassignedTickets(1, "", limit, searchInput, "all", false);
   }, []);
 
   return (
@@ -52,7 +52,7 @@ const UnassignedTickets = () => {
           <div>
             <div>
               <LimitAndSearch
-                controller={getAllTickets}
+                controller={unassignedTickets}
                 currentPage={currentPage}
                 states={{
                   limit,
@@ -68,7 +68,7 @@ const UnassignedTickets = () => {
               <Labels
                 labels={labels}
                 sortLabels={sortLabels}
-                controller={getAllTickets}
+                controller={unassignedTickets}
                 data={allTickets}
                 states={{ limit, searchInput }}
                 isArchived={"all"}
@@ -82,7 +82,7 @@ const UnassignedTickets = () => {
               />
 
               <Pagination
-                controller={getAllTickets}
+                controller={unassignedTickets}
                 states={{ limit, searchInput }}
                 data={allTickets}
                 isArchived={"all"}
