@@ -14,14 +14,13 @@ const useTickets = () => {
     sortOptions,
     limit,
     search,
-    isArchived,
-    isAssigned
+    isArchived
   ) => {
     try {
       loading(true);
 
       const response = await axios.get(
-        `/api/v1/ticket?page=${page}&sort=${sortOptions}&limit=${limit}&search=${search}&isArchived=${isArchived}&isAssigned=${isAssigned}`
+        `/api/v1/ticket?page=${page}&sort=${sortOptions}&limit=${limit}&search=${search}&isArchived=${isArchived}`
       );
 
       loading(false);
@@ -160,11 +159,19 @@ const useTickets = () => {
   };
 
   // Unassigned Tickets
-  const unassignedTickets = async () => {
+  const unassignedTickets = async (
+    page,
+    sortOptions,
+    limit,
+    search,
+    isArchived
+  ) => {
     try {
       loading(true);
 
-      const response = await axios.get("/api/v1/unassigned-tickets");
+      const response = await axios.get(
+        `/api/v1/unassigned-tickets?page=${page}&sort=${sortOptions}&limit=${limit}&search=${search}&isArchived=${isArchived}`
+      );
 
       setAllTickets(response.data);
 

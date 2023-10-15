@@ -189,14 +189,23 @@ const userTickets = async (req, res) => {
 
 // get unassigned tickets
 const unassignedTickets = async (req, res) => {
-  const { sort, search } = req.query;
+  const { sort, search, isArchived } = req.query;
 
   // pagination
   const page = Number(req.query.page) || 1;
   const limit = Number(req.query.limit) || 5;
   const skip = (page - 1) * limit;
 
-  let tickets = Ticket.find({ isAssigned: false })
+  let tickets;
+
+  if (isArchived === "all") {
+    tickets = Ticket.find({});
+  } else {
+    tickets = Ticket.find({ isArchived: isBoolean(isArchived + "") });
+  }
+
+  tickets = tickets
+    .find({ isAssigned: false })
     .populate("project assignedBy assignedTo")
     .skip(skip)
     .limit(limit);

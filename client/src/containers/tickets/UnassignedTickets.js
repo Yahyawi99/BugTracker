@@ -40,7 +40,7 @@ const UnassignedTickets = () => {
   const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
-    unassignedTickets(1, "", limit, searchInput, "all", false);
+    unassignedTickets(1, "", limit, searchInput, "all");
   }, []);
 
   return (
