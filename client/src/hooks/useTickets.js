@@ -14,13 +14,14 @@ const useTickets = () => {
     sortOptions,
     limit,
     search,
-    isArchived
+    isArchived,
+    isAssigned
   ) => {
     try {
       loading(true);
 
       const response = await axios.get(
-        `/api/v1/ticket?page=${page}&sort=${sortOptions}&limit=${limit}&search=${search}&isArchived=${isArchived}`
+        `/api/v1/ticket?page=${page}&sort=${sortOptions}&limit=${limit}&search=${search}&isArchived=${isArchived}&isAssigned=${isAssigned}`
       );
 
       loading(false);
