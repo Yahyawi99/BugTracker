@@ -7,6 +7,7 @@ import ArchivedTickets from "./archived-tickets";
 import MyTickets from "./MyTickets";
 import EditTicket from "./EditTicket";
 import CreateTicket from "./CreateTicket";
+import UnassignedTickets from "./UnassignedTickets";
 
 const Tickets = () => {
   return (
@@ -18,6 +19,7 @@ const Tickets = () => {
         <Route path="/edit-ticket/:ticketId" Component={EditTicket} />
         <Route path="/create-ticket" Component={CreateTicket} />
         <Route path="/user-tickets" Component={MyTickets} />
+        <Route path="/unassigned-tickets" Component={UnassignedTickets} />
       </Routes>
     </>
   );

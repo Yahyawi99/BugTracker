@@ -6,7 +6,7 @@ const CustomError = require("../errors");
 
 // get all tickets
 const allTickets = async (req, res) => {
-  const { sort, search, isArchived } = req.query;
+  const { sort, search, isArchived, isAssigned } = req.query;
 
   // pagination
   const page = Number(req.query.page) || 1;

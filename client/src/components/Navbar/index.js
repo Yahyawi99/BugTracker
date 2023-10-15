@@ -200,7 +200,9 @@ const NavBar = () => {
 
                 <span>
                   <FontAwesomeIcon icon={faStarOfLife} />
-                  <p> Unassigned Tickets</p>
+                  <Link to="/tickets/unassigned-tickets">
+                    <p> Unassigned Tickets</p>
+                  </Link>
                 </span>
 
                 <span>
