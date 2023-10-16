@@ -5,7 +5,7 @@ import useUsers from "../../hooks/useUsers";
 // css
 import "../../styles/containers/profile/index.css";
 
-const index = () => {
+const MemberProfile = () => {
   const { memberId } = useParams();
   const { getSingleUser, singleUser } = useUsers();
 
@@ -33,4 +33,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default MemberProfile;
