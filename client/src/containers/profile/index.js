@@ -42,6 +42,8 @@ const MemberProfile = () => {
           )}
         </div>
       </div>
+
+      <div className="projects"></div>
     </section>
   );
 };
