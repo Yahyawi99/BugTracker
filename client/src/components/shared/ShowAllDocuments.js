@@ -148,7 +148,9 @@ const Projects = ({ projects, archiveController }) => {
             <div className="pm">
               {managedBy ? (
                 <>
-                  <img src={`${managedBy.avatar}`} alt="pm" />
+                  <Link to={`/member-profile/${managedBy._id}`}>
+                    <img src={`${managedBy.avatar}`} alt="pm" />
+                  </Link>
                   <p>{managedBy.name}</p>
                 </>
               ) : (
@@ -157,6 +159,7 @@ const Projects = ({ projects, archiveController }) => {
                     width: "100%",
                     textAlign: "center",
                   }}
+                  className="unassigned"
                 >
                   Unassigned
                 </p>
@@ -167,7 +170,11 @@ const Projects = ({ projects, archiveController }) => {
               {team.length > 0 &&
                 team.map((user) => {
                   const { _id, avatar } = user;
-                  return <img key={_id} src={`${avatar}`} alt="user" />;
+                  return (
+                    <Link to={`/member-profile/${_id}`}>
+                      <img key={_id} src={`${avatar}`} alt="user" />
+                    </Link>
+                  );
                 })}
             </div>
 

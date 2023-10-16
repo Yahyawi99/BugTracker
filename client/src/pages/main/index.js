@@ -8,6 +8,7 @@ import AuthProvider from "../../context/auth/Auth-context";
 import Dashboard from "../../containers/dashboard";
 import Projects from "../../containers/projects";
 import Tickets from "../../containers/tickets";
+import Profile from "../../containers/profile";
 // components
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
@@ -32,6 +33,7 @@ const Main = () => {
               <Route path="/dashboard" Component={Dashboard} />
               <Route path="/projects/*" Component={Projects} />
               <Route path="/tickets/*" Component={Tickets} />
+              <Route path="/member-profile/:memberId" Component={Profile} />
             </Route>
           </Routes>
         </main>
