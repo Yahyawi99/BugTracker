@@ -1,5 +1,6 @@
 const { StatusCodes } = require("http-status-codes");
 const User = require("../model/User");
+const CustomError = require("../errors");
 
 // get all users
 const allUsers = async (req, res) => {
@@ -10,7 +11,15 @@ const allUsers = async (req, res) => {
 
 // get single user
 const singleUser = async (req, res) => {
-  res.send("one");
+  const { id: memberId } = req.params;
+
+  const user = await User.findOne({ _id: memberId });
+
+  if (!user) {
+    throw new CustomError.NotFoundError(`No user with id : ${memberId}`);
+  }
+
+  res.status(StatusCodes.OK).json({ user });
 };
 
 // create user
