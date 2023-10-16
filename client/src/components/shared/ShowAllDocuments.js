@@ -154,15 +154,7 @@ const Projects = ({ projects, archiveController }) => {
                   <p>{managedBy.name}</p>
                 </>
               ) : (
-                <p
-                  style={{
-                    width: "100%",
-                    textAlign: "center",
-                  }}
-                  className="unassigned"
-                >
-                  Unassigned
-                </p>
+                <p className="unassigned">Unassigned</p>
               )}
             </div>
 
