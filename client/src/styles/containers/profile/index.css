@@ -1,0 +1,50 @@
+.memberProfile {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+/* member info */
+.memberInfo {
+    background-color: var(--white);
+    padding: 20px;
+}
+
+.memberInfo img {
+    width: 150px;
+    border-radius: 50%;
+}
+
+.memberInfo .name {
+    font-size: 2.25rem;
+    margin: 0 0 5px 0;
+}
+
+.memberInfo .role {
+    width: fit-content;
+    color: var(--teal);
+    display: flex;
+    justify-content: center;
+    font-size: .7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: 2px solid var(--teal);
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 0 20px 0;
+}
+
+.memberInfo>div {
+    display: flex;
+    gap: 10px;
+}
+
+.memberInfo>div>p:nth-child(1) {
+    color: var(--gray);
+    font-weight: 600;
+}
+
+.memberInfo a {
+    color: var(--blue);
+    display: none;
+}

@@ -19,7 +19,7 @@ const singleUser = async (req, res) => {
     throw new CustomError.NotFoundError(`No user with id : ${memberId}`);
   }
 
-  res.status(StatusCodes.OK).json({ user });
+  res.status(StatusCodes.OK).json(user);
 };
 
 // create user

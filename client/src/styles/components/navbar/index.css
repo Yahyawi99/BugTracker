@@ -49,8 +49,9 @@
     display: flex;
     justify-content: center;
     font-size: .7rem;
+    font-weight: 600;
     text-transform: uppercase;
-    border: 1px solid var(--teal);
+    border: 2px solid var(--teal);
     border-radius: 5px;
     padding: 5px 10px;
 }
