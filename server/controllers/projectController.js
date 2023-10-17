@@ -1,6 +1,8 @@
 const { StatusCodes } = require("http-status-codes");
 const Project = require("../model/Project");
 const Ticket = require("../model/Ticket");
+const User = require("../model/User");
+
 const CustomErrors = require("../errors");
 const { default: isBoolean } = require("validator/lib/isBoolean");
 
@@ -58,7 +60,7 @@ const allProjects = async (req, res) => {
 
   // Create Team Arr
   projects.forEach(async (project) => {
-    await project.projectTeam();
+    await project.projectTeam(User);
     await project.save();
   });
 
@@ -89,7 +91,7 @@ const singleProject = async (req, res) => {
   }
 
   // create team Arr
-  await project.projectTeam();
+  await project.projectTeam(User);
   await project.save();
 
   // tickets
@@ -292,7 +294,7 @@ const userProjects = async (req, res) => {
 
   // Create Team Arr
   projects.forEach(async (project) => {
-    await project.projectTeam();
+    await project.projectTeam(User);
     await project.save();
   });
 

@@ -276,7 +276,11 @@ const Tickets = ({ tickets }) => {
         </div>
 
         <div className="dev">
-          <p>{assignedTo.name}</p>
+          {assignedTo ? (
+            <p>{assignedTo.name}</p>
+          ) : (
+            <p className="unassigned">Unassigned</p>
+          )}
         </div>
 
         <div className="status">
