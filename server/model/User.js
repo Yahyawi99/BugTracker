@@ -67,13 +67,11 @@ UserSchema.methods.ComparePasswords = async function (inputPassword) {
 // };
 
 UserSchema.methods.projects = async function (user) {
-  // let userProjects = [];
-  // const hisProjects = await Project.find({ managedBy: userId });
-  // userProjects = [...userProjects, ...hisProjects];
-
-  if (user.role === "manager") {
+  if (user.role === "PM") {
     return await Project.find({ managedBy: user._id });
+    // ************************************
   } else if (user.role === "admin") {
+    // ************************************
     const userCreatedProjects = await Project.find({
       createdBy: user.id,
     }).select("id");
@@ -90,17 +88,20 @@ UserSchema.methods.projects = async function (user) {
       (ticket) => ticket.project.id
     );
 
-    const userProjectIds = [
+    let userProjectIds = [
       ...userCreatedProjectIds,
       ...userAssignedTicketsProjectIds,
     ];
 
-    return userProjectIds.reduce((arr, id) => {
+    userProjectIds = userProjectIds.reduce((arr, id) => {
       if (!arr.includes(id)) {
         arr.push(id);
       }
       return arr;
     }, []);
+
+    return await Project.find({ _id: { $in: userProjectIds } });
+    // ************************************
   } else {
     const userAssignedTickets = await Ticket.find({
       assignedTo: user.id,

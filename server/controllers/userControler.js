@@ -32,8 +32,9 @@ const userProjects = async (req, res) => {
     throw new CustomError.NotFoundError(`No user with id : ${userId}`);
   }
 
-  await user.projects(user);
-  res.send("user projects");
+  const projects = await user.projects(user);
+
+  res.status(StatusCodes.OK).json(projects);
 };
 
 // update user
