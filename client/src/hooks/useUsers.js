@@ -6,6 +6,7 @@ const useUsers = () => {
   const { alertMe, loading } = useMainContext();
   const [allUsers, setAllUsers] = useState([]);
   const [singleUser, setSingleUser] = useState({});
+  const [userProjects, setUserProjects] = useState([]);
 
   //   get all users
   const getAllUsers = async () => {
@@ -51,7 +52,33 @@ const useUsers = () => {
     }
   };
 
-  return { getAllUsers, allUsers, getSingleUser, singleUser };
+  // user projects
+  const getUserProjects = async (userId) => {
+    try {
+      loading(true);
+
+      const response = await axios.get(`/api/v1/user/projects/${userId}`);
+
+      loading(false);
+
+      setUserProjects(response.data);
+
+      await alertMe("Done", "var(--danger)");
+    } catch (error) {
+      loading(false);
+
+      await alertMe("something went wrong please try again!", "var(--danger)");
+    }
+  };
+
+  return {
+    getAllUsers,
+    allUsers,
+    getSingleUser,
+    singleUser,
+    getUserProjects,
+    userProjects,
+  };
 };
 
 export default useUsers;
