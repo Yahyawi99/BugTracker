@@ -8,12 +8,13 @@ import "../../styles/containers/profile/index.css";
 
 const MemberProfile = () => {
   const { memberId } = useParams();
-  const { getSingleUser, singleUser } = useUsers();
+  const { getSingleUser, singleUser, getUserProjects, userProjects } =
+    useUsers();
 
   useEffect(() => {
     getSingleUser(memberId);
+    getUserProjects(memberId);
   }, []);
-  console.log(singleUser);
 
   return (
     <section className="memberProfile">
@@ -43,7 +44,17 @@ const MemberProfile = () => {
         </div>
       </div>
 
-      <div className="projects"></div>
+      <div className="projects">
+        {userProjects.map((project) => {
+          const { _id, name } = project;
+
+          return (
+            <div key={_id} className="project">
+              {name}
+            </div>
+          );
+        })}
+      </div>
     </section>
   );
 };

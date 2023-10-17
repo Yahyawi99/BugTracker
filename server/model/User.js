@@ -61,11 +61,7 @@ UserSchema.methods.ComparePasswords = async function (inputPassword) {
   return bcrypt.compare(inputPassword, this.password);
 };
 
-// UserSchema.methods.assignTo = async function (ticketId) {
-//   UserSchema.add({});
-//   this.assignedTo = ticketId;
-// };
-
+// get user projects
 UserSchema.methods.projects = async function (user) {
   if (user.role === "PM") {
     return await Project.find({ managedBy: user._id });

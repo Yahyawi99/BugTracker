@@ -80,6 +80,7 @@ ProjectSchema.virtual("tickets", {
   justOne: false,
 });
 
+// create team
 ProjectSchema.methods.projectTeam = async function () {
   const associatedTickets = await Ticket.find({ project: this._id });
 
@@ -93,9 +94,7 @@ ProjectSchema.methods.projectTeam = async function () {
     }, [])
     .map((team) => new mongoose.Types.ObjectId(team));
 
-  const team = await User.find({ _id: { $in: teamIds } });
-
-  this.team = team;
+  this.team = await User.find({ _id: { $in: teamIds } });
 };
 
 module.exports = mongoose.model("Project", ProjectSchema);
