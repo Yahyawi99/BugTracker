@@ -99,18 +99,23 @@ UserSchema.methods.projects = async function (user) {
     return await Project.find({ _id: { $in: userProjectIds } }).populate(
       "tickets"
     );
+
     // ************************************
   } else {
     const userAssignedTickets = await Ticket.find({
       assignedTo: user.id,
     }).populate("project");
 
-    return userAssignedTickets.reduce((arr, ticket) => {
-      if (!arr.includes(ticket.project)) {
-        arr.push(ticket.project);
+    const userProjectsIds = userAssignedTickets.reduce((arr, ticket) => {
+      if (!arr.includes(ticket.project.id)) {
+        arr.push(ticket.project.id);
       }
       return arr;
     }, []);
+
+    return await Project.find({ _id: { $in: userProjectsIds } }).populate(
+      "tickets"
+    );
   }
 };
 
