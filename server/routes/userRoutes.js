@@ -6,15 +6,14 @@ const authenticateUser = require("../middlewares/auth");
 const {
   allUsers,
   singleUser,
-  createUser,
+  userProjects,
   updateUser,
   deleteUser,
 } = require("../controllers/userControler");
 
-router
-  .route("/")
-  .get(authenticateUser, allUsers)
-  .post(authenticateUser, createUser);
+router.route("/").get(authenticateUser, allUsers);
+
+router.route("/projects/:id").get(authenticateUser, userProjects);
 
 router
   .route("/:id")

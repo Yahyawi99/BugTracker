@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcrypt");
+const Project = require("./Project");
+const Ticket = require("./Ticket");
 
 const UserSchema = new mongoose.Schema(
   {
@@ -59,9 +61,36 @@ UserSchema.methods.ComparePasswords = async function (inputPassword) {
   return bcrypt.compare(inputPassword, this.password);
 };
 
-UserSchema.methods.assignTo = async function (ticketId) {
-  UserSchema.add({});
-  this.assignedTo = ticketId;
+// UserSchema.methods.assignTo = async function (ticketId) {
+//   UserSchema.add({});
+//   this.assignedTo = ticketId;
+// };
+
+UserSchema.methods.projects = async function (user) {
+  // let userProjects = [];
+  // const hisProjects = await Project.find({ managedBy: userId });
+  // userProjects = [...userProjects, ...hisProjects];
+
+  if (user.role === "manager") {
+    return await Project.find({ managedBy: user._id });
+  } else if (user.role === "admin") {
+    // const assignedTickets = await Ticket.find({
+    //   assignedBy: user.id,
+    // });
+  } else {
+    const assignedTickets = await Ticket.find({
+      assignedTo: user.id,
+    }).populate("project");
+
+    const userProjects = assignedTickets.reduce((arr, ticket) => {
+      if (!arr.includes(ticket.project)) {
+        arr.push(ticket.project);
+      }
+      return arr;
+    }, []);
+
+    console.log(userProjects);
+  }
 };
 
 module.exports = mongoose.model("User", UserSchema);

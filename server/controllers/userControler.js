@@ -23,8 +23,17 @@ const singleUser = async (req, res) => {
 };
 
 // create user
-const createUser = async (req, res) => {
-  res.send("create");
+const userProjects = async (req, res) => {
+  const { id: userId } = req.params;
+
+  const user = await User.findOne({ _id: userId });
+
+  if (!user) {
+    throw new CustomError.NotFoundError(`No user with id : ${userId}`);
+  }
+
+  await user.projects(user);
+  res.send("user projects");
 };
 
 // update user
@@ -40,7 +49,7 @@ const deleteUser = async (req, res) => {
 module.exports = {
   allUsers,
   singleUser,
-  createUser,
+  userProjects,
   updateUser,
   deleteUser,
 };
