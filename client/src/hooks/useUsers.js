@@ -63,7 +63,7 @@ const useUsers = () => {
 
       setUserProjects(response.data);
 
-      await alertMe("Done", "var(--danger)");
+      await alertMe("Done", "var(--success)");
     } catch (error) {
       loading(false);
 

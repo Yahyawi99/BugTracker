@@ -64,7 +64,7 @@ UserSchema.methods.ComparePasswords = async function (inputPassword) {
 // get user projects
 UserSchema.methods.projects = async function (user) {
   if (user.role === "PM") {
-    return await Project.find({ managedBy: user._id });
+    return await Project.find({ managedBy: user._id }).populate("tickets");
     // ************************************
   } else if (user.role === "admin") {
     // ************************************
@@ -96,7 +96,9 @@ UserSchema.methods.projects = async function (user) {
       return arr;
     }, []);
 
-    return await Project.find({ _id: { $in: userProjectIds } });
+    return await Project.find({ _id: { $in: userProjectIds } }).populate(
+      "tickets"
+    );
     // ************************************
   } else {
     const userAssignedTickets = await Ticket.find({

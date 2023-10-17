@@ -94,7 +94,6 @@ const singleProject = async (req, res) => {
   await project.projectTeam(User);
   await project.save();
 
-  // tickets
   // pagination
   const page = Number(req.query.page) || 1;
   const limit = Number(req.query.limit) || 3;

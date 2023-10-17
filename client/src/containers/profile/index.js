@@ -46,11 +46,78 @@ const MemberProfile = () => {
 
       <div className="projects">
         {userProjects.map((project) => {
-          const { _id, name } = project;
+          const {
+            _id,
+            name,
+            priority,
+            isArchive,
+            description,
+            team,
+            tickets,
+            startDate,
+            endDate,
+          } = project;
+
+          console.log(project);
 
           return (
             <div key={_id} className="project">
-              {name}
+              <div>
+                <div>
+                  <p className="name">{name}</p>
+                  <p className="priority">{priority}</p>
+                </div>
+
+                {/* <i
+                  onClick={(e) => toggleDropDown(e.currentTarget)}
+                  className="arrow-down"
+                >
+                  <FontAwesomeIcon icon={faAngleDown} />
+                </i> */}
+
+                {/* <DropDownToggle
+                  projectId={_id}
+                  isArchive={isArchive}
+                  archiveProject={archiveProject}
+                /> */}
+              </div>
+
+              <div>
+                <p dangerouslySetInnerHTML={{ __html: description }} />
+              </div>
+
+              {/* <div>
+                <div>
+                  <p>Team :</p>
+
+                  {team.length ? (
+                    <div className="team">
+                      {team.map((user) => {
+                        const { _id, avatar } = user;
+
+                        return <img key={_id} src={avatar} alt="user" />;
+                      })}
+                    </div>
+                  ) : (
+                    <div className="noTeam">No Assigned Members</div>
+                  )}
+                </div>
+
+                <button type="button">Manage Team</button>
+              </div> */}
+
+              {/* <div className="progress">
+                <motion.p
+                  initial={{ width: 0 }}
+                  animate={{ width: `${progress(startDate, endDate)}%` }}
+                  transition={{ duration: 1 }}
+                ></motion.p>
+              </div> */}
+
+              <div>
+                <p>Tickets :</p>
+                {/* <p>{tickets.length}</p> */}
+              </div>
             </div>
           );
         })}
