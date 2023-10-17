@@ -74,22 +74,44 @@ UserSchema.methods.projects = async function (user) {
   if (user.role === "manager") {
     return await Project.find({ managedBy: user._id });
   } else if (user.role === "admin") {
-    // const assignedTickets = await Ticket.find({
-    //   assignedBy: user.id,
-    // });
+    const userCreatedProjects = await Project.find({
+      createdBy: user.id,
+    }).select("id");
+
+    const userCreatedProjectIds = userCreatedProjects.map(
+      (project) => project.id
+    );
+
+    const userAssignedTickets = await Ticket.find({
+      assignedBy: user.id,
+    }).populate("project");
+
+    const userAssignedTicketsProjectIds = userAssignedTickets.map(
+      (ticket) => ticket.project.id
+    );
+
+    const userProjectIds = [
+      ...userCreatedProjectIds,
+      ...userAssignedTicketsProjectIds,
+    ];
+
+    return userProjectIds.reduce((arr, id) => {
+      if (!arr.includes(id)) {
+        arr.push(id);
+      }
+      return arr;
+    }, []);
   } else {
-    const assignedTickets = await Ticket.find({
+    const userAssignedTickets = await Ticket.find({
       assignedTo: user.id,
     }).populate("project");
 
-    const userProjects = assignedTickets.reduce((arr, ticket) => {
+    return userAssignedTickets.reduce((arr, ticket) => {
       if (!arr.includes(ticket.project)) {
         arr.push(ticket.project);
       }
       return arr;
     }, []);
-
-    console.log(userProjects);
   }
 };
 
