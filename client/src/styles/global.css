@@ -83,3 +83,7 @@ input,
 text {
   font-family: inherit;
 }
+
+ul {
+  list-style-type: none;
+}

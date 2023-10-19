@@ -17,9 +17,11 @@ import {
   faCircle,
   faCheck,
   faBriefcase,
+  faAngleDown,
+  faUser,
+  faPowerOff,
 } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope, faGem } from "@fortawesome/free-regular-svg-icons";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 // data
 import skins from "../../data/colors.json";
 // css
@@ -37,19 +39,25 @@ const NavBar = () => {
     getCurrentUser();
   }, []);
 
-  console.log(currentUser);
+  // Drop down
+  const toggleDropDown = (icon) => {
+    icon.parentElement.parentElement.nextSibling.classList.toggle(
+      "showMiniDropDown"
+    );
+  };
 
   return (
     <nav className={`${isHamOpen && "showNavbarContainer"} navbarContainer`}>
       {currentUser && (
         <div className="info">
           <img src={currentUser.avatar} alt="avatar" />
+
           <div>
             <p>Welcome,</p>
             <p className="name">
               <span>{currentUser.name}</span>
               <i
-                // onClick={(e) => toggleDropDown(e.currentTarget)}
+                onClick={(e) => toggleDropDown(e.currentTarget)}
                 className="arrow-down"
               >
                 <FontAwesomeIcon icon={faAngleDown} />
@@ -57,6 +65,8 @@ const NavBar = () => {
             </p>
             <p className="role">{currentUser.role}</p>
           </div>
+
+          <DropDownToggle />
         </div>
       )}
 
@@ -336,6 +346,28 @@ const NavBar = () => {
         )}
       </div>
     </nav>
+  );
+};
+
+// **************************
+const DropDownToggle = () => {
+  return (
+    <ul className="dropDown">
+      <li>
+        <FontAwesomeIcon icon={faUser} />
+        <Link to={`/projects/project-details/`}>My Profile</Link>
+      </li>
+
+      <li>
+        <FontAwesomeIcon icon={faGear} />
+        <Link to={`/projects/edit-project/`}>Settings</Link>
+      </li>
+
+      <li>
+        <FontAwesomeIcon icon={faPowerOff} />
+        <Link>Logout</Link>
+      </li>
+    </ul>
   );
 };
 
