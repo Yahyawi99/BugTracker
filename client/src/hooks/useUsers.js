@@ -34,17 +34,19 @@ const useUsers = () => {
   // get current user
   const getCurrentUser = async () => {
     try {
-      loading(false);
+      loading(true);
 
       const response = await axios.get("/api/v1/user/current-user");
 
       setCurrentUser(response.data);
 
-      loading(true);
+      loading(false);
+
+      await alertMe("Done.", "var(--success)");
     } catch (error) {
       loading(false);
 
-      await alertMe("Something went wrong, please try again!");
+      await alertMe("Something went wrong, please try again!", "var(--danger)");
     }
   };
 

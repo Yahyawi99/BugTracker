@@ -19,6 +19,7 @@ import {
   faBriefcase,
 } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope, faGem } from "@fortawesome/free-regular-svg-icons";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 // data
 import skins from "../../data/colors.json";
 // css
@@ -45,7 +46,15 @@ const NavBar = () => {
           <img src={currentUser.avatar} alt="avatar" />
           <div>
             <p>Welcome,</p>
-            <p className="name">{currentUser.name}</p>
+            <p className="name">
+              <span>{currentUser.name}</span>
+              <i
+                // onClick={(e) => toggleDropDown(e.currentTarget)}
+                className="arrow-down"
+              >
+                <FontAwesomeIcon icon={faAngleDown} />
+              </i>
+            </p>
             <p className="role">{currentUser.role}</p>
           </div>
         </div>

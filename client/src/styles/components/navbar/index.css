@@ -39,8 +39,12 @@
 }
 
 .navbarContainer .info .name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-weight: 800;
     font-size: 1.1rem;
+    text-transform: capitalize;
     margin-bottom: 5px;
 }
 
@@ -54,6 +58,12 @@
     border: 2px solid var(--teal);
     border-radius: 5px;
     padding: 5px 10px;
+}
+
+.navbarContainer .info .arrow-down * {
+    display: flex;
+    font-size: .9rem;
+    fill: var(--black);
 }
 
 
