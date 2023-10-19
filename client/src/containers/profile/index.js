@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { motion } from "framer-motion";
+// utils
+import progress from "../../utils/progress";
 // hooks
 import useUsers from "../../hooks/useUsers";
 // css
@@ -50,15 +53,12 @@ const MemberProfile = () => {
             _id,
             name,
             priority,
-            isArchive,
             description,
             team,
             tickets,
             startDate,
             endDate,
           } = project;
-
-          console.log(project);
 
           return (
             <div key={_id} className="project">
@@ -67,26 +67,13 @@ const MemberProfile = () => {
                   <p className="name">{name}</p>
                   <p className="priority">{priority}</p>
                 </div>
-
-                {/* <i
-                  onClick={(e) => toggleDropDown(e.currentTarget)}
-                  className="arrow-down"
-                >
-                  <FontAwesomeIcon icon={faAngleDown} />
-                </i> */}
-
-                {/* <DropDownToggle
-                  projectId={_id}
-                  isArchive={isArchive}
-                  archiveProject={archiveProject}
-                /> */}
               </div>
 
               <div>
                 <p dangerouslySetInnerHTML={{ __html: description }} />
               </div>
 
-              {/* <div>
+              <div>
                 <div>
                   <p>Team :</p>
 
@@ -95,7 +82,11 @@ const MemberProfile = () => {
                       {team.map((user) => {
                         const { _id, avatar } = user;
 
-                        return <img key={_id} src={avatar} alt="user" />;
+                        return (
+                          <Link to={`/member-profile/${_id}`}>
+                            <img key={_id} src={avatar} alt="user" />
+                          </Link>
+                        );
                       })}
                     </div>
                   ) : (
@@ -104,19 +95,19 @@ const MemberProfile = () => {
                 </div>
 
                 <button type="button">Manage Team</button>
-              </div> */}
+              </div>
 
-              {/* <div className="progress">
+              <div className="progress">
                 <motion.p
                   initial={{ width: 0 }}
                   animate={{ width: `${progress(startDate, endDate)}%` }}
                   transition={{ duration: 1 }}
                 ></motion.p>
-              </div> */}
+              </div>
 
               <div>
-                <p>Tickets :</p>
-                {/* <p>{tickets.length}</p> */}
+                <p>Tickets : </p>
+                <p>{tickets.length}</p>
               </div>
             </div>
           );

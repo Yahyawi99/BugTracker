@@ -57,3 +57,135 @@
 .memberInfo a:hover {
     opacity: .5;
 }
+
+
+/* ************************** */
+/* Projects */
+.memberProfile .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-rows: auto-fill;
+    gap: 25px;
+    margin: 0 0 25px 0;
+}
+
+.memberProfile .projects .project {
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.memberProfile .project>div {
+    display: flex;
+    align-items: center;
+}
+
+/* Header */
+.memberProfile .project>div:nth-child(1) {
+    justify-content: space-between;
+    position: relative;
+}
+
+.memberProfile .project>div:nth-child(1) .name {
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.memberProfile .project>div:nth-child(1) .priority {
+    font-size: .8rem;
+}
+
+/* description */
+.memberProfile .project>div:nth-child(2) {
+    height: 100%;
+    align-items: flex-start;
+    font-size: 1rem;
+    margin: 15px 0;
+}
+
+/* Team */
+.memberProfile .project>div:nth-child(3) {
+    justify-content: space-between;
+}
+
+.memberProfile .project>div:nth-child(3)>div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: .9rem;
+}
+
+.memberProfile .projects .project img {
+    width: 30px;
+    border: 2px solid var(--main-clr);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.memberProfile .projects .project a:not(:first-child) {
+    margin: 0 0 0 -10px;
+}
+
+.memberProfile .projects .project img:hover {
+    transform: translateY(-5px);
+}
+
+.memberProfile .project>div:nth-child(3) button {
+    background-color: var(--main-clr);
+    color: var(--white);
+    font-weight: 600;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 5px;
+}
+
+.memberProfile .project>div:nth-child(3) button:hover {
+    background-color: transparent;
+    color: var(--main-clr);
+    border-color: var(--main-clr);
+}
+
+.memberProfile .project>div:nth-child(3) .noTeam {
+    color: var(--gray);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Progress */
+.memberProfile .projects .project .progress {
+    height: 25px;
+    background-color: var(--main-clr-hover);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.memberProfile .projects .project .progress>p {
+    height: 100%;
+    background-color: var(--main-clr);
+    border-radius: 5px;
+    position: absolute;
+    transition: .5s ease-in-out;
+    transition-delay: .1s;
+}
+
+/* Tickets */
+.memberProfile .project>div:nth-child(5) {
+    display: flex;
+    gap: 5px;
+}
+
+/* *************************** */
+/* *************************** */
+/* *************************** */
+
+.memberProfile .projects .project .showDropDown {
+    transform: scaleY(1);
+}
