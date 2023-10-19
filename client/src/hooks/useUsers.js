@@ -5,6 +5,7 @@ import { useMainContext } from "../context/global";
 const useUsers = () => {
   const { alertMe, loading } = useMainContext();
   const [allUsers, setAllUsers] = useState([]);
+  const [currentUser, setCurrentUser] = useState({});
   const [singleUser, setSingleUser] = useState({});
   const [userProjects, setUserProjects] = useState([]);
 
@@ -27,6 +28,23 @@ const useUsers = () => {
         "Something went wrong please try again later!" + "!",
         "var(--danger)"
       );
+    }
+  };
+
+  // get current user
+  const getCurrentUser = async () => {
+    try {
+      loading(false);
+
+      const response = await axios.get("/api/v1/user/current-user");
+
+      setCurrentUser(response.data);
+
+      loading(true);
+    } catch (error) {
+      loading(false);
+
+      await alertMe("Something went wrong, please try again!");
     }
   };
 
@@ -78,6 +96,8 @@ const useUsers = () => {
     singleUser,
     getUserProjects,
     userProjects,
+    getCurrentUser,
+    currentUser,
   };
 };
 
