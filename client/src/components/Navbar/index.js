@@ -40,14 +40,16 @@ const NavBar = () => {
 
   return (
     <nav className={`${isHamOpen && "showNavbarContainer"} navbarContainer`}>
-      <div className="info">
-        <img src="/assets/images/default-avatar-2.jpg" alt="avatar" />
-        <div>
-          <p>Welcome,</p>
-          <p className="name">Demo Admin</p>
-          <p className="role">Admin</p>
+      {currentUser && (
+        <div className="info">
+          <img src={currentUser.avatar} alt="avatar" />
+          <div>
+            <p>Welcome,</p>
+            <p className="name">{currentUser.name}</p>
+            <p className="role">{currentUser.role}</p>
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="navigationContainer">
         <div

@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Navigate, Outlet } from "react-router-dom";
+// hooks
+import useUsers from "../../hooks/useUsers";
 import useAuthenticate from "../../hooks/useAuthenticate";
 
 const RouteProtector = () => {
