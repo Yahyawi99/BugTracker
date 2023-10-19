@@ -83,7 +83,10 @@ const MemberProfile = () => {
                         const { _id, avatar } = user;
 
                         return (
-                          <Link to={`/member-profile/${_id}`}>
+                          <Link
+                            to={`/member-profile/${_id}`}
+                            reloadDocument={true}
+                          >
                             <img key={_id} src={avatar} alt="user" />
                           </Link>
                         );
