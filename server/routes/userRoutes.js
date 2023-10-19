@@ -9,9 +9,12 @@ const {
   userProjects,
   updateUser,
   deleteUser,
+  currentUser,
 } = require("../controllers/userControler");
 
 router.route("/").get(authenticateUser, allUsers);
+
+router.route("/current-user").get(authenticateUser, currentUser);
 
 router.route("/projects/:id").get(authenticateUser, userProjects);
 

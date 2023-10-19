@@ -37,6 +37,19 @@ const userProjects = async (req, res) => {
   res.status(StatusCodes.OK).json(projects);
 };
 
+// current user
+const currentUser = async (req, res) => {
+  const { userId } = req.user;
+
+  const user = await User.findOne({ _id: userId });
+
+  if (!user) {
+    throw new CustomError.NotFoundError(`No user with id : ${userId}`);
+  }
+
+  res.status(StatusCodes.OK).json(user);
+};
+
 // update user
 const updateUser = async (req, res) => {
   res.send("update");
@@ -53,4 +66,5 @@ module.exports = {
   userProjects,
   updateUser,
   deleteUser,
+  currentUser,
 };

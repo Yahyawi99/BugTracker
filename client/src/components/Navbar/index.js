@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+// hooks
+import useUsers from "../../hooks/useUsers";
 // context
 import { useMainContext } from "../../context/global";
 import { useNavbar } from "../../context/Navbar";
@@ -24,8 +26,17 @@ import "../../styles/components/navbar/index.css";
 
 const NavBar = () => {
   const { skin: skinChoice, setSkin, isHamOpen } = useMainContext();
+
   const { nav, setNav, clicked, setClicked, dropDown, dropDownFunctionality } =
     useNavbar();
+
+  const { getCurrentUser, currentUser } = useUsers();
+
+  useEffect(() => {
+    getCurrentUser();
+  }, []);
+
+  console.log(currentUser);
 
   return (
     <nav className={`${isHamOpen && "showNavbarContainer"} navbarContainer`}>
