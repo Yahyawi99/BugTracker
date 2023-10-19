@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useRef } from "react";
+import { Link, Path } from "react-router-dom";
 // hooks
 import useUsers from "../../hooks/useUsers";
 // context
@@ -54,6 +54,7 @@ const NavBar = () => {
 
           <div>
             <p>Welcome,</p>
+
             <p className="name">
               <span>{currentUser.name}</span>
               <i
@@ -63,10 +64,11 @@ const NavBar = () => {
                 <FontAwesomeIcon icon={faAngleDown} />
               </i>
             </p>
+
             <p className="role">{currentUser.role}</p>
           </div>
 
-          <DropDownToggle />
+          <DropDownToggle currentUser={currentUser} />
         </div>
       )}
 
@@ -350,20 +352,26 @@ const NavBar = () => {
 };
 
 // **************************
-const DropDownToggle = () => {
+const DropDownToggle = ({ currentUser }) => {
+  const miniDropDownRef = useRef(null);
+
+  const closeMiniDropDown = () => {
+    miniDropDownRef.current.classList.remove("showMiniDropDown");
+  };
+
   return (
-    <ul className="dropDown">
-      <li>
+    <ul className="dropDown" ref={miniDropDownRef}>
+      <li onClick={closeMiniDropDown}>
         <FontAwesomeIcon icon={faUser} />
-        <Link to={`/projects/project-details/`}>My Profile</Link>
+        <Link to={`/member-profile/${currentUser._id}`}>My Profile</Link>
       </li>
 
-      <li>
+      <li onClick={closeMiniDropDown}>
         <FontAwesomeIcon icon={faGear} />
         <Link to={`/projects/edit-project/`}>Settings</Link>
       </li>
 
-      <li>
+      <li onClick={closeMiniDropDown}>
         <FontAwesomeIcon icon={faPowerOff} />
         <Link>Logout</Link>
       </li>

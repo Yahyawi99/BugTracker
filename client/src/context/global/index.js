@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 // Utils
 import wait from "../../utils/wait";
 
@@ -37,6 +38,12 @@ const MainProvider = ({ children }) => {
       backClr: "var(--warning)",
     });
   };
+
+  // close dropdown after navigation
+  const path = window.location.pathname;
+  useEffect(() => {
+    setIsHamOpen(false);
+  }, [path]);
 
   return (
     <AppContext.Provider
