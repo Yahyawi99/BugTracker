@@ -38,7 +38,7 @@ const AuthProvider = ({ children }) => {
 
       await alertMe(response.data.msg, "var(--success)");
 
-      window.location = "/dashboard";
+      window.location = "/";
     } catch (error) {
       loading(false);
 

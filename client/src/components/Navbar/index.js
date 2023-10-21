@@ -88,7 +88,7 @@ const NavBar = () => {
         {nav === "menu" ? (
           <div className="menu">
             <ul className="list">
-              <Link to="/dashboard">
+              <Link to="/">
                 <li
                   className={`listItem1 ${
                     clicked === "dashboard" && "clicked"
