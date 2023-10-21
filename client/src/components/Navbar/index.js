@@ -363,7 +363,10 @@ const DropDownToggle = ({ currentUser }) => {
     <ul className="dropDown" ref={miniDropDownRef}>
       <li onClick={closeMiniDropDown}>
         <FontAwesomeIcon icon={faUser} />
-        <Link to={`/member-profile/${currentUser._id}`} reloadDocument={true}>
+        <Link
+          to={`/profile/member-profile/${currentUser._id}`}
+          reloadDocument={true}
+        >
           My Profile
         </Link>
       </li>

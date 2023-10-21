@@ -1,7 +1,6 @@
 .memberProfile {
     display: flex;
     flex-direction: column;
-    gap: 50px;
 }
 
 /* member info */
@@ -9,6 +8,7 @@
     background-color: var(--white);
     border-radius: 10px;
     padding: 30px 25px;
+    margin-bottom: 50px;
 }
 
 .memberInfo img {

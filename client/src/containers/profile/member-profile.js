@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
+// components
+import HomeBtn from "../../components/shared/HomeBtn";
 // utils
 import progress from "../../utils/progress";
 // hooks
@@ -21,6 +23,8 @@ const MemberProfile = () => {
 
   return (
     <section className="memberProfile">
+      <HomeBtn name="Member Profile" />
+
       <div className="memberInfo">
         <img src={singleUser.avatar} alt="member" />
 

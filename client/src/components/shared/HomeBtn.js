@@ -9,7 +9,7 @@ import "../../styles/components/shared/homeBtn.css";
 const HomeBtn = ({ name }) => {
   return (
     <div className="home-btn">
-      <Link to="/dashboard">
+      <Link to="/">
         <FontAwesomeIcon icon={faHouse} />
       </Link>
 
