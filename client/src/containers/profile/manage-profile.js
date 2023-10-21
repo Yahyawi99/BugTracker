@@ -23,9 +23,9 @@ const ManageProfile = () => {
           </ul>
 
           <div>
-            <h3>Profile</h3>
+            <h3>Password</h3>
 
-            <form className="profile-form">
+            {/* <form className="form profile-form">
               <div className="nameController">
                 <label className="label" htmlFor="username">
                   Username
@@ -65,6 +65,56 @@ const ManageProfile = () => {
                   />
                 </div>
               </div>
+            </form> */}
+
+            {/* <form className="form email-form">
+              <div>
+                <label htmlFor="oldEmail" className="label">
+                  Email
+                </label>
+                <input
+                  id="oldEmail readonlyInput"
+                  type="text"
+                  value="yassinyahyawi26@gmail.com"
+                  readOnly
+                />
+              </div>
+
+              <div>
+                <label htmlFor="newEmail" className="label">
+                  New Email
+                </label>
+                <input id="newEmail" type="email" />
+              </div>
+
+              <button className="Btn">Change email</button>
+            </form> */}
+
+            <form className="form password-form">
+              <div>
+                <label htmlFor="currentPass" className="label">
+                  Current password
+                </label>
+                <input type="password" id="currentPass" />
+              </div>
+
+              <div>
+                <label htmlFor="newPass" className="label">
+                  New password
+                </label>
+                <input type="password" id="newPass" />
+              </div>
+
+              <div>
+                <label htmlFor="confirmNewPass" className="label">
+                  Confirm new password
+                </label>
+                <input type="password" id="confirmNewPass" />
+              </div>
+
+              <button type="submit" className="Btn">
+                Update password
+              </button>
             </form>
           </div>
         </div>

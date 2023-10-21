@@ -62,19 +62,19 @@
     text-decoration: 4px underline;
 }
 
-.manageProfile .profile-form>div {
+.manageProfile .form>div {
     display: flex;
     flex-direction: column;
     margin-bottom: 25px;
 }
 
-.manageProfile .profile-form .label {
+.manageProfile .form .label {
     color: var(--gray);
     font-weight: 600;
     margin-bottom: 5px;
 }
 
-.manageProfile .profile-form input:not(input[type="file"]) {
+.manageProfile .form input:not(input[type="file"]) {
     height: 40px;
     color: var(--gray-dark);
     font-size: 1rem;
@@ -122,6 +122,31 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 25px;
+}
+
+/* Email */
+.manageProfile .email-form #readonlyInput {
+    background-color: var(--border-color);
+    font-weight: 600;
+    border-color: transparent;
+}
+
+.manageProfile .Btn {
+    background-color: var(--main-clr);
+    color: var(--white);
+    border: 2px solid transparent;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: .9rem;
+    cursor: pointer;
+    transition: .25s;
+    padding: 10px 15px;
+}
+
+.manageProfile .Btn:hover {
+    background-color: transparent;
+    color: var(--main-clr);
+    border-color: var(--main-clr);
 }
 
 
