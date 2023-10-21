@@ -373,7 +373,7 @@ const DropDownToggle = ({ currentUser }) => {
 
       <li onClick={closeMiniDropDown}>
         <FontAwesomeIcon icon={faGear} />
-        <Link to={`/projects/edit-project/`}>Settings</Link>
+        <Link to={`/profile/manage-profile`}>Settings</Link>
       </li>
 
       <li onClick={closeMiniDropDown}>
