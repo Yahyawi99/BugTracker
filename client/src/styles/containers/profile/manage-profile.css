@@ -43,8 +43,8 @@
 }
 
 .manageProfile .navigation li:hover {
-    background-color: var(--main-clr);
-    color: var(--white);
+    background-color: var(--main-clr-hover);
+    color: var(--main-clr);
     font-weight: 600;
 }
 
