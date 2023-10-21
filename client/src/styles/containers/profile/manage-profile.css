@@ -1,0 +1,96 @@
+/* Titles */
+.manageProfile>div:nth-child(2) {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.manageProfile .titles {
+    color: var(--gray-dark);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.manageProfile .titles h1 {
+    font-size: 2.25rem;
+}
+
+.manageProfile .titles h2 {
+    font-size: 1.5rem;
+}
+
+/* ************************** */
+.manageProfile>div>div:nth-child(2) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-rows: auto-fill;
+    gap: 25px;
+}
+
+/* Navigation */
+.manageProfile .navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.manageProfile .navigation li {
+    cursor: pointer;
+    border-radius: 5px;
+    transition: .25s;
+    padding: 10px;
+}
+
+.manageProfile .navigation li:hover {
+    background-color: var(--main-clr);
+    color: var(--white);
+    font-weight: 600;
+}
+
+/* Form */
+.manageProfile>div>div>div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 10px;
+}
+
+.manageProfile>div>div>div h3 {
+    color: var(--gray-dark);
+    font-size: 1.25rem;
+    text-decoration: 4px underline;
+}
+
+.manageProfile form>div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 25px;
+}
+
+.manageProfile form label {
+    font-weight: 600;
+    color: var(--gray);
+}
+
+.manageProfile form input:not(input[type="file"]) {
+    height: 40px;
+    color: var(--gray-dark);
+    font-size: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    outline: none;
+    padding: 0 0 0 10px;
+}
+
+/* ***************************** */
+/* ***************************** */
+/* ***************************** */
+/* Javascript */
+.manageProfile .navigation .clicked {
+    background-color: var(--main-clr);
+    color: var(--white);
+    font-weight: 600;
+    pointer-events: none;
+}
