@@ -25,26 +25,44 @@ const ManageProfile = () => {
           <div>
             <h3>Profile</h3>
 
-            <form>
+            <form className="profile-form">
               <div className="nameController">
-                <label htmlFor="username">Username</label>
+                <label className="label" htmlFor="username">
+                  Username
+                </label>
                 <input type="text" id="username" />
               </div>
 
               <div className="phoneController">
-                <label htmlFor="phone">Phone number</label>
+                <label className="label" htmlFor="phone">
+                  Phone number
+                </label>
                 <input type="tel" id="phone" />
               </div>
 
-              <div>
+              <div className="imageContainer">
                 <div className="imageController">
-                  <label htmlFor="image">Image</label>
+                  <p className="label">Image</p>
+
                   <input type="file" id="image" />
+
+                  <label htmlFor="image" class="custom-button">
+                    Choose File
+                  </label>
+
+                  <span className="file-name">No file chosen</span>
                 </div>
 
                 <div className="currentImageController">
-                  <label htmlFor="currentImage">Current Image</label>
-                  <img src="j" alt="member" id="currentImage" />
+                  <label className="label" htmlFor="currentImage">
+                    Current Image
+                  </label>
+
+                  <img
+                    src="/assets/images/default-avatar-1.jpg"
+                    alt="member"
+                    id="currentImage"
+                  />
                 </div>
               </div>
             </form>

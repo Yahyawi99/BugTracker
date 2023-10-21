@@ -48,7 +48,7 @@
     font-weight: 600;
 }
 
-/* Form */
+/* profile */
 .manageProfile>div>div>div {
     display: flex;
     flex-direction: column;
@@ -62,19 +62,19 @@
     text-decoration: 4px underline;
 }
 
-.manageProfile form>div {
+.manageProfile .profile-form>div {
     display: flex;
     flex-direction: column;
-    gap: 5px;
     margin-bottom: 25px;
 }
 
-.manageProfile form label {
-    font-weight: 600;
+.manageProfile .profile-form .label {
     color: var(--gray);
+    font-weight: 600;
+    margin-bottom: 5px;
 }
 
-.manageProfile form input:not(input[type="file"]) {
+.manageProfile .profile-form input:not(input[type="file"]) {
     height: 40px;
     color: var(--gray-dark);
     font-size: 1rem;
@@ -83,6 +83,47 @@
     outline: none;
     padding: 0 0 0 10px;
 }
+
+.manageProfile .profile-form input[type="file"] {
+    display: none;
+}
+
+.manageProfile .profile-form .custom-button {
+    display: inline-block;
+    background-color: var(--gray);
+    color: var(--white);
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 10px 20px;
+    margin: 0 10px 10px 0;
+}
+
+.manageProfile .profile-form .custom-button:hover {
+    opacity: .75;
+}
+
+.manageProfile .profile-form input[type="file"]:checked+.custom-button+.file-name::before {
+    content: "File chosen: " attr(data-text);
+}
+
+.manageProfile .profile-form .currentImageController {
+    display: flex;
+    flex-direction: column;
+}
+
+.manageProfile .profile-form img {
+    width: 100px;
+}
+
+.manageProfile .profile-form .imageContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
 
 /* ***************************** */
 /* ***************************** */
