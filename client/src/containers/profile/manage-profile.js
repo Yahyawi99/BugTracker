@@ -1,11 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+// hooks
+import useUsers from "../../hooks/useUsers";
 // Components
 import HomeBtn from "../../components/shared/HomeBtn";
 // css
 import "../../styles/containers/profile/manage-profile.css";
 
 const ManageProfile = () => {
+  const { getCurrentUser, currentUser } = useUsers();
+
   const [navigateTo, setNavigateTo] = useState("Profile");
+  const [userData, setUserData] = useState({ ...currentUser });
+
+  useEffect(() => {
+    getCurrentUser();
+  }, []);
+
+  useEffect(() => {
+    setUserData(currentUser);
+  }, [currentUser]);
 
   return (
     <section className="manageProfile">
@@ -40,14 +53,14 @@ const ManageProfile = () => {
                   <label className="label" htmlFor="username">
                     Username
                   </label>
-                  <input type="text" id="username" />
+                  <input type="text" id="username" value={userData.name} />
                 </div>
 
                 <div className="phoneController">
                   <label className="label" htmlFor="phone">
                     Phone number
                   </label>
-                  <input type="tel" id="phone" />
+                  <input type="tel" id="phone" value={userData.phoneNumber} />
                 </div>
 
                 <div className="imageContainer">
@@ -68,11 +81,7 @@ const ManageProfile = () => {
                       Current Image
                     </label>
 
-                    <img
-                      src="/assets/images/default-avatar-1.jpg"
-                      alt="member"
-                      id="currentImage"
-                    />
+                    <img src={userData.avatar} alt="member" id="currentImage" />
                   </div>
                 </div>
               </form>
@@ -81,13 +90,13 @@ const ManageProfile = () => {
             {navigateTo === "Email" && (
               <form className="form email-form">
                 <div>
-                  <label htmlFor="oldEmail" className="label">
+                  <label htmlFor="readonlyInput" className="label">
                     Email
                   </label>
                   <input
-                    id="oldEmail readonlyInput"
+                    id="readonlyInput"
                     type="text"
-                    value="yassinyahyawi26@gmail.com"
+                    value={userData.email}
                     readOnly
                   />
                 </div>

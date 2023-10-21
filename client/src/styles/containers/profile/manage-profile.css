@@ -115,6 +115,7 @@
 
 .manageProfile .profile-form img {
     width: 100px;
+    border-radius: 5px;
 }
 
 .manageProfile .profile-form .imageContainer {
