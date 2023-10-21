@@ -33,7 +33,7 @@ const Main = () => {
               <Route path="/" Component={Dashboard} />
               <Route path="/projects/*" Component={Projects} />
               <Route path="/tickets/*" Component={Tickets} />
-              <Route path="/member-profile/:memberId" Component={Profile} />
+              <Route path="/profile/*" Component={Profile} />
             </Route>
           </Routes>
         </main>
