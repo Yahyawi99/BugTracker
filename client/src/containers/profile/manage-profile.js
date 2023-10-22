@@ -12,7 +12,7 @@ const ManageProfile = () => {
   const { getCurrentUser, currentUser, updateCurrentUser } = useUsers();
 
   const [navigateTo, setNavigateTo] = useState("Profile");
-  const [userData, setUserData] = useState({ ...currentUser });
+  const [userData, setUserData] = useState({ ...currentUser, newEmail: "" });
 
   useEffect(() => {
     getCurrentUser();
@@ -22,7 +22,7 @@ const ManageProfile = () => {
     setUserData(currentUser);
   }, [currentUser]);
 
-  // profile form handler
+  // Profile form handler
   const profileFormHandler = async (e) => {
     e.preventDefault();
     if (!userData.name) {
@@ -31,8 +31,22 @@ const ManageProfile = () => {
     }
 
     const { name, phoneNumber } = userData;
-    console.log(name);
+
     updateCurrentUser(userData._id, { name, phoneNumber });
+  };
+
+  // Email form handler
+  const emailFormHandler = async (e) => {
+    e.preventDefault();
+
+    if (!userData.email) {
+      await alertMe("email can't be an empty string", "var(--danger)");
+      return;
+    }
+
+    const { newEmail } = userData;
+
+    updateCurrentUser(userData._id, { newEmail });
   };
 
   return (
@@ -128,7 +142,10 @@ const ManageProfile = () => {
             )}
 
             {navigateTo === "Email" && (
-              <form className="form email-form">
+              <form
+                className="form email-form"
+                onSubmit={(e) => emailFormHandler(e)}
+              >
                 <div>
                   <label htmlFor="readonlyInput" className="label">
                     Email
@@ -145,10 +162,22 @@ const ManageProfile = () => {
                   <label htmlFor="newEmail" className="label">
                     New Email
                   </label>
-                  <input id="newEmail" type="email" />
+                  <input
+                    id="newEmail"
+                    type="email"
+                    value={userData.newEmail}
+                    onChange={(e) =>
+                      setUserData({
+                        ...userData,
+                        NewEmail: e.currentTarget.value,
+                      })
+                    }
+                  />
                 </div>
 
-                <button className="Btn">Change email</button>
+                <button type="submit" className="Btn">
+                  Change email
+                </button>
               </form>
             )}
 

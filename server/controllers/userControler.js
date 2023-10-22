@@ -64,6 +64,10 @@ const updateUser = async (req, res) => {
   user.name = name;
   user.phoneNumber = phoneNumber;
 
+  // if (user.email) {
+  console.log(email);
+  // }
+
   await user.save();
 
   res.send("update");
