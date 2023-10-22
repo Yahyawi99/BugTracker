@@ -65,6 +65,11 @@ const useUsers = () => {
     } catch (error) {
       loading(false);
 
+      if (error.response.status === 400) {
+        await alertMe(error.response.data.msg, "var(--danger)");
+        return;
+      }
+
       await alertMe(
         "Something went wrong, please try again later.",
         "var(--danger)"

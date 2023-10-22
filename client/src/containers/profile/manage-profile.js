@@ -68,6 +68,14 @@ const ManageProfile = () => {
       return;
     }
 
+    if (userData.newPassword !== userData.newPasswordConfirmed) {
+      await alertMe(
+        "Please provide the same value for new password",
+        "var(--danger)"
+      );
+      return;
+    }
+
     const { currentPassword, newPassword, newPasswordConfirmed } = userData;
 
     updateCurrentUser(userData._id, {

@@ -53,7 +53,14 @@ const currentUser = async (req, res) => {
 // update user
 const updateUser = async (req, res) => {
   const { id: userId } = req.params;
-  const { name, phoneNumber, newEmail, password } = req.body;
+  const {
+    name,
+    phoneNumber,
+    newEmail,
+    currentPassword,
+    newPassword,
+    newPasswordConfirmed,
+  } = req.body;
 
   const user = await User.findOne({ _id: userId });
 
@@ -75,7 +82,23 @@ const updateUser = async (req, res) => {
   }
 
   // password
+  if (currentPassword && newPassword && newPasswordConfirmed) {
+    const isSameOldPassword = await user.ComparePasswords(currentPassword);
 
+    if (!isSameOldPassword) {
+      throw new CustomError.BadRequestError("Curent password is incorrect!");
+    }
+
+    if (newPassword !== newPasswordConfirmed) {
+      throw new CustomError.BadRequestError(
+        "Please provide the same value for new password"
+      );
+    }
+
+    user.password = newPassword;
+
+    await user.save();
+  }
   await user.save();
 
   res.send("update");
