@@ -96,9 +96,9 @@ const updateUser = async (req, res) => {
     }
 
     user.password = newPassword;
-
-    await user.save();
+    console.log("changed");
   }
+
   await user.save();
 
   res.send("update");

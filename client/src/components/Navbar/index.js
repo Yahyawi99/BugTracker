@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from "react";
-import { Link, Path } from "react-router-dom";
+import { Link } from "react-router-dom";
 // hooks
 import useUsers from "../../hooks/useUsers";
 // context
 import { useMainContext } from "../../context/global";
+import { useAuth } from "../../context/auth/Auth-context";
 import { useNavbar } from "../../context/Navbar";
 // Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -29,6 +30,8 @@ import "../../styles/components/navbar/index.css";
 
 const NavBar = () => {
   const { skin: skinChoice, setSkin, isHamOpen } = useMainContext();
+
+  const { logout } = useAuth();
 
   const { nav, setNav, clicked, setClicked, dropDown, dropDownFunctionality } =
     useNavbar();
@@ -68,7 +71,7 @@ const NavBar = () => {
             <p className="role">{currentUser.role}</p>
           </div>
 
-          <DropDownToggle currentUser={currentUser} />
+          <DropDownToggle currentUser={currentUser} logout={logout} />
         </div>
       )}
 
@@ -352,7 +355,7 @@ const NavBar = () => {
 };
 
 // **************************
-const DropDownToggle = ({ currentUser }) => {
+const DropDownToggle = ({ currentUser, logout }) => {
   const miniDropDownRef = useRef(null);
 
   const closeMiniDropDown = () => {
@@ -376,9 +379,14 @@ const DropDownToggle = ({ currentUser }) => {
         <Link to={`/profile/manage-profile`}>Settings</Link>
       </li>
 
-      <li onClick={closeMiniDropDown}>
+      <li
+        onClick={() => {
+          logout();
+          closeMiniDropDown();
+        }}
+      >
         <FontAwesomeIcon icon={faPowerOff} />
-        <Link>Logout</Link>
+        Logout
       </li>
     </ul>
   );

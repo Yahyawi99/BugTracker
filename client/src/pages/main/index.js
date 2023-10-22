@@ -23,9 +23,11 @@ const Main = () => {
       </AuthProvider>
 
       <div className="NavbarAndMain">
-        <NavbarProvider>
-          <Navbar />
-        </NavbarProvider>
+        <AuthProvider>
+          <NavbarProvider>
+            <Navbar />
+          </NavbarProvider>
+        </AuthProvider>
 
         <main>
           <Routes>
