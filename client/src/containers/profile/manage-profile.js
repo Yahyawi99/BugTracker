@@ -12,7 +12,13 @@ const ManageProfile = () => {
   const { getCurrentUser, currentUser, updateCurrentUser } = useUsers();
 
   const [navigateTo, setNavigateTo] = useState("Profile");
-  const [userData, setUserData] = useState({ ...currentUser, newEmail: "" });
+  const [userData, setUserData] = useState({
+    ...currentUser,
+    newEmail: "",
+    currentPassword: "",
+    newPassword: "",
+    newPasswordConfirmed: "",
+  });
 
   useEffect(() => {
     getCurrentUser();
@@ -37,16 +43,38 @@ const ManageProfile = () => {
 
   // Email form handler
   const emailFormHandler = async (e) => {
-    e.preventDefault();
+    if (!userData.newEmail) {
+      e.preventDefault();
 
-    if (!userData.email) {
-      await alertMe("email can't be an empty string", "var(--danger)");
+      await alertMe("Email can't be an empty string", "var(--danger)");
       return;
     }
 
     const { newEmail } = userData;
 
     updateCurrentUser(userData._id, { newEmail });
+  };
+
+  // password form handler
+  const passwordFormHandler = async (e) => {
+    e.preventDefault();
+
+    if (
+      !userData.currentPassword ||
+      !userData.newPassword ||
+      !userData.newPasswordConfirmed
+    ) {
+      await alertMe("Please provide all values!", "var(--danger)");
+      return;
+    }
+
+    const { currentPassword, newPassword, newPasswordConfirmed } = userData;
+
+    updateCurrentUser(userData._id, {
+      currentPassword,
+      newPassword,
+      newPasswordConfirmed,
+    });
   };
 
   return (
@@ -169,7 +197,7 @@ const ManageProfile = () => {
                     onChange={(e) =>
                       setUserData({
                         ...userData,
-                        NewEmail: e.currentTarget.value,
+                        newEmail: e.currentTarget.value,
                       })
                     }
                   />
@@ -182,26 +210,59 @@ const ManageProfile = () => {
             )}
 
             {navigateTo === "Password" && (
-              <form className="form password-form">
+              <form
+                className="form password-form"
+                onSubmit={(e) => passwordFormHandler(e)}
+              >
                 <div>
                   <label htmlFor="currentPass" className="label">
                     Current password
                   </label>
-                  <input type="password" id="currentPass" />
+                  <input
+                    type="password"
+                    id="currentPass"
+                    value={userData.currentPassword}
+                    onChange={(e) =>
+                      setUserData({
+                        ...userData,
+                        currentPassword: e.currentTarget.value,
+                      })
+                    }
+                  />
                 </div>
 
                 <div>
                   <label htmlFor="newPass" className="label">
                     New password
                   </label>
-                  <input type="password" id="newPass" />
+                  <input
+                    type="password"
+                    id="newPass"
+                    value={userData.newPassword}
+                    onChange={(e) =>
+                      setUserData({
+                        ...userData,
+                        newPassword: e.currentTarget.value,
+                      })
+                    }
+                  />
                 </div>
 
                 <div>
                   <label htmlFor="confirmNewPass" className="label">
                     Confirm new password
                   </label>
-                  <input type="password" id="confirmNewPass" />
+                  <input
+                    type="password"
+                    id="confirmNewPass"
+                    value={userData.newPasswordConfirmed}
+                    onChange={(e) =>
+                      setUserData({
+                        ...userData,
+                        newPasswordConfirmed: e.currentTarget.value,
+                      })
+                    }
+                  />
                 </div>
 
                 <button type="submit" className="Btn">
