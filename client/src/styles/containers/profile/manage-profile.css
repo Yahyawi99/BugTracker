@@ -23,8 +23,8 @@
 /* ************************** */
 .manageProfile>div>div:nth-child(2) {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    grid-template-rows: auto-fill;
+    grid-template-columns: 300px minmax(400px, 1fr);
+    grid-template-rows: auto;
     gap: 25px;
 }
 
@@ -148,6 +148,16 @@
     background-color: transparent;
     color: var(--main-clr);
     border-color: var(--main-clr);
+}
+
+/* ***************************** */
+/* ***************************** */
+/* ***************************** */
+/* media queries */
+@media screen and (max-width:800px) {
+    .manageProfile>div>div:nth-child(2) {
+        grid-template-columns: 1fr;
+    }
 }
 
 
