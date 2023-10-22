@@ -38,6 +38,11 @@ const UserSchema = new mongoose.Schema(
       required: [true, "Please provide a password"],
     },
 
+    phoneNumber: {
+      type: String,
+      default: null,
+    },
+
     role: {
       type: String,
       enum: ["admin", "developer", "PM", "submitter"],

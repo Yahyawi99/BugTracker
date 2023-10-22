@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useMainContext } from "../../context/global";
 // hooks
 import useUsers from "../../hooks/useUsers";
 // Components
@@ -7,7 +8,8 @@ import HomeBtn from "../../components/shared/HomeBtn";
 import "../../styles/containers/profile/manage-profile.css";
 
 const ManageProfile = () => {
-  const { getCurrentUser, currentUser } = useUsers();
+  const { alertMe } = useMainContext();
+  const { getCurrentUser, currentUser, updateCurrentUser } = useUsers();
 
   const [navigateTo, setNavigateTo] = useState("Profile");
   const [userData, setUserData] = useState({ ...currentUser });
@@ -19,6 +21,19 @@ const ManageProfile = () => {
   useEffect(() => {
     setUserData(currentUser);
   }, [currentUser]);
+
+  // profile form handler
+  const profileFormHandler = async (e) => {
+    e.preventDefault();
+    if (!userData.name) {
+      await alertMe("Username can't be an empty string", "var(--danger)");
+      return;
+    }
+
+    const { name, phoneNumber } = userData;
+    console.log(name);
+    updateCurrentUser(userData._id, { name, phoneNumber });
+  };
 
   return (
     <section className="manageProfile">
@@ -32,9 +47,10 @@ const ManageProfile = () => {
 
         <div>
           <ul className="navigation">
-            {["Profile", "Email", "Password"].map((value) => {
+            {["Profile", "Email", "Password"].map((value, i) => {
               return (
                 <li
+                  key={i}
                   className={`${navigateTo === value && "clicked"}`}
                   onClick={() => setNavigateTo(value)}
                 >
@@ -48,19 +64,39 @@ const ManageProfile = () => {
             <h3>{navigateTo}</h3>
 
             {navigateTo === "Profile" && (
-              <form className="form profile-form">
+              <form
+                className="form profile-form"
+                onSubmit={(e) => profileFormHandler(e)}
+              >
                 <div className="nameController">
                   <label className="label" htmlFor="username">
                     Username
                   </label>
-                  <input type="text" id="username" value={userData.name} />
+                  <input
+                    type="text"
+                    id="username"
+                    value={userData.name}
+                    onChange={(e) =>
+                      setUserData({ ...userData, name: e.currentTarget.value })
+                    }
+                  />
                 </div>
 
                 <div className="phoneController">
                   <label className="label" htmlFor="phone">
                     Phone number
                   </label>
-                  <input type="tel" id="phone" value={userData.phoneNumber} />
+                  <input
+                    type="tel"
+                    id="phone"
+                    value={userData.phoneNumber ? userData.phoneNumber : ""}
+                    onChange={(e) =>
+                      setUserData({
+                        ...userData,
+                        phoneNumber: e.currentTarget.value,
+                      })
+                    }
+                  />
                 </div>
 
                 <div className="imageContainer">
@@ -69,7 +105,7 @@ const ManageProfile = () => {
 
                     <input type="file" id="image" />
 
-                    <label htmlFor="image" class="custom-button">
+                    <label htmlFor="image" className="custom-button">
                       Choose File
                     </label>
 
@@ -84,6 +120,10 @@ const ManageProfile = () => {
                     <img src={userData.avatar} alt="member" id="currentImage" />
                   </div>
                 </div>
+
+                <button type="submit" className="Btn">
+                  Save
+                </button>
               </form>
             )}
 

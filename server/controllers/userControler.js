@@ -52,6 +52,20 @@ const currentUser = async (req, res) => {
 
 // update user
 const updateUser = async (req, res) => {
+  const { id: userId } = req.params;
+  const { name, phoneNumber, email, password } = req.body;
+
+  const user = await User.findOne({ _id: userId });
+
+  if (!user) {
+    throw new CustomError.NotFoundError(`No user with id : ${userId}`);
+  }
+
+  user.name = name;
+  user.phoneNumber = phoneNumber;
+
+  await user.save();
+
   res.send("update");
 };
 

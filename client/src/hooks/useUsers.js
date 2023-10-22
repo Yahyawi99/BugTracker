@@ -50,6 +50,28 @@ const useUsers = () => {
     }
   };
 
+  // update user
+  const updateCurrentUser = async (userId, data) => {
+    try {
+      loading(true);
+
+      await axios.patch(`/api/v1/user/${userId}`, data);
+
+      loading(false);
+
+      await alertMe("Done", "var(--success)");
+
+      window.location.reload();
+    } catch (error) {
+      loading(false);
+
+      await alertMe(
+        "Something went wrong, please try again later.",
+        "var(--danger)"
+      );
+    }
+  };
+
   //   get single user
   const getSingleUser = async (memberId) => {
     try {
@@ -100,6 +122,7 @@ const useUsers = () => {
     userProjects,
     getCurrentUser,
     currentUser,
+    updateCurrentUser,
   };
 };
 
