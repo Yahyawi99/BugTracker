@@ -18,6 +18,7 @@ const ManageProfile = () => {
     currentPassword: "",
     newPassword: "",
     newPasswordConfirmed: "",
+    image: "",
   });
 
   useEffect(() => {
@@ -35,10 +36,15 @@ const ManageProfile = () => {
       await alertMe("Username can't be an empty string", "var(--danger)");
       return;
     }
+    const formData = new FormData();
+    const { name, phoneNumber, image } = userData;
 
-    const { name, phoneNumber } = userData;
+    formData.append("data", JSON.stringify({ name, phoneNumber }));
+    formData.append("file", image);
 
-    updateCurrentUser(userData._id, { name, phoneNumber });
+    console.log(image);
+
+    // updateCurrentUser(userData._id, { name, phoneNumber });
   };
 
   // Email form handler
@@ -153,13 +159,25 @@ const ManageProfile = () => {
                   <div className="imageController">
                     <p className="label">Image</p>
 
-                    <input type="file" id="image" />
+                    <input
+                      type="file"
+                      id="image"
+                      accept="image/*"
+                      onChange={(e) =>
+                        setUserData({
+                          ...userData,
+                          image: e.currentTarget.files[0],
+                        })
+                      }
+                    />
 
                     <label htmlFor="image" className="custom-button">
                       Choose File
                     </label>
 
-                    <span className="file-name">No file chosen</span>
+                    <span className="file-name">
+                      {userData.image ? userData.image.name : " No file chosen"}
+                    </span>
                   </div>
 
                   <div className="currentImageController">

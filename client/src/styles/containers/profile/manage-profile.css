@@ -104,10 +104,6 @@
     opacity: .75;
 }
 
-.manageProfile .profile-form input[type="file"]:checked+.custom-button+.file-name::before {
-    content: "File chosen: " attr(data-text);
-}
-
 .manageProfile .profile-form .currentImageController {
     display: flex;
     flex-direction: column;
