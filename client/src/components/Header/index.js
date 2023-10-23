@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Hamburger from "hamburger-react";
 // context
 import { useAuth } from "../../context/auth/Auth-context";
@@ -26,7 +27,9 @@ const Header = () => {
       <img src="/assets/icons/logo.svg" alt="bugtracker" className="logo" />
 
       <div>
-        <button className="newTicketBtn">New Ticket</button>
+        <Link to="tickets/create-ticket">
+          <button className="newTicketBtn">New Ticket</button>
+        </Link>
 
         <i>
           <FontAwesomeIcon icon={faBell} />

@@ -148,7 +148,7 @@ const Projects = ({ projects, archiveController }) => {
             <div className="pm">
               {managedBy ? (
                 <>
-                  <Link to={`/member-profile/${managedBy._id}`}>
+                  <Link to={`/profile/member-profile/${managedBy._id}`}>
                     <img src={`${managedBy.avatar}`} alt="pm" />
                   </Link>
                   <p>{managedBy.name}</p>
@@ -163,7 +163,7 @@ const Projects = ({ projects, archiveController }) => {
                 team.map((user) => {
                   const { _id, avatar } = user;
                   return (
-                    <Link to={`/member-profile/${_id}`}>
+                    <Link to={`/profile/member-profile/${_id}`}>
                       <img key={_id} src={`${avatar}`} alt="user" />
                     </Link>
                   );
