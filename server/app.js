@@ -5,6 +5,7 @@ const express = require("express");
 const app = express();
 
 const cookieParser = require("cookie-parser");
+const fileUpload = require("express-fileupload");
 
 // middlewares
 const NotFoundMiddleware = require("./middlewares/not-found");
@@ -24,6 +25,7 @@ const CommentRoutes = require("./routes/commentRoutes");
 // ========================================
 app.use(express.json());
 app.use(cookieParser(process.env.JWT_SECRET));
+app.use(fileUpload());
 
 app.use("/api/v1", AuthRoutes);
 app.use("/api/v1/user", UserRoutes);

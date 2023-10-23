@@ -1,4 +1,5 @@
 const { StatusCodes } = require("http-status-codes");
+const path = require("path");
 const User = require("../model/User");
 const CustomError = require("../errors");
 
@@ -60,7 +61,7 @@ const updateUser = async (req, res) => {
     currentPassword,
     newPassword,
     newPasswordConfirmed,
-  } = req.body;
+  } = JSON.parse(req.body.data);
 
   const user = await User.findOne({ _id: userId });
 
@@ -74,6 +75,22 @@ const updateUser = async (req, res) => {
   }
   if (phoneNumber) {
     user.phoneNumber = phoneNumber;
+  }
+
+  if (req.files) {
+    const { file } = req.files;
+    const imageFolderPath = path.resolve(
+      __dirname,
+      "../../client/public/assets/images"
+    );
+
+    const imageName = file.name.split(" ").join("-");
+
+    const newAvatarPath = path.join("/assets/images", imageName);
+
+    await file.mv(path.join(imageFolderPath, imageName));
+
+    user.avatar = newAvatarPath;
   }
 
   // email
@@ -96,7 +113,6 @@ const updateUser = async (req, res) => {
     }
 
     user.password = newPassword;
-    console.log("changed");
   }
 
   await user.save();

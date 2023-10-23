@@ -42,9 +42,7 @@ const ManageProfile = () => {
     formData.append("data", JSON.stringify({ name, phoneNumber }));
     formData.append("file", image);
 
-    console.log(image);
-
-    // updateCurrentUser(userData._id, { name, phoneNumber });
+    updateCurrentUser(userData._id, formData);
   };
 
   // Email form handler
@@ -55,10 +53,12 @@ const ManageProfile = () => {
       await alertMe("Email can't be an empty string", "var(--danger)");
       return;
     }
-
+    const formData = new FormData();
     const { newEmail } = userData;
 
-    updateCurrentUser(userData._id, { newEmail });
+    formData.append("data", JSON.stringify({ newEmail }));
+
+    updateCurrentUser(userData._id, formData);
   };
 
   // password form handler
@@ -82,13 +82,19 @@ const ManageProfile = () => {
       return;
     }
 
+    const formData = new FormData();
     const { currentPassword, newPassword, newPasswordConfirmed } = userData;
 
-    updateCurrentUser(userData._id, {
-      currentPassword,
-      newPassword,
-      newPasswordConfirmed,
-    });
+    formData.append(
+      "data",
+      JSON.stringify({
+        currentPassword,
+        newPassword,
+        newPasswordConfirmed,
+      })
+    );
+
+    updateCurrentUser(userData._id, formData);
   };
 
   return (
