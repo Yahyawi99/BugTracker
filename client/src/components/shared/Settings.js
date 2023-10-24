@@ -11,8 +11,8 @@ import {
 // css
 import "../../styles/components/shared/settings.css";
 
-const Settings = () => {
-  const { settingsNavigateTo, setSettingsNavigateTo } = useMainContext();
+const Settings = ({ setIsSettingsOn }) => {
+  const { setSettingsNavigateTo } = useMainContext();
 
   const settingsOptions = [
     {
@@ -39,7 +39,13 @@ const Settings = () => {
 
           return (
             <Link to="/profile/manage-profile">
-              <li key={i} onClick={() => setSettingsNavigateTo(name)}>
+              <li
+                key={i}
+                onClick={() => {
+                  setSettingsNavigateTo(name);
+                  setIsSettingsOn(false);
+                }}
+              >
                 <FontAwesomeIcon icon={icon} />
                 <span>{name}</span>
               </li>

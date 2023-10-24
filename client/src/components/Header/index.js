@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Hamburger from "hamburger-react";
 // context
@@ -20,6 +20,8 @@ const Header = () => {
   const { logout } = useAuth();
   const { isHamOpen, setIsHamOpen } = useMainContext();
 
+  const [isSettingsOn, setIsSettingsOn] = useState(false);
+
   return (
     <header className="header">
       <div className="hamburgerContainer">
@@ -37,10 +39,13 @@ const Header = () => {
           <FontAwesomeIcon icon={faBell} />
         </i>
 
-        <i className="settingsIcon">
+        <i
+          className="settingsIcon"
+          onClick={() => setIsSettingsOn(!isSettingsOn)}
+        >
           <FontAwesomeIcon icon={faSliders} />
 
-          <Settings />
+          {isSettingsOn && <Settings setIsSettingsOn={setIsSettingsOn} />}
         </i>
 
         <i onClick={logout}>
