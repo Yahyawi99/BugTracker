@@ -8,10 +8,10 @@ import HomeBtn from "../../components/shared/HomeBtn";
 import "../../styles/containers/profile/manage-profile.css";
 
 const ManageProfile = () => {
-  const { alertMe } = useMainContext();
+  const { alertMe, settingsNavigateTo, setSettingsNavigateTo } =
+    useMainContext();
   const { getCurrentUser, currentUser, updateCurrentUser } = useUsers();
 
-  const [navigateTo, setNavigateTo] = useState("Profile");
   const [userData, setUserData] = useState({
     ...currentUser,
     newEmail: "",
@@ -113,8 +113,8 @@ const ManageProfile = () => {
               return (
                 <li
                   key={i}
-                  className={`${navigateTo === value && "clicked"}`}
-                  onClick={() => setNavigateTo(value)}
+                  className={`${settingsNavigateTo === value && "clicked"}`}
+                  onClick={() => setSettingsNavigateTo(value)}
                 >
                   {value}
                 </li>
@@ -123,9 +123,9 @@ const ManageProfile = () => {
           </ul>
 
           <div>
-            <h3>{navigateTo}</h3>
+            <h3>{settingsNavigateTo}</h3>
 
-            {navigateTo === "Profile" && (
+            {settingsNavigateTo === "Profile" && (
               <form
                 className="form profile-form"
                 onSubmit={(e) => profileFormHandler(e)}
@@ -201,7 +201,7 @@ const ManageProfile = () => {
               </form>
             )}
 
-            {navigateTo === "Email" && (
+            {settingsNavigateTo === "Email" && (
               <form
                 className="form email-form"
                 onSubmit={(e) => emailFormHandler(e)}
@@ -241,7 +241,7 @@ const ManageProfile = () => {
               </form>
             )}
 
-            {navigateTo === "Password" && (
+            {settingsNavigateTo === "Password" && (
               <form
                 className="form password-form"
                 onSubmit={(e) => passwordFormHandler(e)}

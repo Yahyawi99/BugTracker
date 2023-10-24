@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 // Utils
 import wait from "../../utils/wait";
 
@@ -12,6 +11,7 @@ const MainProvider = ({ children }) => {
     backClr: "",
   });
   const [isHamOpen, setIsHamOpen] = useState(false);
+  const [settingsNavigateTo, setSettingsNavigateTo] = useState("Profile");
 
   // Alert functionality
   const alertMe = async (msgTxt, clr) => {
@@ -55,6 +55,8 @@ const MainProvider = ({ children }) => {
         loading,
         isHamOpen,
         setIsHamOpen,
+        settingsNavigateTo,
+        setSettingsNavigateTo,
       }}
     >
       {children}
