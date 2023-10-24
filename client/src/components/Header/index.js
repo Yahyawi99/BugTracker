@@ -45,7 +45,10 @@ const Header = () => {
         >
           <FontAwesomeIcon icon={faSliders} />
 
-          {isSettingsOn && <Settings setIsSettingsOn={setIsSettingsOn} />}
+          <Settings
+            setIsSettingsOn={setIsSettingsOn}
+            className={`${isSettingsOn && "showSettings"}`}
+          />
         </i>
 
         <i onClick={logout}>

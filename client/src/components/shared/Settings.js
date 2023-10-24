@@ -11,7 +11,7 @@ import {
 // css
 import "../../styles/components/shared/settings.css";
 
-const Settings = ({ setIsSettingsOn }) => {
+const Settings = ({ setIsSettingsOn, className }) => {
   const { setSettingsNavigateTo } = useMainContext();
 
   const settingsOptions = [
@@ -30,7 +30,7 @@ const Settings = ({ setIsSettingsOn }) => {
   ];
 
   return (
-    <section className="settingsModal">
+    <section className={`${className} settingsModal`}>
       <h4>ACCOUNT SETTINGS</h4>
 
       <ul>

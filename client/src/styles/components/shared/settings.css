@@ -11,6 +11,9 @@
     z-index: 0;
     border-radius: 5px;
     box-shadow: var(--shadow);
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: .25s;
     padding: 10px 0 10px 15px;
 }
 
@@ -41,4 +44,13 @@
 
 .settingsModal li:hover {
     opacity: .7;
+}
+
+/* ****************************** */
+/* ****************************** */
+/* ****************************** */
+/* ****************************** */
+/* Javascript */
+.showSettings {
+    transform: scaleY(1);
 }
