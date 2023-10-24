@@ -1,0 +1,20 @@
+.settingsModal {
+    width: 200px;
+    background-color: var(--main-clr);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: absolute;
+    right: 0;
+    z-index: 0;
+    padding: 10px;
+}
+
+
+.settingsModal ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    list-style-type: none;
+}

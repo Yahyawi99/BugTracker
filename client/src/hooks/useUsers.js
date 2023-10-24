@@ -61,7 +61,7 @@ const useUsers = () => {
 
       await alertMe("Done", "var(--success)");
 
-      // window.location.reload();
+      window.location.reload();
     } catch (error) {
       loading(false);
 

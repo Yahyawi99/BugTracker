@@ -40,6 +40,9 @@
     transform: scale(.8);
 }
 
+.header .settingsIcon {
+    position: relative;
+}
 
 /* *************************** */
 /* *************************** */

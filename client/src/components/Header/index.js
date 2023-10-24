@@ -11,6 +11,8 @@ import {
   faSliders,
   faArrowRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
+// components
+import Settings from "../shared/Settings";
 // css
 import "../../styles/components/header/index.css";
 
@@ -35,8 +37,10 @@ const Header = () => {
           <FontAwesomeIcon icon={faBell} />
         </i>
 
-        <i>
+        <i className="settingsIcon">
           <FontAwesomeIcon icon={faSliders} />
+
+          <Settings />
         </i>
 
         <i onClick={logout}>
