@@ -12,6 +12,7 @@ import Profile from "../../containers/profile";
 // components
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
+import NotFound from "../../components/not-found";
 // css
 import "../../styles/pages/main/index.css";
 
@@ -37,6 +38,7 @@ const Main = () => {
               <Route path="/tickets/*" Component={Tickets} />
               <Route path="/profile/*" Component={Profile} />
             </Route>
+            <Route path="*" Component={NotFound} />
           </Routes>
         </main>
       </div>
