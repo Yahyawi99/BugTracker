@@ -114,11 +114,21 @@
     border: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
-    gap: 5px;
     position: absolute;
     top: 35px;
     z-index: 10;
-    padding: 5px 0 5px 10px;
+}
+
+.manageRolesSection .manageRole .manageRoleDropdown p {
+    color: var(--gray-dark);
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+    padding: 10px 0px 10px 5px;
+}
+
+.manageRolesSection .manageRole .manageRoleDropdown p:hover {
+    background-color: var(--border-color);
 }
 
 /* Assign btn */

@@ -325,14 +325,17 @@ const Members = ({ members }) => {
                 </p>
 
                 <p>
+                  <Checkbox isChecked={true} />
                   <span>Project manager</span>
                 </p>
 
                 <p>
+                  <Checkbox isChecked={true} />
                   <span>Developer</span>
                 </p>
 
                 <p>
+                  <Checkbox isChecked={true} />
                   <span>Submitter</span>
                 </p>
               </div>
