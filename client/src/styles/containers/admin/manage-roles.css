@@ -1,0 +1,148 @@
+/* *********************** */
+/* *********************** */
+/* Header */
+/* Drop down */
+.manageRolesSection .sectionHeader {
+    flex: 1;
+}
+
+/* ================================ */
+/* ================================ */
+/* ================================ */
+/* labels */
+.manageRolesSection .labels>div {
+    min-width: 200px;
+}
+
+.manageRolesSection .labels>div:nth-child(1) {
+    min-width: 100px;
+}
+
+.manageRolesSection .labels>div:nth-child(5) {
+    min-width: 120px;
+}
+
+
+
+/* =========================== */
+/* =========================== */
+/* =========================== */
+/* Member */
+.manageRolesSection .member>div {
+    min-width: 200px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.manageRolesSection .member>div:nth-child(1) {
+    min-width: 100px;
+}
+
+.manageRolesSection .member>div:nth-child(5) {
+    min-width: 120px;
+}
+
+/* Title */
+.manageRolesSection .member .title {
+    min-width: 350px;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.manageRolesSection .member .title p:nth-child(1) {
+    font-weight: 600;
+}
+
+/* progress */
+.manageRolesSection .progress {
+    flex-direction: column;
+    gap: 5px;
+}
+
+.manageRolesSection .progressBar {
+    width: 100%;
+    height: 5px;
+    background-color: var(--main-clr-hover);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.manageRolesSection .progressBar>div {
+    height: 100%;
+    background-color: var(--main-clr);
+}
+
+/* Member manager */
+.manageRolesSection .member .pm {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.manageRolesSection img {
+    width: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--main-clr);
+}
+
+/* Team */
+.manageRolesSection .member .team {
+    min-width: 250px;
+}
+
+.manageRolesSection .member .team {
+    display: flex;
+}
+
+.manageRolesSection .member .team img {
+    cursor: pointer;
+    transition: .25s;
+}
+
+.manageRolesSection .member .team img:not(.first) {
+    margin-left: -15px;
+}
+
+.manageRolesSection .member .team img:hover {
+    transform: translateY(-10px);
+    z-index: 100;
+}
+
+/* Status */
+.manageRolesSection .member .status {
+    min-width: 150px;
+}
+
+.manageRolesSection .member .status {
+    display: flex;
+    align-items: center;
+}
+
+
+.manageRolesSection .member .status p {
+    width: 90px;
+    text-align: center;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    padding: 5px 0;
+
+}
+
+.manageRolesSection .member .status .active {
+    color: var(--success);
+    border-color: var(--success);
+}
+
+.manageRolesSection .member .status .inactive {
+    color: var(--gray);
+    border-color: var(--gray);
+}
+
+/* ========================== */
+/* ========================== */
+/* ========================== */
+/* Footer */
+.manageRolesSection .sectionFooter {
+    width: 100%;
+    flex: 1;
+}

@@ -13,7 +13,7 @@ const ManageRoles = () => {
     <ShowAllDocuments
       sectionName="Manage Roles"
       controller={getAllUsers}
-      labels={["Name", "Current Role", "Manage Role", "Action"]}
+      labels={["Avatar", "Name", "Current Role", "Manage Role", "Action"]}
       sortLabels={["Name", "Current Role"]}
       data={allUsers}
     />
