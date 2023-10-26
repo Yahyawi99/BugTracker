@@ -7,6 +7,7 @@ import {
   faPencil,
   faBoxArchive,
   faBoxOpen,
+  faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
 // utils
 import formatDate from "../../utils/formatDate";
@@ -310,7 +311,19 @@ const Members = ({ members }) => {
               <p className={`${role}`}>{role}</p>
             </div>
 
-            <div className="manageRole"></div>
+            <div className="manageRole">
+              <div>
+                <p className="initialValue">None selected</p>
+                <FontAwesomeIcon icon={faChevronDown} />
+              </div>
+
+              <div className="manageRoleDropdown">
+                <p>Admin</p>
+                <p>Project manager</p>
+                <p>Developer</p>
+                <p>Submitter</p>
+              </div>
+            </div>
 
             <div className="btns">
               <Link to={`/tickets/ticket-details/${_id}`}>

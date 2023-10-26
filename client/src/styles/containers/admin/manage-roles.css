@@ -78,6 +78,48 @@
 }
 
 /* Manage Role */
+.manageRolesSection .manageRole {
+    position: relative;
+}
+
+.manageRolesSection .manageRole>div:nth-child(1) {
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    transition: .25s;
+    cursor: pointer;
+    padding: 5px 15px;
+}
+
+.manageRolesSection .manageRole>div:nth-child(1):hover {
+    opacity: .75;
+}
+
+.manageRolesSection .manageRole .initialValue {
+    color: var(--gray);
+}
+
+.manageRolesSection .manageRole svg {
+    font-size: .8rem;
+    color: var(--gray-dark);
+}
+
+.manageRolesSection .manageRole .manageRoleDropdown {
+    width: 150px;
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    top: 35px;
+    z-index: 10;
+    padding: 5px 0 5px 10px;
+}
 
 /* Assign btn */
 .manageRolesSection .btns .assign {
