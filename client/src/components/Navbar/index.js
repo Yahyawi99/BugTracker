@@ -278,7 +278,10 @@ const NavBar = () => {
 
                 <span>
                   <FontAwesomeIcon icon={faStarOfLife} />
-                  <p>Manage Roles</p>
+
+                  <Link to="/admin/manage-roles">
+                    <p>Manage Roles</p>
+                  </Link>
                 </span>
 
                 <span>
