@@ -90,7 +90,7 @@ const ShowAllDocuments = (props) => {
                   archiveController={archiveController}
                 />
               ) : (
-                ""
+                <Members members={data.users} />
               )}
 
               <Pagination
@@ -293,7 +293,7 @@ const Members = ({ members }) => {
   return members && members.length ? (
     <div>
       {members.map((member) => {
-        const { _id, name, avatar, role } = member;
+        const { _id, name, avatar, role, email } = member;
 
         return (
           <div key={_id} className="document member">
@@ -301,45 +301,21 @@ const Members = ({ members }) => {
               <img src={avatar} alt="member" />
             </div>
 
-            <div className="name">
+            <div className="nameAndEmail">
               <p>{name}</p>
+              <p>{email}</p>
             </div>
 
-            <div className="title">
-              <p>{title}</p>
+            <div className="role">
+              <p className={`${role}`}>{role}</p>
             </div>
 
-            <div className="status">
-              <p className={`${status}`}>{status}</p>
-            </div>
-
-            <div className="priority">
-              <p className={`${priority}`}>{priority}</p>
-            </div>
-
-            <div className="date">
-              <p>{createdAt ? formatDate(createdAt) : ""}</p>
-            </div>
+            <div className="manageRole"></div>
 
             <div className="btns">
               <Link to={`/tickets/ticket-details/${_id}`}>
-                <button className="details">
-                  <FontAwesomeIcon icon={faEye} />
-                </button>
+                <button className="assign">Assign Role</button>
               </Link>
-
-              <Link to={`/tickets/edit-ticket/${_id}`}>
-                <button className="edit">
-                  <FontAwesomeIcon icon={faPencil} />
-                </button>
-              </Link>
-
-              <button
-                className={`${isArchived ? "unarchive" : "archive"}`}
-                onClick={() => archiveController(_id, !isArchived)}
-              >
-                <FontAwesomeIcon icon={faBoxArchive} />
-              </button>
             </div>
           </div>
         );

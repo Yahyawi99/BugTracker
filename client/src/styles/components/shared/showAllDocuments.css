@@ -1,4 +1,13 @@
+.getAllDocuments {
+    display: flex;
+    flex-direction: column;
+}
+
 .getAllDocuments>div:nth-child(2) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
     background-color: var(--white);
     border-radius: 10px;
     overflow-x: scroll;
