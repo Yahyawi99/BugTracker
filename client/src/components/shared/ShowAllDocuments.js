@@ -17,6 +17,7 @@ import HomeBtn from "./HomeBtn";
 import LimitAndSearch from "./LimitAndSearch";
 import Pagination from "./Pagination";
 import Labels from "./Labels";
+import Checkbox from "./Checkbox";
 // css
 import "../../styles/components/shared/showAllDocuments.css";
 
@@ -318,10 +319,22 @@ const Members = ({ members }) => {
               </div>
 
               <div className="manageRoleDropdown">
-                <p>Admin</p>
-                <p>Project manager</p>
-                <p>Developer</p>
-                <p>Submitter</p>
+                <p>
+                  <Checkbox isChecked={true} />
+                  <span>Admin</span>
+                </p>
+
+                <p>
+                  <span>Project manager</span>
+                </p>
+
+                <p>
+                  <span>Developer</span>
+                </p>
+
+                <p>
+                  <span>Submitter</span>
+                </p>
               </div>
             </div>
 
