@@ -292,6 +292,9 @@ const Tickets = ({ tickets, archiveController }) => {
 };
 
 const Members = ({ members }) => {
+  const [newRole, setNewRole] = useState("");
+
+  // dropdown
   const showDropDown = (element) => {
     const alldropDowns = document.getElementsByClassName("manageRoleDropdown");
 
@@ -304,6 +307,16 @@ const Members = ({ members }) => {
     element.nextElementSibling.classList.toggle("showManageRoleDropdown");
   };
 
+  // choose role
+  const chooseRole = (element, newRole) => {
+    const currentRoleElement =
+      element.parentElement.previousElementSibling.children[0];
+
+    currentRoleElement.textContent = newRole;
+    setNewRole(newRole);
+  };
+
+  // ********
   return members && members.length ? (
     <div>
       {members.map((member) => {
@@ -326,30 +339,21 @@ const Members = ({ members }) => {
 
             <div className="manageRole">
               <div onClick={(e) => showDropDown(e.currentTarget)}>
-                <p className="initialValue">None selected</p>
+                <p className="initialValue">{role || "None selected"}</p>
                 <FontAwesomeIcon icon={faChevronDown} />
               </div>
 
               <div data-id={_id} className="manageRoleDropdown">
-                <p>
-                  <Checkbox isChecked={true} />
-                  <span>Admin</span>
-                </p>
-
-                <p>
-                  <Checkbox isChecked={true} />
-                  <span>Project manager</span>
-                </p>
-
-                <p>
-                  <Checkbox isChecked={true} />
-                  <span>Developer</span>
-                </p>
-
-                <p>
-                  <Checkbox isChecked={true} />
-                  <span>Submitter</span>
-                </p>
+                {["admin", "project manager", "developer", "submitter"].map(
+                  (value) => {
+                    return (
+                      <p onClick={(e) => chooseRole(e.currentTarget, value)}>
+                        <Checkbox isChecked={value === role} />
+                        <span>{value}</span>
+                      </p>
+                    );
+                  }
+                )}
               </div>
             </div>
 

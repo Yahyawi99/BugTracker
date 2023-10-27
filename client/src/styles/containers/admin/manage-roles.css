@@ -86,13 +86,14 @@
     width: 150px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 10px;
     border: 2px solid var(--border-color);
     border-radius: 5px;
     transition: .25s;
     cursor: pointer;
-    padding: 5px 15px;
+    text-transform: capitalize;
+    padding: 5px 0px;
 }
 
 .manageRolesSection .manageRole>div:nth-child(1):hover {

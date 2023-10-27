@@ -9,8 +9,6 @@ const Pagination = (props) => {
 
   const numOfpagesArr = Array.from({ length: numOfPages }, (_, i) => i + 1);
 
-  console.log(count);
-
   return (
     <div className="sectionFooter">
       <p className="count">
