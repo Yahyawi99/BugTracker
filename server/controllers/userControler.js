@@ -5,9 +5,52 @@ const CustomError = require("../errors");
 
 // get all users
 const allUsers = async (req, res) => {
-  const users = await User.find({});
+  const { sort, search } = req.query;
 
-  res.status(StatusCodes.OK).json({ users, count: users.length });
+  // pagination
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 5;
+  const skip = (page - 1) * limit;
+
+  let users = User.find({}).skip(skip).limit(limit);
+
+  // **************
+  // sort
+  if (sort) {
+    if (sort === "Name") {
+      users = users.sort("-name");
+    }
+
+    if (sort === "-Name") {
+      users = users.sort("name");
+    }
+
+    if (sort === "Current Role") {
+      users = users.sort("-role");
+    }
+
+    if (sort === "-Current Role") {
+      users = users.sort("role");
+    }
+  }
+
+  // **************
+  // search
+  if (search) {
+    users = users.find({ name: { $regex: search, $options: "i" } });
+  }
+
+  users = await users;
+
+  // *************
+  const totalUsers = await User.countDocuments({});
+  const numOfPages = Math.ceil(totalUsers / limit);
+
+  const count = users.length;
+
+  res
+    .status(StatusCodes.OK)
+    .json({ users, numOfPages, currentPage: page, count, totalUsers });
 };
 
 // get single user
