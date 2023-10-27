@@ -169,10 +169,9 @@ const updateUser = async (req, res) => {
     }
   }
 
-  res.send();
-  // await user.save();
+  await user.save();
 
-  // res.send("update");
+  res.status(StatusCodes.OK).json({ msg: "Updated Succesfully" });
 };
 
 // delete user
