@@ -43,9 +43,10 @@ const allUsers = async (req, res) => {
   users = await users;
 
   // *************
-  const totalUsers = await User.countDocuments({});
+  const totalUsers = await User.countDocuments({
+    name: { $regex: search, $options: "i" },
+  });
   const numOfPages = Math.ceil(totalUsers / limit);
-
   const count = users.length;
 
   res
