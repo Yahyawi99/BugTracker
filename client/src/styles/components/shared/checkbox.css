@@ -7,11 +7,23 @@
     border: 2px solid var(--border-color);
 }
 
+.checkbox svg {
+    display: none;
+}
+
+.checkbox svg path {
+    fill: var(--white);
+}
+
+
+/* ***************************** */
+/* ***************************** */
+/* ***************************** */
 .checkboxChecked {
     background-color: var(--blue);
     border-color: transparent;
 }
 
-.checkboxChecked svg path {
-    fill: var(--white);
+.checkboxChecked svg {
+    display: initial;
 }

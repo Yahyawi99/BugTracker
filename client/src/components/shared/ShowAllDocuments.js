@@ -292,8 +292,6 @@ const Tickets = ({ tickets, archiveController }) => {
 };
 
 const Members = ({ members }) => {
-  const [newRole, setNewRole] = useState("");
-
   // dropdown
   const showDropDown = (element) => {
     const alldropDowns = document.getElementsByClassName("manageRoleDropdown");
@@ -311,9 +309,20 @@ const Members = ({ members }) => {
   const chooseRole = (element, newRole) => {
     const currentRoleElement =
       element.parentElement.previousElementSibling.children[0];
+    const checkBox = element.children[0];
+    const allCheckBoxs = document.getElementsByClassName("checkbox");
 
-    currentRoleElement.textContent = newRole;
-    setNewRole(newRole);
+    [...allCheckBoxs].forEach(
+      (e) => checkBox !== e && e.classList.remove("checkboxChecked")
+    );
+
+    checkBox.classList.toggle("checkboxChecked");
+
+    if (currentRoleElement.textContent === newRole) {
+      currentRoleElement.textContent = "None selected";
+    } else {
+      currentRoleElement.textContent = newRole;
+    }
   };
 
   // ********
