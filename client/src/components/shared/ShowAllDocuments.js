@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -30,6 +30,7 @@ const ShowAllDocuments = (props) => {
     sortLabels,
     archiveController,
     isArchived,
+    updateUser,
   } = props;
   const { currentPage } = props.data;
 
@@ -92,7 +93,7 @@ const ShowAllDocuments = (props) => {
                   archiveController={archiveController}
                 />
               ) : (
-                <Members members={data.users} />
+                <Members members={data.users} updateUser={updateUser} />
               )}
 
               <Pagination
@@ -291,7 +292,7 @@ const Tickets = ({ tickets, archiveController }) => {
   );
 };
 
-const Members = ({ members }) => {
+const Members = ({ members, updateUser }) => {
   // dropdown
   const showDropDown = (element) => {
     const alldropDowns = document.getElementsByClassName("manageRoleDropdown");
@@ -323,6 +324,13 @@ const Members = ({ members }) => {
     } else {
       currentRoleElement.textContent = newRole;
     }
+  };
+
+  const assignRole = (memberId, element) => {
+    const newRole =
+      element.parentElement.previousElementSibling.children[0].textContent;
+
+    updateUser(memberId, newRole);
   };
 
   // ********
@@ -367,9 +375,12 @@ const Members = ({ members }) => {
             </div>
 
             <div className="btns">
-              <Link to={`/tickets/ticket-details/${_id}`}>
-                <button className="assign">Assign Role</button>
-              </Link>
+              <button
+                onClick={(e) => assignRole(_id, e.currentTarget)}
+                className="assign"
+              >
+                Assign Role
+              </button>
             </div>
           </div>
         );
