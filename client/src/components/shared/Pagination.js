@@ -9,12 +9,15 @@ const Pagination = (props) => {
 
   const numOfpagesArr = Array.from({ length: numOfPages }, (_, i) => i + 1);
 
+  console.log(count);
+
   return (
     <div className="sectionFooter">
       <p className="count">
         {count ? count : 0} out of{" "}
         {data.totalTickets ||
           data.totalProjects ||
+          data.totalUsers ||
           data.totalAssociatedTickets ||
           0}{" "}
         documents

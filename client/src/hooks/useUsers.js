@@ -10,11 +10,18 @@ const useUsers = () => {
   const [userProjects, setUserProjects] = useState([]);
 
   //   get all users
-  const getAllUsers = async () => {
+  const getAllUsers = async (
+    page,
+    sortOption = "",
+    limit,
+    searchInput = ""
+  ) => {
     try {
       loading(true);
 
-      const response = await axios.get(`/api/v1/user`);
+      const response = await axios.get(
+        `/api/v1/user?page=${page}&sort=${sortOption}&limit=${limit}&search=${searchInput}`
+      );
 
       loading(false);
 
