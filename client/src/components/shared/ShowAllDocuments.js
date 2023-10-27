@@ -330,7 +330,11 @@ const Members = ({ members, updateUser }) => {
     const newRole =
       element.parentElement.previousElementSibling.children[0].textContent;
 
-    updateUser(memberId, newRole);
+    const formData = new FormData();
+
+    formData.append("data", JSON.stringify({ newRole }));
+
+    updateUser(memberId, formData);
   };
 
   // ********
@@ -362,9 +366,12 @@ const Members = ({ members, updateUser }) => {
 
               <div data-id={_id} className="manageRoleDropdown">
                 {["admin", "project manager", "developer", "submitter"].map(
-                  (value) => {
+                  (value, i) => {
                     return (
-                      <p onClick={(e) => chooseRole(e.currentTarget, value)}>
+                      <p
+                        key={i}
+                        onClick={(e) => chooseRole(e.currentTarget, value)}
+                      >
                         <Checkbox isChecked={value === role} />
                         <span>{value}</span>
                       </p>

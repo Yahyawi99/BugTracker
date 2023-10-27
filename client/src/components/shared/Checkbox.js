@@ -7,9 +7,9 @@ import "../../styles/components/shared/checkbox.css";
 
 const Checkbox = ({ isChecked }) => {
   return (
-    <div className={`${isChecked && "checkboxChecked"} checkbox`}>
+    <span className={`${isChecked && "checkboxChecked"} checkbox`}>
       <FontAwesomeIcon icon={faCheck} />
-    </div>
+    </span>
   );
 };
 

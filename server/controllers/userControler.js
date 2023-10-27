@@ -105,6 +105,7 @@ const updateUser = async (req, res) => {
     currentPassword,
     newPassword,
     newPasswordConfirmed,
+    newRole,
   } = JSON.parse(req.body.data);
 
   const user = await User.findOne({ _id: userId });
@@ -159,9 +160,19 @@ const updateUser = async (req, res) => {
     user.password = newPassword;
   }
 
-  await user.save();
+  // role
+  if (newRole) {
+    if (newRole === "None selected") {
+      user.role = "";
+    } else {
+      user.role = newRole;
+    }
+  }
 
-  res.send("update");
+  res.send();
+  // await user.save();
+
+  // res.send("update");
 };
 
 // delete user

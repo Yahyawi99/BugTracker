@@ -38,9 +38,8 @@ const Settings = ({ setIsSettingsOn, className }) => {
           const { name, icon } = option;
 
           return (
-            <Link to="/profile/manage-profile">
+            <Link key={i} to="/profile/manage-profile">
               <li
-                key={i}
                 onClick={() => {
                   setSettingsNavigateTo(name);
                   setIsSettingsOn(false);
