@@ -292,6 +292,18 @@ const Tickets = ({ tickets, archiveController }) => {
 };
 
 const Members = ({ members }) => {
+  const showDropDown = (element) => {
+    const alldropDowns = document.getElementsByClassName("manageRoleDropdown");
+
+    [...alldropDowns].forEach((e) => {
+      if (e.dataset.id !== element.nextElementSibling.dataset.id) {
+        e.classList.remove("showManageRoleDropdown");
+      }
+    });
+
+    element.nextElementSibling.classList.toggle("showManageRoleDropdown");
+  };
+
   return members && members.length ? (
     <div>
       {members.map((member) => {
@@ -313,12 +325,12 @@ const Members = ({ members }) => {
             </div>
 
             <div className="manageRole">
-              <div>
+              <div onClick={(e) => showDropDown(e.currentTarget)}>
                 <p className="initialValue">None selected</p>
                 <FontAwesomeIcon icon={faChevronDown} />
               </div>
 
-              <div className="manageRoleDropdown">
+              <div data-id={_id} className="manageRoleDropdown">
                 <p>
                   <Checkbox isChecked={true} />
                   <span>Admin</span>

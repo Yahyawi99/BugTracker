@@ -153,3 +153,11 @@
 .manageRolesSection .sectionFooter {
     width: 100%;
 }
+
+/* ******************************** */
+/* ******************************** */
+/* ******************************** */
+/* Javascript classes */
+.manageRolesSection .manageRole .showManageRoleDropdown {
+    transform: scaleY(1);
+}
