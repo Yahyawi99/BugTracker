@@ -6,3 +6,12 @@
     justify-content: center;
     border: 2px solid var(--border-color);
 }
+
+.checkboxChecked {
+    background-color: var(--blue);
+    border-color: transparent;
+}
+
+.checkboxChecked svg path {
+    fill: var(--white);
+}
