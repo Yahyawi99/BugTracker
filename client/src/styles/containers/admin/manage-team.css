@@ -1,0 +1,27 @@
+.manageTeam {
+    width: 100%;
+    display: grid;
+    padding: 20px;
+}
+
+.manageTeam>div:not(div:nth-child(1)) {
+    width: 100%;
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.manageTeam img {
+    border-radius: 50%;
+}
+
+/* Manager */
+.manageTeam .first-column .pm img {
+    width: 100px;
+}
+
+
+/* team */
+.manageTeam .first-column .team img {
+    width: 50px;
+}
