@@ -9,37 +9,39 @@ const ManageTeam = () => {
     <section className="manageTeam">
       <HomeBtn name="Manage Team" />
 
-      <div className="first-column">
-        <h1>Project Team</h1>
-        <p>8 team members</p>
+      <div>
+        <div className="first-column">
+          <h1>Project Team</h1>
+          <p>8 team members</p>
 
-        <div className="pm">
-          <img
-            src="/assets/images/default-avatar-1.jpg"
-            alt="project-manager"
-          />
+          <div className="pm">
+            <img
+              src="/assets/images/default-avatar-1.jpg"
+              alt="project-manager"
+            />
 
-          <div className="info">
-            <p>Jane Appuser</p>
-            <p>yassinyahyawi@26gmail.com</p>
-            <p>Project Manager</p>
-            <button type="button">Manage PM</button>
+            <div className="info">
+              <p className="name">Jane Appuser</p>
+              <p className="email">yassinyahyawi@26gmail.com</p>
+              <p className="role">Project Manager</p>
+              <button type="button">Manage PM</button>
+            </div>
           </div>
-        </div>
 
-        <div className="team">
-          <div>
-            <img src="/assets/images/default-avatar-1.jpg" alt="developer" />
-
+          <div className="team">
             <div>
-              <p>James Appuser</p>
-              <p>Developer</p>
+              <img src="/assets/images/default-avatar-1.jpg" alt="developer" />
+
+              <div>
+                <p className="name">James Appuser</p>
+                <p className="role">Developer</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="second-column"></div>
+        <div className="second-column"></div>
+      </div>
     </section>
   );
 };

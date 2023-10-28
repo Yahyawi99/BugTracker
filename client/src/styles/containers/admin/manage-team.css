@@ -1,14 +1,22 @@
 .manageTeam {
     width: 100%;
-    display: grid;
     padding: 20px;
 }
 
 .manageTeam>div:not(div:nth-child(1)) {
-    width: 100%;
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.manageTeam>div:not(div:nth-child(1))>div {
     background-color: var(--white);
     border-radius: 10px;
     padding: 20px;
+}
+
+.manageTeam .second-column {
+    flex: 1;
 }
 
 .manageTeam img {
@@ -16,12 +24,65 @@
 }
 
 /* Manager */
+.manageTeam .first-column .pm {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 2px solid var(--border-color);
+    margin: 30px 0 25px 0;
+    padding: 0 0 20px 0;
+}
+
 .manageTeam .first-column .pm img {
     width: 100px;
 }
 
+.manageTeam .first-column .pm .info {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.manageTeam .first-column .pm .info .name {
+    color: var(--gray-dark);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.manageTeam .first-column .pm .info .email,
+.manageTeam .first-column .pm .info .role {
+    color: var(--gray);
+}
+
+.manageTeam .first-column .pm button {
+    background-color: var(--main-clr);
+    color: var(--white);
+    font-weight: 600;
+    font-size: .8rem;
+    border: 2px solid var(--main-clr);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 5px 10px;
+}
+
+.manageTeam .first-column .pm button:hover {
+    background-color: transparent;
+    color: var(--main-clr);
+}
 
 /* team */
+.manageTeam .first-column .team>div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.manageTeam .first-column .team>div .role {
+    color: var(--gray);
+}
+
 .manageTeam .first-column .team img {
     width: 50px;
 }
