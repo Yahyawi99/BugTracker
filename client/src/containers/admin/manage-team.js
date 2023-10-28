@@ -40,7 +40,9 @@ const ManageTeam = () => {
           </div>
         </div>
 
-        <div className="second-column"></div>
+        <div className="second-column">
+          <h1>Manage Developers</h1>
+        </div>
       </div>
     </section>
   );
