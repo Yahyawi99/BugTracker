@@ -269,8 +269,6 @@
     align-items: center;
 }
 
-.navigationContainer .skins span i svg {}
-
 .navigationContainer .skins span i svg path {
     fill: inherit;
 }

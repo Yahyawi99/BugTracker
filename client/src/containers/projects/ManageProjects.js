@@ -87,7 +87,9 @@ const ManageProjects = () => {
                     )}
                   </div>
 
-                  <button type="button">Manage Team</button>
+                  <Link to="/admin/manage-team">
+                    <button type="button">Manage Team</button>
+                  </Link>
                 </div>
 
                 <div className="progress">
