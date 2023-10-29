@@ -55,7 +55,7 @@ const AssignDev = () => {
       <section className="DocumentDetails assignDev">
         <HomeBtn name="Assign Developer" />
 
-        <div className="details">
+        <div className="details ticketDetails">
           <div className="first-column">
             <div className="row-one">
               <h3>Select Developer</h3>

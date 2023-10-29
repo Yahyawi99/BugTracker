@@ -127,6 +127,10 @@
 
 /* *************************** */
 /* Second Column */
+.DocumentDetails>div:nth-child(2) .second-column>div {
+    padding: 20px 10px;
+}
+
 .DocumentDetails>div:nth-child(2) .second-column .row-one {
     display: flex;
     flex-direction: column;
