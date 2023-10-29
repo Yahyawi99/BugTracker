@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faUser } from "@fortawesome/free-solid-svg-icons";
 // hooks
 import useTickets from "../../hooks/useTickets";
 import useUsers from "../../hooks/useUsers";
+// utils
+import progress from "../../utils/progress";
+import formatDate from "../../utils/formatDate";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
 // css
@@ -48,48 +51,122 @@ const AssignDev = () => {
   }
 
   return (
-    <section className="DocumentDetails assignDev">
-      <HomeBtn name="Assign Developer" />
+    singleTicket.ticket && (
+      <section className="DocumentDetails assignDev">
+        <HomeBtn name="Assign Developer" />
 
-      <div className="details">
-        <div className="first-column">
-          <div className="row-one">
-            <h3>Select Developer</h3>
+        <div className="details">
+          <div className="first-column">
+            <div className="row-one">
+              <h3>Select Developer</h3>
 
-            <DropDown developers={devs} currentDev={assignedTo} />
+              <DropDown developers={devs} currentDev={assignedTo} />
 
-            <div className="btns">
-              <button className="assignBtn" type="button">
-                Assign
-              </button>
-              <button className="cancelBtn" type="button">
-                Cancel
-              </button>
+              <div className="btns">
+                <button className="assignBtn" type="button">
+                  Assign
+                </button>
+                <button className="cancelBtn" type="button">
+                  Cancel
+                </button>
+              </div>
+            </div>
+
+            <div className="row-two">
+              <h3>Current Developer</h3>
+
+              {assignedTo ? (
+                <div className="currentDev">
+                  <img src={assignedTo.avatar} alt="current developer" />
+
+                  <p className="name">{assignedTo.name}</p>
+                  <p className="email">{assignedTo.email}</p>
+
+                  <Link to={`/profile/member-profile/${assignedTo._id}`}>
+                    <button type="button">Profile</button>
+                  </Link>
+                </div>
+              ) : (
+                <div className="unassigned">
+                  <FontAwesomeIcon icon={faUser} />
+                  <p>Not Assigned</p>
+                </div>
+              )}
             </div>
           </div>
 
-          <div className="row-two">
-            <h3>Current Developer</h3>
+          <div className="second-column">
+            <div className="row-one">
+              <h1>{title}</h1>
 
-            {assignedTo ? (
-              <div className="currentDev">
-                <img src={assignedTo.avatar} alt="current developer" />
-                <p className="name">{assignedTo.name}</p>
-                <p className="email">{assignedTo.email}</p>
-                <button type="button">Profile</button>
+              <p dangerouslySetInnerHTML={{ __html: description }} />
+
+              <div className="project">
+                <p>Project :</p>
+                <p>{project.name}</p>
               </div>
-            ) : (
-              <div className="unassigned">
-                <FontAwesomeIcon icon={faUser} />
-                <p>Not Assigned</p>
+
+              <div className="progress">
+                <p>Progress Status:</p>
+                <div>
+                  {project.startDate && (
+                    <div
+                      style={{
+                        width:
+                          progress(project.startDate, project.endDate) + "%",
+                      }}
+                      className="thumb"
+                    >
+                      <p>{progress(project.startDate, project.endDate)}%</p>
+                    </div>
+                  )}
+                </div>
               </div>
-            )}
+            </div>
+
+            <div className="row-two">
+              <div className="created">
+                <p>Created :</p>
+                <p>
+                  {createdAt &&
+                    formatDate(createdAt, {
+                      month: "2-digit",
+                      day: "2-digit",
+                      year: "numeric",
+                    })}
+                </p>
+              </div>
+
+              <div className="deadline">
+                <p>Project Deadline :</p>
+                <p>
+                  {formatDate(project.endDate, {
+                    month: "2-digit",
+                    day: "2-digit",
+                    year: "numeric",
+                  })}
+                </p>
+              </div>
+
+              <div className="type">
+                <p>Type :</p>
+                <p className={`${type}`}>{type}</p>
+              </div>
+
+              <div className="priority">
+                <p>Priority :</p>
+                <p className={`${priority}`}>{priority}</p>
+              </div>
+
+              <div className="status">
+                <p>Status :</p>
+                <p className={`${status}`}>{status}</p>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div className="second-column"></div>
-      </div>
-    </section>
+      </section>
+    )
   );
 };
 

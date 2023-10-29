@@ -125,6 +125,29 @@
     color: var(--main-clr);
 }
 
+/* *************************** */
+/* Second Column */
+.DocumentDetails>div:nth-child(2) .second-column .row-one {
+    display: flex;
+    flex-direction: column;
+}
+
+.DocumentDetails>div:nth-child(2) .second-column .row-one .project {
+    display: flex;
+    gap: 5px;
+}
+
+.DocumentDetails>div:nth-child(2) .second-column .row-one .project p:nth-child(1) {
+    font-weight: 600;
+}
+
+.DocumentDetails>div:nth-child(2) .second-column .row-two {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 /* ************************** */
 /* ************************** */
 /* ************************** */
