@@ -1,4 +1,5 @@
-.ticketDetails {
+.ticketDetails,
+.DocumentDetails {
     padding: 20px;
 }
 

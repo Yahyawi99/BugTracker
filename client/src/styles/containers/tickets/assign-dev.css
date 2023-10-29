@@ -1,0 +1,68 @@
+/* ****************************** */
+/* First column */
+.assignDev .first-column .btns {
+    display: flex;
+    gap: 5px;
+}
+
+.assignDev .first-column .assignBtn {
+    color: var(--white);
+    background-color: var(--orange);
+    border-color: var(--orange);
+}
+
+.assignDev .first-column .cancelBtn {
+    color: var(--white);
+    background-color: var(--danger);
+    border-color: var(--danger);
+}
+
+.assignDev .first-column button:hover {
+    background-color: transparent;
+}
+
+.assignDev .first-column .assignBtn:hover {
+    color: var(--orange);
+}
+
+.assignDev .first-column .cancelBtn:hover {
+    color: var(--danger);
+}
+
+/* drop down */
+.assignDev .first-column .devsDropdown {
+    position: relative;
+}
+
+.assignDev .first-column .devsDropdown>div:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+    transition: .25s;
+    padding: 10px;
+}
+
+.assignDev .first-column .devsDropdown>div:nth-child(1):hover {
+    opacity: .75;
+}
+
+.assignDev .first-column .devsDropdown .devs {
+    width: 100%;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 45px;
+    box-shadow: var(--shadow);
+    padding: 10px 0 10px 10px;
+}
+
+.assignDev .first-column .devsDropdown .devs p {
+    cursor: pointer;
+}
+
+.assignDev .first-column .devsDropdown .devs p:hover {
+    text-decoration: 2px underline;
+}
