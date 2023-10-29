@@ -176,8 +176,6 @@ const useTickets = () => {
         `/api/v1/ticket/unassigned-tickets?page=${page}&sort=${sortOptions}&limit=${limit}&search=${search}&isArchived=${isArchived}`
       );
 
-      console.log(response.data);
-
       setAllTickets(response.data);
 
       await alertMe("Done" + "!", "var(--success)");
@@ -204,7 +202,7 @@ const useTickets = () => {
 
       await alertMe("Done", "var(--success)");
 
-      // window.location.reload();
+      window.location.reload();
     } catch (error) {
       loading(false);
 

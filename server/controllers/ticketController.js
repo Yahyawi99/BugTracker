@@ -271,6 +271,9 @@ const assignTicketTo = async (req, res) => {
   }
 
   ticket.assignedTo = developerId;
+  ticket.isAssigned = true;
+
+  // for the history document
   ticket.admin = userId;
 
   await ticket.save();

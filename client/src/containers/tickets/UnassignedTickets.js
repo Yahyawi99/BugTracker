@@ -107,8 +107,8 @@ const Tickets = ({ tickets, archiveController }) => {
           status,
           priority,
           isArchived,
-          assignedTo,
           assignedBy,
+          assignedTo,
         } = ticket;
 
         return (
@@ -118,7 +118,9 @@ const Tickets = ({ tickets, archiveController }) => {
             </div>
 
             <div className="assignedTo">
-              <button className="assignDevBtn">Assign Dev</button>
+              <Link to={`/tickets/assign-dev/${_id}`}>
+                <button className="assignDevBtn">Assign Dev</button>
+              </Link>
             </div>
 
             <div className="title">
