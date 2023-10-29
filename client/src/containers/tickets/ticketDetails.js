@@ -116,7 +116,7 @@ const TicketDetails = () => {
 
             <div className="row-two">
               <div className="created">
-                <p>Created</p>
+                <p>Created :</p>
                 <p>
                   {createdAt &&
                     formatDate(createdAt, {
@@ -128,7 +128,7 @@ const TicketDetails = () => {
               </div>
 
               <div className="deadline">
-                <p>Project Deadline</p>
+                <p>Project Deadline :</p>
                 <p>
                   {formatDate(project.endDate, {
                     month: "2-digit",
@@ -139,17 +139,17 @@ const TicketDetails = () => {
               </div>
 
               <div className="type">
-                <p>Type </p>
+                <p>Type :</p>
                 <p className={`${type}`}>{type}</p>
               </div>
 
               <div className="priority">
-                <p>Priority</p>
+                <p>Priority :</p>
                 <p className={`${priority}`}>{priority}</p>
               </div>
 
               <div className="status">
-                <p>Status</p>
+                <p>Status :</p>
                 <p className={`${status}`}>{status}</p>
               </div>
             </div>

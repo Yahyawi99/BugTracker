@@ -45,7 +45,6 @@ const AssignDev = () => {
         title,
         description,
         project,
-        isArchived,
         assignedTo,
         createdAt,
         type,
@@ -80,7 +79,11 @@ const AssignDev = () => {
                   Assign
                 </button>
 
-                <button className="cancelBtn" type="button">
+                <button
+                  className="cancelBtn"
+                  type="button"
+                  onClick={() => window.history.back()}
+                >
                   Cancel
                 </button>
               </div>
