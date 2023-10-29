@@ -88,10 +88,11 @@ const MemberProfile = () => {
 
                         return (
                           <Link
+                            key={_id}
                             to={`/member-profile/${_id}`}
                             reloadDocument={true}
                           >
-                            <img key={_id} src={avatar} alt="user" />
+                            <img src={avatar} alt="user" />
                           </Link>
                         );
                       })}

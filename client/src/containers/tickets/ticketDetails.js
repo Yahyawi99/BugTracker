@@ -229,7 +229,14 @@ const TicketDetails = () => {
                         </p>
                         <p className="title">{title}</p>
                         <p className="name">
-                          By : <span>{actionBy && actionBy.name}</span>
+                          By :{" "}
+                          {actionBy && (
+                            <Link
+                              to={`/profile/member-profile/${actionBy._id}`}
+                            >
+                              <span>{actionBy.name}</span>
+                            </Link>
+                          )}
                         </p>
                         <p dangerouslySetInnerHTML={{ __html: description }} />
                       </div>
