@@ -258,6 +258,25 @@ const unassignedTickets = async (req, res) => {
     .json({ tickets, numOfPages, currentPage: page, count, totalTickets });
 };
 
+// assign Ticket to developer
+const assignTicketTo = async (req, res) => {
+  const { developerId } = req.body;
+  const { id: ticketId } = re.params;
+  const { userId } = req.user;
+
+  const ticket = await Ticket.findOne({ _id: ticketId });
+
+  if (!ticket) {
+    throw new CustomError.NotFoundError(`No ticket with id : ${ticket}`);
+  }
+
+  ticket.assignedTo = developerId;
+
+  await ticket.save(userId);
+
+  res.status(StatusCodes.OK).json({ msg: `Ticket assigned to : ${""}` });
+};
+
 // update Ticket
 const updateTicket = async (req, res) => {
   const { title, description, status, type, priority } = req.body;
@@ -294,4 +313,5 @@ module.exports = {
   archiveTicket,
   userTickets,
   unassignedTickets,
+  assignTicketTo,
 };

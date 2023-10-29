@@ -12,6 +12,7 @@ const {
   archiveTicket,
   userTickets,
   unassignedTickets,
+  assignTicketTo,
 } = require("../controllers/ticketController");
 
 router
@@ -22,6 +23,8 @@ router
 router.route("/user-tickets").get(authenticateUser, userTickets);
 
 router.route("/unassigned-tickets").get(authenticateUser, unassignedTickets);
+
+router.route("/assign-to/:id").post(authenticateUser, assignTicketTo);
 
 router.route("/archive/:id").patch(authenticateUser, archiveTicket);
 

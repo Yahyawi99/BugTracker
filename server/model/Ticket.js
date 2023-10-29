@@ -86,6 +86,8 @@ TicketSchema.pre("save", async function () {
     };
 
     await History.create(historyDocument);
+  } else if (this.isModified("assignedTo")) {
+    console.log("yes");
   }
 });
 
