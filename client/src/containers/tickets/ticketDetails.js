@@ -98,7 +98,9 @@ const TicketDetails = () => {
               </div>
 
               <div className="action">
-                <button className="assignBtn">Assign Developer</button>
+                <Link to={`/tickets/assign-dev/${_id}`}>
+                  <button className="assignBtn">Assign Developer</button>
+                </Link>
 
                 <Link to={`/tickets/edit-ticket/${_id}`}>
                   <button className="editBtn">Edit Ticket</button>

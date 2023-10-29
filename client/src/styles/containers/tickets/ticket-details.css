@@ -1,3 +1,7 @@
+.ticketDetails {
+    padding: 20px;
+}
+
 /* project */
 .ticketDetails .project {
     display: flex;
