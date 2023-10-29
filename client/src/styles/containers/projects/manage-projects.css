@@ -136,7 +136,7 @@
 
 /* Progress */
 .ManageProjectsSection .project .progress {
-    height: 15px;
+    min-height: 5px;
     background-color: var(--main-clr-hover);
     border-radius: 5px;
     position: relative;
