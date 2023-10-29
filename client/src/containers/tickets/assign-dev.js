@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faUser } from "@fortawesome/free-solid-svg-icons";
 // hooks
 import useTickets from "../../hooks/useTickets";
 import useUsers from "../../hooks/useUsers";
@@ -66,6 +66,24 @@ const AssignDev = () => {
                 Cancel
               </button>
             </div>
+          </div>
+
+          <div className="row-two">
+            <h3>Current Developer</h3>
+
+            {assignedTo ? (
+              <div className="currentDev">
+                <img src={assignedTo.avatar} alt="current developer" />
+                <p className="name">{assignedTo.name}</p>
+                <p className="email">{assignedTo.email}</p>
+                <button type="button">Profile</button>
+              </div>
+            ) : (
+              <div className="unassigned">
+                <FontAwesomeIcon icon={faUser} />
+                <p>Not Assigned</p>
+              </div>
+            )}
           </div>
         </div>
 

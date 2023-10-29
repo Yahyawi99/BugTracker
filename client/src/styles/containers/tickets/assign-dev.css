@@ -72,6 +72,59 @@
     text-decoration: 2px underline;
 }
 
+/* *************************** */
+/* Current Dev */
+.assignDev .first-column .row-two>div {
+    flex-direction: column;
+}
+
+/* unassigned */
+.assignDev .first-column .row-two .unassigned {
+    color: var(--gray-dark);
+    gap: 10px;
+}
+
+.assignDev .first-column .row-two .unassigned p {
+    font-size: 2.25rem;
+}
+
+.assignDev .first-column .row-two .unassigned svg {
+    font-size: 7rem;
+}
+
+/* assigned */
+.assignDev .first-column .row-two .currentDev img {
+    width: 150px;
+    border-radius: 50%;
+}
+
+.assignDev .first-column .row-two .currentDev .name {
+    font-size: 2.25rem;
+    padding: 0;
+}
+
+.assignDev .first-column .row-two .currentDev .email {
+    color: var(--gray-dark);
+    font-size: 1.1rem;
+}
+
+.assignDev .first-column .row-two .currentDev button {
+    background-color: var(--main-clr);
+    color: var(--white);
+    border: 2px solid var(--main-clr);
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s;
+    margin: 10px 0 0 0;
+    padding: 5px 10px;
+}
+
+.assignDev .first-column .row-two .currentDev button:hover {
+    background-color: transparent;
+    color: var(--main-clr);
+}
+
 /* ************************** */
 /* ************************** */
 /* ************************** */
