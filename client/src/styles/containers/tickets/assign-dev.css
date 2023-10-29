@@ -132,6 +132,10 @@
 }
 
 .DocumentDetails>div:nth-child(2) .second-column .row-one {
+    width: 100%;
+}
+
+.DocumentDetails>div:nth-child(2) .second-column .row-one {
     display: flex;
     flex-direction: column;
 }
@@ -151,6 +155,8 @@
     flex-direction: column;
     gap: 10px;
 }
+
+
 
 /* ************************** */
 /* ************************** */
