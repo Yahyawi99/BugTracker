@@ -193,6 +193,25 @@ const useTickets = () => {
     }
   };
 
+  // Assign ticket to developer
+  const assignTicketTo = async (ticketId, developerId) => {
+    try {
+      loading(true);
+
+      await axios.post(`/api/v1/ticket/assign-to/${ticketId}`, { developerId });
+
+      loading(false);
+
+      await alertMe("Done", "var(--success)");
+
+      // window.location.reload();
+    } catch (error) {
+      loading(false);
+
+      alertMe("Something went wrong. Please try again later", "var(--danger)");
+    }
+  };
+
   return {
     getAllTickets,
     allTickets,
@@ -204,6 +223,7 @@ const useTickets = () => {
     editTicket,
     createTicket,
     unassignedTickets,
+    assignTicketTo,
   };
 };
 

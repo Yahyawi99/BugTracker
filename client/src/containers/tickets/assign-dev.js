@@ -15,12 +15,13 @@ import HomeBtn from "../../components/shared/HomeBtn";
 import "../../styles/containers/tickets/assign-dev.css";
 
 const AssignDev = () => {
-  const { getSingleTicket, singleTicket } = useTickets();
+  const { getSingleTicket, singleTicket, assignTicketTo } = useTickets();
   const { getAllUsers, allUsers } = useUsers();
 
   const { ticketId } = useParams();
 
   const [devs, setDevs] = useState([]);
+  const [newDev, setNewDev] = useState({});
 
   useEffect(() => {
     getSingleTicket(ticketId);
@@ -31,7 +32,11 @@ const AssignDev = () => {
     if (allUsers.users) {
       setDevs(() => allUsers.users.filter((user) => user.role === "developer"));
     }
-  }, [allUsers]);
+
+    if (singleTicket.ticket) {
+      setNewDev(singleTicket.ticket.assignedTo);
+    }
+  }, [allUsers, singleTicket]);
 
   if (singleTicket.ticket) {
     var {
@@ -60,12 +65,21 @@ const AssignDev = () => {
             <div className="row-one">
               <h3>Select Developer</h3>
 
-              <DropDown developers={devs} currentDev={assignedTo} />
+              <DropDown
+                developers={devs}
+                newDev={newDev}
+                setNewDev={setNewDev}
+              />
 
               <div className="btns">
-                <button className="assignBtn" type="button">
+                <button
+                  className="assignBtn"
+                  type="button"
+                  onClick={() => assignTicketTo(_id, newDev._id)}
+                >
                   Assign
                 </button>
+
                 <button className="cancelBtn" type="button">
                   Cancel
                 </button>
@@ -171,9 +185,8 @@ const AssignDev = () => {
 };
 
 // ***********************
-const DropDown = ({ developers, currentDev }) => {
+const DropDown = ({ developers, newDev, setNewDev }) => {
   const [showDevs, setShowDevs] = useState(false);
-  const [newDev, setNewDev] = useState(currentDev);
 
   return (
     <div className="devsDropdown">

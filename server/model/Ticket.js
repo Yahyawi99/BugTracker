@@ -75,7 +75,7 @@ const TicketSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-TicketSchema.pre("save", async function () {
+TicketSchema.pre("save", async function (adminId) {
   if (this.isNew) {
     const historyDocument = {
       title: `New Ticket Created`,
@@ -87,7 +87,15 @@ TicketSchema.pre("save", async function () {
 
     await History.create(historyDocument);
   } else if (this.isModified("assignedTo")) {
-    console.log("yes");
+    const historyDocument = {
+      title: `New Ticket Developer`,
+      description: "A new <b>developer</b> was assigned.",
+      actionBy: this.admin,
+      ticket: this._id,
+      createdAt: this.createdAt,
+    };
+
+    await History.create(historyDocument);
   }
 });
 

@@ -261,7 +261,7 @@ const unassignedTickets = async (req, res) => {
 // assign Ticket to developer
 const assignTicketTo = async (req, res) => {
   const { developerId } = req.body;
-  const { id: ticketId } = re.params;
+  const { id: ticketId } = req.params;
   const { userId } = req.user;
 
   const ticket = await Ticket.findOne({ _id: ticketId });
@@ -271,8 +271,9 @@ const assignTicketTo = async (req, res) => {
   }
 
   ticket.assignedTo = developerId;
+  ticket.admin = userId;
 
-  await ticket.save(userId);
+  await ticket.save();
 
   res.status(StatusCodes.OK).json({ msg: `Ticket assigned to : ${""}` });
 };
