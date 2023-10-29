@@ -24,6 +24,12 @@ const AssignDev = () => {
     getAllUsers(1, "", Infinity);
   }, []);
 
+  useEffect(() => {
+    if (allUsers.users) {
+      setDevs(() => allUsers.users.filter((user) => user.role === "developer"));
+    }
+  }, [allUsers]);
+
   if (singleTicket.ticket) {
     var {
       ticket: {
@@ -41,12 +47,6 @@ const AssignDev = () => {
     } = singleTicket;
   }
 
-  useEffect(() => {
-    if (allUsers.users) {
-      setDevs(() => allUsers.users.filter((user) => user.role === "developer"));
-    }
-  }, []);
-
   return (
     <section className="DocumentDetails assignDev">
       <HomeBtn name="Assign Developer" />
@@ -56,7 +56,7 @@ const AssignDev = () => {
           <div className="row-one">
             <h3>Select Developer</h3>
 
-            <DropDown developers={devs} />
+            <DropDown developers={devs} currentDev={assignedTo} />
 
             <div className="btns">
               <button className="assignBtn" type="button">
@@ -76,20 +76,32 @@ const AssignDev = () => {
 };
 
 // ***********************
-const DropDown = ({ developers }) => {
+const DropDown = ({ developers, currentDev }) => {
+  const [showDevs, setShowDevs] = useState(false);
+  const [newDev, setNewDev] = useState(currentDev);
+
   return (
     <div className="devsDropdown">
-      <div>
-        <p className="initialValue">None</p>
+      <div onClick={() => setShowDevs(!showDevs)}>
+        <p className="initialValue">{newDev ? newDev.name : "None selected"}</p>
         <FontAwesomeIcon icon={faChevronDown} />
       </div>
 
-      <div className="devs">
-        {developers.length &&
-          developers.map((dev) => {
-            const { _id, name } = dev;
-            return <p key={_id}>{name}</p>;
-          })}
+      <div className={`${showDevs && "showDevs"} devs`}>
+        {developers.map((dev) => {
+          const { _id, name } = dev;
+          return (
+            <p
+              key={_id}
+              onClick={() => {
+                setShowDevs(false);
+                setNewDev(dev);
+              }}
+            >
+              {name}
+            </p>
+          );
+        })}
       </div>
     </div>
   );

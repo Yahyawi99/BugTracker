@@ -38,6 +38,7 @@
     display: flex;
     justify-content: space-between;
     border: 2px solid var(--border-color);
+    border-radius: 5px;
     cursor: pointer;
     transition: .25s;
     padding: 10px;
@@ -50,11 +51,15 @@
 .assignDev .first-column .devsDropdown .devs {
     width: 100%;
     background-color: var(--white);
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     position: absolute;
     top: 45px;
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: .25s;
     box-shadow: var(--shadow);
     padding: 10px 0 10px 10px;
 }
@@ -65,4 +70,12 @@
 
 .assignDev .first-column .devsDropdown .devs p:hover {
     text-decoration: 2px underline;
+}
+
+/* ************************** */
+/* ************************** */
+/* ************************** */
+/* Javascript classes */
+.assignDev .first-column .devsDropdown .showDevs {
+    transform: scaleY(1);
 }
