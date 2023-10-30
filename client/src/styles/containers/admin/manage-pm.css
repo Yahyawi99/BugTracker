@@ -1,0 +1,69 @@
+.managePM>div:nth-child(2) {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.managePM h2 {
+    margin-bottom: 5px;
+}
+
+.managePM h4 {
+    margin-bottom: 25px;
+}
+
+/* Dropdown */
+.managePM .dropDown {
+    position: relative;
+}
+
+.managePM .dropDown .initialValue {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 10px;
+}
+
+.managePM .dropDown .initialValue svg {
+    font-size: .9rem;
+}
+
+.managePM .dropDown .initialValue:hover {
+    opacity: .75;
+}
+
+.managePM .dropDown .options {
+    width: 100%;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    top: 45px;
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: .25s;
+    padding: 10px 0 10px 10px;
+}
+
+.managePM .dropDown .options p {
+    cursor: pointer;
+}
+
+.managePM .dropDown .options p:hover {
+    text-decoration: 2px underline;
+}
+
+/* **************************** */
+/* **************************** */
+/* **************************** */
+/* Javascript classes */
+.managePM .dropDown .showOptions {
+    transform: scaleY(1);
+}
