@@ -32,6 +32,10 @@ const ManagePM = () => {
         <h4>Select Project Manager</h4>
 
         <Dropdown managers={managers} />
+
+        <button className="assignBtn" type="button">
+          Assign
+        </button>
       </div>
     </section>
   );

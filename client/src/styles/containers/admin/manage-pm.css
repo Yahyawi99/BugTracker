@@ -8,13 +8,12 @@
     margin-bottom: 5px;
 }
 
-.managePM h4 {
-    margin-bottom: 25px;
-}
 
 /* Dropdown */
 .managePM .dropDown {
+    max-width: 500px;
     position: relative;
+    margin: 25px 0 10px 0;
 }
 
 .managePM .dropDown .initialValue {
@@ -58,6 +57,23 @@
 
 .managePM .dropDown .options p:hover {
     text-decoration: 2px underline;
+}
+
+/* btn */
+.managePM .assignBtn {
+    background-color: var(--main-clr);
+    color: var(--white);
+    font-weight: 600;
+    border: 2px solid var(--main-clr);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 5px 10px;
+}
+
+.managePM .assignBtn:hover {
+    background-color: transparent;
+    color: var(--main-clr);
 }
 
 /* **************************** */
