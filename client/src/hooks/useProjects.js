@@ -208,6 +208,8 @@ const useProjects = () => {
       loading(false);
 
       await alertMe("Done", "var(--success)");
+
+      window.history.back();
     } catch (error) {
       loading(false);
 

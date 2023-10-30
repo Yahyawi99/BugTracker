@@ -170,8 +170,8 @@ const Projects = ({ projects, archiveController }) => {
                 team.map((user) => {
                   const { _id, avatar } = user;
                   return (
-                    <Link to={`/profile/member-profile/${_id}`}>
-                      <img key={_id} src={`${avatar}`} alt="user" />
+                    <Link key={_id} to={`/profile/member-profile/${_id}`}>
+                      <img src={`${avatar}`} alt="user" />
                     </Link>
                   );
                 })}
