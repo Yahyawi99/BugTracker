@@ -360,7 +360,9 @@ const Members = ({ members, updateUser }) => {
 
             <div className="manageRole">
               <div onClick={(e) => showDropDown(e.currentTarget)}>
-                <p className="initialValue">{role || "None selected"}</p>
+                <p className="initialValue">
+                  {role || <span style={{ opacity: 0 }}>None selected</span>}
+                </p>
                 <FontAwesomeIcon icon={faChevronDown} />
               </div>
 
