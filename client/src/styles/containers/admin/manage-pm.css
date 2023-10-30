@@ -40,7 +40,7 @@
     background-color: var(--white);
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
     position: absolute;
     top: 45px;
     box-shadow: var(--shadow);

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 // icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 // hooks
 import useUsers from "../../hooks/useUsers";
+import useProjects from "../../hooks/useProjects";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
 // css
@@ -11,10 +13,15 @@ import "../../styles/containers/admin/manage-pm.css";
 
 const ManagePM = () => {
   const { getAllUsers, allUsers } = useUsers();
+  const { getSingleProject, singleProject } = useProjects();
+  const { projectId } = useParams();
+
   const [managers, setManagers] = useState([]);
+  const [newManager, setNewManager] = useState({});
 
   useEffect(() => {
     getAllUsers();
+    getSingleProject(projectId);
   }, []);
 
   useEffect(() => {
@@ -22,6 +29,12 @@ const ManagePM = () => {
       setManagers(() => allUsers.users.filter((user) => (user.role = "PM")));
     }
   }, [allUsers]);
+
+  useEffect(() => {
+    if (singleProject.project) {
+      setNewManager(singleProject.project.managedBy);
+    }
+  }, [singleProject]);
 
   return (
     <section className="managePM">
@@ -31,7 +44,11 @@ const ManagePM = () => {
         <h2>Land Research Web Application</h2>
         <h4>Select Project Manager</h4>
 
-        <Dropdown managers={managers} />
+        <Dropdown
+          managers={managers}
+          newManager={newManager}
+          setNewManager={setNewManager}
+        />
 
         <button className="assignBtn" type="button">
           Assign
@@ -42,7 +59,7 @@ const ManagePM = () => {
 };
 
 // **********************
-const Dropdown = ({ managers }) => {
+const Dropdown = ({ managers, newManager, setNewManager }) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   return (
@@ -51,7 +68,7 @@ const Dropdown = ({ managers }) => {
         className="initialValue"
         onClick={() => setShowDropdown(!showDropdown)}
       >
-        <p>None selected</p>
+        <p>{newManager ? newManager.name : "None selected"}</p>
         <FontAwesomeIcon icon={faChevronDown} />
       </div>
 
@@ -60,7 +77,13 @@ const Dropdown = ({ managers }) => {
           const { _id, name } = manager;
 
           return (
-            <p key={_id} onClick={() => setShowDropdown(false)}>
+            <p
+              key={_id}
+              onClick={() => {
+                setNewManager(manager);
+                setShowDropdown(false);
+              }}
+            >
               {name}
             </p>
           );
