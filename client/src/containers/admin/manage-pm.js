@@ -13,7 +13,8 @@ import "../../styles/containers/admin/manage-pm.css";
 
 const ManagePM = () => {
   const { getAllUsers, allUsers } = useUsers();
-  const { getSingleProject, singleProject } = useProjects();
+  const { getSingleProject, singleProject, manageProjectManager } =
+    useProjects();
   const { projectId } = useParams();
 
   const [managers, setManagers] = useState([]);
@@ -50,7 +51,11 @@ const ManagePM = () => {
           setNewManager={setNewManager}
         />
 
-        <button className="assignBtn" type="button">
+        <button
+          onClick={() => manageProjectManager(projectId, newManager._id)}
+          className="assignBtn"
+          type="button"
+        >
           Assign
         </button>
       </div>
@@ -68,7 +73,11 @@ const Dropdown = ({ managers, newManager, setNewManager }) => {
         className="initialValue"
         onClick={() => setShowDropdown(!showDropdown)}
       >
-        <p>{newManager ? newManager.name : "None selected"}</p>
+        {newManager ? (
+          <p> newManager.name</p>
+        ) : (
+          <span className="noManager">None selected</span>
+        )}
         <FontAwesomeIcon icon={faChevronDown} />
       </div>
 

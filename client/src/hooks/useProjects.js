@@ -173,6 +173,23 @@ const useProjects = () => {
     }
   };
 
+  // manage project manager
+  const manageProjectManager = async (projectId, managerId) => {
+    try {
+      loading(true);
+
+      await axios.post(`/api/v1/project/manage-pm/${projectId}`, { managerId });
+
+      loading(false);
+
+      await alertMe("Done", "var(--success)");
+    } catch (error) {
+      loading(false);
+
+      await alertMe("Something went wrong. PLease try again later.");
+    }
+  };
+
   return {
     getAllProjects,
     allProjects,
@@ -183,6 +200,7 @@ const useProjects = () => {
     createProject,
     getUserProjects,
     userProjects,
+    manageProjectManager,
   };
 };
 
