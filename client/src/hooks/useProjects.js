@@ -201,7 +201,7 @@ const useProjects = () => {
     try {
       loading(true);
 
-      await axios.post(`/api/v1/project/manage-pm/${projectId}`, {
+      await axios.patch(`/api/v1/project/manage-pm/${projectId}`, {
         managerId: manager._id,
       });
 

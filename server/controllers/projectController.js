@@ -310,6 +310,26 @@ const userProjects = async (req, res) => {
     .json({ projects, numOfPages, currentPage: page, count, totalProjects });
 };
 
+// assign manager
+const assignManager = async (req, res) => {
+  const { managerId } = req.body;
+  const { id: projectId } = req.params;
+
+  const project = await Project.findOne({ _id: projectId });
+
+  if (!project) {
+    throw new CustomErrors.NotFoundError(`No project with id : ${projectId}`);
+  }
+
+  project.managedBy = managerId;
+
+  await project.save();
+
+  res
+    .status(StatusCodes.OK)
+    .json({ msg: "Project manager assigned successfully." });
+};
+
 // delete project
 const deleteProject = async (req, res) => {
   res.send("delete");
@@ -323,4 +343,5 @@ module.exports = {
   deleteProject,
   archiveProject,
   userProjects,
+  assignManager,
 };

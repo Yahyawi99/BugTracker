@@ -11,6 +11,7 @@ const {
   deleteProject,
   archiveProject,
   userProjects,
+  assignManager,
 } = require("../controllers/projectController");
 
 router
@@ -19,6 +20,8 @@ router
   .post(authenticateUser, createProject);
 
 router.route("/user-projects").get(authenticateUser, userProjects);
+
+router.route("/manage-pm/:id").patch(authenticateUser, assignManager);
 
 router.route("/archive/:id").patch(authenticateUser, archiveProject);
 
