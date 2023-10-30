@@ -39,9 +39,9 @@ const useProjects = () => {
   const getSingleProject = async (
     projectId,
     page,
-    sortOption,
+    sortOption = "",
     limit,
-    searchInput
+    searchInput = ""
   ) => {
     try {
       loading(true);

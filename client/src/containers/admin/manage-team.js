@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+// hooks
+import useProjects from "../../hooks/useProjects";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
 // css
 import "../../styles/containers/admin/manage-team.css";
 
 const ManageTeam = () => {
+  const { getSingleProject, singleProject } = useProjects();
+  const { projectId } = useParams();
+
+  useEffect(() => {
+    getSingleProject(projectId);
+  }, []);
+
   return (
     <section className="manageTeam">
       <HomeBtn name="Manage Team" />
@@ -24,7 +34,10 @@ const ManageTeam = () => {
               <p className="name">Jane Appuser</p>
               <p className="email">yassinyahyawi@26gmail.com</p>
               <p className="role">Project Manager</p>
-              <button type="button">Manage PM</button>
+
+              <Link to={`/admin/manage-pm/${projectId}`}>
+                <button type="button">Manage PM</button>
+              </Link>
             </div>
           </div>
 
