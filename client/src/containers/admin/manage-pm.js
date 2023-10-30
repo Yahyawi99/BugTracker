@@ -52,7 +52,7 @@ const ManagePM = () => {
         />
 
         <button
-          onClick={() => manageProjectManager(projectId, newManager._id)}
+          onClick={() => manageProjectManager(projectId, newManager)}
           className="assignBtn"
           type="button"
         >
@@ -74,7 +74,7 @@ const Dropdown = ({ managers, newManager, setNewManager }) => {
         onClick={() => setShowDropdown(!showDropdown)}
       >
         {newManager ? (
-          <p> newManager.name</p>
+          <p> {newManager.name}</p>
         ) : (
           <span className="noManager">None selected</span>
         )}

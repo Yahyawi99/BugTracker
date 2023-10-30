@@ -27,11 +27,14 @@ const useProjects = () => {
 
       setAllProjects(response.data);
 
-      alertMe("Done.", "var(--success)");
+      await alertMe("Done.", "var(--success)");
     } catch (error) {
       loading(false);
 
-      alertMe("Something went wrong please try again later!", "var(--danger)");
+      await alertMe(
+        "Something went wrong please try again later!",
+        "var(--danger)"
+      );
     }
   };
 
@@ -54,11 +57,14 @@ const useProjects = () => {
 
       setSingleProject(response.data);
 
-      alertMe("Done.", "var(--success)");
+      await alertMe("Done.", "var(--success)");
     } catch (error) {
       loading(false);
 
-      alertMe("Something went wrong please try again later!", "var(--danger)");
+      await alertMe(
+        "Something went wrong please try again later!",
+        "var(--danger)"
+      );
     }
   };
 
@@ -91,13 +97,16 @@ const useProjects = () => {
 
       loading(false);
 
-      alertMe("Done.", "var(--success)");
+      await alertMe("Done.", "var(--success)");
 
       window.history.back();
     } catch (error) {
       loading(false);
 
-      alertMe("something went wrong please try again!" + "!", "var(--danger)");
+      await alertMe(
+        "something went wrong please try again!" + "!",
+        "var(--danger)"
+      );
     }
   };
 
@@ -112,13 +121,16 @@ const useProjects = () => {
 
       loading(false);
 
-      alertMe("Done.", "var(--success)");
+      await alertMe("Done.", "var(--success)");
 
       window.location.reload();
     } catch (error) {
       loading(false);
 
-      alertMe("something went wrong please try again!" + "!", "var(--danger)");
+      await alertMe(
+        "something went wrong please try again!" + "!",
+        "var(--danger)"
+      );
     }
   };
 
@@ -131,7 +143,7 @@ const useProjects = () => {
       !newProject.startDate ||
       !newProject.endDate
     ) {
-      alertMe("Please fill out the required fields", "var(--danger)");
+      await alertMe("Please fill out the required fields", "var(--danger)");
       return;
     }
 
@@ -148,7 +160,10 @@ const useProjects = () => {
     } catch (error) {
       loading(false);
 
-      alertMe("Something went wrong please try again later", "var(--danger)");
+      await alertMe(
+        "Something went wrong please try again later",
+        "var(--danger)"
+      );
     }
   };
 
@@ -165,20 +180,30 @@ const useProjects = () => {
 
       loading(false);
 
-      alertMe("Done.", "var(--success)");
+      await alertMe("Done.", "var(--success)");
     } catch (error) {
       loading(false);
 
-      alertMe("something went wrong please try again!" + "!", "var(--danger)");
+      await alertMe(
+        "something went wrong please try again!" + "!",
+        "var(--danger)"
+      );
     }
   };
 
   // manage project manager
-  const manageProjectManager = async (projectId, managerId) => {
+  const manageProjectManager = async (projectId, manager) => {
+    if (!manager) {
+      await alertMe("Please choose a project manager!", "var(--danger)");
+      return;
+    }
+
     try {
       loading(true);
 
-      await axios.post(`/api/v1/project/manage-pm/${projectId}`, { managerId });
+      await axios.post(`/api/v1/project/manage-pm/${projectId}`, {
+        managerId: manager._id,
+      });
 
       loading(false);
 
@@ -186,7 +211,10 @@ const useProjects = () => {
     } catch (error) {
       loading(false);
 
-      await alertMe("Something went wrong. PLease try again later.");
+      await alertMe(
+        "Something went wrong. PLease try again later.",
+        "var(--danger)"
+      );
     }
   };
 
