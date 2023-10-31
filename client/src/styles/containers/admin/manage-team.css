@@ -1,6 +1,6 @@
 .manageTeam {
     width: 100%;
-    padding: 20px;
+    margin-bottom: 20px;
 }
 
 .manageTeam>div:not(div:nth-child(1)) {
@@ -48,7 +48,7 @@
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    gap: 5px;
+    gap: 2px;
 }
 
 .manageTeam .first-column .pm .info .name {
@@ -60,6 +60,11 @@
 .manageTeam .first-column .pm .info .email,
 .manageTeam .first-column .pm .info .role {
     color: var(--gray);
+}
+
+.manageTeam .first-column .pm .info .role {
+    font-size: .9rem;
+    margin-bottom: 5px;
 }
 
 .manageTeam .first-column .pm button {
