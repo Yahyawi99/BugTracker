@@ -5,6 +5,7 @@
 
 .manageTeam>div:not(div:nth-child(1)) {
     display: flex;
+    align-items: flex-start;
     gap: 25px;
     flex-wrap: wrap;
 }
@@ -21,6 +22,7 @@
 
 .manageTeam .second-column {
     flex: 1;
+    min-width: 500px;
 }
 
 .manageTeam img {
@@ -96,4 +98,48 @@
 
 .manageTeam .first-column .team img {
     width: 50px;
+}
+
+
+/* Drag and drop */
+.manageTeam .dnd {
+    display: flex;
+    gap: 5px;
+}
+
+.manageTeam .dnd>div {
+    flex: 1;
+    background-color: var(--main-clr-hover);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 2px solid var(--border-color);
+    padding: 5px;
+}
+
+.manageTeam .dnd>div p {
+    background-color: var(--white);
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    padding: 15px;
+}
+
+.manageTeam .dnd svg {
+    color: var(--main-clr);
+    align-self: center;
+}
+
+/* **************************** */
+/* **************************** */
+/* **************************** */
+/* media queries */
+@media screen and (max-width:925px) {
+    .manageTeam>div:not(div:nth-child(1)) {
+        flex-direction: column;
+    }
+
+    .manageTeam .second-column,
+    .manageTeam .first-column {
+        min-width: 100%;
+    }
 }

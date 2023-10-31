@@ -29,10 +29,20 @@ const ManageTeam = () => {
   }
 
   useEffect(() => {
-    if (allUsers.users) {
-      setDevs(allUsers.users.map((user) => user.role !== "PM"));
+    if (allUsers.users && singleProject.project) {
+      setDevs(() => {
+        let newValue = allUsers.users.filter(
+          (user) => user.role === "developer" || user.role === "submitter"
+        );
+
+        newValue = newValue.filter((user) =>
+          team.every((member) => member._id !== user._id)
+        );
+
+        return newValue;
+      });
     }
-  }, [allUsers]);
+  }, [allUsers, singleProject]);
 
   return (
     <section className="manageTeam">
@@ -41,7 +51,7 @@ const ManageTeam = () => {
       <div>
         <div className="first-column">
           <h1>Project Team</h1>
-          <p>{team && team.length + managedBy} team members</p>
+          <p>{(team && team.length + (managedBy ? 1 : 0)) || 0} team members</p>
 
           {managedBy && (
             <div className="pm">
@@ -81,11 +91,26 @@ const ManageTeam = () => {
         <div className="second-column">
           <h1>Manage Developers</h1>
 
-          <div>
-            <div></div>
+          <div className="dnd">
+            <div>
+              {devs &&
+                devs.map((dev) => {
+                  const { _id, name } = dev;
+
+                  return <p key={_id}>{name}</p>;
+                })}
+            </div>
 
             <FontAwesomeIcon icon={faArrowRightArrowLeft} />
-            <div></div>
+
+            <div>
+              {team &&
+                team.map((member) => {
+                  const { _id, name } = member;
+
+                  return <p key={_id}>{name}</p>;
+                })}
+            </div>
           </div>
         </div>
       </div>
