@@ -15,6 +15,10 @@ const ManageTeam = () => {
     getSingleProject(projectId);
   }, []);
 
+  if (singleProject.project) {
+    var { managedBy, team } = singleProject.project;
+  }
+
   return (
     <section className="manageTeam">
       <HomeBtn name="Manage Team" />
@@ -24,32 +28,38 @@ const ManageTeam = () => {
           <h1>Project Team</h1>
           <p>8 team members</p>
 
-          <div className="pm">
-            <img
-              src="/assets/images/default-avatar-1.jpg"
-              alt="project-manager"
-            />
+          {managedBy && (
+            <div className="pm">
+              <img src={managedBy.avatar} alt="project-manager" />
 
-            <div className="info">
-              <p className="name">Jane Appuser</p>
-              <p className="email">yassinyahyawi@26gmail.com</p>
-              <p className="role">Project Manager</p>
+              <div className="info">
+                <p className="name">{managedBy.name}</p>
+                <p className="email">{managedBy.email}</p>
+                <p className="role">Project Manager</p>
 
-              <Link to={`/admin/manage-pm/${projectId}`}>
-                <button type="button">Manage PM</button>
-              </Link>
-            </div>
-          </div>
-
-          <div className="team">
-            <div>
-              <img src="/assets/images/default-avatar-1.jpg" alt="developer" />
-
-              <div>
-                <p className="name">James Appuser</p>
-                <p className="role">Developer</p>
+                <Link to={`/admin/manage-pm/${projectId}`}>
+                  <button type="button">Manage PM</button>
+                </Link>
               </div>
             </div>
+          )}
+
+          <div className="team">
+            {team &&
+              team.map((member) => {
+                const { _id, name, avatar, role } = member;
+
+                return (
+                  <div key={_id}>
+                    <img src={avatar} alt="developer" />
+
+                    <div>
+                      <p className="name">{name}</p>
+                      <p className="role">{role}</p>
+                    </div>
+                  </div>
+                );
+              })}
           </div>
         </div>
 

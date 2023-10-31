@@ -74,6 +74,12 @@
 }
 
 /* team */
+.manageTeam .first-column .team {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 .manageTeam .first-column .team>div {
     display: flex;
     align-items: center;
