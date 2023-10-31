@@ -1,7 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+// icons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightArrowLeft } from "@fortawesome/free-solid-svg-icons";
 // hooks
 import useProjects from "../../hooks/useProjects";
+import useUsers from "../../hooks/useUsers";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
 // css
@@ -9,15 +13,26 @@ import "../../styles/containers/admin/manage-team.css";
 
 const ManageTeam = () => {
   const { getSingleProject, singleProject } = useProjects();
+  const { getAllUsers, allUsers } = useUsers();
+
   const { projectId } = useParams();
+
+  const [devs, setDevs] = useState([]);
 
   useEffect(() => {
     getSingleProject(projectId);
+    getAllUsers(1, "", Infinity);
   }, []);
 
   if (singleProject.project) {
     var { managedBy, team } = singleProject.project;
   }
+
+  useEffect(() => {
+    if (allUsers.users) {
+      setDevs(allUsers.users.map((user) => user.role !== "PM"));
+    }
+  }, [allUsers]);
 
   return (
     <section className="manageTeam">
@@ -26,7 +41,7 @@ const ManageTeam = () => {
       <div>
         <div className="first-column">
           <h1>Project Team</h1>
-          <p>8 team members</p>
+          <p>{team && team.length + managedBy} team members</p>
 
           {managedBy && (
             <div className="pm">
@@ -65,6 +80,13 @@ const ManageTeam = () => {
 
         <div className="second-column">
           <h1>Manage Developers</h1>
+
+          <div>
+            <div></div>
+
+            <FontAwesomeIcon icon={faArrowRightArrowLeft} />
+            <div></div>
+          </div>
         </div>
       </div>
     </section>
