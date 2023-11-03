@@ -58,32 +58,34 @@ const ManageTeam = () => {
     }
   }, [allUsers, singleProject]);
 
+  // *********************
   // dnd
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor)
   );
-  const onDragDnd = (event) => {
-    const { over, active } = event;
-    if (over) {
-      const { id: sourceId } = active.data.current;
-      const { id: targetId } = over;
+  const onDragDnd = (e) => {
+    const destination = e.over?.id;
+    const id = e.active.data.current?.id ?? "";
+    const index = e.active.data.current?.index ?? 0;
+    const parent = e.active.data.current?.parent ?? "ToDo";
 
-      const sourceItems = sourceId === "droppable-1" ? devs : team;
-      const targetItems = targetId === "droppable-1" ? devs : team;
+    if (destination === parent) {
+      return;
+    }
 
-      // dragedItem
-      const draggedItem = sourceItems.find((user) => user.id === active.id);
+    if (destination === "team") {
+      const member = devs.find((user) => user._id === id);
 
-      const updatedSourceItems = sourceItems.filter(
-        (user) => user.id !== active.id
-      );
+      setTeam([...team, member]);
+      setDevs([...devs.filter((user) => user._id !== id)]);
+    }
 
-      //  Insert in new container
-      targetItems.splice(0, 0, draggedItem);
+    if (destination === "developers") {
+      const member = team.find((user) => user._id === id);
 
-      setDevs(sourceId === "droppable-1" ? updatedSourceItems : devs);
-      setTeam(targetId === "droppable-2" ? team : targetItems);
+      setDevs([...devs, member]);
+      setTeam([...team.filter((user) => user._id !== id)]);
     }
   };
 
@@ -140,13 +142,23 @@ const ManageTeam = () => {
               collisionDetection={closestCenter}
               onDragEnd={onDragDnd}
             >
-              {devs && <Droppable data={devs} droppableId="droppable-1" />}
+              {devs && (
+                <Droppable
+                  data={devs}
+                  droppableId="developers"
+                  parent="developers"
+                />
+              )}
 
               <FontAwesomeIcon icon={faArrowRightArrowLeft} />
 
-              {team && <Droppable data={team} droppableId="droppable-2" />}
+              {team && (
+                <Droppable data={team} droppableId="team" parent="team" />
+              )}
             </DndContext>
           </div>
+
+          <button type="button">Assign Members</button>
         </div>
       </div>
     </section>
@@ -155,24 +167,32 @@ const ManageTeam = () => {
 
 // ********************************
 // Droppable
-const Droppable = ({ data, droppableId }) => {
+const Droppable = ({ data, droppableId, parent }) => {
   const { setNodeRef } = useDroppable({ id: droppableId });
 
   return (
-    <div ref={setNodeRef}>
-      {data.map((dev, i) => {
-        return <Draggable droppableId={droppableId} key={i} data={dev} />;
-      })}
+    <div>
+      <h5 className="title">
+        {parent === "team" ? "On Project" : "Company Developers"}
+      </h5>
+      <div
+        ref={setNodeRef}
+        className={`${data.length === 0 && "emptyDroppable"}`}
+      >
+        {data.map((user, i) => {
+          return <Draggable key={i} user={user} index={i} parent={parent} />;
+        })}
+      </div>
     </div>
   );
 };
 
 // ********************************
 // Draggable
-const Draggable = ({ data: { _id, name }, droppableId }) => {
+const Draggable = ({ user: { _id, name }, index, parent }) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: _id,
-    data: { current: droppableId },
+    data: { id: _id, index, parent },
   });
 
   const style = transform

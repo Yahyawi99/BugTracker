@@ -112,7 +112,21 @@
     gap: 5px;
 }
 
+.manageTeam .dnd .title {
+    color: var(--gray);
+    font-size: .9rem;
+    text-decoration: 2px underline;
+    align-self: center;
+}
+
 .manageTeam .dnd>div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.manageTeam .dnd>div>div {
     flex: 1;
     background-color: var(--main-clr-hover);
     display: flex;
@@ -132,6 +146,19 @@
 .manageTeam .dnd svg {
     color: var(--main-clr);
     align-self: center;
+}
+
+.manageTeam .dnd .emptyDroppable {
+    border-style: dashed;
+    border-width: 3px;
+}
+
+.manageTeam .second-column button {
+    align-self: flex-start;
+    background-color: var(--main-clr);
+    border: 2px solid var(--main-clr);
+    color: var(--white);
+    padding: 8px 10px;
 }
 
 /* **************************** */
