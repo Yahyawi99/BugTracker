@@ -116,40 +116,56 @@ const ManageTeam = () => {
 
           <div className="dnd">
             <DragDropContext onDragEnd={(result) => handleDragAndDrop(result)}>
-              <div>
-                <Droppable>
-                  {devs &&
-                    devs.map((dev, i) => {
-                      const { _id, name } = dev;
+              <Droppable>
+                {(provided) => (
+                  <div {...provided.droppableProps} ref={provided.innerRef}>
+                    {devs &&
+                      devs.map((dev, i) => {
+                        const { _id, name } = dev;
 
-                      return (
-                        <Draggable draggableId={_id} key={_id} index={i}>
-                          {(provided) => {
-                            <p
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                              ref={provided.innerRef}
-                            >
-                              {name}
-                            </p>;
-                          }}
-                        </Draggable>
-                      );
-                    })}
-                </Droppable>
-              </div>
+                        return (
+                          <Draggable draggableId={_id} key={_id} index={i}>
+                            {(provided) => (
+                              <p
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                                ref={provided.innerRef}
+                              >
+                                {name}
+                              </p>
+                            )}
+                          </Draggable>
+                        );
+                      })}
+                  </div>
+                )}
+              </Droppable>
 
               <FontAwesomeIcon icon={faArrowRightArrowLeft} />
 
               <Droppable>
-                <div>
-                  {team &&
-                    team.map((member) => {
-                      const { _id, name } = member;
+                {(provided) => (
+                  <div {...provided.droppableProps} ref={provided.innerRef}>
+                    {team &&
+                      team.map((member, i) => {
+                        const { _id, name } = member;
 
-                      return <p key={_id}>{name}</p>;
-                    })}
-                </div>
+                        return (
+                          <Draggable draggableId={_id} index={i} key={_id}>
+                            {(provided) => (
+                              <p
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                                ref={provided.innerRef}
+                              >
+                                {name}
+                              </p>
+                            )}
+                          </Draggable>
+                        );
+                      })}
+                  </div>
+                )}
               </Droppable>
             </DragDropContext>
           </div>
