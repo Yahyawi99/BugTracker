@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+// dnd
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -43,6 +45,27 @@ const ManageTeam = () => {
       });
     }
   }, [allUsers, singleProject]);
+
+  // dnd
+  const handleDragAndDrop = (result) => {
+    const { destination, source } = result;
+
+    if (!destination) {
+      return;
+    }
+
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+
+    if (destination.droppableId !== source.droppableId) {
+      // remove the draggable task
+      const oldColumn = devs.find((e) => e._id === source.droppableId);
+    }
+  };
 
   return (
     <section className="manageTeam">
@@ -92,25 +115,43 @@ const ManageTeam = () => {
           <h1>Manage Developers</h1>
 
           <div className="dnd">
-            <div>
-              {devs &&
-                devs.map((dev) => {
-                  const { _id, name } = dev;
+            <DragDropContext onDragEnd={(result) => handleDragAndDrop(result)}>
+              <div>
+                <Droppable>
+                  {devs &&
+                    devs.map((dev, i) => {
+                      const { _id, name } = dev;
 
-                  return <p key={_id}>{name}</p>;
-                })}
-            </div>
+                      return (
+                        <Draggable draggableId={_id} key={_id} index={i}>
+                          {(provided) => {
+                            <p
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              ref={provided.innerRef}
+                            >
+                              {name}
+                            </p>;
+                          }}
+                        </Draggable>
+                      );
+                    })}
+                </Droppable>
+              </div>
 
-            <FontAwesomeIcon icon={faArrowRightArrowLeft} />
+              <FontAwesomeIcon icon={faArrowRightArrowLeft} />
 
-            <div>
-              {team &&
-                team.map((member) => {
-                  const { _id, name } = member;
+              <Droppable>
+                <div>
+                  {team &&
+                    team.map((member) => {
+                      const { _id, name } = member;
 
-                  return <p key={_id}>{name}</p>;
-                })}
-            </div>
+                      return <p key={_id}>{name}</p>;
+                    })}
+                </div>
+              </Droppable>
+            </DragDropContext>
           </div>
         </div>
       </div>
