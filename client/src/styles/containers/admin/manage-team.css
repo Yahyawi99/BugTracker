@@ -139,8 +139,8 @@
 
 .manageTeam .dnd p {
     background-color: var(--white);
-    cursor: pointer;
     border: 1px solid var(--border-color);
+    cursor: grab;
     padding: 15px;
 }
 
