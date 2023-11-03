@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 // dnd
-import { DndContext, useDroppable, useDraggable } from "@dnd-kit/core";
+import { DndContext, useDroppable, useDraggable, onDrag } from "@dnd-kit/core";
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -20,6 +20,7 @@ const ManageTeam = () => {
   const { projectId } = useParams();
 
   const [devs, setDevs] = useState([]);
+  const [team, setTeam] = useState([]);
 
   useEffect(() => {
     getSingleProject(projectId);
@@ -27,7 +28,7 @@ const ManageTeam = () => {
   }, []);
 
   if (singleProject.project) {
-    var { managedBy, team } = singleProject.project;
+    var { managedBy } = singleProject.project;
   }
 
   useEffect(() => {
@@ -43,6 +44,8 @@ const ManageTeam = () => {
 
         return newValue;
       });
+
+      setTeam(singleProject.project.team);
     }
   }, [allUsers, singleProject]);
 
@@ -94,12 +97,23 @@ const ManageTeam = () => {
           <h1>Manage Developers</h1>
 
           <div className="dnd">
-            <DndContext>
+            <DndContext
+              onDragEnd={(event) => {
+                console.log(event);
+                const { over, active } = event;
+                if (over) {
+                  const { id: sourceId } = active;
+                  const { id: targetId } = over;
+
+                  const sourceItems = targetId === "droppable-1" ? devs : team;
+                }
+              }}
+            >
               {devs && <Droppable data={devs} draggableId="droppable-1" />}
 
               <FontAwesomeIcon icon={faArrowRightArrowLeft} />
 
-              {team && <Droppable data={team} draggableId="droppable-1" />}
+              {team && <Droppable data={team} draggableId="droppable-2" />}
             </DndContext>
           </div>
         </div>
@@ -111,7 +125,7 @@ const ManageTeam = () => {
 // ********************************
 // Droppable
 const Droppable = ({ data, draggableId }) => {
-  const { isOver, setNodeRef } = useDroppable({ id: draggableId });
+  const { setNodeRef } = useDroppable({ id: draggableId });
 
   return (
     <div ref={setNodeRef}>
