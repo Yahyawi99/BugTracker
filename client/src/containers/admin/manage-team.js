@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 // dnd
-import { DndContext, useDroppable, useDraggable, onDrag } from "@dnd-kit/core";
+import {
+  DndContext,
+  useDroppable,
+  useDraggable,
+  useSensor,
+  KeyboardSensor,
+  PointerSensor,
+  useSensors,
+  closestCenter,
+} from "@dnd-kit/core";
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -48,6 +57,23 @@ const ManageTeam = () => {
       setTeam(singleProject.project.team);
     }
   }, [allUsers, singleProject]);
+
+  // dnd
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor)
+  );
+  const onDragDnd = (event) => {
+    const { over, active } = event;
+    if (over) {
+      const { id: sourceId } = active;
+      const { id: targetId } = over;
+
+      console.log(over);
+
+      const sourceItems = targetId === "droppable-1" ? devs : team;
+    }
+  };
 
   return (
     <section className="manageTeam">
@@ -98,16 +124,9 @@ const ManageTeam = () => {
 
           <div className="dnd">
             <DndContext
-              onDragEnd={(event) => {
-                console.log(event);
-                const { over, active } = event;
-                if (over) {
-                  const { id: sourceId } = active;
-                  const { id: targetId } = over;
-
-                  const sourceItems = targetId === "droppable-1" ? devs : team;
-                }
-              }}
+              sensors={sensors}
+              collisionDetection={closestCenter}
+              onDragEnd={onDragDnd}
             >
               {devs && <Droppable data={devs} draggableId="droppable-1" />}
 
