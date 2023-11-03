@@ -66,12 +66,24 @@ const ManageTeam = () => {
   const onDragDnd = (event) => {
     const { over, active } = event;
     if (over) {
-      const { id: sourceId } = active;
+      const { id: sourceId } = active.data.current;
       const { id: targetId } = over;
 
-      console.log(over);
+      const sourceItems = sourceId === "droppable-1" ? devs : team;
+      const targetItems = targetId === "droppable-1" ? devs : team;
 
-      const sourceItems = targetId === "droppable-1" ? devs : team;
+      // dragedItem
+      const draggedItem = sourceItems.find((user) => user.id === active.id);
+
+      const updatedSourceItems = sourceItems.filter(
+        (user) => user.id !== active.id
+      );
+
+      //  Insert in new container
+      targetItems.splice(0, 0, draggedItem);
+
+      setDevs(sourceId === "droppable-1" ? updatedSourceItems : devs);
+      setTeam(targetId === "droppable-2" ? team : targetItems);
     }
   };
 
@@ -128,11 +140,11 @@ const ManageTeam = () => {
               collisionDetection={closestCenter}
               onDragEnd={onDragDnd}
             >
-              {devs && <Droppable data={devs} draggableId="droppable-1" />}
+              {devs && <Droppable data={devs} droppableId="droppable-1" />}
 
               <FontAwesomeIcon icon={faArrowRightArrowLeft} />
 
-              {team && <Droppable data={team} draggableId="droppable-2" />}
+              {team && <Droppable data={team} droppableId="droppable-2" />}
             </DndContext>
           </div>
         </div>
@@ -143,13 +155,13 @@ const ManageTeam = () => {
 
 // ********************************
 // Droppable
-const Droppable = ({ data, draggableId }) => {
-  const { setNodeRef } = useDroppable({ id: draggableId });
+const Droppable = ({ data, droppableId }) => {
+  const { setNodeRef } = useDroppable({ id: droppableId });
 
   return (
     <div ref={setNodeRef}>
       {data.map((dev, i) => {
-        return <Draggable key={i} data={dev} />;
+        return <Draggable droppableId={droppableId} key={i} data={dev} />;
       })}
     </div>
   );
@@ -157,9 +169,10 @@ const Droppable = ({ data, draggableId }) => {
 
 // ********************************
 // Draggable
-const Draggable = ({ data: { _id, name } }) => {
+const Draggable = ({ data: { _id, name }, droppableId }) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: _id,
+    data: { current: droppableId },
   });
 
   const style = transform
