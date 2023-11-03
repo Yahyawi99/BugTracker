@@ -54,6 +54,8 @@ const ManageTeam = () => {
       return;
     }
 
+    console.log();
+
     if (
       destination.droppableId === source.droppableId &&
       destination.index === source.index
@@ -63,8 +65,9 @@ const ManageTeam = () => {
 
     if (destination.droppableId !== source.droppableId) {
       // remove the draggable task
-      const oldColumn = devs.find((e) => e._id === source.droppableId);
+      // const oldColumn = devs.find((e) => e._id === source.droppableId);
     }
+    return;
   };
 
   return (
@@ -114,15 +117,14 @@ const ManageTeam = () => {
         <div className="second-column">
           <h1>Manage Developers</h1>
 
-          <div className="dnd">
-            <DragDropContext onDragEnd={(result) => handleDragAndDrop(result)}>
-              <Droppable>
+          <DragDropContext onDragEnd={(result) => handleDragAndDrop(result)}>
+            <div className="dnd">
+              <Droppable droppableId="droppable-2">
                 {(provided) => (
                   <div {...provided.droppableProps} ref={provided.innerRef}>
                     {devs &&
                       devs.map((dev, i) => {
                         const { _id, name } = dev;
-
                         return (
                           <Draggable draggableId={_id} key={_id} index={i}>
                             {(provided) => (
@@ -137,13 +139,14 @@ const ManageTeam = () => {
                           </Draggable>
                         );
                       })}
+                    {provided.placeholder}
                   </div>
                 )}
               </Droppable>
 
               <FontAwesomeIcon icon={faArrowRightArrowLeft} />
 
-              <Droppable>
+              <Droppable droppableId="droppable-2">
                 {(provided) => (
                   <div {...provided.droppableProps} ref={provided.innerRef}>
                     {team &&
@@ -164,11 +167,12 @@ const ManageTeam = () => {
                           </Draggable>
                         );
                       })}
+                    {provided.placeholder}
                   </div>
                 )}
               </Droppable>
-            </DragDropContext>
-          </div>
+            </div>
+          </DragDropContext>
         </div>
       </div>
     </section>
