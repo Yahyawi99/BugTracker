@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 // dnd
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { DndContext, useDroppable, useDraggable } from "@dnd-kit/core";
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -45,30 +45,6 @@ const ManageTeam = () => {
       });
     }
   }, [allUsers, singleProject]);
-
-  // dnd
-  const handleDragAndDrop = (result) => {
-    const { destination, source } = result;
-
-    if (!destination) {
-      return;
-    }
-
-    console.log();
-
-    if (
-      destination.droppableId === source.droppableId &&
-      destination.index === source.index
-    ) {
-      return;
-    }
-
-    if (destination.droppableId !== source.droppableId) {
-      // remove the draggable task
-      // const oldColumn = devs.find((e) => e._id === source.droppableId);
-    }
-    return;
-  };
 
   return (
     <section className="manageTeam">
@@ -117,65 +93,52 @@ const ManageTeam = () => {
         <div className="second-column">
           <h1>Manage Developers</h1>
 
-          <DragDropContext onDragEnd={(result) => handleDragAndDrop(result)}>
-            <div className="dnd">
-              <Droppable droppableId="droppable-2">
-                {(provided) => (
-                  <div {...provided.droppableProps} ref={provided.innerRef}>
-                    {devs &&
-                      devs.map((dev, i) => {
-                        const { _id, name } = dev;
-                        return (
-                          <Draggable draggableId={_id} key={_id} index={i}>
-                            {(provided) => (
-                              <p
-                                {...provided.draggableProps}
-                                {...provided.dragHandleProps}
-                                ref={provided.innerRef}
-                              >
-                                {name}
-                              </p>
-                            )}
-                          </Draggable>
-                        );
-                      })}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
+          <div className="dnd">
+            <DndContext>
+              {devs && <Droppable data={devs} draggableId="droppable-1" />}
 
               <FontAwesomeIcon icon={faArrowRightArrowLeft} />
 
-              <Droppable droppableId="droppable-2">
-                {(provided) => (
-                  <div {...provided.droppableProps} ref={provided.innerRef}>
-                    {team &&
-                      team.map((member, i) => {
-                        const { _id, name } = member;
-
-                        return (
-                          <Draggable draggableId={_id} index={i} key={_id}>
-                            {(provided) => (
-                              <p
-                                {...provided.draggableProps}
-                                {...provided.dragHandleProps}
-                                ref={provided.innerRef}
-                              >
-                                {name}
-                              </p>
-                            )}
-                          </Draggable>
-                        );
-                      })}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
-            </div>
-          </DragDropContext>
+              {team && <Droppable data={team} draggableId="droppable-1" />}
+            </DndContext>
+          </div>
         </div>
       </div>
     </section>
+  );
+};
+
+// ********************************
+// Droppable
+const Droppable = ({ data, draggableId }) => {
+  const { isOver, setNodeRef } = useDroppable({ id: draggableId });
+
+  return (
+    <div ref={setNodeRef}>
+      {data.map((dev, i) => {
+        return <Draggable key={i} data={dev} />;
+      })}
+    </div>
+  );
+};
+
+// ********************************
+// Draggable
+const Draggable = ({ data: { _id, name } }) => {
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+    id: _id,
+  });
+
+  const style = transform
+    ? {
+        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+      }
+    : undefined;
+
+  return (
+    <p key={_id} ref={setNodeRef} style={style} {...listeners} {...attributes}>
+      {name}
+    </p>
   );
 };
 
