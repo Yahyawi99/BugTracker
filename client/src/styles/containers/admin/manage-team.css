@@ -132,7 +132,8 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border: 2px solid var(--border-color);
+    border: 3px solid var(--border-color);
+    transition: .25s;
     padding: 5px;
 }
 
@@ -151,14 +152,24 @@
 .manageTeam .dnd .emptyDroppable {
     border-style: dashed;
     border-width: 3px;
+    background-color: transparent;
 }
 
 .manageTeam .second-column button {
-    align-self: flex-start;
+    color: var(--white);
     background-color: var(--main-clr);
     border: 2px solid var(--main-clr);
-    color: var(--white);
-    padding: 8px 10px;
+    border-radius: 5px;
+    font-weight: 600;
+    align-self: flex-start;
+    cursor: pointer;
+    transition: .25s;
+    padding: 10px 15px;
+}
+
+.manageTeam .second-column button:hover {
+    background-color: transparent;
+    color: var(--main-clr);
 }
 
 /* **************************** */
