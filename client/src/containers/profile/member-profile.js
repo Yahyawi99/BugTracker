@@ -102,7 +102,9 @@ const MemberProfile = () => {
                   )}
                 </div>
 
-                <button type="button">Manage Team</button>
+                <Link to={`/admin/manage-team/${_id}`}>
+                  <button type="button">Manage Team</button>
+                </Link>
               </div>
 
               <div className="progress">
