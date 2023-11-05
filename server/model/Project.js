@@ -66,7 +66,7 @@ const ProjectSchema = new mongoose.Schema(
 
     team: {
       type: Array,
-      default: null,
+      default: [],
     },
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
@@ -87,56 +87,14 @@ ProjectSchema.methods.projectTeam = async function (UserModel) {
   const teamIds = associatedTickets
     .map((ticket) => ticket.assignedTo)
     .reduce((acc, prev) => {
-      if (!acc.includes(prev) && prev) {
+      if (!acc.includes(prev)) {
         acc.push(prev);
       }
       return acc;
-    }, []);
+    }, [])
+    .map((team) => new mongoose.Types.ObjectId(team));
 
-  // .map((memberId) => new mongoose.Types.ObjectId(memberId));
-
-  // const updatedTeam = await UserModel.find({ _id: { $in: teamIds } });
-
-  // console.log(updatedTeam.length);
-
-  // teamIds.forEach(async id=>{
-  //   const user = await UserModel.find({ _id:id});
-
-  // try {
-  //   this.team = [...this.team, ...updatedTeam].reduce((teamArr, user) => {
-  //     if (!teamArr.includes(user)) {
-  //       teamArr.push(user);
-  //     }
-  //     return teamArr;
-  //   }, []);
-  // } catch (error) {
-  //   console.log(error);
-  // }
-
-  //   if(!!user){
-  //     console.log(user)
-  //   }
-  // });
-
-  // this.team = [...this.team, ...updatedTeam];
-
-  // const testArr = this.team.map((user) => {
-  //   return this.team.forEach((member) => {
-  //     if (member._id !== user._id) {
-  //       return user;
-  //     }
-  //   });
-  // });
-
-  // console.log(testArr);
-  // const filteredTeam = [];
-  // this.team.forEach((e) => {
-  //   if (!filteredTeam.some((user) => user._id === e.id)) {
-  //     filteredTeam.push(e);
-  //   }
-  // });
-
-  // this.team = filteredTeam;
+  this.team = await UserModel.find({ _id: { $in: teamIds } });
 };
 
 module.exports = mongoose.model("Project", ProjectSchema);
