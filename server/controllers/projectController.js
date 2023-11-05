@@ -60,7 +60,7 @@ const allProjects = async (req, res) => {
 
   // Create Team Arr
   projects.forEach(async (project) => {
-    await project.projectTeam(User);
+    await project.projectTeam(User, project._id);
     await project.save();
   });
 
@@ -91,7 +91,7 @@ const singleProject = async (req, res) => {
   }
 
   // create team Arr
-  await project.projectTeam(User);
+  await project.projectTeam(User, projectId);
   await project.save();
 
   // pagination
@@ -293,7 +293,7 @@ const userProjects = async (req, res) => {
 
   // Create Team Arr
   projects.forEach(async (project) => {
-    await project.projectTeam(User);
+    await project.projectTeam(User, project._id);
     await project.save();
   });
 

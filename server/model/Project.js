@@ -66,7 +66,7 @@ const ProjectSchema = new mongoose.Schema(
 
     team: {
       type: Array,
-      default: [],
+      default: null,
     },
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
@@ -94,7 +94,28 @@ ProjectSchema.methods.projectTeam = async function (UserModel) {
     }, [])
     .map((team) => new mongoose.Types.ObjectId(team));
 
-  this.team = await UserModel.find({ _id: { $in: teamIds } });
+  const updatedTeam = [];
+
+  teamIds.forEach(async (id) => {
+    const user = await UserModel.find({ _id: id });
+    if (user) {
+      updatedTeam.push(user);
+    }
+  });
+
+  this.team = [...this.team, ...updatedTeam];
+
+  const filteredTeam = this.team.filter(
+    (value, index, arr) => arr.indexOf(value) === index
+  );
+
+  // filteredTeam.forEach((e) => console.log(e._id));
+
+  // this.team.filter((value, index, arr) =>
+  //   console.log(arr.indexOf(value) === index)
+  // );
+
+  this.team = filteredTeam;
 };
 
 module.exports = mongoose.model("Project", ProjectSchema);
