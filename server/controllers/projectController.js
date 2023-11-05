@@ -332,6 +332,7 @@ const assignManager = async (req, res) => {
 };
 
 const assignTeamMembers = async (req, res) => {
+  const { userId } = req.user;
   const { newTeamArr } = req.body;
   const { id: projectId } = req.params;
 
@@ -341,9 +342,17 @@ const assignTeamMembers = async (req, res) => {
     throw new CustomErrors.NotFoundError(`No project with id :${projectId}`);
   }
 
-  const teamMembersIds = project.team.map((user) => user._id);
+  const teamMembersIds = newTeamArr.map((user) => user._id);
 
-  console.log(teamMembersIds);
+  const tickets = await Ticket.find({ project: projectId });
+
+  tickets.forEach(async (ticket) => {
+    if (!teamMembersIds.includes(ticket.assignedTo)) {
+      ticket.assignedTo = null;
+      ticket.admin = userId;
+      await ticket.save();
+    }
+  });
 
   res.status(StatusCodes.OK).json("ok");
 };

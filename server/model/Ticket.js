@@ -75,7 +75,7 @@ const TicketSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-TicketSchema.pre("save", async function (adminId) {
+TicketSchema.pre("save", async function () {
   if (this.isNew) {
     const historyDocument = {
       title: `New Ticket Created`,

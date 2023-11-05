@@ -160,7 +160,7 @@ const ManageTeam = () => {
 
           <button
             type="button"
-            onClick={() => manageProjectTeam(projectId, devs)}
+            onClick={() => manageProjectTeam(projectId, team)}
           >
             Assign Members
           </button>
