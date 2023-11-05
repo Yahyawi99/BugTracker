@@ -23,7 +23,7 @@ import HomeBtn from "../../components/shared/HomeBtn";
 import "../../styles/containers/admin/manage-team.css";
 
 const ManageTeam = () => {
-  const { getSingleProject, singleProject } = useProjects();
+  const { getSingleProject, singleProject, manageProjectTeam } = useProjects();
   const { getAllUsers, allUsers } = useUsers();
 
   const { projectId } = useParams();
@@ -158,7 +158,12 @@ const ManageTeam = () => {
             </DndContext>
           </div>
 
-          <button type="button">Assign Members</button>
+          <button
+            type="button"
+            onClick={() => manageProjectTeam(projectId, devs)}
+          >
+            Assign Members
+          </button>
         </div>
       </div>
     </section>

@@ -310,7 +310,8 @@ const userProjects = async (req, res) => {
     .json({ projects, numOfPages, currentPage: page, count, totalProjects });
 };
 
-// assign manager
+// ******************************
+// Manage Team
 const assignManager = async (req, res) => {
   const { managerId } = req.body;
   const { id: projectId } = req.params;
@@ -330,6 +331,23 @@ const assignManager = async (req, res) => {
     .json({ msg: "Project manager assigned successfully." });
 };
 
+const assignTeamMembers = async (req, res) => {
+  const { newTeamArr } = req.body;
+  const { id: projectId } = req.params;
+
+  const project = await Project.findOne({ _id: projectId }).populate("tickets");
+
+  if (!project) {
+    throw new CustomErrors.NotFoundError(`No project with id :${projectId}`);
+  }
+
+  const teamMembersIds = project.team.map((user) => user._id);
+
+  console.log(teamMembersIds);
+
+  res.status(StatusCodes.OK).json("ok");
+};
+
 // delete project
 const deleteProject = async (req, res) => {
   res.send("delete");
@@ -344,4 +362,5 @@ module.exports = {
   archiveProject,
   userProjects,
   assignManager,
+  assignTeamMembers,
 };

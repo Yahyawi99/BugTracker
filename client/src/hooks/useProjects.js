@@ -220,6 +220,28 @@ const useProjects = () => {
     }
   };
 
+  // manage project team
+  const manageProjectTeam = async (projectId, newTeamArr) => {
+    try {
+      loading(true);
+
+      await axios.patch(`/api/v1/project/manage-team/${projectId}`, {
+        newTeamArr,
+      });
+
+      loading(false);
+
+      await alertMe("Done", "var(--success)");
+    } catch (error) {
+      loading(false);
+
+      await alertMe(
+        "Something wen wrong. PLease try again later!",
+        "var(--success)"
+      );
+    }
+  };
+
   return {
     getAllProjects,
     allProjects,
@@ -231,6 +253,7 @@ const useProjects = () => {
     getUserProjects,
     userProjects,
     manageProjectManager,
+    manageProjectTeam,
   };
 };
 
