@@ -185,7 +185,7 @@ const ProjectDetails = () => {
                   })}
               </div>
 
-              <Link to="/admin/manage-team">
+              <Link to={`/admin/manage-team/${projectId}`}>
                 <button type="button">Manage Team</button>
               </Link>
             </div>
