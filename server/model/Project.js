@@ -87,35 +87,56 @@ ProjectSchema.methods.projectTeam = async function (UserModel) {
   const teamIds = associatedTickets
     .map((ticket) => ticket.assignedTo)
     .reduce((acc, prev) => {
-      if (!acc.includes(prev)) {
+      if (!acc.includes(prev) && prev) {
         acc.push(prev);
       }
       return acc;
-    }, [])
-    .map((team) => new mongoose.Types.ObjectId(team));
+    }, []);
 
-  const updatedTeam = [];
+  // .map((memberId) => new mongoose.Types.ObjectId(memberId));
 
-  teamIds.forEach(async (id) => {
-    const user = await UserModel.find({ _id: id });
-    if (user) {
-      updatedTeam.push(user);
-    }
-  });
+  // const updatedTeam = await UserModel.find({ _id: { $in: teamIds } });
 
-  this.team = [...this.team, ...updatedTeam];
+  // console.log(updatedTeam.length);
 
-  const filteredTeam = this.team.filter(
-    (value, index, arr) => arr.indexOf(value) === index
-  );
+  // teamIds.forEach(async id=>{
+  //   const user = await UserModel.find({ _id:id});
 
-  // filteredTeam.forEach((e) => console.log(e._id));
+  // try {
+  //   this.team = [...this.team, ...updatedTeam].reduce((teamArr, user) => {
+  //     if (!teamArr.includes(user)) {
+  //       teamArr.push(user);
+  //     }
+  //     return teamArr;
+  //   }, []);
+  // } catch (error) {
+  //   console.log(error);
+  // }
 
-  // this.team.filter((value, index, arr) =>
-  //   console.log(arr.indexOf(value) === index)
-  // );
+  //   if(!!user){
+  //     console.log(user)
+  //   }
+  // });
 
-  this.team = filteredTeam;
+  // this.team = [...this.team, ...updatedTeam];
+
+  // const testArr = this.team.map((user) => {
+  //   return this.team.forEach((member) => {
+  //     if (member._id !== user._id) {
+  //       return user;
+  //     }
+  //   });
+  // });
+
+  // console.log(testArr);
+  // const filteredTeam = [];
+  // this.team.forEach((e) => {
+  //   if (!filteredTeam.some((user) => user._id === e.id)) {
+  //     filteredTeam.push(e);
+  //   }
+  // });
+
+  // this.team = filteredTeam;
 };
 
 module.exports = mongoose.model("Project", ProjectSchema);
