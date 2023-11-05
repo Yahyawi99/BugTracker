@@ -281,7 +281,9 @@ const Tickets = ({ tickets }) => {
           {assignedTo ? (
             <p>{assignedTo.name}</p>
           ) : (
-            <p className="unassigned">Unassigned</p>
+            <Link to={`/tickets/assign-dev/${_id}`}>
+              <button className="assignDevBtn">Assign Dev</button>
+            </Link>
           )}
         </div>
 

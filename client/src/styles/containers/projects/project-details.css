@@ -441,6 +441,23 @@
     width: 100%;
 }
 
+/* assign dev btn */
+.DocumentDetails .tickets .dev button {
+    background-color: var(--main-clr);
+    color: var(--white);
+    border: 2px solid var(--main-clr);
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s;
+    padding: 8px 12px;
+}
+
+.DocumentDetails .tickets .dev button:hover {
+    background-color: transparent;
+    color: var(--main-clr);
+}
+
 /* *************************** */
 /* *************************** */
 /* *************************** */
