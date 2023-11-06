@@ -188,12 +188,14 @@
 }
 
 .navigationContainer .list li .arrow {
-    font-size: .9rem;
     transform-origin: center;
     transform: rotate(90deg);
     transition: .5s;
     margin-left: auto;
+}
 
+.navigationContainer .list li i svg {
+    font-size: .9rem;
 }
 
 .navigationContainer .list li .arrow path {
