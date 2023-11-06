@@ -87,15 +87,17 @@ TicketSchema.pre("save", async function () {
 
     await History.create(historyDocument);
   } else if (this.isModified("assignedTo")) {
-    const historyDocument = {
-      title: `New Ticket Developer`,
-      description: "A new <b>developer</b> was assigned.",
-      actionBy: this.admin,
-      ticket: this._id,
-      createdAt: this.createdAt,
-    };
+    if (this.assignedTo) {
+      const historyDocument = {
+        title: `New Ticket Developer`,
+        description: "A new <b>developer</b> was assigned.",
+        actionBy: this.admin,
+        ticket: this._id,
+        createdAt: this.createdAt,
+      };
 
-    await History.create(historyDocument);
+      await History.create(historyDocument);
+    }
   }
 });
 

@@ -346,15 +346,22 @@ const assignTeamMembers = async (req, res) => {
 
   const tickets = await Ticket.find({ project: projectId });
 
+  // make ticket unassigned if dev is not in the new team arr
   tickets.forEach(async (ticket) => {
     if (!teamMembersIds.includes(ticket.assignedTo)) {
       ticket.assignedTo = null;
+      ticket.isAssigned = false;
+
       ticket.admin = userId;
       await ticket.save();
     }
   });
-  // tet
-  res.status(StatusCodes.OK).json("ok");
+
+  project.team = newTeamArr;
+
+  project.save();
+
+  res.status(StatusCodes.OK).json({ msg: "Team members update successfully" });
 };
 
 // delete project
