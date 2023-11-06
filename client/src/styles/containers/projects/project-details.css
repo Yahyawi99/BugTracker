@@ -432,6 +432,15 @@
     background-color: var(--danger);
 }
 
+.DocumentDetails .tickets .btns .unarchive {
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.DocumentDetails .tickets .btns .unarchive:hover {
+    background-color: var(--success);
+}
+
 .DocumentDetails .tickets .btns button:hover {
     color: var(--white);
 }

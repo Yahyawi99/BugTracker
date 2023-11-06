@@ -6,12 +6,14 @@ import {
   faEye,
   faPencil,
   faBoxArchive,
+  faBoxOpen,
 } from "@fortawesome/free-solid-svg-icons";
 // utils
 import formatDate from "../../utils/formatDate";
 import progress from "../../utils/progress";
 // hooks
 import useProjects from "../../hooks/useProjects";
+import useTickets from "../../hooks/useTickets";
 import { useParams } from "react-router-dom";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
@@ -23,6 +25,8 @@ import "../../styles/containers/projects/project-details.css";
 
 const ProjectDetails = () => {
   const { getSingleProject, singleProject, archiveProject } = useProjects();
+  const { archiveTicket } = useTickets();
+
   const { projectId } = useParams();
 
   const [limit, setLimit] = useState(3);
@@ -229,8 +233,12 @@ const ProjectDetails = () => {
                 projectId={projectId}
               />
               <div className="tickets">
-                <Tickets tickets={tickets.associatedTickets} />
+                <Tickets
+                  tickets={tickets.associatedTickets}
+                  archiveTicket={archiveTicket}
+                />
               </div>
+
               {tickets && (
                 <Pagination
                   controller={getSingleProject}
@@ -247,29 +255,11 @@ const ProjectDetails = () => {
   );
 };
 
-const ActionBtn = () => {
-  return (
-    <div className="btns">
-      <Link to={``}>
-        <button className="details">
-          <FontAwesomeIcon icon={faEye} />
-        </button>
-      </Link>
-
-      <button className="edit">
-        <FontAwesomeIcon icon={faPencil} />
-      </button>
-
-      <button className="archive">
-        <FontAwesomeIcon icon={faBoxArchive} />
-      </button>
-    </div>
-  );
-};
-
-const Tickets = ({ tickets }) => {
+// ticket
+const Tickets = ({ tickets, archiveTicket }) => {
   return tickets.map((ticket) => {
-    const { _id, title, assignedTo, status, priority, createdAt } = ticket;
+    const { _id, title, assignedTo, status, priority, createdAt, isArchived } =
+      ticket;
 
     return (
       <div key={_id}>
@@ -304,10 +294,53 @@ const Tickets = ({ tickets }) => {
             })}
           </p>
         </div>
-        <ActionBtn />
+
+        <ActionBtn
+          archiveTicket={archiveTicket}
+          ticketId={_id}
+          isArchived={isArchived}
+        />
       </div>
     );
   });
+};
+
+const ActionBtn = ({ archiveTicket, ticketId, isArchived }) => {
+  return (
+    <div className="btns">
+      <Link to={`/tickets/ticket-details/${ticketId}`}>
+        <button className="details">
+          <FontAwesomeIcon icon={faEye} />
+        </button>
+      </Link>
+
+      <Link to={`/tickets/edit-ticket/${ticketId}`}>
+        <button className="edit">
+          <FontAwesomeIcon icon={faPencil} />
+        </button>
+      </Link>
+
+      {isArchived ? (
+        <button
+          onClick={() => {
+            archiveTicket(ticketId, !isArchived);
+          }}
+          className="unarchive"
+        >
+          <FontAwesomeIcon icon={faBoxOpen} />
+        </button>
+      ) : (
+        <button
+          onClick={() => {
+            archiveTicket(ticketId, !isArchived);
+          }}
+          className="archive"
+        >
+          <FontAwesomeIcon icon={faBoxArchive} />
+        </button>
+      )}
+    </div>
+  );
 };
 
 export default ProjectDetails;
