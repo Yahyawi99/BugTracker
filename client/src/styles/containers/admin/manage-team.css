@@ -144,6 +144,11 @@
     padding: 15px;
 }
 
+.manageTeam .dnd p:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow);
+}
+
 .manageTeam .dnd svg {
     color: var(--main-clr);
     align-self: center;

@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 const AppContext = React.createContext();
 const NavbarProvider = ({ children }) => {
   const [nav, setNav] = useState("menu");
-  const [clicked, setClicked] = useState("dashboard");
+  const [clicked, setClicked] = useState("");
   const [dropDown, setDropDown] = useState("");
 
   const dropDownFunctionality = (value) => {

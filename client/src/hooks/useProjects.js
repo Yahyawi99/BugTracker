@@ -232,6 +232,8 @@ const useProjects = () => {
       loading(false);
 
       await alertMe("Done", "var(--success)");
+
+      window.location.href = `/projects/project-details/${projectId}`;
     } catch (error) {
       loading(false);
 

@@ -306,7 +306,7 @@
 /* ************************************ */
 /* ************************************ */
 /* Javascript classes */
-.navigationContainer .list>.clicked {
+.navigationContainer .list .clicked {
     background-color: var(--main-clr-hover);
 }
 
