@@ -13,7 +13,7 @@
     justify-content: space-around;
     row-gap: 15px;
     flex-wrap: wrap;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
 }
 
 .demoAccountsContainer button {
@@ -37,6 +37,7 @@
 
 
 .demoAccountsContainer .loginRegister {
-    text-align: center;
     color: var(--blue);
+    text-align: center;
+    text-decoration: 2px underline;
 }

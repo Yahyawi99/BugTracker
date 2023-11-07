@@ -62,7 +62,7 @@ const LoginForm = () => {
             {mode}
           </button>
 
-          <p className="registerLoginQuestion">
+          {/* <p className="registerLoginQuestion">
             {mode === "login" ? (
               <>
                 You don't have an account?{" "}
@@ -74,7 +74,7 @@ const LoginForm = () => {
                 <span onClick={() => setMode("login")}>Login</span>
               </>
             )}
-          </p>
+          </p> */}
         </form>
 
         <Link className="demoLinks" to="/login-register/demo-accounts">

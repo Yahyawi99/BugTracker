@@ -10,12 +10,11 @@ const DemoAccounts = () => {
         <button>admin</button>
         <button>developer</button>
         <button>project manager</button>
-        <button>user</button>
         <button>submitter</button>
       </div>
 
       <Link className="loginRegister" to="/login-register/login-register-form">
-        <p>login/register</p>
+        <p>Back to login</p>
       </Link>
     </section>
   );
