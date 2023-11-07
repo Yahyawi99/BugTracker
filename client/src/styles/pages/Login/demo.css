@@ -8,12 +8,17 @@
     padding: 40px 25px 50px 25px;
 }
 
+.demoAccountsContainer h2 {
+    color: #102B3F;
+    text-align: center;
+}
+
 .demoAccountsContainer div {
     display: flex;
     justify-content: space-around;
     row-gap: 15px;
     flex-wrap: wrap;
-    margin-bottom: 25px;
+    margin: 15px 0 25px 0;
 }
 
 .demoAccountsContainer button {

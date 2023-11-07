@@ -6,6 +6,8 @@ import "../../styles/pages/Login/demo.css";
 const DemoAccounts = () => {
   return (
     <section className="demoAccountsContainer">
+      <h2>Demo accounts</h2>
+
       <div>
         <button>admin</button>
         <button>developer</button>
