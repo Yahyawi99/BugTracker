@@ -13,7 +13,7 @@
     text-align: center;
 }
 
-.demoAccountsContainer div {
+.demoAccountsContainer form {
     display: flex;
     justify-content: space-around;
     row-gap: 15px;

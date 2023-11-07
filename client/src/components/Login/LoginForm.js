@@ -78,7 +78,11 @@ const LoginForm = () => {
         </form>
 
         <Link className="demoLinks" to="/login-register/demo-accounts">
-          <button type="button" className="demoBtn">
+          <button
+            type="button"
+            className="demoBtn"
+            onClick={() => setPassword("1234567890")}
+          >
             Demo Account
           </button>
         </Link>
