@@ -14,9 +14,7 @@ const LoginForm = () => {
     password,
     setPassword,
     mode,
-    setMode,
     submitHandler,
-    errMsg,
   } = useAuth();
 
   return (
@@ -78,11 +76,7 @@ const LoginForm = () => {
         </form>
 
         <Link className="demoLinks" to="/login-register/demo-accounts">
-          <button
-            type="button"
-            className="demoBtn"
-            onClick={() => setPassword("1234567890")}
-          >
+          <button type="button" className="demoBtn">
             Demo Account
           </button>
         </Link>

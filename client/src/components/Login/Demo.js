@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/auth/Auth-context";
 // css
 import "../../styles/pages/Login/demo.css";
 
 const DemoAccounts = () => {
-  const { submitHandler, setMode, setEmail } = useAuth();
+  const { submitHandler, setMode, setEmail, setPassword } = useAuth();
+
+  useEffect(() => {
+    setPassword("1234567890");
+  }, []);
 
   return (
     <section className="demoAccountsContainer">
@@ -35,7 +39,7 @@ const DemoAccounts = () => {
       </form>
 
       <Link className="loginRegister" to="/login-register/login-register-form">
-        <p>Back to login</p>
+        <p onClick={() => setPassword("")}>Back to login</p>
       </Link>
     </section>
   );
