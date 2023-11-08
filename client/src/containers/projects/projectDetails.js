@@ -23,6 +23,8 @@ import Pagination from "../../components/shared/Pagination";
 // css
 import "../../styles/containers/projects/project-details.css";
 
+const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
+
 const ProjectDetails = () => {
   const { getSingleProject, singleProject, archiveProject } = useProjects();
   const { archiveTicket } = useTickets();
@@ -83,31 +85,33 @@ const ProjectDetails = () => {
                 </div>
               </div>
 
-              <div className="action">
-                <Link to={`/projects/edit-project/${projectId}`}>
-                  <button className="editBtn">Edit Project</button>
-                </Link>
+              {USER_ROLE === "admin" && (
+                <div className="action">
+                  <Link to={`/projects/edit-project/${projectId}`}>
+                    <button className="editBtn">Edit Project</button>
+                  </Link>
 
-                {singleProject.project.isArchived ? (
-                  <button
-                    onClick={() => {
-                      archiveProject(projectId, false);
-                    }}
-                    className="unarchive"
-                  >
-                    Unarchive Project
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => {
-                      archiveProject(projectId, true);
-                    }}
-                    className="archive"
-                  >
-                    Archive Project
-                  </button>
-                )}
-              </div>
+                  {singleProject.project.isArchived ? (
+                    <button
+                      onClick={() => {
+                        archiveProject(projectId, false);
+                      }}
+                      className="unarchive"
+                    >
+                      Unarchive Project
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        archiveProject(projectId, true);
+                      }}
+                      className="archive"
+                    >
+                      Archive Project
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
 
             <div className="row-two">
@@ -270,12 +274,24 @@ const Tickets = ({ tickets, archiveTicket }) => {
         <div className="dev">
           {assignedTo ? (
             <p>{assignedTo.name}</p>
+          ) : USER_ROLE === "admin" && !!assignedTo ? (
+            <Link to={`/tickets/assign-dev/${_id}`}>
+              <button className="assignDevBtn">Assign Dev</button>
+            </Link>
+          ) : (
+            <p className="unassigned">Unassigned</p>
+          )}
+        </div>
+
+        {/* <div className="dev">
+          {assignedTo ? (
+            <p>{assignedTo.name}</p>
           ) : (
             <Link to={`/tickets/assign-dev/${_id}`}>
               <button className="assignDevBtn">Assign Dev</button>
             </Link>
           )}
-        </div>
+        </div> */}
 
         <div className="status">
           <p className={`${status}`}>{status}</p>
@@ -313,14 +329,15 @@ const ActionBtn = ({ archiveTicket, ticketId, isArchived }) => {
           <FontAwesomeIcon icon={faEye} />
         </button>
       </Link>
+      {USER_ROLE === "admin" && (
+        <Link to={`/tickets/edit-ticket/${ticketId}`}>
+          <button className="edit">
+            <FontAwesomeIcon icon={faPencil} />
+          </button>
+        </Link>
+      )}
 
-      <Link to={`/tickets/edit-ticket/${ticketId}`}>
-        <button className="edit">
-          <FontAwesomeIcon icon={faPencil} />
-        </button>
-      </Link>
-
-      {isArchived ? (
+      {USER_ROLE === "admin" && isArchived && (
         <button
           onClick={() => {
             archiveTicket(ticketId, !isArchived);
@@ -329,7 +346,9 @@ const ActionBtn = ({ archiveTicket, ticketId, isArchived }) => {
         >
           <FontAwesomeIcon icon={faBoxOpen} />
         </button>
-      ) : (
+      )}
+
+      {USER_ROLE === "admin" && !isArchived && (
         <button
           onClick={() => {
             archiveTicket(ticketId, !isArchived);
