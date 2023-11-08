@@ -24,6 +24,7 @@ import Pagination from "../../components/shared/Pagination";
 import "../../styles/containers/projects/project-details.css";
 
 const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
+const USER_NAME = JSON.parse(localStorage.getItem("user")).name;
 
 const ProjectDetails = () => {
   const { getSingleProject, singleProject, archiveProject } = useProjects();
@@ -85,7 +86,7 @@ const ProjectDetails = () => {
                 </div>
               </div>
 
-              {USER_ROLE === "admin" && (
+              {USER_NAME === managedBy?.name && (
                 <div className="action">
                   <Link to={`/projects/edit-project/${projectId}`}>
                     <button className="editBtn">Edit Project</button>
@@ -150,53 +151,55 @@ const ProjectDetails = () => {
               </div>
             </div>
 
-            <div className="row-three">
-              <h3>Project Team</h3>
-              <p>{team && team.length} team members</p>
+            {USER_NAME === managedBy?.name && (
+              <div className="row-three">
+                <h3>Project Team</h3>
+                <p>{team && team.length} team members</p>
 
-              {managedBy ? (
-                <div key={managedBy._id} className="manager">
-                  <img
-                    src={managedBy.avatar}
-                    alt="manager"
-                    className="avatar"
-                  />
+                {managedBy ? (
+                  <div key={managedBy._id} className="manager">
+                    <img
+                      src={managedBy.avatar}
+                      alt="manager"
+                      className="avatar"
+                    />
 
-                  <div className="managerInfo">
-                    <p className="name">{managedBy.name}</p>
-                    <p>{managedBy.email}</p>
-                    <p>Project Manager</p>
+                    <div className="managerInfo">
+                      <p className="name">{managedBy.name}</p>
+                      <p>{managedBy.email}</p>
+                      <p>Project Manager</p>
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <div className="noManager">
-                  <p>No Project Manager Assigned</p>
-                  <button>Assign Project Manager</button>
-                </div>
-              )}
+                ) : (
+                  <div className="noManager">
+                    <p>No Project Manager Assigned</p>
+                    <button>Assign Project Manager</button>
+                  </div>
+                )}
 
-              <div className="team">
-                {team &&
-                  team.map((user) => {
-                    const { _id, name, avatar, role } = user;
+                <div className="team">
+                  {team &&
+                    team.map((user) => {
+                      const { _id, name, avatar, role } = user;
 
-                    return (
-                      <div key={_id} className="user">
-                        <img src={avatar} alt="user" className="avatar" />
+                      return (
+                        <div key={_id} className="user">
+                          <img src={avatar} alt="user" className="avatar" />
 
-                        <div className="userInfo">
-                          <p>{name}</p>
-                          <p className="role">{role}</p>
+                          <div className="userInfo">
+                            <p>{name}</p>
+                            <p className="role">{role}</p>
+                          </div>
                         </div>
-                      </div>
-                    );
-                  })}
-              </div>
+                      );
+                    })}
+                </div>
 
-              <Link to={`/admin/manage-team/${projectId}`}>
-                <button type="button">Manage Team</button>
-              </Link>
-            </div>
+                <Link to={`/admin/manage-team/${projectId}`}>
+                  <button type="button">Manage Team</button>
+                </Link>
+              </div>
+            )}
           </div>
 
           <div className="second-column">
@@ -282,16 +285,6 @@ const Tickets = ({ tickets, archiveTicket }) => {
             <p className="unassigned">Unassigned</p>
           )}
         </div>
-
-        {/* <div className="dev">
-          {assignedTo ? (
-            <p>{assignedTo.name}</p>
-          ) : (
-            <Link to={`/tickets/assign-dev/${_id}`}>
-              <button className="assignDevBtn">Assign Dev</button>
-            </Link>
-          )}
-        </div> */}
 
         <div className="status">
           <p className={`${status}`}>{status}</p>

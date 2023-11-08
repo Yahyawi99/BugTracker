@@ -343,6 +343,11 @@
     font-weight: 600;
 }
 
+.tickets .dev .unassigned {
+    opacity: .5;
+    text-decoration: 3px underline;
+}
+
 /* Status */
 .tickets .status p,
 .tickets .priority p {
