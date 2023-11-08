@@ -16,6 +16,8 @@ import Settings from "../shared/Settings";
 // css
 import "../../styles/components/header/index.css";
 
+const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
+
 const Header = () => {
   const { logout } = useAuth();
   const { isHamOpen, setIsHamOpen } = useMainContext();
@@ -31,9 +33,12 @@ const Header = () => {
       <img src="/assets/icons/logo.svg" alt="bugtracker" className="logo" />
 
       <div>
-        <Link to="tickets/create-ticket">
-          <button className="newTicketBtn">New Ticket</button>
-        </Link>
+        {USER_ROLE === "admin" ||
+          (USER_ROLE === "PM" && (
+            <Link to="tickets/create-ticket">
+              <button className="newTicketBtn">New Ticket</button>
+            </Link>
+          ))}
 
         <i>
           <FontAwesomeIcon icon={faBell} />
