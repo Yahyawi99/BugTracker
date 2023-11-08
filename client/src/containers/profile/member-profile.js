@@ -11,6 +11,8 @@ import useUsers from "../../hooks/useUsers";
 // css
 import "../../styles/containers/profile/index.css";
 
+const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
+
 const MemberProfile = () => {
   const { memberId } = useParams();
   const { getSingleUser, singleUser, getUserProjects, userProjects } =
@@ -102,9 +104,11 @@ const MemberProfile = () => {
                   )}
                 </div>
 
-                <Link to={`/admin/manage-team/${_id}`}>
-                  <button type="button">Manage Team</button>
-                </Link>
+                {USER_ROLE === "admin" && (
+                  <Link to={`/admin/manage-team/${_id}`}>
+                    <button type="button">Manage Team</button>
+                  </Link>
+                )}
               </div>
 
               <div className="progress">

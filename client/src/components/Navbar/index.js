@@ -30,8 +30,6 @@ import "../../styles/components/navbar/index.css";
 
 const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
 
-console.log(USER_ROLE);
-
 const NavBar = () => {
   const { skin: skinChoice, setSkin, isHamOpen } = useMainContext();
 
