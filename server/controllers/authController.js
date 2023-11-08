@@ -28,7 +28,9 @@ const login = async (req, res) => {
   const tokenUser = createTokenUser(user);
   attachCookieToResponse({ res, user: tokenUser });
 
-  res.status(StatusCodes.OK).json({ user, msg: `Welcome back ${user.name}` });
+  res
+    .status(StatusCodes.OK)
+    .json({ user: tokenUser, msg: `Welcome back ${user.name}` });
 };
 
 // Register

@@ -34,6 +34,8 @@ const AuthProvider = ({ children }) => {
         password,
       });
 
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+
       loading(false);
 
       await alertMe(response.data.msg, "var(--success)");

@@ -28,6 +28,10 @@ import skins from "../../data/colors.json";
 // css
 import "../../styles/components/navbar/index.css";
 
+const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
+
+console.log(USER_ROLE);
+
 const NavBar = () => {
   const { skin: skinChoice, setSkin, isHamOpen } = useMainContext();
 
@@ -161,19 +165,23 @@ const NavBar = () => {
                   </Link>
                 </span>
 
-                <span>
-                  <FontAwesomeIcon icon={faStarOfLife} />
-                  <Link to="/projects/create-project">
-                    <p> Add Projects</p>
-                  </Link>
-                </span>
+                {USER_ROLE === "admin" && (
+                  <span>
+                    <FontAwesomeIcon icon={faStarOfLife} />
+                    <Link to="/projects/create-project">
+                      <p> Add Projects</p>
+                    </Link>
+                  </span>
+                )}
 
-                <span>
-                  <FontAwesomeIcon icon={faStarOfLife} />
-                  <Link to="/projects/manage-projects">
-                    <p> Manage Projects</p>
-                  </Link>
-                </span>
+                {USER_ROLE === "admin" && (
+                  <span>
+                    <FontAwesomeIcon icon={faStarOfLife} />
+                    <Link to="/projects/manage-projects">
+                      <p> Manage Projects</p>
+                    </Link>
+                  </span>
+                )}
 
                 <span>
                   <FontAwesomeIcon icon={faStarOfLife} />
@@ -228,19 +236,23 @@ const NavBar = () => {
                   </Link>
                 </span>
 
-                <span>
-                  <FontAwesomeIcon icon={faStarOfLife} />
-                  <Link to="/tickets/create-ticket">
-                    <p> Add Ticket</p>
-                  </Link>
-                </span>
+                {(USER_ROLE === "admin" || USER_ROLE === "PM") && (
+                  <span>
+                    <FontAwesomeIcon icon={faStarOfLife} />
+                    <Link to="/tickets/create-ticket">
+                      <p> Add Ticket</p>
+                    </Link>
+                  </span>
+                )}
 
-                <span>
-                  <FontAwesomeIcon icon={faStarOfLife} />
-                  <Link to="/tickets/unassigned-tickets">
-                    <p> Unassigned Tickets</p>
-                  </Link>
-                </span>
+                {(USER_ROLE === "admin" || USER_ROLE === "PM") && (
+                  <span>
+                    <FontAwesomeIcon icon={faStarOfLife} />
+                    <Link to="/tickets/unassigned-tickets">
+                      <p> Unassigned Tickets</p>
+                    </Link>
+                  </span>
+                )}
 
                 <span>
                   <FontAwesomeIcon icon={faStarOfLife} />
@@ -250,81 +262,88 @@ const NavBar = () => {
                 </span>
               </div>
 
-              <li
-                className={`listItem4 ${clicked === "admin" && "clicked"}`}
-                onClick={(e) => {
-                  setClicked("admin");
-                  dropDownFunctionality("admin");
-                }}
-              >
-                <i>
-                  <FontAwesomeIcon icon={faGem} />
-                </i>
-                <p>Admin</p>
-                <i
-                  className={`arrow ${dropDown === "admin" && "clickedArrow"}`}
+              {USER_ROLE === "admin" && (
+                <li
+                  className={`listItem4 ${clicked === "admin" && "clicked"}`}
+                  onClick={(e) => {
+                    setClicked("admin");
+                    dropDownFunctionality("admin");
+                  }}
                 >
-                  <FontAwesomeIcon icon={faChevronDown} />
-                </i>
-              </li>
+                  <i>
+                    <FontAwesomeIcon icon={faGem} />
+                  </i>
+                  <p>Admin</p>
+                  <i
+                    className={`arrow ${
+                      dropDown === "admin" && "clickedArrow"
+                    }`}
+                  >
+                    <FontAwesomeIcon icon={faChevronDown} />
+                  </i>
+                </li>
+              )}
 
-              <div
-                className={`options ${dropDown === "admin" && "openDropDown"}`}
-              >
-                <span>
-                  <FontAwesomeIcon icon={faStarOfLife} />
-                  <p>Company Invite</p>
-                </span>
-
-                <span>
-                  <FontAwesomeIcon icon={faStarOfLife} />
-
-                  <Link to="/admin/manage-roles">
-                    <p>Manage Roles</p>
-                  </Link>
-                </span>
-
-                <span>
-                  <FontAwesomeIcon icon={faStarOfLife} />
-                  <Link to="/projects/manage-projects">
-                    <p>Manage Projects</p>
-                  </Link>
-                </span>
-              </div>
-
-              <li
-                className={`listItem4 ${clicked === "manager" && "clicked"}`}
-                onClick={(e) => {
-                  setClicked("manager");
-                  dropDownFunctionality("manager");
-                }}
-              >
-                <i>
-                  <FontAwesomeIcon icon={faBriefcase} />
-                </i>
-                <p>Project Manager</p>
-                <i
-                  className={`arrow ${
-                    dropDown === "manager" && "clickedArrow"
+              {USER_ROLE === "admin" && (
+                <div
+                  className={`options ${
+                    dropDown === "admin" && "openDropDown"
                   }`}
                 >
-                  <FontAwesomeIcon icon={faChevronDown} />
-                </i>
-              </li>
+                  <span>
+                    <FontAwesomeIcon icon={faStarOfLife} />
 
-              <div
-                className={`options ${
-                  dropDown === "manager" && "openDropDown"
-                }`}
-              >
-                <span>
-                  <FontAwesomeIcon icon={faStarOfLife} />
+                    <Link to="/admin/manage-roles">
+                      <p>Manage Roles</p>
+                    </Link>
+                  </span>
 
-                  <Link to="/projects/manage-projects">
-                    <p>Manage Projects</p>
-                  </Link>
-                </span>
-              </div>
+                  <span>
+                    <FontAwesomeIcon icon={faStarOfLife} />
+                    <Link to="/projects/manage-projects">
+                      <p>Manage Projects</p>
+                    </Link>
+                  </span>
+                </div>
+              )}
+
+              {USER_ROLE === "PM" && (
+                <li
+                  className={`listItem4 ${clicked === "manager" && "clicked"}`}
+                  onClick={(e) => {
+                    setClicked("manager");
+                    dropDownFunctionality("manager");
+                  }}
+                >
+                  <i>
+                    <FontAwesomeIcon icon={faBriefcase} />
+                  </i>
+                  <p>Project Manager</p>
+                  <i
+                    className={`arrow ${
+                      dropDown === "manager" && "clickedArrow"
+                    }`}
+                  >
+                    <FontAwesomeIcon icon={faChevronDown} />
+                  </i>
+                </li>
+              )}
+
+              {USER_ROLE === "PM" && (
+                <div
+                  className={`options ${
+                    dropDown === "manager" && "openDropDown"
+                  }`}
+                >
+                  <span>
+                    <FontAwesomeIcon icon={faStarOfLife} />
+
+                    <Link to="/projects/manage-projects">
+                      <p>Manage Projects</p>
+                    </Link>
+                  </span>
+                </div>
+              )}
             </ul>
           </div>
         ) : (
