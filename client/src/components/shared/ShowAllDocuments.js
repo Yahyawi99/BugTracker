@@ -21,6 +21,8 @@ import Checkbox from "./Checkbox";
 // css
 import "../../styles/components/shared/showAllDocuments.css";
 
+const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
+
 const ShowAllDocuments = (props) => {
   const {
     sectionName,
@@ -188,22 +190,26 @@ const Projects = ({ projects, archiveController }) => {
                 </button>
               </Link>
 
-              <Link to={`/projects/edit-project/${_id}`}>
-                <button className="edit">
-                  <FontAwesomeIcon icon={faPencil} />
-                </button>
-              </Link>
+              {USER_ROLE === "admin" && (
+                <Link to={`/projects/edit-project/${_id}`}>
+                  <button className="edit">
+                    <FontAwesomeIcon icon={faPencil} />
+                  </button>
+                </Link>
+              )}
 
-              <button
-                onClick={() => archiveController(_id, !isArchived)}
-                className={`${isArchived ? "unarchive" : "archive"}`}
-              >
-                {isArchived ? (
-                  <FontAwesomeIcon icon={faBoxOpen} />
-                ) : (
-                  <FontAwesomeIcon icon={faBoxArchive} />
-                )}
-              </button>
+              {USER_ROLE === "admin" && (
+                <button
+                  onClick={() => archiveController(_id, !isArchived)}
+                  className={`${isArchived ? "unarchive" : "archive"}`}
+                >
+                  {isArchived ? (
+                    <FontAwesomeIcon icon={faBoxOpen} />
+                  ) : (
+                    <FontAwesomeIcon icon={faBoxArchive} />
+                  )}
+                </button>
+              )}
             </div>
           </div>
         );
@@ -268,18 +274,22 @@ const Tickets = ({ tickets, archiveController }) => {
                 </button>
               </Link>
 
-              <Link to={`/tickets/edit-ticket/${_id}`}>
-                <button className="edit">
-                  <FontAwesomeIcon icon={faPencil} />
-                </button>
-              </Link>
+              {USER_ROLE === "admin" && (
+                <Link to={`/tickets/edit-ticket/${_id}`}>
+                  <button className="edit">
+                    <FontAwesomeIcon icon={faPencil} />
+                  </button>
+                </Link>
+              )}
 
-              <button
-                className={`${isArchived ? "unarchive" : "archive"}`}
-                onClick={() => archiveController(_id, !isArchived)}
-              >
-                <FontAwesomeIcon icon={faBoxArchive} />
-              </button>
+              {USER_ROLE === "admin" && (
+                <button
+                  className={`${isArchived ? "unarchive" : "archive"}`}
+                  onClick={() => archiveController(_id, !isArchived)}
+                >
+                  <FontAwesomeIcon icon={faBoxArchive} />
+                </button>
+              )}
             </div>
           </div>
         );

@@ -13,6 +13,8 @@ import HomeBtn from "../../components/shared/HomeBtn";
 // css
 import "../../styles/containers/projects/manage-projects.css";
 
+const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
+
 const ManageProjects = () => {
   const { getAllProjects, allProjects, archiveProject } = useProjects();
 
@@ -87,9 +89,11 @@ const ManageProjects = () => {
                     )}
                   </div>
 
-                  <Link to={`/admin/manage-team/${project._id}`}>
-                    <button type="button">Manage Team</button>
-                  </Link>
+                  {USER_ROLE === "admin" && (
+                    <Link to={`/admin/manage-team/${project._id}`}>
+                      <button type="button">Manage Team</button>
+                    </Link>
+                  )}
                 </div>
 
                 <div className="progress">
