@@ -16,7 +16,10 @@ import HomeBtn from "../../components/shared/HomeBtn";
 import "../../styles/containers/tickets/ticket-details.css";
 
 const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
+const USER_ID = JSON.parse(localStorage.getItem("user")).userId;
 
+// **********************************
+// **********************************
 const TicketDetails = () => {
   const { getSingleTicket, singleTicket } = useTickets();
   const { createComments, getComments, comments } = useComments();
@@ -100,19 +103,25 @@ const TicketDetails = () => {
               </div>
 
               <div className="action">
-                <Link to={`/tickets/assign-dev/${_id}`}>
-                  <button className="assignBtn">Assign Developer</button>
-                </Link>
+                {(USER_ROLE === "admin" || USER_ID === project?.managedBy) && (
+                  <Link to={`/tickets/assign-dev/${_id}`}>
+                    <button className="assignBtn">Assign Developer</button>
+                  </Link>
+                )}
+
                 {USER_ROLE === "admin" && (
                   <Link to={`/tickets/edit-ticket/${_id}`}>
                     <button className="editBtn">Edit Ticket</button>
                   </Link>
                 )}
-                {USER_ROLE === "admin" && isArchived && (
+
+                {((USER_ROLE === "admin" && isArchived) ||
+                  USER_ID === project?.managedBy) && (
                   <button className="unarchive">Unarchive Ticket</button>
                 )}
 
-                {USER_ROLE === "admin" && !isArchived && (
+                {((USER_ROLE === "admin" && !isArchived) ||
+                  USER_ID === project?.managedBy) && (
                   <button className="archive">Archive Ticket</button>
                 )}
               </div>
