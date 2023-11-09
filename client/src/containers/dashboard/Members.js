@@ -31,8 +31,61 @@ const Members = () => {
             setSearchInput,
           }}
         />
+
+        <table summary="All company members">
+          <colgroup>
+            <col />
+            <col />
+            <col />
+            <col />
+          </colgroup>
+          <thead>
+            <tr>
+              <th>
+                <TableHead value={"Avatar"} />
+              </th>
+              <th>
+                <TableHead value={"Name"} />
+              </th>
+              <th>
+                <TableHead value={"Projects"} />
+              </th>
+              <th>
+                <TableHead value={"Role"} />
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Data 1</td>
+              <td>Data 2</td>
+              <td>Data 3</td>
+              <td>Data 4</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
+  );
+};
+
+const TableHead = ({ value }) => {
+  return (
+    <div>
+      <p>{value}</p>
+
+      <i className="on">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path d="M12 0l-8 10h16l-8-10zm3.839 16l-3.839 4.798-3.839-4.798h7.678zm4.161-2h-16l8 10 8-10z" />
+        </svg>
+      </i>
+    </div>
   );
 };
 
