@@ -86,7 +86,7 @@ const ProjectDetails = () => {
                 </div>
               </div>
 
-              {USER_NAME === managedBy?.name && (
+              {(USER_NAME === managedBy?.name || USER_ROLE === "admin") && (
                 <div className="action">
                   <Link to={`/projects/edit-project/${projectId}`}>
                     <button className="editBtn">Edit Project</button>
@@ -151,11 +151,10 @@ const ProjectDetails = () => {
               </div>
             </div>
 
-            {USER_NAME === managedBy?.name && (
+            {
               <div className="row-three">
                 <h3>Project Team</h3>
                 <p>{team && team.length} team members</p>
-
                 {managedBy ? (
                   <div key={managedBy._id} className="manager">
                     <img
@@ -173,10 +172,12 @@ const ProjectDetails = () => {
                 ) : (
                   <div className="noManager">
                     <p>No Project Manager Assigned</p>
-                    <button>Assign Project Manager</button>
+
+                    {USER_ROLE === "admin" && (
+                      <button>Assign Project Manager</button>
+                    )}
                   </div>
                 )}
-
                 <div className="team">
                   {team &&
                     team.map((user) => {
@@ -195,11 +196,13 @@ const ProjectDetails = () => {
                     })}
                 </div>
 
-                <Link to={`/admin/manage-team/${projectId}`}>
-                  <button type="button">Manage Team</button>
-                </Link>
+                {(USER_NAME === managedBy?.name || USER_ROLE === "admin") && (
+                  <Link to={`/admin/manage-team/${projectId}`}>
+                    <button type="button">Manage Team</button>
+                  </Link>
+                )}
               </div>
-            )}
+            }
           </div>
 
           <div className="second-column">
