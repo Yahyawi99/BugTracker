@@ -39,6 +39,7 @@ const Members = () => {
             <col />
             <col />
           </colgroup>
+
           <thead>
             <tr>
               <th>
@@ -58,10 +59,15 @@ const Members = () => {
 
           <tbody>
             <tr>
-              <td>Data 1</td>
-              <td>Data 2</td>
-              <td>Data 3</td>
-              <td>Data 4</td>
+              <TableData />
+            </tr>
+
+            <tr>
+              <TableData />
+            </tr>
+
+            <tr>
+              <TableData />
             </tr>
           </tbody>
         </table>
@@ -70,6 +76,7 @@ const Members = () => {
   );
 };
 
+// **********************
 const TableHead = ({ value }) => {
   return (
     <div>
@@ -86,6 +93,28 @@ const TableHead = ({ value }) => {
         </svg>
       </i>
     </div>
+  );
+};
+
+const TableData = ({}) => {
+  return (
+    <>
+      <td>
+        <img src="/assets/images/default-avatar-1.jpg" alt="avatar" />
+      </td>
+
+      <td>
+        <p className="name">Bruce Appuser</p>
+      </td>
+
+      <td>
+        <p className="numOfProjects">2</p>
+      </td>
+
+      <td>
+        <p className="role">Developer</p>
+      </td>
+    </>
   );
 };
 

@@ -184,8 +184,8 @@
     bottom: -10px !important;
 }
 
-
-/* Memebers */
+/* ********************** */
+/* Members */
 .dashboard-Container .members {
     background-color: var(--white);
     border-radius: 10px;
@@ -217,6 +217,7 @@
 /* Table head */
 .dashboard-Container table th {
     background-color: var(--black);
+    padding: 15px 0px 15px 5px;
 }
 
 .dashboard-Container table th>div {
@@ -233,8 +234,20 @@
     height: 100%;
 }
 
-.dashboard-Container table th,
-dashboard-Container table td {
-    border: 2px solid transparent;
-    padding: 15px 0px 15px 5px;
+.dashboard-Container table td {
+    border-bottom: 2px solid var(--border-color);
+    padding: 10px 0px 5px 5px;
+}
+
+/* data */
+.dashboard-Container table img {
+    width: 40px;
+    border-radius: 50%;
+}
+
+.dashboard-Container .members .role {
+    width: fit-content;
+    border: 2px solid var(--red);
+    border-radius: 5px;
+    padding: 5px 10px;
 }
