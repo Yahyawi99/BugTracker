@@ -25,6 +25,7 @@ import "../../styles/containers/projects/project-details.css";
 
 const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
 const USER_NAME = JSON.parse(localStorage.getItem("user")).name;
+const USER_ID = JSON.parse(localStorage.getItem("user")).userId;
 
 const ProjectDetails = () => {
   const { getSingleProject, singleProject, archiveProject } = useProjects();
@@ -268,8 +269,16 @@ const ProjectDetails = () => {
 // ticket
 const Tickets = ({ tickets, archiveTicket }) => {
   return tickets.map((ticket) => {
-    const { _id, title, assignedTo, status, priority, createdAt, isArchived } =
-      ticket;
+    const {
+      _id,
+      title,
+      assignedTo,
+      status,
+      priority,
+      createdAt,
+      isArchived,
+      project,
+    } = ticket;
 
     return (
       <div key={_id}>
@@ -280,7 +289,8 @@ const Tickets = ({ tickets, archiveTicket }) => {
         <div className="dev">
           {assignedTo ? (
             <p>{assignedTo.name}</p>
-          ) : USER_ROLE === "admin" && !!assignedTo ? (
+          ) : (USER_ROLE === "admin" && !!assignedTo) ||
+            USER_ID === project?.managedBy ? (
             <Link to={`/tickets/assign-dev/${_id}`}>
               <button className="assignDevBtn">Assign Dev</button>
             </Link>

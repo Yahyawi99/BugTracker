@@ -102,7 +102,7 @@ const singleProject = async (req, res) => {
   let associatedTickets = Ticket.find({
     project: projectId,
   })
-    .populate("assignedTo")
+    .populate("assignedTo project")
     .limit(limit)
     .skip(skip);
 
