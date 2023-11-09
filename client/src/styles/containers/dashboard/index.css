@@ -234,20 +234,32 @@
     height: 100%;
 }
 
+
+/* data */
+
 .dashboard-Container table td {
-    border-bottom: 2px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
     padding: 10px 0px 5px 5px;
 }
 
-/* data */
+.dashboard-Container table tbody tr:last-child td {
+    border-bottom: none;
+}
+
 .dashboard-Container table img {
     width: 40px;
     border-radius: 50%;
 }
 
+.dashboard-Container .members .numOfProjects {
+    color: var(--gray-dark);
+    font-weight: 600;
+}
+
 .dashboard-Container .members .role {
     width: fit-content;
-    border: 2px solid var(--red);
+    color: var(--gray);
+    border: 2px solid var(--border-color);
     border-radius: 5px;
     padding: 5px 10px;
 }
