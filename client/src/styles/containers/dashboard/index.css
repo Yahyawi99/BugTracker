@@ -176,11 +176,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .team-statistics .recharts-legend-wrapper {
     width: 100% !important;
     left: 5px !important;
     bottom: -10px !important;
+}
+
+
+/* Memebers */
+.dashboard-Container .members {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 20px;
 }

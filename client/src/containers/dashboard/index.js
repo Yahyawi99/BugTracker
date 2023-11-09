@@ -17,6 +17,7 @@ import {
 import HomeBtn from "../../components/shared/HomeBtn";
 import PieChart from "../../components/dashboard/PieChart";
 import BarChart from "../../components/dashboard/BarChart";
+import Members from "./Members";
 // css
 import "../../styles/containers/dashboard/index.css";
 
@@ -170,7 +171,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="members"></div>
+      <Members />
     </section>
   );
 };
