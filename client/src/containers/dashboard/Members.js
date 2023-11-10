@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // Hooks
 import useUsers from "../../hooks/useUsers";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
 import LimitAndSearch from "../../components/shared/LimitAndSearch";
 import Pagination from "../../components/shared/Pagination";
-import Labels from "../../components/shared/Labels";
 
 const Members = () => {
   const { getAllUsers, allUsers } = useUsers();
@@ -13,6 +12,10 @@ const Members = () => {
   const [limit, setLimit] = useState(3);
   const [dropDown, setDropDown] = useState(false);
   const [searchInput, setSearchInput] = useState("");
+
+  useEffect(() => {
+    getAllUsers(1, "", Infinity);
+  }, []);
 
   return (
     <section className="members">
@@ -58,18 +61,14 @@ const Members = () => {
           </thead>
 
           <tbody>
-            {allUsers?.users.map()}
-            <tr>
-              <TableData />
-            </tr>
-
-            <tr>
-              <TableData />
-            </tr>
-
-            <tr>
-              <TableData />
-            </tr>
+            {allUsers.users &&
+              allUsers?.users.map((member) => {
+                return (
+                  <tr>
+                    <TableData key={member._id} member={member} />
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
       </div>
@@ -97,15 +96,18 @@ const TableHead = ({ value }) => {
   );
 };
 
-const TableData = ({}) => {
+const TableData = ({ member }) => {
+  const { name, role, avatar } = member;
+  console.log(member);
+
   return (
     <>
       <td>
-        <img src="/assets/images/default-avatar-1.jpg" alt="avatar" />
+        <img src={avatar} alt="avatar" />
       </td>
 
       <td>
-        <p className="name">Bruce Appuser</p>
+        <p className="name">{name}</p>
       </td>
 
       <td>
@@ -113,7 +115,7 @@ const TableData = ({}) => {
       </td>
 
       <td>
-        <p className="role">Developer</p>
+        <p className="role">{role}</p>
       </td>
     </>
   );

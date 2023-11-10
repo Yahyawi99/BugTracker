@@ -42,6 +42,12 @@ const allUsers = async (req, res) => {
 
   users = await users;
 
+  users.forEach(async (user) => {
+    const projects = await user.projects(user);
+    user.numOfProjects = projects.length;
+    await user.save();
+  });
+
   // *************
   const totalUsers = await User.countDocuments({
     name: { $regex: search, $options: "i" },

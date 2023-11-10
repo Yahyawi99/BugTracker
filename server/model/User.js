@@ -48,6 +48,11 @@ const UserSchema = new mongoose.Schema(
       enum: ["admin", "developer", "PM", "submitter"],
       default: "submitter",
     },
+
+    numOfProjects: {
+      type: Number,
+      default: 0,
+    },
   },
   { timestamps: true }
 );
