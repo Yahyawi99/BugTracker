@@ -9,13 +9,19 @@ import Pagination from "../../components/shared/Pagination";
 const Members = () => {
   const { getAllUsers, allUsers } = useUsers();
 
-  const [limit, setLimit] = useState(3);
+  const [limit, setLimit] = useState(5);
   const [dropDown, setDropDown] = useState(false);
   const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
-    getAllUsers(1, "", Infinity);
+    getAllUsers();
   }, []);
+
+  if (allUsers) {
+    var { numOfPages, currentPage, count, totalUsers } = allUsers;
+
+    var numOfpagesArr = Array.from({ length: numOfPages }, (_, i) => i + 1);
+  }
 
   return (
     <section className="members">
@@ -64,12 +70,81 @@ const Members = () => {
             {allUsers.users &&
               allUsers?.users.map((member) => {
                 return (
-                  <tr>
-                    <TableData key={member._id} member={member} />
+                  <tr key={member._id}>
+                    <TableData member={member} />
                   </tr>
                 );
               })}
           </tbody>
+
+          <tfoot>
+            <tr>
+              <td colSpan="4">
+                <div>
+                  <p className="count">
+                    {count ? count : 0} out of {totalUsers} documents
+                  </p>
+
+                  <div className="pagination">
+                    {numOfPages > 1 && (
+                      <>
+                        {currentPage > 1 && (
+                          <button
+                            className="prevPage"
+                            onClick={() => {
+                              getAllUsers(
+                                currentPage - 1,
+                                "",
+                                limit,
+                                searchInput
+                              );
+                            }}
+                          >
+                            previous
+                          </button>
+                        )}
+
+                        <div className="pages">
+                          {numOfpagesArr &&
+                            numOfpagesArr.map((num) => {
+                              return (
+                                <p
+                                  key={num}
+                                  onClick={() => {
+                                    getAllUsers(num, "", limit, searchInput);
+                                  }}
+                                  className={`${
+                                    currentPage === num && "viewedPage"
+                                  }`}
+                                >
+                                  {num}
+                                </p>
+                              );
+                            })}
+                        </div>
+
+                        {currentPage < numOfPages && (
+                          <button
+                            className="nextPage"
+                            onClick={() => {
+                              getAllUsers(
+                                currentPage + 1,
+                                "",
+                                limit,
+                                searchInput
+                              );
+                            }}
+                          >
+                            next
+                          </button>
+                        )}
+                      </>
+                    )}
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tfoot>
         </table>
       </div>
     </section>
@@ -97,8 +172,7 @@ const TableHead = ({ value }) => {
 };
 
 const TableData = ({ member }) => {
-  const { name, role, avatar } = member;
-  console.log(member);
+  const { name, role, avatar, numOfProjects } = member;
 
   return (
     <>
@@ -111,7 +185,7 @@ const TableData = ({ member }) => {
       </td>
 
       <td>
-        <p className="numOfProjects">2</p>
+        <p className="numOfProjects">{numOfProjects}</p>
       </td>
 
       <td>

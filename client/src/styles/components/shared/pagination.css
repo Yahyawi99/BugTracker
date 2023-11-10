@@ -10,17 +10,17 @@
     padding: 20px 0;
 }
 
-.sectionFooter .pagination {
+.pagination {
     display: flex;
 }
 
-.sectionFooter .pagination .pages {
+.pagination .pages {
     display: flex;
     align-items: center;
 }
 
 
-.sectionFooter .pagination .pages p {
+.pagination .pages p {
     font-weight: 600;
     color: var(--gray);
     border: 2px solid var(--main-clr);
@@ -29,16 +29,16 @@
     padding: 10px 15px;
 }
 
-.sectionFooter .pagination .pages p:nth-child(1) {
+.pagination .pages p:nth-child(1) {
     border-left: 2px solid var(--main-clr);
 }
 
-.sectionFooter .pagination .pages p:hover {
+.pagination .pages p:hover {
     background-color: var(--gray);
     color: var(--white);
 }
 
-.sectionFooter .pagination button {
+.pagination button {
     background-color: transparent;
     border: 2px solid var(--main-clr);
     color: var(--main-clr);
@@ -48,20 +48,20 @@
     padding: 10px;
 }
 
-.sectionFooter .pagination .nextPage {
+.pagination .nextPage {
     border-left: none;
 }
 
-.sectionFooter .pagination .prevPage {
+.pagination .prevPage {
     border-right: none;
 }
 
-.sectionFooter .pagination button:hover {
+.pagination button:hover {
     background-color: var(--main-clr);
     color: var(--white);
 }
 
-.sectionFooter .pagination .pages .viewedPage {
+.pagination .pages .viewedPage {
     background-color: var(--gray);
     color: var(--white);
     pointer-events: none;

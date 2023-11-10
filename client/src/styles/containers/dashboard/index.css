@@ -184,7 +184,9 @@
     bottom: -10px !important;
 }
 
-/* ********************** */
+/* ******************************** */
+/* ******************************** */
+/* ******************************** */
 /* Members */
 .dashboard-Container .members {
     background-color: var(--white);
@@ -236,8 +238,7 @@
 
 
 /* data */
-
-.dashboard-Container table td {
+.dashboard-Container table td:not(tfoot td) {
     border-bottom: 1px solid var(--border-color);
     padding: 10px 0px 5px 5px;
 }
@@ -262,4 +263,13 @@
     border: 2px solid var(--border-color);
     border-radius: 5px;
     padding: 5px 10px;
+}
+
+/* Pagination */
+.dashboard-Container .members tfoot td>div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
 }
