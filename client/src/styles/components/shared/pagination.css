@@ -34,8 +34,8 @@
 }
 
 .pagination .pages p:hover {
-    background-color: var(--gray);
-    color: var(--white);
+    background-color: var(--main-clr-hover);
+    color: var(--main-clr);
 }
 
 .pagination button {
@@ -61,8 +61,13 @@
     color: var(--white);
 }
 
+
+/* ****************************** */
+/* ****************************** */
+/* ****************************** */
+/* Javascript classes */
 .pagination .pages .viewedPage {
-    background-color: var(--gray);
+    background-color: var(--main-clr);
     color: var(--white);
     pointer-events: none;
 }
