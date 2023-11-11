@@ -111,7 +111,9 @@ TicketSchema.pre("save", async function () {
         projectTeam.membersIds.push(this.assignedTo);
       }
 
-      await projectTeam.save();
+      console.log(this.assignedTo);
+
+      // await projectTeam.save();
     }
   }
 });
