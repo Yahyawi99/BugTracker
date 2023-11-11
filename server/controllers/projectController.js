@@ -25,8 +25,8 @@ const allProjects = async (req, res) => {
 
   projects = projects
     .populate({
-      path: "managedBy tickets",
-      select: "name avatar",
+      path: "managedBy tickets team",
+      // select: "name avatar",
     })
     .skip(skip)
     .limit(limit);
@@ -57,13 +57,6 @@ const allProjects = async (req, res) => {
   }
 
   projects = await projects;
-
-  // Create Team Arr
-  projects.forEach(async (project) => {
-    const team = await project.projectTeam(User, project._id);
-    project.team = team;
-    await project.save();
-  });
 
   // *************
   if (isArchived === "all") {
@@ -352,7 +345,7 @@ const assignTeamMembers = async (req, res) => {
 
   const tickets = await Ticket.find({ project: projectId });
 
-  // make ticket unassigned if dev is not in the new team arr
+  // make ticket unassigned if current dev is not in the new team arr
   tickets.forEach(async (ticket) => {
     if (!teamMembersIds.includes(ticket.assignedTo)) {
       ticket.assignedTo = null;

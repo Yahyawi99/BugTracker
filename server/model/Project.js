@@ -65,11 +65,6 @@ const ProjectSchema = new mongoose.Schema(
       ref: "User",
       default: null,
     },
-
-    team: {
-      type: Array,
-      default: null,
-    },
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
@@ -77,6 +72,13 @@ const ProjectSchema = new mongoose.Schema(
 // Virtuels
 ProjectSchema.virtual("tickets", {
   ref: "Ticket",
+  localField: "_id",
+  foreignField: "project",
+  justOne: false,
+});
+
+ProjectSchema.virtual("team", {
+  ref: "Team",
   localField: "_id",
   foreignField: "project",
   justOne: false,
@@ -150,12 +152,14 @@ ProjectSchema.pre("save", async function () {
   await projectTeam.save();
 });
 
-ProjectSchema.methods.projectTeam = async function (UserModel) {
-  const team = await Team.findOne({ project: this._id });
+// ProjectSchema.methods.projectTeam = async function (UserModel) {
+//   const team = await Team.findOne({ project: this._id });
 
-  const members = await UserModel.find({ _id: { $in: team.membersIds } });
+//   const members = await UserModel.find({ _id: { $in: team.membersIds } });
 
-  return members;
-};
+//   team.;
+
+//   return members;
+// };
 
 module.exports = mongoose.model("Project", ProjectSchema);

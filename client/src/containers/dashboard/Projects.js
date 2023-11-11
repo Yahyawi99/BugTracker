@@ -33,6 +33,8 @@ const Projects = () => {
   return (
     data && (
       <section className="projects">
+        <HomeBtn name="Projects" />
+
         <div>
           <LimitAndSearch
             controller={getAllProjects}

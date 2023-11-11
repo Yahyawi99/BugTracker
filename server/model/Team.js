@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const ProjectTeam = new mongoose.Schema(
+const ProjectTeamSchema = new mongoose.Schema(
   {
     project: {
       type: mongoose.Types.ObjectId,
@@ -16,4 +16,4 @@ const ProjectTeam = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Team", ProjectTeam);
+module.exports = mongoose.model("Team", ProjectTeamSchema);
