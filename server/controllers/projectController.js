@@ -63,6 +63,8 @@ const allProjects = async (req, res) => {
     const team = await project.projectTeam(User, project._id);
     project.team = team;
     await project.save();
+    // await project.projectTeam(User, project._id);
+    // await project.save();
   });
 
   // *************

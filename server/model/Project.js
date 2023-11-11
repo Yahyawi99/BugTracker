@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
+
 const Team = require("./Team");
+const Ticket = require("./Ticket");
 
 const ProjectSchema = new mongoose.Schema(
   {
@@ -92,7 +94,7 @@ ProjectSchema.virtual("tickets", {
 //       }
 //       return acc;
 //     }, [])
-//     .map((team) => new mongoose.Types.ObjectId(team));
+//     .map((team) =>  new mongoose.Types.ObjectId(team));
 
 //   let teamMembers = await UserModel.find({ _id: { $in: teamIds } });
 
@@ -108,10 +110,11 @@ ProjectSchema.virtual("tickets", {
 
 //   teamMembers = await UserModel.find({ _id: { $in: uniqueTeamIds } });
 
-//   this.team = [teamMembers];
+//   this.team = teamMembers;
 // };
 
 ProjectSchema.pre("save", async function () {
+  //  Manager
   const projectTeam = await Team.findOne({ project: this._id });
 
   if (!projectTeam) {
@@ -121,11 +124,28 @@ ProjectSchema.pre("save", async function () {
 
   const managerId = this.managedBy?._id;
 
-  if (managerId) {
-    if (!projectTeam.membersIds.includes(managerId)) {
-      projectTeam.membersIds.push(managerId);
-    }
+  if (managerId && !projectTeam.membersIds.includes(managerId)) {
+    projectTeam.membersIds.push(managerId);
   }
+
+  // Devs
+  const associatedTickets = await Ticket.find({ project: this._id }).populate(
+    "assignedTo"
+  );
+
+  associatedTickets
+    .map((ticket) => ticket.assignedTo)
+    .reduce((acc, prev) => {
+      if (!acc.includes(prev)) {
+        acc.push(prev);
+      }
+      return acc;
+    }, [])
+    .forEach((devId) => {
+      if (devId && !projectTeam.membersIds.includes(devId)) {
+        projectTeam.membersIds.push(devId._id);
+      }
+    });
 
   await projectTeam.save();
 });

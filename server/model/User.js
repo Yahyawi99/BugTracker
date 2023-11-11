@@ -91,7 +91,6 @@ UserSchema.methods.projects = async function (user) {
     }).populate("project");
 
     const userAssignedTicketsProjectIds = userAssignedTickets.map((ticket) => {
-      console.log(ticket.project.id);
       return ticket.project;
     });
 
