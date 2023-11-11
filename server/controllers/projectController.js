@@ -2,6 +2,7 @@ const { StatusCodes } = require("http-status-codes");
 const Project = require("../model/Project");
 const Ticket = require("../model/Ticket");
 const User = require("../model/User");
+const Team = require("../model/Team");
 
 const CustomErrors = require("../errors");
 const { default: isBoolean } = require("validator/lib/isBoolean");
@@ -362,9 +363,16 @@ const assignTeamMembers = async (req, res) => {
     }
   });
 
-  project.team = newTeamArr;
+  const projectTeam = await Team.findOne({ project: projectId });
 
-  project.save();
+  if (!projectTeam) {
+    await Team.create({ project: this._id });
+    return;
+  }
+
+  projectTeam.members = newTeamArr;
+
+  await projectTeam.save();
 
   res.status(StatusCodes.OK).json({ msg: "Team members update successfully" });
 };
