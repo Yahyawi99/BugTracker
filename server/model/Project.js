@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const Ticket = require("./Ticket");
+const Team = require("./Team");
+const User = require("./User");
 
 const ProjectSchema = new mongoose.Schema(
   {
@@ -65,8 +66,9 @@ const ProjectSchema = new mongoose.Schema(
     },
 
     team: {
-      type: Array,
-      default: [],
+      type: mongoose.Types.ObjectId,
+      ref: "User",
+      default: null,
     },
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
@@ -81,34 +83,61 @@ ProjectSchema.virtual("tickets", {
 });
 
 // create team
+// ProjectSchema.methods.projectTeam = async function (UserModel, projectId) {
+//   const associatedTickets = await Ticket.find({ project: projectId });
+
+//   const teamIds = associatedTickets
+//     .map((ticket) => ticket.assignedTo)
+//     .reduce((acc, prev) => {
+//       if (!acc.includes(prev)) {
+//         acc.push(prev);
+//       }
+//       return acc;
+//     }, [])
+//     .map((team) => new mongoose.Types.ObjectId(team));
+
+//   let teamMembers = await UserModel.find({ _id: { $in: teamIds } });
+
+//   teamMembers = [...teamMembers, ...this.team];
+
+//   const uniqueTeamIds = teamMembers
+//     .map((member) => member._id)
+//     .reduce((arr, id) => {
+//       if (!arr.includes(id)) arr.push(id);
+//       return arr;
+//     }, [])
+//     .map((id) => new mongoose.Types.ObjectId(id));
+
+//   teamMembers = await UserModel.find({ _id: { $in: uniqueTeamIds } });
+
+//   this.team = [teamMembers];
+// };
+
+ProjectSchema.pre("save", async function () {
+  const projectTeam = await Team.findOne({ project: this._id });
+
+  if (!projectTeam) {
+    await Team.create({ project: this._id });
+    return;
+  }
+
+  const managerId = this.managedBy?._id;
+
+  if (managerId) {
+    if (!projectTeam.membersIds.includes(managerId)) {
+      projectTeam.membersIds.push(managerId);
+    }
+  }
+
+  await projectTeam.save();
+});
+
 ProjectSchema.methods.projectTeam = async function (UserModel) {
-  const associatedTickets = await Ticket.find({ project: this._id });
+  const team = await Team.findOne({ project: this._id });
 
-  const teamIds = associatedTickets
-    .map((ticket) => ticket.assignedTo)
-    .reduce((acc, prev) => {
-      if (!acc.includes(prev)) {
-        acc.push(prev);
-      }
-      return acc;
-    }, [])
-    .map((team) => new mongoose.Types.ObjectId(team));
+  const members = await UserModel.find({ _id: { $in: team.membersIds } });
 
-  let teamMembers = await UserModel.find({ _id: { $in: teamIds } });
-
-  teamMembers = [...teamMembers, ...this.team];
-
-  const uniqueTeamIds = teamMembers
-    .map((member) => member._id)
-    .reduce((arr, id) => {
-      if (!arr.includes(id)) arr.push(id);
-      return arr;
-    }, [])
-    .map((id) => new mongoose.Types.ObjectId(id));
-
-  teamMembers = await UserModel.find({ _id: { $in: uniqueTeamIds } });
-
-  this.team = [teamMembers];
+  this.team = members;
 };
 
 module.exports = mongoose.model("Project", ProjectSchema);
