@@ -88,7 +88,7 @@ UserSchema.methods.projects = async function (user) {
 
     const userAssignedTickets = await Ticket.find({
       assignedBy: user.id,
-    }).populate("project");
+    });
 
     const userAssignedTicketsProjectIds = userAssignedTickets.map((ticket) => {
       return ticket.project;
@@ -114,11 +114,11 @@ UserSchema.methods.projects = async function (user) {
   } else {
     const userAssignedTickets = await Ticket.find({
       assignedTo: user.id,
-    }).populate("project");
+    });
 
     const userProjectsIds = userAssignedTickets.reduce((arr, ticket) => {
-      if (!arr.includes(ticket.project.id)) {
-        arr.push(ticket.project.id);
+      if (!arr.includes(ticket.project)) {
+        arr.push(ticket.project);
       }
       return arr;
     }, []);
