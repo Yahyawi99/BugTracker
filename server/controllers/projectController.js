@@ -60,7 +60,8 @@ const allProjects = async (req, res) => {
 
   // Create Team Arr
   projects.forEach(async (project) => {
-    await project.projectTeam(User, project._id);
+    const team = await project.projectTeam(User, project._id);
+    project.team = team;
     await project.save();
   });
 

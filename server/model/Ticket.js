@@ -88,6 +88,7 @@ TicketSchema.pre("save", async function () {
     await History.create(historyDocument);
   } else if (this.isModified("assignedTo")) {
     if (this.assignedTo) {
+      // create history
       const historyDocument = {
         title: `New Ticket Developer`,
         description: "A new <b>developer</b> was assigned.",
@@ -97,6 +98,20 @@ TicketSchema.pre("save", async function () {
       };
 
       await History.create(historyDocument);
+
+      // add new dev to team document
+      const projectTeam = await Team.findOne({ project: this.project });
+
+      if (!projectTeam) {
+        await Team.create({ project: this.project });
+        return;
+      }
+
+      if (!projectTeam.membersIds.includes(this.assignedTo)) {
+        projectTeam.membersIds.push(this.assignedTo);
+      }
+
+      await projectTeam.save();
     }
   }
 });

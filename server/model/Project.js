@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Team = require("./Team");
-const User = require("./User");
 
 const ProjectSchema = new mongoose.Schema(
   {
@@ -66,8 +65,7 @@ const ProjectSchema = new mongoose.Schema(
     },
 
     team: {
-      type: mongoose.Types.ObjectId,
-      ref: "User",
+      type: Array,
       default: null,
     },
   },
@@ -137,7 +135,7 @@ ProjectSchema.methods.projectTeam = async function (UserModel) {
 
   const members = await UserModel.find({ _id: { $in: team.membersIds } });
 
-  this.team = members;
+  return members;
 };
 
 module.exports = mongoose.model("Project", ProjectSchema);
