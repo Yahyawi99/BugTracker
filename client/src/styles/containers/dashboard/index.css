@@ -306,6 +306,22 @@
     width: 10%;
 }
 
+.dashboard-Container .projects table td:not(tfoot td) {
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 0px 15px 5px;
+}
+
+/* name & pm */
+.dashboard-Container .projects .name {
+    color: var(--blue);
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.dashboard-Container .projects .pm {
+    color: var(--gray)
+}
+
 /* team */
 .dashboard-Container .projects .team {
     display: flex;
@@ -325,7 +341,7 @@
 }
 
 .dashboard-Container .projects .team img:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
 }
 
 /* dates */

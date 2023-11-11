@@ -192,13 +192,17 @@ const TableHead = ({ value }) => {
 const TableData = ({ project }) => {
   const { name, startDate, endDate, team, tickets, managedBy } = project;
 
-  console.log(team);
+  const members = { ...team }[0].members;
 
   return (
     <>
       <td>
         <p className="name">{name}</p>
-        <p className="pm">{managedBy?.name}</p>
+        {managedBy ? (
+          <p className="pm">{"Project Manager : " + managedBy.name}</p>
+        ) : (
+          <p className="pm">{"Project Manager : Unassigned"}</p>
+        )}
       </td>
 
       <td>
@@ -211,8 +215,8 @@ const TableData = ({ project }) => {
 
       <td>
         <p className="team">
-          {team &&
-            team.map((member) => {
+          {members &&
+            members.map((member) => {
               const { _id, avatar } = member;
 
               return <img key={_id} src={avatar} alt="avatar" />;
