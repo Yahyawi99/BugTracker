@@ -172,9 +172,11 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <Members />
+      <div className="membersAndProjectsContainer">
+        <Members />
 
-      <Projects />
+        <Projects />
+      </div>
     </section>
   );
 };

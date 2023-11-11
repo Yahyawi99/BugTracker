@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 // Hooks
 import useProjects from "../../hooks/useProjects";
 // components
@@ -190,14 +191,17 @@ const TableHead = ({ value }) => {
 };
 
 const TableData = ({ project }) => {
-  const { name, startDate, endDate, team, tickets, managedBy } = project;
+  const { _id, name, startDate, endDate, team, tickets, managedBy } = project;
 
   const members = { ...team }[0].members;
 
   return (
     <>
       <td>
-        <p className="name">{name}</p>
+        <Link to={`/projects/project-details/${_id}`}>
+          <p className="name">{name}</p>
+        </Link>
+
         {managedBy ? (
           <p className="pm">{"Project Manager : " + managedBy.name}</p>
         ) : (
@@ -219,7 +223,11 @@ const TableData = ({ project }) => {
             members.map((member) => {
               const { _id, avatar } = member;
 
-              return <img key={_id} src={avatar} alt="avatar" />;
+              return (
+                <Link key={_id} to={`/profile/member-profile/${_id}`}>
+                  <img src={avatar} alt="avatar" />
+                </Link>
+              );
             })}
         </p>
       </td>

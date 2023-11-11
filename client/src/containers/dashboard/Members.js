@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 // Hooks
 import useUsers from "../../hooks/useUsers";
 // components
@@ -171,12 +172,14 @@ const TableHead = ({ value }) => {
 };
 
 const TableData = ({ member }) => {
-  const { name, role, avatar, numOfProjects } = member;
+  const { _id, name, role, avatar, numOfProjects } = member;
 
   return (
     <>
       <td>
-        <img src={avatar} alt="avatar" />
+        <Link to={`/profile/member-profile/${_id}`}>
+          <img src={avatar} alt="avatar" />
+        </Link>
       </td>
 
       <td>
