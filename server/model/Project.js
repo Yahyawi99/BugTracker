@@ -98,14 +98,17 @@ ProjectSchema.methods.projectTeam = async function (UserModel) {
 
   teamMembers = [...teamMembers, ...this.team];
 
-  const uniqueTeamMembers = new Set();
-  teamMembers.forEach((member) => {
-    uniqueTeamMembers.add(JSON.stringify(member));
-  });
+  const uniqueTeamIds = teamMembers
+    .map((member) => member._id)
+    .reduce((arr, id) => {
+      if (!arr.includes(id)) arr.push(id);
+      return arr;
+    }, [])
+    .map((id) => new mongoose.Types.ObjectId(id));
 
-  this.team = Array.from(uniqueTeamMembers).map((memberString) =>
-    JSON.parse(memberString)
-  );
+  teamMembers = await UserModel.find({ _id: { $in: uniqueTeamIds } });
+
+  this.team = [teamMembers];
 };
 
 module.exports = mongoose.model("Project", ProjectSchema);

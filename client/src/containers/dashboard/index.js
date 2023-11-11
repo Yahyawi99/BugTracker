@@ -18,6 +18,7 @@ import HomeBtn from "../../components/shared/HomeBtn";
 import PieChart from "../../components/dashboard/PieChart";
 import BarChart from "../../components/dashboard/BarChart";
 import Members from "./Members";
+import Projects from "./Projects";
 // css
 import "../../styles/containers/dashboard/index.css";
 
@@ -172,6 +173,8 @@ const Dashboard = () => {
       </div>
 
       <Members />
+
+      <Projects />
     </section>
   );
 };

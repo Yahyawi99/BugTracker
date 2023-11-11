@@ -4,7 +4,6 @@ import useUsers from "../../hooks/useUsers";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
 import LimitAndSearch from "../../components/shared/LimitAndSearch";
-import Pagination from "../../components/shared/Pagination";
 
 const Members = () => {
   const { getAllUsers, allUsers } = useUsers();
