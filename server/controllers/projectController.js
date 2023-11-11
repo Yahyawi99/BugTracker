@@ -66,9 +66,14 @@ const allProjects = async (req, res) => {
   });
 
   // *************
-  const totalProjects = await Project.countDocuments({
-    isArchived: isBoolean(isArchived),
-  });
+  if (isArchived === "all") {
+    var totalProjects = await Project.countDocuments();
+  } else {
+    var totalProjects = await Project.countDocuments({
+      isArchived: isBoolean(isArchived),
+    });
+  }
+
   const numOfPages = Math.ceil(totalProjects / limit);
 
   const count = projects.length;
