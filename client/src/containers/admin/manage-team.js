@@ -22,6 +22,8 @@ import HomeBtn from "../../components/shared/HomeBtn";
 // css
 import "../../styles/containers/admin/manage-team.css";
 
+const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
+
 const ManageTeam = () => {
   const { getSingleProject, singleProject, manageProjectTeam } = useProjects();
   const { getAllUsers, allUsers } = useUsers();
@@ -54,7 +56,7 @@ const ManageTeam = () => {
         return newValue;
       });
 
-      setTeam(singleProject.project.team);
+      setTeam(singleProject.project.team[0].members);
     }
   }, [allUsers, singleProject]);
 
@@ -98,7 +100,7 @@ const ManageTeam = () => {
           <h1>Project Team</h1>
           <p>{(team && team.length + (managedBy ? 1 : 0)) || 0} team members</p>
 
-          {managedBy && (
+          {managedBy ? (
             <div className="pm">
               <img src={managedBy.avatar} alt="project-manager" />
 
@@ -111,6 +113,16 @@ const ManageTeam = () => {
                   <button type="button">Manage PM</button>
                 </Link>
               </div>
+            </div>
+          ) : (
+            <div className="noManager">
+              <p>No Project Manager Assigned</p>
+
+              {USER_ROLE === "admin" && (
+                <Link to={`/admin/manage-pm/${projectId}`}>
+                  <button>Assign Project Manager</button>
+                </Link>
+              )}
             </div>
           )}
 

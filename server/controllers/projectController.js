@@ -89,7 +89,7 @@ const singleProject = async (req, res) => {
   const { sort, search } = req.query;
 
   const project = await Project.findOne({ _id: projectId }).populate(
-    "managedBy"
+    "managedBy team"
   );
 
   if (!project) {

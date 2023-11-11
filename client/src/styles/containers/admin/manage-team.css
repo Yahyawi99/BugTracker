@@ -67,7 +67,8 @@
     margin-bottom: 5px;
 }
 
-.manageTeam .first-column .pm button {
+.manageTeam .first-column .pm button,
+.manageTeam .first-column .noManager button {
     background-color: var(--main-clr);
     color: var(--white);
     font-weight: 600;
@@ -79,9 +80,21 @@
     padding: 5px 10px;
 }
 
-.manageTeam .first-column .pm button:hover {
+.manageTeam .first-column .pm button:hover,
+.manageTeam .first-column .noManager button:hover {
     background-color: transparent;
     color: var(--main-clr);
+}
+
+.manageTeam .first-column .noManager {
+    border-bottom: 2px solid var(--border-color);
+    padding: 10px 0;
+}
+
+.manageTeam .first-column .noManager p {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0px 0 5px 0;
 }
 
 /* team */

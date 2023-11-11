@@ -59,6 +59,8 @@ const ProjectDetails = () => {
       },
       tickets,
     } = singleProject;
+
+    var members = team[0]?.members;
   }
 
   return (
@@ -155,7 +157,9 @@ const ProjectDetails = () => {
             {
               <div className="row-three">
                 <h3>Project Team</h3>
-                <p>{team && team.length} team members</p>
+
+                <p>{members && members.length} team members</p>
+
                 {managedBy ? (
                   <div key={managedBy._id} className="manager">
                     <img
@@ -175,13 +179,15 @@ const ProjectDetails = () => {
                     <p>No Project Manager Assigned</p>
 
                     {USER_ROLE === "admin" && (
-                      <button>Assign Project Manager</button>
+                      <Link to={`/admin/manage-pm/${projectId}`}>
+                        <button>Assign Project Manager</button>
+                      </Link>
                     )}
                   </div>
                 )}
                 <div className="team">
-                  {team &&
-                    team.map((user) => {
+                  {members &&
+                    members.map((user) => {
                       const { _id, name, avatar, role } = user;
 
                       return (
