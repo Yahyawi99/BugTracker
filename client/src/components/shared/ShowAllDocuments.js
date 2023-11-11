@@ -128,6 +128,8 @@ const Projects = ({ projects, archiveController }) => {
           isArchived,
         } = project;
 
+        const members = { ...team }[0].members;
+
         return (
           <div key={_id} className="document project">
             <div className="title">
@@ -168,8 +170,8 @@ const Projects = ({ projects, archiveController }) => {
             </div>
 
             <div className="team">
-              {team.length > 0 &&
-                team.map((user) => {
+              {members?.length > 0 &&
+                members.map((user) => {
                   const { _id, avatar } = user;
                   return (
                     <Link key={_id} to={`/profile/member-profile/${_id}`}>

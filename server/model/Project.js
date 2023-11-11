@@ -144,7 +144,7 @@ ProjectSchema.methods.projectTeam = async function (UserModel) {
     }, [])
     .forEach((devId) => {
       if (!membersIds.includes(devId)) {
-        membersIds.push(devId._id);
+        membersIds.push(devId);
       }
     });
 
