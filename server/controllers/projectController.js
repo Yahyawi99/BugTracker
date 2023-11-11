@@ -26,7 +26,7 @@ const allProjects = async (req, res) => {
   projects = projects
     .populate({
       path: "managedBy tickets team",
-      // select: "name avatar",
+      select: "name avatar members",
     })
     .skip(skip)
     .limit(limit);
@@ -57,6 +57,12 @@ const allProjects = async (req, res) => {
   }
 
   projects = await projects;
+
+  // Create Team Arr
+  projects.forEach(async (project) => {
+    await project.projectTeam(User);
+    await project.save();
+  });
 
   // *************
   if (isArchived === "all") {

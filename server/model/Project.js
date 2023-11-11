@@ -115,7 +115,7 @@ ProjectSchema.virtual("team", {
 //   this.team = teamMembers;
 // };
 
-ProjectSchema.pre("save", async function () {
+ProjectSchema.methods.projectTeam = async function (UserModel) {
   //  Manager
   const projectTeam = await Team.findOne({ project: this._id });
 
@@ -123,34 +123,73 @@ ProjectSchema.pre("save", async function () {
     await Team.create({ project: this._id });
     return;
   }
+  const membersIds = [];
 
   const managerId = this.managedBy?._id;
 
-  if (managerId && !projectTeam.membersIds.includes(managerId)) {
-    projectTeam.membersIds.push(managerId);
+  if (managerId && !membersIds.includes(managerId)) {
+    membersIds.push(managerId);
   }
 
   // Devs
-  const associatedTickets = await Ticket.find({ project: this._id }).populate(
-    "assignedTo"
-  );
+  const associatedTickets = await Ticket.find({ project: this._id });
 
   associatedTickets
     .map((ticket) => ticket.assignedTo)
-    .reduce((acc, prev) => {
-      if (!acc.includes(prev)) {
-        acc.push(prev);
+    .reduce((acc, id) => {
+      if (id && !acc.includes(id)) {
+        acc.push(id);
       }
       return acc;
     }, [])
     .forEach((devId) => {
-      if (devId && !projectTeam.membersIds.includes(devId)) {
-        projectTeam.membersIds.push(devId._id);
+      if (!membersIds.includes(devId)) {
+        membersIds.push(devId._id);
       }
     });
 
+  const members = await UserModel.find({ _id: { $in: membersIds } });
+
+  projectTeam.members = members;
   await projectTeam.save();
-});
+};
+
+// ProjectSchema.pre("save", async function () {
+//   //  Manager
+//   const projectTeam = await Team.findOne({ project: this._id });
+
+//   if (!projectTeam) {
+//     await Team.create({ project: this._id });
+//     return;
+//   }
+
+//   const managerId = this.managedBy?._id;
+
+//   if (managerId && !projectTeam.membersIds.includes(managerId)) {
+//     projectTeam.membersIds.push(managerId);
+//   }
+
+//   // Devs
+//   const associatedTickets = await Ticket.find({ project: this._id }).populate(
+//     "assignedTo"
+//   );
+
+//   associatedTickets
+//     .map((ticket) => ticket.assignedTo)
+//     .reduce((acc, prev) => {
+//       if (!acc.includes(prev)) {
+//         acc.push(prev);
+//       }
+//       return acc;
+//     }, [])
+//     .forEach((devId) => {
+//       if (devId && !projectTeam.membersIds.includes(devId)) {
+//         projectTeam.membersIds.push(devId._id);
+//       }
+//     });
+
+//   await projectTeam.save();
+// });
 
 // ProjectSchema.methods.projectTeam = async function (UserModel) {
 //   const team = await Team.findOne({ project: this._id });

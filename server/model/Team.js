@@ -1,19 +1,16 @@
 const mongoose = require("mongoose");
 
-const ProjectTeamSchema = new mongoose.Schema(
-  {
-    project: {
-      type: mongoose.Types.ObjectId,
-      ref: "Project",
-      required: true,
-    },
-
-    membersIds: {
-      type: Array,
-      default: [],
-    },
+const ProjectTeamSchema = new mongoose.Schema({
+  project: {
+    type: mongoose.Types.ObjectId,
+    ref: "Project",
+    required: true,
   },
-  { timestamps: true }
-);
+
+  members: {
+    type: Array,
+    default: [],
+  },
+});
 
 module.exports = mongoose.model("Team", ProjectTeamSchema);
