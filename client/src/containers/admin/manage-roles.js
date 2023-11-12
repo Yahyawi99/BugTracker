@@ -48,7 +48,13 @@ const ManageRoles = () => {
               isArchived={"all"}
             />
 
-            <Table data={allUsers?.users} updateUser={updateCurrentUser} />
+            <Table
+              data={allUsers}
+              updateUser={updateCurrentUser}
+              getAllUsers={getAllUsers}
+              limit={limit}
+              searchInput={searchInput}
+            />
 
             {/* <Labels
               labels={labels}
@@ -87,7 +93,11 @@ const ManageRoles = () => {
 };
 
 // ***********************************
-const Table = ({ data, updateUser }) => {
+const Table = ({ data, updateUser, getAllUsers, limit, searchInput }) => {
+  var { numOfPages, currentPage, count, totalUsers } = data;
+
+  var numOfpagesArr = Array.from({ length: numOfPages }, (_, i) => i + 1);
+
   return (
     <table summary="All company members">
       <colgroup>
@@ -113,8 +123,8 @@ const Table = ({ data, updateUser }) => {
       </thead>
 
       <tbody>
-        {data &&
-          data.map((member) => {
+        {data.users &&
+          data.users.map((member) => {
             return (
               <tr key={member._id}>
                 <Member member={member} updateUser={updateUser} />
@@ -125,10 +135,10 @@ const Table = ({ data, updateUser }) => {
 
       <tfoot>
         <tr>
-          {/* <td colSpan="4">
+          <td colSpan="5">
             <div>
               <p className="count">
-                {count ? count : 0} out of {totalProjects} documents
+                {count ? count : 0} out of {totalUsers} documents
               </p>
 
               <div className="pagination">
@@ -138,12 +148,7 @@ const Table = ({ data, updateUser }) => {
                       <button
                         className="prevPage"
                         onClick={() => {
-                          getAllProjects(
-                            currentPage - 1,
-                            "",
-                            limit,
-                            searchInput
-                          );
+                          getAllUsers(currentPage - 1, "", limit, searchInput);
                         }}
                       >
                         previous
@@ -157,7 +162,7 @@ const Table = ({ data, updateUser }) => {
                             <p
                               key={num}
                               onClick={() => {
-                                getAllProjects(num, "", limit, searchInput);
+                                getAllUsers(num, "", limit, searchInput);
                               }}
                               className={`${
                                 currentPage === num && "viewedPage"
@@ -173,12 +178,7 @@ const Table = ({ data, updateUser }) => {
                       <button
                         className="nextPage"
                         onClick={() => {
-                          getAllProjects(
-                            currentPage + 1,
-                            "",
-                            limit,
-                            searchInput
-                          );
+                          getAllUsers(currentPage + 1, "", limit, searchInput);
                         }}
                       >
                         next
@@ -188,7 +188,7 @@ const Table = ({ data, updateUser }) => {
                 )}
               </div>
             </div>
-          </td> */}
+          </td>
         </tr>
       </tfoot>
     </table>
