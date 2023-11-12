@@ -126,9 +126,11 @@ const Table = ({ data, updateUser, getAllUsers, limit, searchInput }) => {
         {data.users &&
           data.users.map((member) => {
             return (
-              <tr key={member._id}>
-                <Member member={member} updateUser={updateUser} />
-              </tr>
+              member.role !== "admin" && (
+                <tr key={member._id}>
+                  <Member member={member} updateUser={updateUser} />
+                </tr>
+              )
             );
           })}
       </tbody>
@@ -138,7 +140,12 @@ const Table = ({ data, updateUser, getAllUsers, limit, searchInput }) => {
           <td colSpan="5">
             <div>
               <p className="count">
-                {count ? count : 0} out of {totalUsers} documents
+                {count
+                  ? count -
+                    data.users.filter((member) => member.role === "admin")
+                      .length
+                  : 0}{" "}
+                out of {totalUsers} documents
               </p>
 
               <div className="pagination">
