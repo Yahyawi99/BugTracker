@@ -55,36 +55,6 @@ const ManageRoles = () => {
               limit={limit}
               searchInput={searchInput}
             />
-
-            {/* <Labels
-              labels={labels}
-              sortLabels={sortLabels}
-              controller={controller}
-              data={data}
-              states={{ limit, searchInput }}
-              isArchived={isArchived}
-            />
-
-            {sectionName.indexOf("Tickets") !== -1 ? (
-              <Tickets
-                tickets={data.tickets}
-                archiveController={archiveController}
-              />
-            ) : sectionName.indexOf("Projects") !== -1 ? (
-              <Projects
-                projects={data.projects}
-                archiveController={archiveController}
-              />
-            ) : (
-              <Members members={data.users} updateUser={updateUser} />
-            )}
-
-            <Pagination
-              controller={controller}
-              states={{ limit, searchInput }}
-              data={data}
-              isArchived={isArchived}
-            /> */}
           </div>
         </div>
       </div>
@@ -327,16 +297,5 @@ const Member = ({ member, updateUser }) => {
     </>
   );
 };
-
-/* 
-<ShowAllDocuments
-      sectionName="Manage Roles"
-      controller={getAllUsers}
-      updateUser={updateCurrentUser}
-      labels={["Avatar", "Name", "Current Role", "Manage Role", "Action"]}
-      sortLabels={["Name", "Current Role"]}
-      data={allUsers}
-    />
-*/
 
 export default ManageRoles;

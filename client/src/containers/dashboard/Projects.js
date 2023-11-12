@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 // Hooks
 import useProjects from "../../hooks/useProjects";
 // components
-import HomeBtn from "../../components/shared/HomeBtn";
 import LimitAndSearch from "../../components/shared/LimitAndSearch";
 // utils
 import formatDate from "../../utils/formatDate";
@@ -34,7 +33,7 @@ const Projects = () => {
   return (
     data && (
       <section className="projects">
-        <HomeBtn name="Projects" />
+        <h2>Projects</h2>
 
         <div>
           <LimitAndSearch

@@ -25,7 +25,7 @@ const Members = () => {
 
   return (
     <section className="members">
-      <HomeBtn name="Members" />
+      <h2>Members</h2>
 
       <div>
         <LimitAndSearch
