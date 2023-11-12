@@ -44,6 +44,12 @@ const ManageTeam = () => {
 
   useEffect(() => {
     if (allUsers.users && singleProject.project) {
+      setTeam(
+        singleProject.project.team[0].members.filter(
+          (member) => member.role !== "PM"
+        )
+      );
+
       setDevs(() => {
         let newValue = allUsers.users.filter(
           (user) => user.role === "developer" || user.role === "submitter"
@@ -55,12 +61,6 @@ const ManageTeam = () => {
 
         return newValue;
       });
-
-      setTeam(
-        singleProject.project.team[0].members.filter(
-          (member) => member.role !== "PM"
-        )
-      );
     }
   }, [allUsers, singleProject]);
 
