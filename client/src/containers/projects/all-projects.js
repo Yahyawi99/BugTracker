@@ -54,7 +54,6 @@ const AllProjects = () => {
                 searchInput,
                 setSearchInput,
               }}
-              isArchived={false}
             />
 
             <Table
@@ -79,7 +78,7 @@ const Table = ({
   limit,
   searchInput,
 }) => {
-  var { numOfPages, currentPage, count, totalUsers } = data;
+  var { numOfPages, currentPage, count, totalProjects } = data;
 
   var numOfpagesArr = Array.from({ length: numOfPages }, (_, i) => i + 1);
 
@@ -138,7 +137,7 @@ const Table = ({
           <td colSpan="5">
             <div>
               <p className="count">
-                {count ? count : 0} out of {totalUsers} documents
+                {count ? count : 0} out of {totalProjects} documents
               </p>
 
               <div className="pagination">
@@ -332,24 +331,5 @@ const Project = ({ project, archiveProject }) => {
     </>
   );
 };
-
-// return (
-//   <ShowAllDocuments
-//     sectionName="All Projects"
-//     controller={getAllProjects}
-//     archiveProject={archiveProject}
-//     labels={[
-//       "Project",
-//       "End Date",
-//       "Progress",
-//       "Project Manager",
-//       "Team",
-//       "Status",
-//       "Action",
-//     ]}
-//     sortLabels={["Project", "End Date"]}
-//     data={allProjects}
-//   />
-// );
 
 export default AllProjects;
