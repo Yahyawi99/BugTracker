@@ -154,43 +154,44 @@ const ProjectDetails = () => {
               </div>
             </div>
 
-            {
-              <div className="row-three">
-                <h3>Project Team</h3>
+            <div className="row-three">
+              <h3>Project Team</h3>
 
-                <p>{members && members.length} team members</p>
+              <p>{members && members.length} team members</p>
 
-                {managedBy ? (
-                  <div key={managedBy._id} className="manager">
-                    <img
-                      src={managedBy.avatar}
-                      alt="manager"
-                      className="avatar"
-                    />
+              {managedBy ? (
+                <div key={managedBy._id} className="manager">
+                  <img
+                    src={managedBy.avatar}
+                    alt="manager"
+                    className="avatar"
+                  />
 
-                    <div className="managerInfo">
-                      <p className="name">{managedBy.name}</p>
-                      <p>{managedBy.email}</p>
-                      <p>Project Manager</p>
-                    </div>
+                  <div className="managerInfo">
+                    <p className="name">{managedBy.name}</p>
+                    <p>{managedBy.email}</p>
+                    <p>Project Manager</p>
                   </div>
-                ) : (
-                  <div className="noManager">
-                    <p>No Project Manager Assigned</p>
+                </div>
+              ) : (
+                <div className="noManager">
+                  <p>No Project Manager Assigned</p>
 
-                    {USER_ROLE === "admin" && (
-                      <Link to={`/admin/manage-pm/${projectId}`}>
-                        <button>Assign Project Manager</button>
-                      </Link>
-                    )}
-                  </div>
-                )}
-                <div className="team">
-                  {members &&
-                    members.map((user) => {
-                      const { _id, name, avatar, role } = user;
+                  {USER_ROLE === "admin" && (
+                    <Link to={`/admin/manage-pm/${projectId}`}>
+                      <button>Assign Project Manager</button>
+                    </Link>
+                  )}
+                </div>
+              )}
 
-                      return (
+              <div className="team">
+                {members &&
+                  members.map((user) => {
+                    const { _id, name, avatar, role } = user;
+
+                    return (
+                      role !== "PM" && (
                         <div key={_id} className="user">
                           <img src={avatar} alt="user" className="avatar" />
 
@@ -199,17 +200,17 @@ const ProjectDetails = () => {
                             <p className="role">{role}</p>
                           </div>
                         </div>
-                      );
-                    })}
-                </div>
-
-                {(USER_NAME === managedBy?.name || USER_ROLE === "admin") && (
-                  <Link to={`/admin/manage-team/${projectId}`}>
-                    <button type="button">Manage Team</button>
-                  </Link>
-                )}
+                      )
+                    );
+                  })}
               </div>
-            }
+
+              {(USER_NAME === managedBy?.name || USER_ROLE === "admin") && (
+                <Link to={`/admin/manage-team/${projectId}`}>
+                  <button type="button">Manage Team</button>
+                </Link>
+              )}
+            </div>
           </div>
 
           <div className="second-column">

@@ -365,11 +365,6 @@ const assignTeamMembers = async (req, res) => {
 
   const projectTeam = await Team.findOne({ project: projectId });
 
-  if (!projectTeam) {
-    await Team.create({ project: this._id });
-    return;
-  }
-
   projectTeam.members = newTeamArr;
 
   await projectTeam.save();

@@ -56,7 +56,11 @@ const ManageTeam = () => {
         return newValue;
       });
 
-      setTeam(singleProject.project.team[0].members);
+      setTeam(
+        singleProject.project.team[0].members.filter(
+          (member) => member.role !== "PM"
+        )
+      );
     }
   }, [allUsers, singleProject]);
 
