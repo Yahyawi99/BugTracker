@@ -71,6 +71,7 @@
 .manageRoleContainer table th>div svg {
     height: 100%;
     width: 15px;
+    display: flex;
 }
 
 /* Table body */

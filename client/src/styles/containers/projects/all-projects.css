@@ -1,65 +1,111 @@
-/* *********************** */
-/* *********************** */
-/* Header */
-/* Drop down */
-.allProjectsSection .sectionHeader {
-    width: 1595px;
+.projectsContainer>div:nth-child(2) {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 0 20px 20px 20px;
 }
 
-/* ================================ */
-/* ================================ */
-/* ================================ */
-/* labels */
-.allProjectsSection .labels>div {
-    min-width: 200px;
+.projectsContainer>div:nth-child(2)>div {
+    overflow-x: scroll;
 }
 
-.allProjectsSection .labels>div:nth-child(1) {
-    min-width: 350px;
+
+/* =========================== */
+/* =========================== */
+/* =========================== */
+/* Table */
+.projectsContainer table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.allProjectsSection .labels>div:nth-child(5) {
+.projectsContainer table colgroup col:nth-child(1) {
+    width: 25%;
     min-width: 250px;
 }
 
-.allProjectsSection .labels>div:nth-child(6) {
-    min-width: 150px;
+.projectsContainer table colgroup col:nth-child(2) {
+    width: 10%;
+    min-width: 125px;
 }
 
-.allProjectsSection .labels>div:nth-child(7) {
-    min-width: 120px;
+.projectsContainer table colgroup col:nth-child(3) {
+    width: 20%;
+    min-width: 175px;
 }
 
+.projectsContainer table colgroup col:nth-child(4) {
+    width: 15%;
+    min-width: 160px;
+}
 
+.projectsContainer table colgroup col:nth-child(5) {
+    width: 25%;
+    min-width: 200px;
+}
+
+.projectsContainer table colgroup col:nth-child(6) {
+    width: 15%;
+    min-width: 100px;
+}
+
+.projectsContainer table colgroup col:nth-child(7) {
+    width: 15%;
+    min-width: fit-content;
+}
+
+/* Table head */
+.projectsContainer table thead {
+    background-color: var(--black);
+}
+
+.projectsContainer table th>div {
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    margin-right: 5px;
+    padding: 20px 10px;
+}
+
+.projectsContainer table th>div svg {
+    height: 100%;
+    width: 15px;
+    display: flex;
+}
+
+/* Table body */
+.projectsContainer table tbody tr:not(:last-child) {
+    border-bottom: 2px solid var(--border-color);
+}
+
+.projectsContainer table tbody tr td {
+    padding: 15px 10px;
+}
+
+/* Table footer */
+.projectsContainer table tfoot td>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px;
+}
 
 /* =========================== */
 /* =========================== */
 /* =========================== */
 /* Project */
-.allProjectsSection .project>div {
-    min-width: 200px;
-    display: flex;
-    justify-content: flex-start;
-}
-
-/* Title */
-.allProjectsSection .project .title {
-    min-width: 350px;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.allProjectsSection .project .title p:nth-child(1) {
+.projectsContainer .title p:nth-child(1) {
     font-weight: 600;
 }
 
-/* progress */
-.allProjectsSection .progress {
+.projectsContainer .progress {
     flex-direction: column;
     gap: 5px;
 }
 
-.allProjectsSection .progressBar {
+.projectsContainer .progressBar {
     width: 100%;
     height: 5px;
     background-color: var(--main-clr-hover);
@@ -67,59 +113,53 @@
     overflow: hidden;
 }
 
-.allProjectsSection .progressBar>div {
+.projectsContainer .progressBar>div {
     height: 100%;
     background-color: var(--main-clr);
 }
 
-/* Project manager */
-.allProjectsSection .project .pm {
+
+.projectsContainer .pm {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.allProjectsSection img {
+.projectsContainer img {
     width: 40px;
     border-radius: 50%;
     border: 2px solid var(--main-clr);
 }
 
-/* Team */
-.allProjectsSection .project .team {
-    min-width: 250px;
-}
-
-.allProjectsSection .project .team {
+.projectsContainer .team {
     display: flex;
 }
 
-.allProjectsSection .project .team img {
+.projectsContainer .team img {
     cursor: pointer;
     transition: .25s;
 }
 
-.allProjectsSection .project .team img:not(.first) {
+.projectsContainer .team img:not(.first) {
     margin-left: -15px;
 }
 
-.allProjectsSection .project .team img:hover {
-    transform: translateY(-10px);
+.projectsContainer .team img:hover {
+    transform: translateY(-5px);
     z-index: 100;
 }
 
-/* Status */
-.allProjectsSection .project .status {
+.projectsContainer .status {
     min-width: 150px;
 }
 
-.allProjectsSection .project .status {
+.projectsContainer .status {
     display: flex;
     align-items: center;
 }
 
 
-.allProjectsSection .project .status p {
+.projectsContainer .status p {
     width: 90px;
     text-align: center;
     border: 2px solid transparent;
@@ -128,20 +168,64 @@
 
 }
 
-.allProjectsSection .project .status .active {
+.projectsContainer .status .active {
     color: var(--success);
     border-color: var(--success);
 }
 
-.allProjectsSection .project .status .inactive {
+.projectsContainer .status .inactive {
     color: var(--gray);
     border-color: var(--gray);
 }
 
-/* ========================== */
-/* ========================== */
-/* ========================== */
-/* Footer */
-.allProjectsSection .sectionFooter {
-    width: 1595px;
+/* Buttons */
+.projectsContainer .btns {
+    width: fit-content;
+    min-width: 100px;
+}
+
+.projectsContainer .btns {
+    display: flex;
+    gap: 5px;
+    padding-right: 10px;
+}
+
+.projectsContainer .btns button {
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 10px;
+}
+
+.projectsContainer .btns button:hover {
+    color: var(--white);
+}
+
+.projectsContainer .btns .details {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.projectsContainer .btns .details:hover {
+    background-color: var(--blue);
+}
+
+.projectsContainer .btns .edit {
+    border-color: var(--gray);
+    color: var(--gray);
+}
+
+.projectsContainer .btns .edit:hover {
+    background-color: var(--gray);
+}
+
+.projectsContainer .btns .archive {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+.projectsContainer .btns .archive:hover {
+    background-color: var(--danger);
 }

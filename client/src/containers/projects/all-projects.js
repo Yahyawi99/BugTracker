@@ -233,87 +233,103 @@ const Project = ({ project, archiveProject }) => {
   const members = { ...team }[0].members;
 
   return (
-    <td>
-      <div className="title">
-        <p>{name && name}</p>
-        <p>Created {formatDate(startDate)}</p>
-      </div>
+    <>
+      <td>
+        <div className="title">
+          <p>{name && name}</p>
+          <p>Created {formatDate(startDate)}</p>
+        </div>
+      </td>
 
-      <div className="endDate">{endDate && <p> {formatDate(endDate)}</p>}</div>
+      <td>
+        <div className="endDate">
+          {endDate && <p> {formatDate(endDate)}</p>}
+        </div>
+      </td>
 
-      <div className="progress">
-        {endDate && startDate && (
-          <>
-            <div className="progressBar">
-              <div
-                style={{
-                  width: `${progress(startDate, endDate)}%`,
-                }}
-              ></div>
-            </div>
-            <p>{endDate && startDate && progress(startDate, endDate)}%</p>
-          </>
-        )}
-      </div>
+      <td>
+        <div className="progress">
+          {endDate && startDate && (
+            <>
+              <div className="progressBar">
+                <div
+                  style={{
+                    width: `${progress(startDate, endDate)}%`,
+                  }}
+                ></div>
+              </div>
+              <p>{endDate && startDate && progress(startDate, endDate)}%</p>
+            </>
+          )}
+        </div>
+      </td>
 
-      <div className="pm">
-        {managedBy ? (
-          <>
-            <Link to={`/profile/member-profile/${managedBy._id}`}>
-              <img src={`${managedBy.avatar}`} alt="pm" />
-            </Link>
-            <p>{managedBy.name}</p>
-          </>
-        ) : (
-          <p className="unassigned">Unassigned</p>
-        )}
-      </div>
-
-      <div className="team">
-        {members?.length > 0 &&
-          members.map((user) => {
-            const { _id, avatar } = user;
-            return (
-              <Link key={_id} to={`/profile/member-profile/${_id}`}>
-                <img src={`${avatar}`} alt="user" />
+      <td>
+        <div className="pm">
+          {managedBy ? (
+            <>
+              <Link to={`/profile/member-profile/${managedBy._id}`}>
+                <img src={`${managedBy.avatar}`} alt="pm" />
               </Link>
-            );
-          })}
-      </div>
+              <p>{managedBy.name}</p>
+            </>
+          ) : (
+            <p className="unassigned">Unassigned</p>
+          )}
+        </div>
+      </td>
 
-      <div className="status">
-        <p className={`${status}`}>{status}</p>
-      </div>
+      <td>
+        <div className="team">
+          {members?.length > 0 &&
+            members.map((user) => {
+              const { _id, avatar } = user;
+              return (
+                <Link key={_id} to={`/profile/member-profile/${_id}`}>
+                  <img src={`${avatar}`} alt="user" />
+                </Link>
+              );
+            })}
+        </div>
+      </td>
 
-      <div className="btns">
-        <Link to={`/projects/project-details/${_id}`}>
-          <button className="details">
-            <FontAwesomeIcon icon={faEye} />
-          </button>
-        </Link>
+      <td>
+        <div className="status">
+          <p className={`${status}`}>{status}</p>
+        </div>
+      </td>
 
-        {USER_ROLE === "admin" && (
-          <Link to={`/projects/edit-project/${_id}`}>
-            <button className="edit">
-              <FontAwesomeIcon icon={faPencil} />
+      <td>
+        <div className="btns">
+          <Link to={`/projects/project-details/${_id}`}>
+            <button className="details">
+              <FontAwesomeIcon icon={faEye} />
             </button>
           </Link>
-        )}
 
-        {USER_ROLE === "admin" && (
-          <button
-            onClick={() => archiveProject(_id, !isArchived)}
-            className={`${isArchived ? "unarchive" : "archive"}`}
-          >
-            {isArchived ? (
-              <FontAwesomeIcon icon={faBoxOpen} />
-            ) : (
-              <FontAwesomeIcon icon={faBoxArchive} />
-            )}
-          </button>
-        )}
-      </div>
-    </td>
+          {USER_ROLE === "admin" && (
+            <Link to={`/projects/edit-project/${_id}`}>
+              <button className="edit">
+                <FontAwesomeIcon icon={faPencil} />
+              </button>
+            </Link>
+          )}
+
+          {USER_ROLE === "admin" && (
+            <button
+              onClick={() => archiveProject(_id, !isArchived)}
+              className={`${isArchived ? "unarchive" : "archive"}`}
+            >
+              {isArchived ? (
+                <FontAwesomeIcon icon={faBoxOpen} />
+              ) : (
+                <FontAwesomeIcon icon={faBoxArchive} />
+              )}
+            </button>
+          )}
+        </div>
+      </td>
+    </>
   );
 };
 
