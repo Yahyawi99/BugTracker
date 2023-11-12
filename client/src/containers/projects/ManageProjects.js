@@ -46,6 +46,8 @@ const ManageProjects = () => {
               endDate,
             } = project;
 
+            const members = team[0].members;
+
             return (
               <div key={_id} className="project">
                 <div>
@@ -76,9 +78,9 @@ const ManageProjects = () => {
                   <div>
                     <p>Team :</p>
 
-                    {team.length ? (
+                    {members.length ? (
                       <div className="team">
-                        {team.map((user) => {
+                        {members.map((user) => {
                           const { _id, avatar } = user;
 
                           return <img key={_id} src={avatar} alt="user" />;

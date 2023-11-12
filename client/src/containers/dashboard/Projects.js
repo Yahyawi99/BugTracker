@@ -50,7 +50,7 @@ const Projects = () => {
             }}
           />
 
-          <table summary="All company members">
+          <table summary="All company projects">
             <colgroup>
               <col />
               <col />

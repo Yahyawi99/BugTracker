@@ -108,7 +108,7 @@
 }
 
 .ManageProjectsSection .project img:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
 }
 
 .ManageProjectsSection .project>div:nth-child(3) button {
