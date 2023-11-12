@@ -41,27 +41,31 @@ const AllProjects = () => {
       <HomeBtn name="Projects" />
 
       <div>
-        <div>
-          <div>
-            <LimitAndSearch
-              controller={getAllProjects}
-              currentPage={currentPage}
-              states={{
-                limit,
-                setLimit,
-                dropDown,
-                setDropDown,
-                searchInput,
-                setSearchInput,
-              }}
-            />
+        <LimitAndSearch
+          controller={getAllProjects}
+          currentPage={currentPage}
+          states={{
+            limit,
+            setLimit,
+            dropDown,
+            setDropDown,
+            searchInput,
+            setSearchInput,
+          }}
+        />
 
+        <div className="table">
+          <div>
             <Table
               data={allProjects}
               archiveProject={archiveProject}
               getAllProjects={getAllProjects}
               limit={limit}
               searchInput={searchInput}
+              setLimit={setLimit}
+              setSearchInput={setSearchInput}
+              dropDown={dropDown}
+              setDropDown={setDropDown}
             />
           </div>
         </div>

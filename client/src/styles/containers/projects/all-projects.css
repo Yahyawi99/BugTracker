@@ -5,12 +5,11 @@
 }
 
 .projectsContainer>div:nth-child(2)>div {
-    width: 100%;
     overflow-x: scroll;
     display: flex;
 }
 
-.projectsContainer>div:nth-child(2)>div>div {
+.projectsContainer>div:nth-child(2) .table>div {
     width: 100%;
 }
 
@@ -60,7 +59,7 @@
 }
 
 /* Table head */
-.projectsContainer table thead {
+.projectsContainer table thead tr {
     background-color: var(--black);
 }
 
