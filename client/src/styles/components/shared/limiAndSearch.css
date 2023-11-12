@@ -15,7 +15,6 @@
 }
 
 .dropdownContainer {
-    position: relative;
     border: 2px solid var(--border-color);
     margin: 0px 10px;
     padding: 5px 10px;
@@ -43,12 +42,13 @@
     gap: 5px;
     border-radius: 0px;
     position: absolute;
-    left: -2px;
-    top: 35px;
+    left: 63px;
+    top: 70px;
     box-shadow: 0px 0px 5px rgb(0, 0, 0, .5);
     transform: scaleY(0);
     transform-origin: top;
     transition: .25s;
+    z-index: 10;
     padding: 5px 20px;
 }
 

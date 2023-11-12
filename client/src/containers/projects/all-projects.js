@@ -60,12 +60,6 @@ const AllProjects = () => {
               data={allProjects}
               archiveProject={archiveProject}
               getAllProjects={getAllProjects}
-              limit={limit}
-              searchInput={searchInput}
-              setLimit={setLimit}
-              setSearchInput={setSearchInput}
-              dropDown={dropDown}
-              setDropDown={setDropDown}
             />
           </div>
         </div>
@@ -240,7 +234,14 @@ const Project = ({ project, archiveProject }) => {
       <td>
         <div className="title">
           <p>{name && name}</p>
-          <p>Created {formatDate(startDate)}</p>
+          <p>
+            Created{" "}
+            {formatDate(startDate, {
+              month: "long",
+              year: "numeric",
+              day: "2-digit",
+            })}
+          </p>
         </div>
       </td>
 
