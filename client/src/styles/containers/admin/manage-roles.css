@@ -1,76 +1,106 @@
-.manageRolesSection>div {
+.manageRoleContainer>div {
     display: flex;
 }
 
 /* *********************** */
 /* *********************** */
 /* Header */
-/* Drop down */
-.manageRolesSection .sectionHeader {
+.manageRoleContainer .mainSection {
+    width: 100%;
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 0px 20px 20px 20px;
+}
+
+.manageRoleContainer .mainSection>div {
     width: 100%;
 }
 
-/* ================================ */
-/* ================================ */
-/* ================================ */
-/* labels */
-.manageRolesSection .labels>div {
-    min-width: 200px;
+.manageRoleContainer .sectionHeader {
+    width: 100%;
 }
-
-.manageRolesSection .labels>div:nth-child(1) {
-    min-width: 80px;
-}
-
-.manageRolesSection .labels>div:nth-child(2) {
-    min-width: 250px;
-}
-
-.manageRolesSection .labels>div:nth-child(5) {
-    min-width: 120px;
-}
-
-
 
 /* =========================== */
 /* =========================== */
 /* =========================== */
-/* Member */
-.manageRolesSection .member>div {
-    min-width: 200px;
+/* Table */
+.manageRoleContainer table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.manageRoleContainer table colgroup col {
+    min-width: fit-content;
+}
+
+.manageRoleContainer table colgroup col:nth-child(1) {
+    width: 10%;
+}
+
+.manageRoleContainer table colgroup col:nth-child(2) {
+    width: 30%;
+}
+
+.manageRoleContainer table colgroup col:nth-child(3) {
+    width: 20%;
+}
+
+.manageRoleContainer table colgroup col:nth-child(4) {
+    width: 20%;
+}
+
+.manageRoleContainer table colgroup col:nth-child(5) {
+    width: 12%;
+}
+
+/* Table head */
+.manageRoleContainer table thead {
+    background-color: var(--black);
+}
+
+.manageRoleContainer table th>div {
+    color: var(--white);
     display: flex;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    margin-right: 5px;
+    padding: 20px 10px;
 }
 
-.manageRolesSection .member>div:nth-child(5) {
-    min-width: 120px;
+.manageRoleContainer table th>div svg {
+    height: 100%;
+    width: 15px;
 }
 
-/* avatar */
-.manageRolesSection .member .avatar {
-    width: 80px;
-    min-width: 80px;
+/* Table body */
+.manageRoleContainer table tbody tr:not(:last-child) {
+    border-bottom: 2px solid var(--border-color);
 }
 
-.manageRolesSection .member .avatar img {
-    width: 75%;
-    border: 3px solid var(--main-clr);
+.manageRoleContainer table tbody tr td {
+    padding: 10px;
 }
 
-/* name */
-.manageRolesSection .member .nameAndEmail {
-    min-width: 250px;
-    flex-direction: column;
-    gap: 5px;
+.manageRoleContainer .avatar {
+    width: 55px;
+    border: 2px solid var(--main-clr);
+    border-radius: 50%;
+    transition: .25s;
 }
 
-.manageRolesSection .member .nameAndEmail p:nth-child(1) {
+.manageRoleContainer .avatar:hover {
+    transform: translateY(-5px);
+}
+
+.manageRoleContainer .name {
     color: var(--gray-dark);
     font-weight: 600;
+    margin-bottom: 5px;
 }
 
-/* role */
-.manageRolesSection .role p {
+.manageRoleContainer .role {
+    width: fit-content;
     color: var(--blue);
     border: 2px solid var(--blue);
     border-radius: 5px;
@@ -78,11 +108,11 @@
 }
 
 /* Manage Role */
-.manageRolesSection .manageRole {
+.manageRoleContainer .manageRole {
     position: relative;
 }
 
-.manageRolesSection .manageRole>div:nth-child(1) {
+.manageRoleContainer .manageRole>div:nth-child(1) {
     width: 150px;
     display: flex;
     align-items: center;
@@ -96,20 +126,20 @@
     padding: 5px 8px;
 }
 
-.manageRolesSection .manageRole>div:nth-child(1):hover {
+.manageRoleContainer .manageRole>div:nth-child(1):hover {
     opacity: .75;
 }
 
-.manageRolesSection .manageRole .initialValue {
+.manageRoleContainer .manageRole .initialValue {
     color: var(--gray);
 }
 
-.manageRolesSection .manageRole svg {
+.manageRoleContainer .manageRole svg {
     font-size: .8rem;
     color: var(--gray-dark);
 }
 
-.manageRolesSection .manageRole .manageRoleDropdown {
+.manageRoleContainer .manageRole .manageRoleDropdown {
     width: 150px;
     background-color: var(--white);
     border: 1px solid var(--border-color);
@@ -123,7 +153,7 @@
     z-index: 10;
 }
 
-.manageRolesSection .manageRole .manageRoleDropdown p {
+.manageRoleContainer .manageRole .manageRoleDropdown p {
     color: var(--gray-dark);
     display: flex;
     gap: 10px;
@@ -131,18 +161,23 @@
     padding: 10px 0px 10px 5px;
 }
 
-.manageRolesSection .manageRole .manageRoleDropdown p:hover {
+.manageRoleContainer .manageRole .manageRoleDropdown p:hover {
     background-color: var(--border-color);
 }
 
 /* Assign btn */
-.manageRolesSection .btns .assign {
+.manageRoleContainer .btns .assign {
+    background-color: transparent;
     color: var(--green);
     border: 2px solid var(--green);
     font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 8px 15px;
 }
 
-.manageRolesSection .btns .assign:hover {
+.manageRoleContainer .btns .assign:hover {
     background-color: var(--green);
     color: var(--white);
 }
@@ -151,7 +186,7 @@
 /* ========================== */
 /* ========================== */
 /* Footer */
-.manageRolesSection .sectionFooter {
+.manageRoleContainer .sectionFooter {
     width: 100%;
 }
 
@@ -159,6 +194,6 @@
 /* ******************************** */
 /* ******************************** */
 /* Javascript classes */
-.manageRolesSection .manageRole .showManageRoleDropdown {
+.manageRoleContainer .manageRole .showManageRoleDropdown {
     transform: scaleY(1);
 }
