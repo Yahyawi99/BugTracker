@@ -184,9 +184,16 @@
     bottom: -10px !important;
 }
 
+/* =================================== */
+/* =================================== */
+/* =================================== */
+/* =================================== */
+/* =================================== */
+
 /* Members and projects */
 .dashboard-Container .membersAndProjectsContainer {
     display: flex;
+    flex-wrap: wrap;
     gap: 15px;
     margin-bottom: 25px;
 }
@@ -196,7 +203,8 @@
 /* ******************************** */
 /* Members */
 .dashboard-Container .members {
-    min-width: 500px;
+    flex: 1;
+    min-width: fit-content;
     background-color: var(--white);
     border-radius: 10px;
     padding: 20px;
@@ -227,6 +235,7 @@
 /* Table head */
 .dashboard-Container table th {
     background-color: var(--black);
+    word-wrap: normal;
     padding: 20px 0px 20px 5px;
 }
 
@@ -285,8 +294,9 @@
 /* ************************ */
 /* projects */
 .dashboard-Container .projects {
-    height: fit-content;
     flex: 1;
+    height: fit-content;
+    min-width: fit-content;
     background-color: var(--white);
     border-radius: 10px;
     padding: 20px;
@@ -355,9 +365,10 @@
 .dashboard-Container .projects .startDate,
 .dashboard-Container .projects .endDate {
     width: fit-content;
+    font-size: .8rem;
     border: 2px solid;
     border-radius: 5px;
-    padding: 5px 10px;
+    padding: 5px;
 }
 
 .dashboard-Container .projects .startDate {
