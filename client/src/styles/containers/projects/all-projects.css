@@ -25,19 +25,22 @@
     border-collapse: collapse;
 }
 
+.projectsContainer table colgroup col {
+    min-width: fit-content;
+}
+
 .projectsContainer table colgroup col:nth-child(1) {
     width: 25%;
-    min-width: 250px;
+    min-width: 200px;
 }
 
 .projectsContainer table colgroup col:nth-child(2) {
     width: 10%;
-    min-width: 125px;
+    min-width: 110px;
 }
 
 .projectsContainer table colgroup col:nth-child(3) {
     width: 20%;
-    min-width: 175px;
 }
 
 .projectsContainer table colgroup col:nth-child(4) {
@@ -47,17 +50,15 @@
 
 .projectsContainer table colgroup col:nth-child(5) {
     width: 25%;
-    min-width: 200px;
+    min-width: 125px;
 }
 
 .projectsContainer table colgroup col:nth-child(6) {
     width: 15%;
-    min-width: 100px;
 }
 
 .projectsContainer table colgroup col:nth-child(7) {
     width: 15%;
-    min-width: fit-content;
 }
 
 /* Table head */
@@ -79,6 +80,7 @@
     height: 100%;
     width: 15px;
     display: flex;
+    margin-left: 5px;
 }
 
 /* Table body */
@@ -150,10 +152,6 @@
 .projectsContainer .team img:hover {
     transform: translateY(-5px);
     z-index: 100;
-}
-
-.projectsContainer .status {
-    min-width: 150px;
 }
 
 .projectsContainer .status {
@@ -231,4 +229,13 @@
 
 .projectsContainer .btns .archive:hover {
     background-color: var(--danger);
+}
+
+.projectsContainer .btns .unarchive {
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.projectsContainer .btns .unarchive:hover {
+    background-color: var(--success);
 }

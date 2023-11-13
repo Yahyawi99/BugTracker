@@ -337,26 +337,4 @@ const Project = ({ project, archiveProject }) => {
   );
 };
 
-/*  
-
-return (
-    <ShowAllDocuments
-      sectionName="My Projects"
-      controller={getUserProjects}
-      archiveController={archiveProject}
-      labels={[
-        "Project",
-        "End Date",
-        "Progress",
-        "Project Manager",
-        "Team",
-        "Status",
-        "Action",
-      ]}
-      sortLabels={["Project", "End Date"]}
-      data={userProjects}
-    />
-  );
-*/
-
 export default MyProjects;
