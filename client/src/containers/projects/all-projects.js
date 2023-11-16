@@ -76,9 +76,9 @@ const Table = ({
   limit,
   searchInput,
 }) => {
-  var { numOfPages, currentPage, count, totalProjects } = data;
+  const { numOfPages, currentPage, count, totalProjects } = data;
 
-  var numOfpagesArr = Array.from({ length: numOfPages }, (_, i) => i + 1);
+  const numOfpagesArr = Array.from({ length: numOfPages }, (_, i) => i + 1);
 
   return (
     <table summary="Company Projects">

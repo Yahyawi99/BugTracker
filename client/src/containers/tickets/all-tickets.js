@@ -1,32 +1,311 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+// icons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faEye,
+  faPencil,
+  faBoxOpen,
+  faBoxArchive,
+} from "@fortawesome/free-solid-svg-icons";
 // hooks
 import useTickets from "../../hooks/useTickets";
-// components
-import ShowAllDocuments from "../../components/shared/ShowAllDocuments";
+// utils
+import formatDate from "../../utils/formatDate";
+// Components
+import LimitAndSearch from "../../components/shared/LimitAndSearch";
+import HomeBtn from "../../components/shared/HomeBtn";
 // css
 import "../../styles/containers/tickets/all-tickets.css";
+
+const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
 
 const AllTickets = () => {
   const { getAllTickets, allTickets, archiveTicket } = useTickets();
 
+  const [limit, setLimit] = useState(5);
+  const [dropDown, setDropDown] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+
+  useEffect(() => {
+    getAllTickets(1, "", limit, searchInput);
+  }, []);
+
+  if (allTickets) {
+    var { currentPage } = allTickets;
+  }
+
   return (
-    <ShowAllDocuments
-      sectionName="All Tickets"
-      controller={getAllTickets}
-      archiveController={archiveTicket}
-      labels={[
-        "Assigned by",
-        "Assigned to",
-        "Title",
-        "Status",
-        "Priority",
-        "Date",
-        "Action",
-      ]}
-      sortLabels={["Title", "Date", "Priority"]}
-      data={allTickets}
-    />
+    <section className="ticketsContainer">
+      <HomeBtn name="Tickets" />
+
+      <div>
+        <LimitAndSearch
+          controller={getAllTickets}
+          currentPage={currentPage}
+          states={{
+            limit,
+            setLimit,
+            dropDown,
+            setDropDown,
+            searchInput,
+            setSearchInput,
+          }}
+        />
+
+        <div className="table">
+          <div>
+            <Table
+              getAllTickets={getAllTickets}
+              archiveTicket={archiveTicket}
+              data={allTickets}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// *********************************
+const Table = ({ data, archiveTicket, getAllTickets, limit, searchInput }) => {
+  const { tickets, numOfPages, currentPage, count, totalTickets } = data;
+
+  const numOfpagesArr = Array.from({ length: numOfPages }, (_, i) => i + 1);
+
+  return (
+    <table summary="Company Tickets">
+      <colgroup>
+        <col />
+        <col />
+        <col />
+        <col />
+        <col />
+        <col />
+        <col />
+      </colgroup>
+
+      <thead>
+        <tr>
+          {[
+            "Assigned by",
+            "Assigned to",
+            "Title",
+            "Status",
+            "Priority",
+            "Date",
+            "Action",
+          ].map((value, i) => {
+            return (
+              <th key={i}>
+                <TableHead value={value} />
+              </th>
+            );
+          })}
+        </tr>
+      </thead>
+
+      <tbody>
+        {tickets && tickets.length > 0 ? (
+          tickets.map((ticket) => {
+            return (
+              <tr key={ticket._id}>
+                <Ticket ticket={ticket} archiveTicket={archiveTicket} />
+              </tr>
+            );
+          })
+        ) : (
+          <tr colSpan="7">
+            <td>
+              <p className="noDocuments">No tickets to show</p>
+            </td>
+          </tr>
+        )}
+      </tbody>
+    </table>
+  );
+};
+
+const TableHead = ({ value }) => {
+  return (
+    <div>
+      <p>{value}</p>
+
+      {value !== "Action" && value !== "Manage Role" && (
+        <i className="on">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 0l-8 10h16l-8-10zm3.839 16l-3.839 4.798-3.839-4.798h7.678zm4.161-2h-16l8 10 8-10z" />
+          </svg>
+        </i>
+      )}
+    </div>
+  );
+};
+
+const Ticket = ({ ticket, archiveTicket }) => {
+  const {
+    _id,
+    assignedTo,
+    assignedBy,
+    title,
+    status,
+    priority,
+    createdAt,
+    isArchived,
+  } = ticket;
+
+  return (
+    <>
+      <td>
+        <div className="assignedBy">
+          <p>{assignedBy?.name}</p>
+        </div>
+      </td>
+
+      <td>
+        <div className="assignedTo">
+          {assignedTo ? (
+            <p>{assignedTo.name}</p>
+          ) : (
+            <p className="unassigned">Unassigned</p>
+          )}
+        </div>
+      </td>
+
+      <td>
+        <div className="title">
+          <p>{title}</p>
+        </div>
+      </td>
+
+      <td>
+        <div className="status">
+          <p className={`${status}`}>{status}</p>
+        </div>
+      </td>
+
+      <td>
+        <div className="priority">
+          <p className={`${priority}`}>{priority}</p>
+        </div>
+      </td>
+
+      <td>
+        <div className="date">
+          <p>{createdAt ? formatDate(createdAt) : ""}</p>
+        </div>
+      </td>
+
+      <td>
+        <div className="btns">
+          <Link to={`/tickets/ticket-details/${_id}`}>
+            <button className="details">
+              <FontAwesomeIcon icon={faEye} />
+            </button>
+          </Link>
+
+          {USER_ROLE === "admin" && (
+            <Link to={`/tickets/edit-ticket/${_id}`}>
+              <button className="edit">
+                <FontAwesomeIcon icon={faPencil} />
+              </button>
+            </Link>
+          )}
+
+          {USER_ROLE === "admin" && (
+            <button
+              className={`${isArchived ? "unarchive" : "archive"}`}
+              onClick={() => archiveTicket(_id, !isArchived)}
+            >
+              <FontAwesomeIcon icon={faBoxArchive} />
+            </button>
+          )}
+        </div>
+      </td>
+    </>
   );
 };
 
 export default AllTickets;
+
+/*
+
+      <tfoot>
+        <tr>
+          <td colSpan="5">
+            <div>
+              <p className="count">
+                {count ? count : 0} out of {totalProjects} documents
+              </p>
+
+              <div className="pagination">
+                {numOfPages > 1 && (
+                  <>
+                    {currentPage > 1 && (
+                      <button
+                        className="prevPage"
+                        onClick={() => {
+                          getAllProjects(
+                            currentPage - 1,
+                            "",
+                            limit,
+                            searchInput
+                          );
+                        }}
+                      >
+                        previous
+                      </button>
+                    )}
+
+                    <div className="pages">
+                      {numOfpagesArr &&
+                        numOfpagesArr.map((num) => {
+                          return (
+                            <p
+                              key={num}
+                              onClick={() => {
+                                getAllProjects(num, "", limit, searchInput);
+                              }}
+                              className={`${
+                                currentPage === num && "viewedPage"
+                              }`}
+                            >
+                              {num}
+                            </p>
+                          );
+                        })}
+                    </div>
+
+                    {currentPage < numOfPages && (
+                      <button
+                        className="nextPage"
+                        onClick={() => {
+                          getAllProjects(
+                            currentPage + 1,
+                            "",
+                            limit,
+                            searchInput
+                          );
+                        }}
+                      >
+                        next
+                      </button>
+                    )}
+                  </>
+                )}
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tfoot>
+
+      
+
+
+export default AllProjects;
+*/

@@ -1,55 +1,110 @@
-/* *********************** */
-/* *********************** */
-/* Header */
-/* Drop down */
-.allTicketsSection .sectionHeader {
-    width: 1345px;
+.ticketsContainer>div:nth-child(2) {
+    background-color: var(--white);
+    border-radius: 10px;
+    position: relative;
+    padding: 0 20px 20px 20px;
 }
 
-
-/* ================================ */
-/* ================================ */
-/* ================================ */
-/* labels */
-.allTicketsSection .labels>div {
-    min-width: 150px;
-}
-
-.allTicketsSection .labels>div:nth-child(3) {
-    min-width: 350px;
-}
-
-
-.allTicketsSection .labels>div:nth-child(7) {
-    min-width: 120px;
-}
-
-/* =========================== */
-/* =========================== */
-/* =========================== */
-/* Ticket */
-.allTicketsSection .ticket>div {
-    min-width: 150px;
+.ticketsContainer>div:nth-child(2)>div {
+    overflow-x: scroll;
     display: flex;
-    justify-content: flex-start;
+}
+
+.ticketsContainer>div:nth-child(2) .table>div {
+    width: 100%;
+    z-index: 0;
+}
+
+/* =========================== */
+/* =========================== */
+/* =========================== */
+/* table */
+.ticketsContainer table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ticketsContainer table colgroup col {
+    min-width: fit-content;
+}
+
+.ticketsContainer table colgroup col:nth-child(1) {
+    width: 25%;
+    min-width: 125px;
+}
+
+.ticketsContainer table colgroup col:nth-child(2) {
+    width: 10%;
+    min-width: 125px;
+}
+
+.ticketsContainer table colgroup col:nth-child(3) {
+    width: 20%;
+    min-width: 200px;
+}
+
+.ticketsContainer table colgroup col:nth-child(4) {
+    width: 15%;
+}
+
+.ticketsContainer table colgroup col:nth-child(5) {
+    width: 25%;
+}
+
+.ticketsContainer table colgroup col:nth-child(6) {
+    width: 15%;
+}
+
+.ticketsContainer table colgroup col:nth-child(7) {
+    width: 15%;
+}
+
+/* Table head */
+.ticketsContainer table thead tr {
+    background-color: var(--black);
+}
+
+.ticketsContainer table th>div {
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    margin-right: 5px;
+    padding: 20px 10px;
+}
+
+.ticketsContainer table th>div svg {
+    height: 100%;
+    width: 15px;
+    display: flex;
+    margin-left: 5px;
+}
+
+/* Ticket */
+.ticketsContainer table tbody tr:not(:last-child) {
+    border-bottom: 2px solid var(--border-color);
+}
+
+.ticketsContainer table tbody tr td {
+    padding: 15px 10px;
 }
 
 /* Title */
-.allTicketsSection .ticket .title {
-    min-width: 350px;
+.ticketsContainer table .title {
     font-weight: 600;
 }
 
 
 /* Status */
-.allTicketsSection .ticket .status {
+.ticketsContainer table .status {
     display: flex;
     align-items: center;
 }
 
 
-.allTicketsSection .ticket .status p,
-.allTicketsSection .ticket .priority p {
+.ticketsContainer table .status p,
+.ticketsContainer table .priority p {
     width: fit-content;
     border: 2px solid transparent;
     border-radius: 5px;
@@ -57,65 +112,39 @@
 
 }
 
-.allTicketsSection .ticket .status .development {
+.ticketsContainer table .status .development {
     color: var(--blue);
     border-color: var(--blue);
 }
 
-.allTicketsSection .ticket .status .resolved {
+.ticketsContainer table .status .resolved {
     color: var(--success);
     border-color: var(--success);
 }
 
-.allTicketsSection .ticket .status .new {
+.ticketsContainer table .status .new {
     color: var(--gray);
     border-color: var(--gray);
 }
 
 /* Priority */
-.allTicketsSection .ticket .priority .urgent {
+.ticketsContainer table .priority .urgent {
     color: var(--danger);
     border-color: var(--danger);
 }
 
-.allTicketsSection .ticket .priority .high {
+.ticketsContainer table .priority .high {
     color: var(--orange);
     border-color: var(--orange);
 }
 
-.allTicketsSection .ticket .priority .low {
+.ticketsContainer table .priority .low {
     color: var(--gray);
     border-color: var(--gray);
 }
 
-/*  assigned/unassigned*/
-.allTicketsSection .ticket .unassigned {
+/* unassigned*/
+.ticketsContainer table .unassigned {
     color: var(--gray);
     text-decoration: 2px line-through;
-}
-
-.allTicketsSection .ticket .assignDevBtn {
-    background-color: var(--blue);
-    color: var(--white);
-    font-weight: 600;
-    border: 2px solid transparent;
-    border-radius: 5px;
-    font-size: .9rem;
-    cursor: pointer;
-    transition: .25s;
-    padding: 10px 15px;
-}
-
-.allTicketsSection .ticket .assignDevBtn:hover {
-    background-color: transparent;
-    color: var(--blue);
-    border-color: var(--blue);
-}
-
-/* ========================== */
-/* ========================== */
-/* ========================== */
-/* Footer */
-.allTicketsSection .sectionFooter {
-    width: 1345px;
 }
