@@ -113,7 +113,7 @@ const Table = ({
       </thead>
 
       <tbody>
-        {data.projects.length > 0 ? (
+        {data.projects && data.projects.length > 0 ? (
           data.projects.map((project) => {
             return (
               <tr key={project._id}>
