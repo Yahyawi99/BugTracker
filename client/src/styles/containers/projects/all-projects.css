@@ -181,14 +181,8 @@
 
 /* Buttons */
 .projectsContainer .btns {
-    width: fit-content;
-    min-width: 100px;
-}
-
-.projectsContainer .btns {
     display: flex;
     gap: 5px;
-    padding-right: 10px;
 }
 
 .projectsContainer .btns button {

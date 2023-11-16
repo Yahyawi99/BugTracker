@@ -148,3 +148,58 @@
     color: var(--gray);
     text-decoration: 2px line-through;
 }
+
+/* Buttons */
+.ticketsContainer .btns {
+    display: flex;
+    gap: 5px;
+}
+
+.ticketsContainer .btns button {
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 10px;
+}
+
+.ticketsContainer .btns button:hover {
+    color: var(--white);
+}
+
+.ticketsContainer .btns .details {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.ticketsContainer .btns .details:hover {
+    background-color: var(--blue);
+}
+
+.ticketsContainer .btns .edit {
+    border-color: var(--gray);
+    color: var(--gray);
+}
+
+.ticketsContainer .btns .edit:hover {
+    background-color: var(--gray);
+}
+
+.ticketsContainer .btns .archive {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+.ticketsContainer .btns .archive:hover {
+    background-color: var(--danger);
+}
+
+.ticketsContainer .btns .unarchive {
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.ticketsContainer .btns .unarchive:hover {
+    background-color: var(--success);
+}
