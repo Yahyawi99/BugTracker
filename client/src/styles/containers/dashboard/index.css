@@ -184,6 +184,8 @@
     bottom: -10px !important;
 }
 
+
+
 /* =================================== */
 /* =================================== */
 /* =================================== */
@@ -196,6 +198,15 @@
     flex-wrap: wrap;
     gap: 15px;
     margin-bottom: 25px;
+}
+
+/* Drop down */
+.dashboard-Container .membersAndProjectsContainer>section {
+    position: relative;
+}
+
+.dashboard-Container .membersAndProjectsContainer>section .limitControl .dropDown {
+    top: 118px;
 }
 
 /* ******************************** */
