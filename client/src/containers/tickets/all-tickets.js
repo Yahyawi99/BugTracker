@@ -115,8 +115,8 @@ const Table = ({ data, archiveTicket, getAllTickets, limit, searchInput }) => {
             );
           })
         ) : (
-          <tr colSpan="7">
-            <td>
+          <tr>
+            <td colSpan="7">
               <p className="noDocuments">No tickets to show</p>
             </td>
           </tr>

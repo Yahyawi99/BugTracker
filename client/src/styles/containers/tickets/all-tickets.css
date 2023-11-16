@@ -212,3 +212,12 @@
     flex-wrap: wrap;
     margin: 20px 10px 30px 10px;
 }
+
+/* No documents */
+.ticketsContainer .noDocuments {
+    color: var(--gray-dark);
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 20px;
+}
