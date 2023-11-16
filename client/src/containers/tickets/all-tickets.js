@@ -122,6 +122,75 @@ const Table = ({ data, archiveTicket, getAllTickets, limit, searchInput }) => {
           </tr>
         )}
       </tbody>
+
+      <tfoot>
+        <tr>
+          <td colSpan="5">
+            <div>
+              <p className="count">
+                {count ? count : 0} out of {totalTickets} documents
+              </p>
+
+              <div className="pagination">
+                {numOfPages > 1 && (
+                  <>
+                    {currentPage > 1 && (
+                      <button
+                        className="prevPage"
+                        onClick={() => {
+                          getAllTickets(
+                            currentPage - 1,
+                            "",
+                            limit,
+                            searchInput
+                          );
+                        }}
+                      >
+                        previous
+                      </button>
+                    )}
+
+                    <div className="pages">
+                      {numOfpagesArr &&
+                        numOfpagesArr.map((num) => {
+                          return (
+                            <p
+                              key={num}
+                              onClick={() => {
+                                getAllTickets(num, "", limit, searchInput);
+                              }}
+                              className={`${
+                                currentPage === num && "viewedPage"
+                              }`}
+                            >
+                              {num}
+                            </p>
+                          );
+                        })}
+                    </div>
+
+                    {currentPage < numOfPages && (
+                      <button
+                        className="nextPage"
+                        onClick={() => {
+                          getAllTickets(
+                            currentPage + 1,
+                            "",
+                            limit,
+                            searchInput
+                          );
+                        }}
+                      >
+                        next
+                      </button>
+                    )}
+                  </>
+                )}
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tfoot>
     </table>
   );
 };
@@ -235,75 +304,7 @@ export default AllTickets;
 
 /*
 
-      <tfoot>
-        <tr>
-          <td colSpan="5">
-            <div>
-              <p className="count">
-                {count ? count : 0} out of {totalProjects} documents
-              </p>
-
-              <div className="pagination">
-                {numOfPages > 1 && (
-                  <>
-                    {currentPage > 1 && (
-                      <button
-                        className="prevPage"
-                        onClick={() => {
-                          getAllProjects(
-                            currentPage - 1,
-                            "",
-                            limit,
-                            searchInput
-                          );
-                        }}
-                      >
-                        previous
-                      </button>
-                    )}
-
-                    <div className="pages">
-                      {numOfpagesArr &&
-                        numOfpagesArr.map((num) => {
-                          return (
-                            <p
-                              key={num}
-                              onClick={() => {
-                                getAllProjects(num, "", limit, searchInput);
-                              }}
-                              className={`${
-                                currentPage === num && "viewedPage"
-                              }`}
-                            >
-                              {num}
-                            </p>
-                          );
-                        })}
-                    </div>
-
-                    {currentPage < numOfPages && (
-                      <button
-                        className="nextPage"
-                        onClick={() => {
-                          getAllProjects(
-                            currentPage + 1,
-                            "",
-                            limit,
-                            searchInput
-                          );
-                        }}
-                      >
-                        next
-                      </button>
-                    )}
-                  </>
-                )}
-              </div>
-            </div>
-          </td>
-        </tr>
-      </tfoot>
-
+      
       
 
 
