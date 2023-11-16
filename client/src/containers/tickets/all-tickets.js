@@ -125,7 +125,7 @@ const Table = ({ data, archiveTicket, getAllTickets, limit, searchInput }) => {
 
       <tfoot>
         <tr>
-          <td colSpan="5">
+          <td colSpan="7">
             <div>
               <p className="count">
                 {count ? count : 0} out of {totalTickets} documents

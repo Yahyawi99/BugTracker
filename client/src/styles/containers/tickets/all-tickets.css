@@ -203,3 +203,12 @@
 .ticketsContainer .btns .unarchive:hover {
     background-color: var(--success);
 }
+
+/* Table footer */
+.ticketsContainer table tfoot td>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px 10px 10px 10px;
+}
