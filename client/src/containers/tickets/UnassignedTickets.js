@@ -13,29 +13,16 @@ import useTickets from "../../hooks/useTickets";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
 import LimitAndSearch from "../../components/shared/LimitAndSearch";
-import Labels from "../../components/shared/Labels";
-import Pagination from "../../components/shared/Pagination";
 // css
 import "../../styles/containers/tickets/all-tickets.css";
-import "../../styles/components/shared/showAllDocuments.css";
+import "../../styles/containers/tickets/unassignedTickets.css";
+
+const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
 
 const UnassignedTickets = () => {
   const { unassignedTickets, allTickets, archiveTicket } = useTickets();
 
-  const labels = [
-    "Assigned by",
-    "Assigned to",
-    "Title",
-    "Status",
-    "Priority",
-    "Date",
-    "Action",
-  ];
-  const sortLabels = ["Title", "Date", "Priority"];
-
-  const { currentPage } = allTickets;
-
-  const [limit, setLimit] = useState(3);
+  const [limit, setLimit] = useState(5);
   const [dropDown, setDropDown] = useState(false);
   const [searchInput, setSearchInput] = useState("");
 
@@ -43,49 +30,36 @@ const UnassignedTickets = () => {
     unassignedTickets(1, "", limit, searchInput, "all");
   }, []);
 
+  if (allTickets) {
+    var { currentPage } = allTickets;
+  }
+
   return (
     allTickets && (
-      <section className="getAllDocuments allTicketsSection">
+      <section className="ticketsContainer unassignedTickets">
         <HomeBtn name="Unassigned Tickets" />
 
         <div>
-          <div>
+          <LimitAndSearch
+            controller={unassignedTickets}
+            currentPage={currentPage}
+            states={{
+              limit,
+              setLimit,
+              dropDown,
+              setDropDown,
+              searchInput,
+              setSearchInput,
+            }}
+            isArchived={"all"}
+          />
+
+          <div className="table">
             <div>
-              <LimitAndSearch
-                controller={unassignedTickets}
-                currentPage={currentPage}
-                states={{
-                  limit,
-                  setLimit,
-                  dropDown,
-                  setDropDown,
-                  searchInput,
-                  setSearchInput,
-                }}
-                isArchived={"all"}
-              />
-
-              <Labels
-                labels={labels}
-                sortLabels={sortLabels}
-                controller={unassignedTickets}
+              <Table
+                unassignedTickets={unassignedTickets}
+                archiveTicket={archiveTicket}
                 data={allTickets}
-                states={{ limit, searchInput }}
-                isArchived={"all"}
-              />
-
-              {/* Data */}
-
-              <Tickets
-                tickets={allTickets.tickets}
-                archiveController={archiveTicket}
-              />
-
-              <Pagination
-                controller={unassignedTickets}
-                states={{ limit, searchInput }}
-                data={allTickets}
-                isArchived={"all"}
               />
             </div>
           </div>
@@ -95,78 +69,240 @@ const UnassignedTickets = () => {
   );
 };
 
-// *******************
-const Tickets = ({ tickets, archiveController }) => {
-  return tickets && tickets.length ? (
+// *********************************
+const Table = ({
+  data,
+  archiveTicket,
+  unassignedTickets,
+  limit,
+  searchInput,
+}) => {
+  const { tickets, numOfPages, currentPage, count, totalTickets } = data;
+
+  const numOfpagesArr = Array.from({ length: numOfPages }, (_, i) => i + 1);
+
+  return (
+    <table summary="Company Tickets">
+      <colgroup>
+        <col />
+        <col />
+        <col />
+        <col />
+        <col />
+        <col />
+        <col />
+      </colgroup>
+
+      <thead>
+        <tr>
+          {[
+            "Assigned by",
+            "Assigned to",
+            "Title",
+            "Status",
+            "Priority",
+            "Date",
+            "Action",
+          ].map((value, i) => {
+            return (
+              <th key={i}>
+                <TableHead value={value} />
+              </th>
+            );
+          })}
+        </tr>
+      </thead>
+
+      <tbody>
+        {tickets && tickets.length > 0 ? (
+          tickets.map((ticket) => {
+            return (
+              <tr key={ticket._id}>
+                <Ticket ticket={ticket} archiveTicket={archiveTicket} />
+              </tr>
+            );
+          })
+        ) : (
+          <tr>
+            <td colSpan="7">
+              <p className="noDocuments">No tickets to show</p>
+            </td>
+          </tr>
+        )}
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colSpan="7">
+            <div>
+              <p className="count">
+                {count ? count : 0} out of {totalTickets} documents
+              </p>
+
+              <div className="pagination">
+                {numOfPages > 1 && (
+                  <>
+                    {currentPage > 1 && (
+                      <button
+                        className="prevPage"
+                        onClick={() => {
+                          unassignedTickets(
+                            currentPage - 1,
+                            "",
+                            limit,
+                            searchInput
+                          );
+                        }}
+                      >
+                        previous
+                      </button>
+                    )}
+
+                    <div className="pages">
+                      {numOfpagesArr &&
+                        numOfpagesArr.map((num) => {
+                          return (
+                            <p
+                              key={num}
+                              onClick={() => {
+                                unassignedTickets(num, "", limit, searchInput);
+                              }}
+                              className={`${
+                                currentPage === num && "viewedPage"
+                              }`}
+                            >
+                              {num}
+                            </p>
+                          );
+                        })}
+                    </div>
+
+                    {currentPage < numOfPages && (
+                      <button
+                        className="nextPage"
+                        onClick={() => {
+                          unassignedTickets(
+                            currentPage + 1,
+                            "",
+                            limit,
+                            searchInput
+                          );
+                        }}
+                      >
+                        next
+                      </button>
+                    )}
+                  </>
+                )}
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  );
+};
+
+const TableHead = ({ value }) => {
+  return (
     <div>
-      {tickets.map((ticket) => {
-        const {
-          _id,
-          title,
-          createdAt,
-          status,
-          priority,
-          isArchived,
-          assignedBy,
-          assignedTo,
-        } = ticket;
+      <p>{value}</p>
 
-        return (
-          <div key={_id} className="document ticket">
-            <div className="assignedBy">
-              <p>{assignedBy.name}</p>
-            </div>
+      {value !== "Action" && value !== "Manage Role" && (
+        <i className="on">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 0l-8 10h16l-8-10zm3.839 16l-3.839 4.798-3.839-4.798h7.678zm4.161-2h-16l8 10 8-10z" />
+          </svg>
+        </i>
+      )}
+    </div>
+  );
+};
 
-            <div className="assignedTo">
-              <Link to={`/tickets/assign-dev/${_id}`}>
-                <button className="assignDevBtn">Assign Dev</button>
-              </Link>
-            </div>
+const Ticket = ({ ticket, archiveTicket }) => {
+  const {
+    _id,
+    assignedTo,
+    assignedBy,
+    title,
+    status,
+    priority,
+    createdAt,
+    isArchived,
+  } = ticket;
 
-            <div className="title">
-              <p>{title}</p>
-            </div>
+  return (
+    <>
+      <td>
+        <div className="assignedBy">
+          <p>{assignedBy?.name}</p>
+        </div>
+      </td>
 
-            <div className="status">
-              <p className={`${status}`}>{status}</p>
-            </div>
+      <td>
+        <div className="assignedTo">
+          <Link to={`/tickets/assign-dev/${_id}`}>
+            <button className="assignDevBtn">Assign Dev</button>
+          </Link>
+        </div>
+      </td>
 
-            <div className="priority">
-              <p className={`${priority}`}>{priority}</p>
-            </div>
+      <td>
+        <div className="title">
+          <p>{title}</p>
+        </div>
+      </td>
 
-            <div className="date">
-              <p>{createdAt ? formatDate(createdAt) : ""}</p>
-            </div>
+      <td>
+        <div className="status">
+          <p className={`${status}`}>{status}</p>
+        </div>
+      </td>
 
-            <div className="btns">
-              <Link to={`/tickets/ticket-details/${_id}`}>
-                <button className="details">
-                  <FontAwesomeIcon icon={faEye} />
-                </button>
-              </Link>
+      <td>
+        <div className="priority">
+          <p className={`${priority}`}>{priority}</p>
+        </div>
+      </td>
 
-              <Link to={`/tickets/edit-ticket/${_id}`}>
-                <button className="edit">
-                  <FontAwesomeIcon icon={faPencil} />
-                </button>
-              </Link>
+      <td>
+        <div className="date">
+          <p>{createdAt ? formatDate(createdAt) : ""}</p>
+        </div>
+      </td>
 
-              <button
-                className={`${isArchived ? "unarchive" : "archive"}`}
-                onClick={() => archiveController(_id, !isArchived)}
-              >
-                <FontAwesomeIcon icon={faBoxArchive} />
+      <td>
+        <div className="btns">
+          <Link to={`/tickets/ticket-details/${_id}`}>
+            <button className="details">
+              <FontAwesomeIcon icon={faEye} />
+            </button>
+          </Link>
+
+          {USER_ROLE === "admin" && (
+            <Link to={`/tickets/edit-ticket/${_id}`}>
+              <button className="edit">
+                <FontAwesomeIcon icon={faPencil} />
               </button>
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  ) : (
-    <div className="noDocuments">
-      <p>No documents to show</p>
-    </div>
+            </Link>
+          )}
+
+          {USER_ROLE === "admin" && (
+            <button
+              className={`${isArchived ? "unarchive" : "archive"}`}
+              onClick={() => archiveTicket(_id, !isArchived)}
+            >
+              <FontAwesomeIcon icon={faBoxArchive} />
+            </button>
+          )}
+        </div>
+      </td>
+    </>
   );
 };
 
