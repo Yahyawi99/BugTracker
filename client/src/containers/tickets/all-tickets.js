@@ -58,6 +58,8 @@ const AllTickets = () => {
               getAllTickets={getAllTickets}
               archiveTicket={archiveTicket}
               data={allTickets}
+              limit={limit}
+              searchInput={searchInput}
             />
           </div>
         </div>
