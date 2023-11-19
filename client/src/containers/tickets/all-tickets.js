@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEye,
   faPencil,
-  faBoxOpen,
   faBoxArchive,
 } from "@fortawesome/free-solid-svg-icons";
 // hooks
