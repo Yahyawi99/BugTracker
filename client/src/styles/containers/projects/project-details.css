@@ -1,8 +1,8 @@
-.DocumentDetails {
+.projectDetails {
     margin-bottom: 25px;
 }
 
-.DocumentDetails .details {
+.projectDetails .details {
     width: 100%;
     display: flex;
     gap: 25px;
@@ -13,14 +13,14 @@
 /* ================================ */
 /* ================================ */
 /* First Column */
-.DocumentDetails .details .first-column {
+.projectDetails .details .first-column {
     flex: .6;
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
 
-.DocumentDetails .details .first-column>div {
+.projectDetails .details .first-column>div {
     background-color: var(--white);
     display: flex;
     flex-direction: column;
@@ -252,155 +252,166 @@
 }
 
 
-
+/* ================================ */
+/* ================================ */
+/* ================================ */
 /* ================================ */
 /* ================================ */
 /* ================================ */
 /* second Column */
-.DocumentDetails .details .second-column {
-    height: fit-content;
-    max-width: 800px;
+.projectDetails .details .second-column {
     flex: 1;
+    width: 100px;
+    position: relative;
+}
+
+.projectDetails .details .second-column .dropDown {
+    left: 53px;
+}
+
+.projectDetails .details .second-column .table {
     overflow-x: scroll;
-    border-radius: 10px;
 }
 
-.DocumentDetails .details .second-column>div {
-    width: fit-content;
-    height: fit-content;
+.projectDetails .details .second-column>div {
     background-color: var(--white);
-    padding: 10px;
+    padding: 0 10px;
 }
 
-.DocumentDetails .labels {
+
+/* =========================== */
+/* =========================== */
+/* table */
+.projectDetails table {
     width: 100%;
+    border-collapse: collapse;
+}
+
+.projectDetails table colgroup col {
+    min-width: fit-content;
+}
+
+.projectDetails table colgroup col:nth-child(1) {
+    width: 25%;
+    min-width: 200px;
+}
+
+.projectDetails table colgroup col:nth-child(2) {
+    width: 10%;
+    min-width: 125px;
+}
+
+.projectDetails table colgroup col:nth-child(3) {
+    width: 30%;
+}
+
+.projectDetails table colgroup col:nth-child(4) {
+    width: 20%;
+}
+
+.projectDetails table colgroup col:nth-child(5) {
+    width: 25%;
+}
+
+.projectDetails table colgroup col:nth-child(6) {
+    width: 15%;
+}
+
+
+/* Table head */
+.projectDetails table thead tr {
     background-color: var(--black);
+}
+
+.projectDetails table th>div {
     color: var(--white);
-    padding: 0px 5px;
-}
-
-.DocumentDetails .labels div:nth-child(1) {
-    min-width: 250px;
-}
-
-.DocumentDetails .labels div:nth-child(2) {
-    min-width: 150px;
-}
-
-.DocumentDetails .labels div:nth-child(3) {
-    min-width: 150px;
-}
-
-.DocumentDetails .labels div:nth-child(4) {
-    min-width: 150px;
-}
-
-.DocumentDetails .labels div:nth-child(5) {
-    min-width: 100px;
-}
-
-.DocumentDetails .labels div:nth-child(6) {
-    flex: 1;
-}
-
-/* tickets */
-.second-column .tickets>div {
     display: flex;
     align-items: center;
-    gap: 20px;
-    border-bottom: 1px solid var(--border-color);
-    padding: 15px 5px 15px 5px;
+    justify-content: space-between;
+    text-align: left;
+    margin-right: 5px;
+    padding: 20px 10px;
 }
 
-
-.DocumentDetails .tickets>div div:nth-child(1) {
-    min-width: 250px;
+.projectDetails table th>div svg {
+    height: 100%;
+    width: 15px;
+    display: flex;
+    margin-left: 5px;
 }
 
-.DocumentDetails .tickets>div div:nth-child(2) {
-    min-width: 150px;
+/* Ticket */
+.projectDetails table tbody tr:not(:last-child) {
+    border-bottom: 2px solid var(--border-color);
 }
 
-.DocumentDetails .tickets>div div:nth-child(3) {
-    min-width: 150px;
-}
-
-.DocumentDetails .tickets>div div:nth-child(4) {
-    min-width: 150px;
-}
-
-.DocumentDetails .tickets>div div:nth-child(5) {
-    min-width: 100px;
+.projectDetails table tbody tr td {
+    padding: 15px 10px;
 }
 
 /* ticket */
-.tickets .title {
+.projectDetails table .title {
     font-weight: 600;
 }
 
-.tickets .dev {
+.projectDetails table .dev {
     color: var(--gray);
     font-weight: 600;
 }
 
-.tickets .dev .unassigned {
+.projectDetails table .dev .unassigned {
     opacity: .5;
     text-decoration: 3px underline;
 }
 
 /* Status */
-.tickets .status p,
-.tickets .priority p {
+.projectDetails table .status p,
+.projectDetails table .priority p {
     width: fit-content;
     border: 2px solid;
     border-radius: 5px;
     padding: 5px 10px;
 }
 
-.tickets .development {
+.projectDetails table .development {
     color: var(--blue);
     border-color: var(--blue);
 }
 
-.tickets .resolved {
+.projectDetails table .resolved {
     color: var(--success);
     border-color: var(--success);
 }
 
-.tickets .new {
+.projectDetails table .new {
     color: var(--gray);
     border-color: var(--gray);
 }
 
 /* Priority */
-.tickets .urgent {
+.projectDetails table .urgent {
     color: var(--danger);
     border-color: var(--danger);
 }
 
-.tickets .high {
+.projectDetails table .high {
     color: var(--orange);
     border-color: var(--orange);
 }
 
-.tickets .low {
+.projectDetails table .low {
     color: var(--gray);
     border-color: var(--gray);
 }
 
 
 /* Buttons */
-.DocumentDetails .tickets .btns {
-    min-width: 100px;
-}
-
-.DocumentDetails .tickets .btns {
+.projectDetails table .btns {
     display: flex;
     gap: 5px;
-    padding-right: 10px;
 }
 
-.DocumentDetails .tickets .btns button {
+.projectDetails table .btns button {
     height: 100%;
     background-color: transparent;
     border: 2px solid transparent;
@@ -410,53 +421,48 @@
     padding: 10px;
 }
 
-.DocumentDetails .tickets .btns .details {
+.projectDetails table .btns .details {
     border-color: var(--blue);
     color: var(--blue);
 }
 
-.DocumentDetails .tickets .btns .details:hover {
+.projectDetails table .btns .details:hover {
     background-color: var(--blue);
 }
 
-.DocumentDetails .tickets .btns .edit {
+.projectDetails table .btns .edit {
     border-color: var(--gray);
     color: var(--gray);
 }
 
-.DocumentDetails .tickets .btns .edit:hover {
+.projectDetails table .btns .edit:hover {
     background-color: var(--gray);
 }
 
-.DocumentDetails .tickets .btns .archive {
+.projectDetails table .btns .archive {
     border-color: var(--danger);
     color: var(--danger);
 }
 
-.DocumentDetails .tickets .btns .archive:hover {
+.projectDetails table .btns .archive:hover {
     background-color: var(--danger);
 }
 
-.DocumentDetails .tickets .btns .unarchive {
+.projectDetails table .btns .unarchive {
     border-color: var(--success);
     color: var(--success);
 }
 
-.DocumentDetails .tickets .btns .unarchive:hover {
+.projectDetails table .btns .unarchive:hover {
     background-color: var(--success);
 }
 
-.DocumentDetails .tickets .btns button:hover {
+.projectDetails table .btns button:hover {
     color: var(--white);
 }
 
-/* pagination */
-.DocumentDetails .sectionFooter {
-    width: 100%;
-}
-
 /* assign dev btn */
-.DocumentDetails .tickets .dev button {
+.projectDetails table .dev button {
     background-color: var(--main-clr);
     color: var(--white);
     border: 2px solid var(--main-clr);
@@ -467,9 +473,18 @@
     padding: 8px 12px;
 }
 
-.DocumentDetails .tickets .dev button:hover {
+.projectDetails table .dev button:hover {
     background-color: transparent;
     color: var(--main-clr);
+}
+
+/* Table footer */
+.projectDetails table tfoot td>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px 10px 30px 10px;
 }
 
 /* *************************** */
@@ -477,7 +492,7 @@
 /* *************************** */
 /* media queries */
 @media screen and (max-width:1000px) {
-    .DocumentDetails .details {
+    .projectDetails .details {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -486,7 +501,9 @@
     }
 
     /* second Column */
-    .DocumentDetails .details .second-column {
-        max-width: 100%;
+    .projectDetails .details .second-column {
+        flex: 1;
+
+        width: 100%;
     }
 }

@@ -18,8 +18,6 @@ import { useParams } from "react-router-dom";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
 import LimitAndSearch from "../../components/shared/LimitAndSearch";
-import Labels from "../../components/shared/Labels";
-import Pagination from "../../components/shared/Pagination";
 // css
 import "../../styles/containers/projects/project-details.css";
 
@@ -57,7 +55,6 @@ const ProjectDetails = () => {
         team,
         managedBy,
       },
-      tickets,
     } = singleProject;
 
     var members = team[0]?.members;
@@ -66,7 +63,7 @@ const ProjectDetails = () => {
   return (
     singleProject.tickets &&
     singleProject.project && (
-      <section className="DocumentDetails">
+      <section className="projectDetails">
         <HomeBtn name="Details" />
 
         <div className="details">
@@ -229,42 +226,16 @@ const ProjectDetails = () => {
                 projectId={projectId}
               />
 
-              <Labels
-                labels={[
-                  "Title",
-                  "Developer",
-                  "Status",
-                  "Priority",
-                  "Date",
-                  "Action",
-                ]}
-                sortLabels={[
-                  "Title",
-                  "Developer",
-                  "Status",
-                  "Priority",
-                  "Date",
-                ]}
-                controller={getSingleProject}
-                data={singleProject}
-                states={{ limit, searchInput }}
-                projectId={projectId}
-              />
-              <div className="tickets">
-                <Tickets
-                  tickets={tickets.associatedTickets}
+              <div className="table">
+                <Table
+                  data={singleProject}
                   archiveTicket={archiveTicket}
-                />
-              </div>
-
-              {tickets && (
-                <Pagination
-                  controller={getSingleProject}
-                  states={{ limit, searchInput }}
-                  data={singleProject.tickets}
+                  getSingleProject={getSingleProject}
+                  limit={limit}
+                  searchInput={searchInput}
                   projectId={projectId}
                 />
-              )}
+              </div>
             </div>
           </div>
         </div>
@@ -273,31 +244,196 @@ const ProjectDetails = () => {
   );
 };
 
-// ticket
-const Tickets = ({ tickets, archiveTicket }) => {
-  return tickets.map((ticket) => {
-    const {
-      _id,
-      title,
-      assignedTo,
-      status,
-      priority,
-      createdAt,
-      isArchived,
-      project,
-    } = ticket;
+// ========================
+const Table = ({
+  data,
+  archiveTicket,
+  getSingleProject,
+  limit,
+  searchInput,
+  projectId,
+}) => {
+  const {
+    tickets: {
+      associatedTickets: tickets,
+      numOfPages,
+      currentPage,
+      count,
+      totalAssociatedTickets: totalTickets,
+    },
+  } = data;
 
-    return (
-      <div key={_id}>
+  const numOfpagesArr = Array.from({ length: numOfPages }, (_, i) => i + 1);
+
+  return (
+    <table summary="Company Projects">
+      <colgroup>
+        <col />
+        <col />
+        <col />
+        <col />
+        <col />
+        <col />
+      </colgroup>
+
+      <thead>
+        <tr>
+          {["Title", "Developer", "Status", "Priority", "Date", "Action"].map(
+            (value, i) => {
+              return (
+                <th key={i}>
+                  <TableHead value={value} />
+                </th>
+              );
+            }
+          )}
+        </tr>
+      </thead>
+
+      <tbody>
+        {tickets && tickets.length > 0 ? (
+          tickets.map((ticket) => {
+            return (
+              <tr key={ticket._id}>
+                <Ticket ticket={ticket} archiveTicket={archiveTicket} />
+              </tr>
+            );
+          })
+        ) : (
+          <tr>
+            <td colSpan="7">
+              <p className="noDocuments">No tickets to show</p>
+            </td>
+          </tr>
+        )}
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colSpan="6">
+            <div>
+              <p className="count">
+                {count ? count : 0} out of {totalTickets} documents
+              </p>
+
+              <div className="pagination">
+                {numOfPages > 1 && (
+                  <>
+                    {currentPage > 1 && (
+                      <button
+                        className="prevPage"
+                        onClick={() => {
+                          getSingleProject(
+                            projectId,
+                            currentPage - 1,
+                            "",
+                            limit,
+                            searchInput
+                          );
+                        }}
+                      >
+                        previous
+                      </button>
+                    )}
+
+                    <div className="pages">
+                      {numOfpagesArr &&
+                        numOfpagesArr.map((num) => {
+                          return (
+                            <p
+                              key={num}
+                              onClick={() => {
+                                getSingleProject(
+                                  projectId,
+                                  num,
+                                  "",
+                                  limit,
+                                  searchInput
+                                );
+                              }}
+                              className={`${
+                                currentPage === num && "viewedPage"
+                              }`}
+                            >
+                              {num}
+                            </p>
+                          );
+                        })}
+                    </div>
+
+                    {currentPage < numOfPages && (
+                      <button
+                        className="nextPage"
+                        onClick={() => {
+                          getSingleProject(
+                            projectId,
+                            currentPage + 1,
+                            "",
+                            limit,
+                            searchInput
+                          );
+                        }}
+                      >
+                        next
+                      </button>
+                    )}
+                  </>
+                )}
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  );
+};
+
+const TableHead = ({ value }) => {
+  return (
+    <div>
+      <p>{value}</p>
+
+      {value !== "Action" && value !== "Manage Role" && (
+        <i className="on">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 0l-8 10h16l-8-10zm3.839 16l-3.839 4.798-3.839-4.798h7.678zm4.161-2h-16l8 10 8-10z" />
+          </svg>
+        </i>
+      )}
+    </div>
+  );
+};
+
+const Ticket = ({ ticket, archiveTicket }) => {
+  const {
+    _id,
+    title,
+    assignedTo,
+    status,
+    priority,
+    createdAt,
+    isArchived,
+    project,
+  } = ticket;
+
+  return (
+    <>
+      <td>
         <div className="title">
           <p>{title}</p>
         </div>
+      </td>
 
+      <td>
         <div className="dev">
           {assignedTo ? (
             <p>{assignedTo.name}</p>
-          ) : (USER_ROLE === "admin" && !!assignedTo) ||
-            USER_ID === project?.managedBy ? (
+          ) : USER_ROLE === "admin" || USER_ID === project?.managedBy ? (
             <Link to={`/tickets/assign-dev/${_id}`}>
               <button className="assignDevBtn">Assign Dev</button>
             </Link>
@@ -305,16 +441,22 @@ const Tickets = ({ tickets, archiveTicket }) => {
             <p className="unassigned">Unassigned</p>
           )}
         </div>
+      </td>
 
+      <td>
         <div className="status">
           <p className={`${status}`}>{status}</p>
         </div>
+      </td>
 
+      <td>
         <div className="priority">
           <p className={`${priority}`}>{priority}</p>
         </div>
+      </td>
 
-        <div>
+      <td>
+        <div className="date">
           <p>
             {formatDate(createdAt, {
               day: "2-digit",
@@ -323,56 +465,90 @@ const Tickets = ({ tickets, archiveTicket }) => {
             })}
           </p>
         </div>
+      </td>
 
-        <ActionBtn
-          archiveTicket={archiveTicket}
-          ticketId={_id}
-          isArchived={isArchived}
-        />
-      </div>
-    );
-  });
-};
+      <td>
+        <div className="btns">
+          <Link to={`/tickets/ticket-details/${_id}`}>
+            <button className="details">
+              <FontAwesomeIcon icon={faEye} />
+            </button>
+          </Link>
 
-const ActionBtn = ({ archiveTicket, ticketId, isArchived }) => {
-  return (
-    <div className="btns">
-      <Link to={`/tickets/ticket-details/${ticketId}`}>
-        <button className="details">
-          <FontAwesomeIcon icon={faEye} />
-        </button>
-      </Link>
-      {USER_ROLE === "admin" && (
-        <Link to={`/tickets/edit-ticket/${ticketId}`}>
-          <button className="edit">
-            <FontAwesomeIcon icon={faPencil} />
-          </button>
-        </Link>
-      )}
+          {USER_ROLE === "admin" && (
+            <Link to={`/tickets/edit-ticket/${_id}`}>
+              <button className="edit">
+                <FontAwesomeIcon icon={faPencil} />
+              </button>
+            </Link>
+          )}
 
-      {USER_ROLE === "admin" && isArchived && (
-        <button
-          onClick={() => {
-            archiveTicket(ticketId, !isArchived);
-          }}
-          className="unarchive"
-        >
-          <FontAwesomeIcon icon={faBoxOpen} />
-        </button>
-      )}
+          {USER_ROLE === "admin" && isArchived && (
+            <button
+              onClick={() => {
+                archiveTicket(_id, !isArchived);
+              }}
+              className="unarchive"
+            >
+              <FontAwesomeIcon icon={faBoxOpen} />
+            </button>
+          )}
 
-      {USER_ROLE === "admin" && !isArchived && (
-        <button
-          onClick={() => {
-            archiveTicket(ticketId, !isArchived);
-          }}
-          className="archive"
-        >
-          <FontAwesomeIcon icon={faBoxArchive} />
-        </button>
-      )}
-    </div>
+          {USER_ROLE === "admin" && !isArchived && (
+            <button
+              onClick={() => {
+                archiveTicket(_id, !isArchived);
+              }}
+              className="archive"
+            >
+              <FontAwesomeIcon icon={faBoxArchive} />
+            </button>
+          )}
+        </div>
+      </td>
+    </>
   );
 };
+
+// const ActionBtn = ({ archiveTicket, ticketId, isArchived }) => {
+//   return (
+//     <div className="btns">
+//       <Link to={`/tickets/ticket-details/${ticketId}`}>
+//         <button className="details">
+//           <FontAwesomeIcon icon={faEye} />
+//         </button>
+//       </Link>
+//       {USER_ROLE === "admin" && (
+//         <Link to={`/tickets/edit-ticket/${ticketId}`}>
+//           <button className="edit">
+//             <FontAwesomeIcon icon={faPencil} />
+//           </button>
+//         </Link>
+//       )}
+
+// {USER_ROLE === "admin" && isArchived && (
+//   <button
+//     onClick={() => {
+//       archiveTicket(ticketId, !isArchived);
+//     }}
+//     className="unarchive"
+//   >
+//     <FontAwesomeIcon icon={faBoxOpen} />
+//   </button>
+// )}
+
+// {USER_ROLE === "admin" && !isArchived && (
+//   <button
+//     onClick={() => {
+//       archiveTicket(ticketId, !isArchived);
+//     }}
+//     className="archive"
+//   >
+//     <FontAwesomeIcon icon={faBoxArchive} />
+//   </button>
+// )}
+// </div>
+//   );
+// };
 
 export default ProjectDetails;
