@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 // Hooks
 import useUsers from "../../hooks/useUsers";
 // components
-import HomeBtn from "../../components/shared/HomeBtn";
 import LimitAndSearch from "../../components/shared/LimitAndSearch";
 
 const Members = () => {

@@ -16,6 +16,7 @@ import LimitAndSearch from "../../components/shared/LimitAndSearch";
 import HomeBtn from "../../components/shared/HomeBtn";
 // css
 import "../../styles/containers/tickets/all-tickets.css";
+import "../../styles/components/shared/pagination.css";
 
 const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
 

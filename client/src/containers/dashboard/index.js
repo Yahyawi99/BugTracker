@@ -21,6 +21,7 @@ import Members from "./Members";
 import Projects from "./Projects";
 // css
 import "../../styles/containers/dashboard/index.css";
+import "../../styles/components/shared/pagination.css";
 
 const Dashboard = () => {
   const { getAllProjects, allProjects } = useProjects();
