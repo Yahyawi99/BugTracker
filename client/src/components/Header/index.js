@@ -33,12 +33,11 @@ const Header = () => {
       <img src="/assets/icons/logo.svg" alt="bugtracker" className="logo" />
 
       <div>
-        {USER_ROLE === "admin" ||
-          (USER_ROLE === "PM" && (
-            <Link to="tickets/create-ticket">
-              <button className="newTicketBtn">New Ticket</button>
-            </Link>
-          ))}
+        {(USER_ROLE === "admin" || USER_ROLE === "PM") && (
+          <Link to="tickets/create-ticket">
+            <button className="newTicketBtn">New Ticket</button>
+          </Link>
+        )}
 
         <i>
           <FontAwesomeIcon icon={faBell} />
