@@ -1,0 +1,62 @@
+.inboxContainer>div:nth-child(2) {
+    display: flex;
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* ======================== */
+/* ======================== */
+/* Menu */
+.inboxContainer .menu {
+    flex: .5;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-right: 2px solid var(--border-color);
+    padding: 10px;
+    margin: 0 10px 0 0;
+}
+
+.inboxContainer .menu>div {
+    display: flex;
+    align-items: center;
+    background-color: rgba(128, 128, 128, 0.25);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.inboxContainer .menu>div svg {
+    font-size: 1.25rem;
+    margin-right: 5px;
+}
+
+.inboxContainer .menu>div p:nth-child(3) {
+    color: var(--success);
+    font-weight: 600;
+    border: 2px solid var(--success);
+    border-radius: 5px;
+    padding: 0px 5px;
+    margin-left: auto;
+}
+
+/* compose button */
+.inboxContainer .menu button {
+    flex: 1;
+    background-color: var(--main-clr);
+    color: var(--white);
+    font-weight: 600;
+    font-size: .9rem;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 5px 0;
+}
+
+.inboxContainer .menu button:hover {
+    background-color: transparent;
+    color: var(--main-clr);
+    border: 2px solid var(--main-clr);
+}
