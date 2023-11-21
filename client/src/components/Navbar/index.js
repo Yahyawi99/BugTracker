@@ -29,6 +29,7 @@ import skins from "../../data/colors.json";
 import "../../styles/components/navbar/index.css";
 
 const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
+const USER_ID = JSON.parse(localStorage.getItem("user")).userId;
 
 const NavBar = () => {
   const { skin: skinChoice, setSkin, isHamOpen } = useMainContext();
@@ -107,17 +108,19 @@ const NavBar = () => {
                 </li>
               </Link>
 
-              <li
-                className={`listItem2 ${
-                  clicked === "notification" && "clicked"
-                }`}
-                onClick={() => setClicked("notification")}
-              >
-                <i>
-                  <FontAwesomeIcon icon={faEnvelope} />
-                </i>
-                <p>Notification Inbox</p>
-              </li>
+              <Link to={`/notification/my-inbox/${USER_ID}`}>
+                <li
+                  className={`listItem2 ${
+                    clicked === "notification" && "clicked"
+                  }`}
+                  onClick={() => setClicked("notification")}
+                >
+                  <i>
+                    <FontAwesomeIcon icon={faEnvelope} />
+                  </i>
+                  <p>Notification Inbox</p>
+                </li>
+              </Link>
 
               <li
                 className={`listItem3 ${clicked === "projects" && "clicked"}`}

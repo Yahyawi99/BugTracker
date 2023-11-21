@@ -10,6 +10,7 @@ import Projects from "../../containers/projects";
 import Tickets from "../../containers/tickets";
 import Profile from "../../containers/profile";
 import Admin from "../../containers/admin";
+import Notification from "../../containers/notification";
 // components
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
@@ -39,6 +40,7 @@ const Main = () => {
               <Route path="/tickets/*" Component={Tickets} />
               <Route path="/profile/*" Component={Profile} />
               <Route path="/admin/*" Component={Admin} />
+              <Route path="/notification/*" Component={Notification} />
 
               <Route path="*" Component={NotFound} />
             </Route>
