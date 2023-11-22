@@ -52,7 +52,9 @@ const Inbox = () => {
               </div>
 
               <div>
-                <p className="numOfPages">page : 1</p>
+                <span className="numOfPages">
+                  page : <p>1</p>
+                </span>
 
                 <div className="arrows">
                   <button type="button" className="arrow-left">
