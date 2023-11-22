@@ -77,7 +77,7 @@ const LoginForm = () => {
 
         <Link className="demoLinks" to="/login-register/demo-accounts">
           <button type="button" className="demoBtn">
-            Demo Account
+            Demo Accounts
           </button>
         </Link>
       </div>

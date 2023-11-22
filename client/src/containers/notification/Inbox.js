@@ -26,12 +26,13 @@ const Inbox = () => {
 
         <div className="mail">
           <div>
-            <h3>Inbox</h3>
+            <h2>Inbox</h2>
             <button>Menu</button>
           </div>
 
           <form className="search">
             <input type="text" placeholder="Search Mail" />
+
             <button type="button">
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
