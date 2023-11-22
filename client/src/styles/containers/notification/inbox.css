@@ -2,27 +2,26 @@
     display: flex;
     background-color: var(--white);
     border-radius: 10px;
-    padding: 10px;
+    padding: 20px 15px;
 }
 
 /* ======================== */
 /* ======================== */
 /* Menu */
 .inboxContainer .menu {
+    height: fit-content;
     flex: .5;
     max-width: 300px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border-right: 2px solid var(--border-color);
-    padding: 10px;
-    margin: 0 10px 0 0;
+    padding-right: 10px;
 }
 
 .inboxContainer .menu>div {
     display: flex;
     align-items: flex-end;
-    background-color: rgba(128, 128, 128, 0.25);
+    background-color: rgba(128, 128, 128, 0.15);
     border-radius: 5px;
     padding: 8px;
 }
@@ -71,20 +70,27 @@
 /* ======================== */
 /* Mail */
 .inboxContainer .mail {
-    height: fit-content;
-    flex: 1;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 0;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+    border-left: 3px solid var(--border-color);
+    padding-left: 10px;
 }
 
 .inboxContainer .mail>div {
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.inboxContainer .mail>div:nth-child(1)>div {
     display: flex;
     align-items: center;
 }
 
-.inboxContainer .mail>div button {
+.inboxContainer .mail .menuBtn {
     display: none;
     background-color: var(--main-clr);
     color: var(--white);
@@ -96,7 +102,7 @@
     padding: 5px 10px;
 }
 
-.inboxContainer .mail>div button:hover {
+.inboxContainer .mail .menuBtn:hover {
     background-color: transparent;
     color: var(--main-clr);
     border: 2px solid var(--main-clr);
@@ -133,6 +139,40 @@
 .inboxContainer form button:hover {
     opacity: .5;
 }
+
+
+/* ============================= */
+/* ============================= */
+/* ============================= */
+/* Main */
+/* navigation */
+.inboxContainer .main .navigation {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.inboxContainer .main .navigation>div {
+    display: flex;
+}
+
+.inboxContainer .main .navigation>div:nth-child(1) p {
+    color: var(--gray);
+    border: 2px solid var(--gray);
+    cursor: pointer;
+    transition: .25s;
+    padding: 5px 10px;
+}
+
+.inboxContainer .main .navigation>div:nth-child(1) p:nth-child(1) {
+    border-right: none;
+}
+
+.inboxContainer .main .navigation>div:nth-child(1) p:hover {
+    color: var(--white);
+    background-color: var(--gray);
+}
+
 
 
 /* ============================= */

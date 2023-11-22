@@ -2,7 +2,11 @@ import React from "react";
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMagnifyingGlass,
+  faChevronRight,
+  faChevronLeft,
+} from "@fortawesome/free-solid-svg-icons";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
 // css
@@ -26,17 +30,42 @@ const Inbox = () => {
 
         <div className="mail">
           <div>
-            <h2>Inbox</h2>
-            <button>Menu</button>
+            <div className="title">
+              <h2>Inbox</h2>
+              <button className="menuBtn">Menu</button>
+            </div>
+
+            <form className="search">
+              <input type="text" placeholder="Search Mail" />
+
+              <button type="button">
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
+              </button>
+            </form>
           </div>
 
-          <form className="search">
-            <input type="text" placeholder="Search Mail" />
+          <div className="main">
+            <div className="navigation">
+              <div>
+                <p>Refresh</p>
+                <p>Archive</p>
+              </div>
 
-            <button type="button">
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </button>
-          </form>
+              <div>
+                <p className="numOfPages">page : 1</p>
+
+                <div className="arrows">
+                  <button type="button" className="arrow-left">
+                    <FontAwesomeIcon icon={faChevronLeft} />
+                  </button>
+
+                  <button type="button" className="arrow-right">
+                    <FontAwesomeIcon icon={faChevronRight} />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
