@@ -1,17 +1,23 @@
 import React from "react";
+import { motion } from "framer-motion";
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 // css
 import "../../styles/containers/notification/form.css";
 
-const Form = () => {
+const Form = ({ setIsFormShown }) => {
   return (
-    <section className="messageBox">
+    <motion.section
+      initial={{ bottom: -500 }}
+      animate={{ bottom: 5 }}
+      transition={{ duration: 0.25 }}
+      className="messageBox"
+    >
       <div className="boxHeader">
         <h1>New Message</h1>
 
-        <FontAwesomeIcon icon={faXmark} />
+        <FontAwesomeIcon icon={faXmark} onClick={() => setIsFormShown(false)} />
       </div>
 
       <form>
@@ -23,7 +29,7 @@ const Form = () => {
 
         <button type="submit">Send</button>
       </form>
-    </section>
+    </motion.section>
   );
 };
 

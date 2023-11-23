@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
@@ -14,13 +14,17 @@ import Form from "./Form";
 import "../../styles/containers/notification/inbox.css";
 
 const Inbox = () => {
+  const [isFormShown, setIsFormShown] = useState(false);
+
   return (
     <section className="inboxContainer">
       <HomeBtn name="Notifications" />
 
       <div>
         <div className="menu">
-          <button>Compose</button>
+          <button type="button" onClick={() => setIsFormShown(true)}>
+            Compose
+          </button>
 
           <div>
             <FontAwesomeIcon icon={faEnvelope} />
@@ -72,7 +76,7 @@ const Inbox = () => {
         </div>
       </div>
 
-      <Form />
+      {isFormShown && <Form setIsFormShown={setIsFormShown} />}
     </section>
   );
 };
