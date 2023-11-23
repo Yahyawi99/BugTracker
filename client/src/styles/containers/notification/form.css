@@ -3,7 +3,10 @@
     max-width: 500px;
     background-color: var(--white);
     box-shadow: var(--shadow);
-    border-radius: 5px;
+    position: absolute;
+    bottom: 5px;
+    right: 16px;
+    border-radius: 5px 5px 0 0;
 }
 
 /* Header */
@@ -11,8 +14,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--main-clr-hover);
-    padding: 10px;
+    background-color: var(--blue-hover);
+    padding: 15px 10px;
+}
+
+.messageBox .boxHeader svg {
+    cursor: pointer;
+    transition: .25s;
+}
+
+.messageBox .boxHeader svg:hover {
+    opacity: .5;
 }
 
 /* Form */
@@ -25,10 +37,41 @@
 .messageBox form input,
 .messageBox form textarea {
     border: none;
+    outline: none;
 }
 
 .messageBox form input {
     min-height: 50px;
+    border-bottom: 2px solid var(--border-color);
+    font-size: .9rem;
 }
 
-.messageBox form textarea {}
+.messageBox form input::placeholder,
+.messageBox form textarea::placeholder {
+    color: var(--border-color);
+    opacity: .75;
+    font-weight: 600;
+}
+
+.messageBox form textarea {
+    resize: none;
+    padding-top: 8px;
+}
+
+.messageBox form button {
+    width: fit-content;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    font-weight: 600;
+    font-size: .9rem;
+    border-radius: 25px;
+    border: none;
+    padding: 10px 30px;
+    cursor: pointer;
+    transition: .25s;
+    margin: 0 0 5px 0;
+}
+
+.messageBox form button:hover {
+    opacity: .75;
+}

@@ -19,7 +19,9 @@ const Form = () => {
 
         <input type="text" placeholder="Subject" />
 
-        <textarea cols="30" rows="5"></textarea>
+        <textarea rows="12" placeholder="Your message..."></textarea>
+
+        <button type="submit">Send</button>
       </form>
     </section>
   );
