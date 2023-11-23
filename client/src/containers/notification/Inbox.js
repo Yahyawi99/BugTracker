@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
+import Form from "./Form";
 // css
 import "../../styles/containers/notification/inbox.css";
 
@@ -70,6 +71,8 @@ const Inbox = () => {
           </div>
         </div>
       </div>
+
+      <Form />
     </section>
   );
 };

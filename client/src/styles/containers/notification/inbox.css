@@ -109,11 +109,11 @@
 }
 
 /* search */
-.inboxContainer form {
+.inboxContainer>div form {
     height: 35px;
 }
 
-.inboxContainer form input {
+.inboxContainer>div form input {
     height: inherit;
     color: var(--gray-dark);
     font-weight: 600;
@@ -122,12 +122,12 @@
     padding-left: 5px;
 }
 
-.inboxContainer form input::placeholder {
+.inboxContainer>div form input::placeholder {
     color: var(--border-color);
     opacity: 1;
 }
 
-.inboxContainer form button {
+.inboxContainer>div form button {
     height: inherit;
     background-color: var(--main-clr);
     color: var(--white);
@@ -137,7 +137,7 @@
     padding: 0 10px;
 }
 
-.inboxContainer form button:hover {
+.inboxContainer>div form button:hover {
     opacity: .5;
 }
 
