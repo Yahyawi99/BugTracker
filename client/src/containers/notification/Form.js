@@ -8,6 +8,8 @@ import { faXmark, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 // css
 import "../../styles/containers/notification/form.css";
 
+const USER_ID = JSON.parse(localStorage.getItem("user")).userId;
+
 const Form = ({ setIsFormShown }) => {
   const [data, setData] = useState({ recipient: "", subject: "", message: "" });
 
@@ -85,10 +87,10 @@ const Dropdown = ({ data, setData, allUsers }) => {
       <div className={`options ${isShown && "showOptions"}`}>
         {users &&
           users.map((member) => {
-            const { email, role } = member;
+            const { _id, email } = member;
 
             return (
-              role !== "admin" && (
+              USER_ID !== _id && (
                 <p
                   onClick={() => {
                     setData({ ...data, recipient: email });

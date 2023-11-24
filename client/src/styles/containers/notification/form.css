@@ -18,6 +18,10 @@
     padding: 15px 10px;
 }
 
+.messageBox .boxHeader h1 {
+    color: var(--gray-dark);
+}
+
 .messageBox .boxHeader svg {
     cursor: pointer;
     transition: .25s;
