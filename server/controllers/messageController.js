@@ -1,9 +1,19 @@
 const { StatusCodes } = require("http-status-codes");
+const CustomError = require("../errors");
 const Message = require("../model/Message");
 
 const allMessages = async (req, res) => {
-  //   const { email } = req.body;
-  res.status(StatusCodes.OK).json({});
+  const { id: memberId } = req.params;
+
+  const messages = await Message.find({ recipient: memberId });
+
+  if (!messages) {
+    throw new CustomError.NotFoundError(
+      `No messages for recipient with id : ${memberId}`
+    );
+  }
+
+  res.status(StatusCodes.OK).json({ messages });
 };
 
 const createMessage = async (req, res) => {

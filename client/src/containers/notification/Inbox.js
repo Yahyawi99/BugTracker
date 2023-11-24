@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
@@ -7,6 +8,8 @@ import {
   faChevronRight,
   faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
+// hooks
+import useMessages from "../../hooks/useMessages";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
 import Form from "./Form";
@@ -15,6 +18,15 @@ import "../../styles/containers/notification/inbox.css";
 
 const Inbox = () => {
   const [isFormShown, setIsFormShown] = useState(false);
+
+  const { memberId } = useParams();
+  const { getAllMessages, allMessages } = useMessages();
+
+  useEffect(() => {
+    getAllMessages(memberId);
+  }, []);
+
+  console.log(allMessages);
 
   return (
     <section className="inboxContainer">

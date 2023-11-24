@@ -108,7 +108,7 @@ const NavBar = () => {
                 </li>
               </Link>
 
-              <Link to="/notification/my-inbox">
+              <Link to={`/notification/my-inbox/${USER_ID}`}>
                 <li
                   className={`listItem2 ${
                     clicked === "notification" && "clicked"
