@@ -25,9 +25,9 @@ const MessageSchema = new mongoose.Schema(
       required: [true, "Please provide a message."],
     },
 
-    ticket: {
+    recipientID: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Ticket",
+      ref: "User",
       required: true,
     },
   },

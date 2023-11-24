@@ -2,7 +2,7 @@ const { StatusCodes } = require("http-status-codes");
 const Message = require("../model/Message");
 
 const allMessages = async (req, res) => {
-  const { email } = req.body;
+  //   const { email } = req.body;
   res.status(StatusCodes.OK).json({});
 };
 

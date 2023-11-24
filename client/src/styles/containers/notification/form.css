@@ -75,3 +75,59 @@
 .messageBox form button:hover {
     opacity: .75;
 }
+
+/* Dropdown */
+.messageBox form .recipients {
+    position: relative;
+}
+
+.messageBox form .recipients .currentValue {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.messageBox form .currentValue svg {
+    display: flex;
+    color: var(--gray-dark);
+    font-size: .8rem;
+    cursor: pointer;
+}
+
+.messageBox form .recipients input {
+    width: 100%;
+    border-bottom: none;
+    cursor: pointer;
+}
+
+.messageBox form .recipients .options {
+    width: 100%;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: absolute;
+    top: 55px;
+    box-shadow: var(--shadow);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: .25s;
+    padding: 10px;
+}
+
+.messageBox form .recipients .options p {
+    color: var(--gray-dark);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.messageBox form .recipients .options p:hover {
+    text-decoration: 3px underline;
+}
+
+/* **************************** */
+/* **************************** */
+/* **************************** */
+.messageBox form .recipients .showOptions {
+    transform: scaleY(1);
+}
