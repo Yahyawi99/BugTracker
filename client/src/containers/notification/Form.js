@@ -21,7 +21,7 @@ const Form = ({ setIsFormShown }) => {
       </div>
 
       <form>
-        <input type="text" placeholder="Recipients" />
+        <input type="text" placeholder="Recipient" />
 
         <input type="text" placeholder="Subject" />
 

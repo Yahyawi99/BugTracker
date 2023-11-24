@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const ProjectTeamSchema = new mongoose.Schema({
+const TeamSchema = new mongoose.Schema({
   project: {
     type: mongoose.Types.ObjectId,
     ref: "Project",
@@ -13,4 +13,4 @@ const ProjectTeamSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Team", ProjectTeamSchema);
+module.exports = mongoose.model("Team", TeamSchema);
