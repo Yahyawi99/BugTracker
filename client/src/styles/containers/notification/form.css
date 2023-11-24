@@ -42,12 +42,12 @@
 .messageBox form textarea {
     border: none;
     outline: none;
+    font-size: 1rem;
 }
 
 .messageBox form input {
     min-height: 50px;
     border-bottom: 2px solid var(--border-color);
-    font-size: .9rem;
 }
 
 .messageBox form input::placeholder,
@@ -109,7 +109,7 @@
     background-color: var(--white);
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
     position: absolute;
     top: 55px;
     box-shadow: var(--shadow);

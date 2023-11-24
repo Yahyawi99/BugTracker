@@ -8,9 +8,8 @@ const {
   createMessage,
 } = require("../controllers/messageController");
 
-router
-  .route("/:id")
-  .get(authenticateUser, allMessages)
-  .post(authenticateUser, createMessage);
+router.route("/:id").get(authenticateUser, allMessages);
+
+router.route("/").post(authenticateUser, createMessage);
 
 module.exports = router;

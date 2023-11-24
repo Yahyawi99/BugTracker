@@ -7,8 +7,13 @@ const allMessages = async (req, res) => {
 };
 
 const createMessage = async (req, res) => {
-  console.log("in");
-  res.status(StatusCodes.CREATED).json({});
+  const { recipientID, email, subject, message } = req.body;
+
+  const newMessage = { recipient: recipientID, email, subject, message };
+
+  await Message.create(newMessage);
+
+  res.status(StatusCodes.CREATED).json({ msg: "success!" });
 };
 
 module.exports = { allMessages, createMessage };

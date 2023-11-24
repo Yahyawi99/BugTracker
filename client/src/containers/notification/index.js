@@ -1,7 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 // components
-import Form from "./Form";
 import Inbox from "./Inbox";
 import NotFound from "../../components/not-found";
 
@@ -9,8 +8,7 @@ const Index = () => {
   return (
     <>
       <Routes>
-        <Route path="/send-message" Component={Form} />
-        <Route path="/my-inbox/:memberId" Component={Inbox} />
+        <Route path="/my-inbox" Component={Inbox} />
 
         <Route path="*" Component={NotFound} />
       </Routes>

@@ -4,18 +4,15 @@ const validator = require("validator");
 const MessageSchema = new mongoose.Schema(
   {
     recipient: {
-      type: String,
-      required: [true, "Please provide recipient email."],
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
 
     subject: {
       type: String,
       trim: true,
       maxlength: 50,
-      validate: {
-        validator: validator.isEmail,
-        message: "Please provide a valid  recipient email",
-      },
       required: [true, "Please provide message subject."],
     },
 
@@ -23,12 +20,6 @@ const MessageSchema = new mongoose.Schema(
       type: String,
       maxlength: 1000,
       required: [true, "Please provide a message."],
-    },
-
-    recipientID: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
     },
   },
   { timestamps: true }
