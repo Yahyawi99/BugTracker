@@ -125,28 +125,6 @@ const useUsers = () => {
     }
   };
 
-  // // update user role
-  // const updateUserRole = async (memberId,role) => {
-  //   try {
-  //     loading(true);
-
-  //     const response = await axios.post(`/api/v1/user/${memberId}`,{role});
-
-  //     loading(false);
-
-  //     setSingleUser(response.data);
-
-  //     await alertMe("Done.", "var(--success)");
-  //   } catch (error) {
-  //     loading(false);
-
-  //     await alertMe(
-  //       "Something went wrong please try again later!" + "!",
-  //       "var(--danger)"
-  //     );
-  //   }
-  // };
-
   return {
     getAllUsers,
     allUsers,

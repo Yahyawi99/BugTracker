@@ -7,6 +7,7 @@ const allMessages = async (req, res) => {
 };
 
 const createMessage = async (req, res) => {
+  console.log("in");
   res.status(StatusCodes.CREATED).json({});
 };
 

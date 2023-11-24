@@ -20,6 +20,7 @@ const ProjectRoutes = require("./routes/projectRoutes");
 const TicketRoutes = require("./routes/ticketRoutes");
 const UserRoutes = require("./routes/userRoutes");
 const CommentRoutes = require("./routes/commentRoutes");
+const MessageRoutes = require("./routes/messageRoutes");
 
 // ========================================
 // ========================================
@@ -32,6 +33,7 @@ app.use("/api/v1/user", UserRoutes);
 app.use("/api/v1/project", ProjectRoutes);
 app.use("/api/v1/ticket", TicketRoutes);
 app.use("/api/v1/comment", CommentRoutes);
+app.use("/api/v1/message", MessageRoutes);
 
 app.use(NotFoundMiddleware);
 app.use(errHandlerMiddleware);
