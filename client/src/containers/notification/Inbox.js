@@ -10,6 +10,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 // hooks
 import useMessages from "../../hooks/useMessages";
+// utils
+import formatDate from "../../utils/formatDate";
 // components
 import HomeBtn from "../../components/shared/HomeBtn";
 import Form from "./Form";
@@ -100,8 +102,55 @@ const Inbox = () => {
 
 // ==========================
 const Message = ({ data }) => {
-  console.log(data);
-  return <div className="singleMessage"></div>;
+  const {
+    subject,
+    sender: { name },
+    createdAt,
+  } = data;
+
+  return (
+    <>
+      <div className="singleMessage">
+        <p className="sender">{name}</p>
+
+        <p className="subject">{subject}</p>
+
+        <p className="createdAt">
+          {formatDate(createdAt, { day: "2-digit", month: "short" })}
+        </p>
+      </div>
+
+      <div className="singleMessage">
+        <p className="sender">{name}</p>
+
+        <p className="subject">{subject}</p>
+
+        <p className="createdAt">
+          {formatDate(createdAt, { day: "2-digit", month: "short" })}
+        </p>
+      </div>
+
+      <div className="singleMessage">
+        <p className="sender">{name}</p>
+
+        <p className="subject">{subject}</p>
+
+        <p className="createdAt">
+          {formatDate(createdAt, { day: "2-digit", month: "short" })}
+        </p>
+      </div>
+
+      <div className="singleMessage">
+        <p className="sender">{name}</p>
+
+        <p className="subject">{subject}</p>
+
+        <p className="createdAt">
+          {formatDate(createdAt, { day: "2-digit", month: "short" })}
+        </p>
+      </div>
+    </>
+  );
 };
 
 export default Inbox;
