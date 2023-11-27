@@ -5,7 +5,9 @@ const Message = require("../model/Message");
 const allMessages = async (req, res) => {
   const { id: memberId } = req.params;
 
-  const messages = await Message.find({ recipient: memberId });
+  const messages = await Message.find({ recipient: memberId }).populate(
+    "sender recipient"
+  );
 
   if (!messages) {
     throw new CustomError.NotFoundError(
@@ -18,8 +20,15 @@ const allMessages = async (req, res) => {
 
 const createMessage = async (req, res) => {
   const { recipientID, email, subject, message } = req.body;
+  const { userId } = req.user;
 
-  const newMessage = { recipient: recipientID, email, subject, message };
+  const newMessage = {
+    recipient: recipientID,
+    sender: userId,
+    email,
+    subject,
+    message,
+  };
 
   await Message.create(newMessage);
 

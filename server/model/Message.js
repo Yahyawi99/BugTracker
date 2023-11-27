@@ -21,6 +21,12 @@ const MessageSchema = new mongoose.Schema(
       maxlength: 1000,
       required: [true, "Please provide a message."],
     },
+
+    sender: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
   },
   { timestamps: true }
 );

@@ -100,6 +100,7 @@ const Inbox = () => {
 
 // ==========================
 const Message = ({ data }) => {
+  console.log(data);
   return <div className="singleMessage"></div>;
 };
 
