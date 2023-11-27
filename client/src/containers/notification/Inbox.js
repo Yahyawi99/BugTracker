@@ -107,10 +107,11 @@ const Message = ({ data }) => {
     sender: { name },
     createdAt,
     message,
+    isRead,
   } = data;
 
   return (
-    <div className="singleMessage">
+    <div className={`singleMessage ${!isRead && "unreadMessage"}`}>
       <p className="sender">{name}</p>
 
       <div>

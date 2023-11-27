@@ -226,14 +226,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 20px;
     transition: .2s;
     cursor: pointer;
+    font-size: .9rem;
     border-bottom: 1px solid var(--border-color);
     padding: 5px;
 }
 
 .inboxContainer .main .singleMessage:first-child {
     border-top: 1px solid var(--border-color);
+}
+
+.inboxContainer .main .unreadMessage {
+    font-weight: 600;
 }
 
 .inboxContainer .main .singleMessage:hover {
