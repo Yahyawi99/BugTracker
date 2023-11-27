@@ -232,14 +232,27 @@
     padding: 5px;
 }
 
-.inboxContainer .main .singleMessage:first {
+.inboxContainer .main .singleMessage:first-child {
     border-top: 1px solid var(--border-color);
 }
 
 .inboxContainer .main .singleMessage:hover {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     box-shadow: var(--shadow);
-    transform: translateY(-1px);
+    transform: translateY(-5px);
+}
+
+.inboxContainer .main .singleMessage>div {
+    display: flex;
+    position: relative;
+}
+
+.inboxContainer .main .singleMessage>div p:nth-child(1) {
+    margin-right: 15px;
+}
+
+.inboxContainer .main .singleMessage .dots {
+    position: absolute;
+    right: 0;
 }
 
 

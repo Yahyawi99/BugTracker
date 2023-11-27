@@ -106,50 +106,22 @@ const Message = ({ data }) => {
     subject,
     sender: { name },
     createdAt,
+    message,
   } = data;
 
   return (
-    <>
-      <div className="singleMessage">
-        <p className="sender">{name}</p>
+    <div className="singleMessage">
+      <p className="sender">{name}</p>
 
-        <p className="subject">{subject}</p>
-
-        <p className="createdAt">
-          {formatDate(createdAt, { day: "2-digit", month: "short" })}
-        </p>
+      <div>
+        <p>{subject + " - " + message.substring(0, 10)}</p>
+        <p className="dots">...</p>
       </div>
 
-      <div className="singleMessage">
-        <p className="sender">{name}</p>
-
-        <p className="subject">{subject}</p>
-
-        <p className="createdAt">
-          {formatDate(createdAt, { day: "2-digit", month: "short" })}
-        </p>
-      </div>
-
-      <div className="singleMessage">
-        <p className="sender">{name}</p>
-
-        <p className="subject">{subject}</p>
-
-        <p className="createdAt">
-          {formatDate(createdAt, { day: "2-digit", month: "short" })}
-        </p>
-      </div>
-
-      <div className="singleMessage">
-        <p className="sender">{name}</p>
-
-        <p className="subject">{subject}</p>
-
-        <p className="createdAt">
-          {formatDate(createdAt, { day: "2-digit", month: "short" })}
-        </p>
-      </div>
-    </>
+      <p className="createdAt">
+        {formatDate(createdAt, { day: "2-digit", month: "short" })}
+      </p>
+    </div>
   );
 };
 
