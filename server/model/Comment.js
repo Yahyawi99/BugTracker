@@ -18,7 +18,7 @@ const CommentSchema = new mongoose.Schema(
       required: true,
     },
 
-    createdBy: {
+    sender: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,

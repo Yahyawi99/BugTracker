@@ -26,7 +26,7 @@ const createComments = async (req, res) => {
   await Comment.create({
     value,
     ticket: ticketId,
-    createdBy: userId,
+    sender: userId,
   });
 
   res

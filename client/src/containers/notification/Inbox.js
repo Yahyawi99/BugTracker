@@ -26,8 +26,6 @@ const Inbox = () => {
     getAllMessages(memberId);
   }, []);
 
-  console.log(allMessages);
-
   return (
     <section className="inboxContainer">
       <HomeBtn name="Notifications" />
@@ -84,6 +82,13 @@ const Inbox = () => {
                 </div>
               </div>
             </div>
+
+            <div className="messagesContainer">
+              {allMessages &&
+                allMessages.map((message) => {
+                  return <Message key={message._id} data={message} />;
+                })}
+            </div>
           </div>
         </div>
       </div>
@@ -91,6 +96,11 @@ const Inbox = () => {
       {isFormShown && <Form setIsFormShown={setIsFormShown} />}
     </section>
   );
+};
+
+// ==========================
+const Message = ({ data }) => {
+  return <div className="singleMessage"></div>;
 };
 
 export default Inbox;

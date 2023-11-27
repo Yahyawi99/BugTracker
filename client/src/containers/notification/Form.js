@@ -92,6 +92,7 @@ const Dropdown = ({ data, setData, allUsers }) => {
             return (
               USER_ID !== _id && (
                 <p
+                  key={_id}
                   onClick={() => {
                     setData({ ...data, recipient: email });
                     setIsShown(false);
