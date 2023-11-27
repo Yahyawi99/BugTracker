@@ -226,7 +226,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    gap: 5px;
     transition: .2s;
     cursor: pointer;
     font-size: .9rem;
@@ -247,25 +247,27 @@
     transform: translateY(-5px);
 }
 
-.inboxContainer .main .singleMessage>div {
-    display: flex;
-    position: relative;
+
+.inboxContainer .main .singleMessage .subject {
+    flex: 1;
+    max-width: 300px;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
-.inboxContainer .main .singleMessage>div p:nth-child(1) {
-    margin-right: 15px;
-}
-
-.inboxContainer .main .singleMessage .dots {
-    position: absolute;
-    right: 0;
-}
 
 
 /* ============================= */
 /* ============================= */
 /* ============================= */
 /* Media query */
-/* @media screen and () { */
+@media screen and (max-width:800px) {
 
-/* } */
+    /* message */
+    .inboxContainer .main .singleMessage .subject {
+        max-width: 100px;
+    }
+
+}

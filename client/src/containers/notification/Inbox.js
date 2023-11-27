@@ -114,10 +114,7 @@ const Message = ({ data }) => {
     <div className={`singleMessage ${!isRead && "unreadMessage"}`}>
       <p className="sender">{name}</p>
 
-      <div>
-        <p>{subject + " - " + message.substring(0, 10)}</p>
-        <p className="dots">...</p>
-      </div>
+      <p className="subject">{subject + " - " + message}</p>
 
       <p className="createdAt">
         {formatDate(createdAt, { day: "2-digit", month: "short" })}
