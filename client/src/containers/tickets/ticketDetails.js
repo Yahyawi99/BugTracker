@@ -15,8 +15,8 @@ import HomeBtn from "../../components/shared/HomeBtn";
 // css
 import "../../styles/containers/tickets/ticket-details.css";
 
-const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
-const USER_ID = JSON.parse(localStorage.getItem("user")).userId;
+const USER_ROLE = JSON.parse(localStorage.getItem("user"))?.role;
+const USER_ID = JSON.parse(localStorage.getItem("user"))?.userId;
 
 // **********************************
 // **********************************

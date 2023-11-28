@@ -19,7 +19,7 @@ import progress from "../../utils/progress";
 // css
 import "../../styles/containers/projects/my-projects.css";
 
-const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
+const USER_ROLE = JSON.parse(localStorage.getItem("user"))?.role;
 
 const MyProjects = () => {
   const { getUserProjects, userProjects, archiveProject } = useProjects();

@@ -28,8 +28,8 @@ import skins from "../../data/colors.json";
 // css
 import "../../styles/components/navbar/index.css";
 
-const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
-const USER_ID = JSON.parse(localStorage.getItem("user")).userId;
+const USER_ROLE = JSON.parse(localStorage.getItem("user"))?.role;
+const USER_ID = JSON.parse(localStorage.getItem("user"))?.userId;
 
 const NavBar = () => {
   const { skin: skinChoice, setSkin, isHamOpen } = useMainContext();

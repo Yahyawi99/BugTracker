@@ -17,7 +17,7 @@ import LimitAndSearch from "../../components/shared/LimitAndSearch";
 import "../../styles/containers/tickets/all-tickets.css";
 import "../../styles/containers/tickets/unassignedTickets.css";
 
-const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
+const USER_ROLE = JSON.parse(localStorage.getItem("user"))?.role;
 
 const UnassignedTickets = () => {
   const { unassignedTickets, allTickets, archiveTicket } = useTickets();

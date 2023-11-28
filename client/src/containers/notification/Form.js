@@ -8,7 +8,7 @@ import { faXmark, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 // css
 import "../../styles/containers/notification/form.css";
 
-const USER_ID = JSON.parse(localStorage.getItem("user")).userId;
+const USER_ID = JSON.parse(localStorage.getItem("user"))?.userId;
 
 const Form = ({ setIsFormShown }) => {
   const [data, setData] = useState({ recipient: "", subject: "", message: "" });

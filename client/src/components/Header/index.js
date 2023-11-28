@@ -16,7 +16,7 @@ import Settings from "../shared/Settings";
 // css
 import "../../styles/components/header/index.css";
 
-const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
+const USER_ROLE = JSON.parse(localStorage.getItem("user"))?.role;
 
 const Header = () => {
   const { logout } = useAuth();

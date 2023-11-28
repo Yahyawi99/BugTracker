@@ -21,9 +21,9 @@ import LimitAndSearch from "../../components/shared/LimitAndSearch";
 // css
 import "../../styles/containers/projects/project-details.css";
 
-const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
-const USER_NAME = JSON.parse(localStorage.getItem("user")).name;
-const USER_ID = JSON.parse(localStorage.getItem("user")).userId;
+const USER_ROLE = JSON.parse(localStorage.getItem("user"))?.role;
+const USER_NAME = JSON.parse(localStorage.getItem("user"))?.name;
+const USER_ID = JSON.parse(localStorage.getItem("user"))?.userId;
 
 const ProjectDetails = () => {
   const { getSingleProject, singleProject, archiveProject } = useProjects();

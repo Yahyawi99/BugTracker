@@ -18,7 +18,7 @@ import formatDate from "../../utils/formatDate";
 // css
 import "../../styles/containers/tickets/my-tickets.css";
 
-const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
+const USER_ROLE = JSON.parse(localStorage.getItem("user"))?.role;
 
 const MyTickets = () => {
   const { getUserTickets, userTickets, archiveTicket } = useTickets();

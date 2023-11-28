@@ -19,7 +19,7 @@ import HomeBtn from "../../components/shared/HomeBtn";
 // css
 import "../../styles/containers/projects/all-projects.css";
 
-const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
+const USER_ROLE = JSON.parse(localStorage.getItem("user"))?.role;
 
 const ArchivedProjects = () => {
   const { getAllProjects, allProjects, archiveProject } = useProjects();

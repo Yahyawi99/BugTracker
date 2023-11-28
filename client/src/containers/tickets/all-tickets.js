@@ -18,7 +18,7 @@ import HomeBtn from "../../components/shared/HomeBtn";
 import "../../styles/containers/tickets/all-tickets.css";
 import "../../styles/components/shared/pagination.css";
 
-const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
+const USER_ROLE = JSON.parse(localStorage.getItem("user"))?.role;
 
 const AllTickets = () => {
   const { getAllTickets, allTickets, archiveTicket } = useTickets();

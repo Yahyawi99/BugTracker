@@ -22,7 +22,7 @@ import HomeBtn from "../../components/shared/HomeBtn";
 // css
 import "../../styles/containers/admin/manage-team.css";
 
-const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
+const USER_ROLE = JSON.parse(localStorage.getItem("user"))?.role;
 
 const ManageTeam = () => {
   const { getSingleProject, singleProject, manageProjectTeam } = useProjects();

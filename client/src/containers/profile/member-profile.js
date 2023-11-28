@@ -11,7 +11,7 @@ import useUsers from "../../hooks/useUsers";
 // css
 import "../../styles/containers/profile/index.css";
 
-const USER_ROLE = JSON.parse(localStorage.getItem("user")).role;
+const USER_ROLE = JSON.parse(localStorage.getItem("user"))?.role;
 
 const MemberProfile = () => {
   const { memberId } = useParams();
