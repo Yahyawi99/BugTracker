@@ -18,6 +18,8 @@ import Form from "./Form";
 // css
 import "../../styles/containers/notification/inbox.css";
 
+const USER_ROLE = JSON.parse(localStorage.getItem("user"))?.role;
+
 const Inbox = () => {
   const [isFormShown, setIsFormShown] = useState(false);
 
@@ -34,9 +36,11 @@ const Inbox = () => {
 
       <div>
         <div className="menu">
-          <button type="button" onClick={() => setIsFormShown(true)}>
-            Compose
-          </button>
+          {USER_ROLE === "admin" && (
+            <button type="button" onClick={() => setIsFormShown(true)}>
+              Compose
+            </button>
+          )}
 
           <div>
             <FontAwesomeIcon icon={faEnvelope} />
