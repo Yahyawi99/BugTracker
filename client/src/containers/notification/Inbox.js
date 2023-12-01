@@ -140,14 +140,14 @@ const MessageHead = ({ data, message: messageContent, setMessage }) => {
   );
 };
 
-const MessageContent = ({ message }) => {
-  if (message) {
-    console.log(message);
+const MessageContent = ({ message: messageContent }) => {
+  if (messageContent) {
     const {
       subject,
       sender: { _id: senderId, name, email, avatar },
       recipient: { _id: recipientId },
-    } = message;
+      message,
+    } = messageContent;
 
     return (
       <div className="messageContent">
@@ -169,6 +169,13 @@ const MessageContent = ({ message }) => {
             </p>
           </div>
         </div>
+
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil autem
+          quidem delectus sequi quia, quasi sunt repellat. Fugiat, nesciunt
+          quia. Possimus, dicta? Cum perspiciatis incidunt mollitia unde quidem
+          architecto eius.
+        </p>
       </div>
     );
   }
