@@ -3,6 +3,7 @@
     background-color: var(--white);
     border-radius: 10px;
     padding: 20px 15px;
+    margin-bottom: 20px;
 }
 
 /* ======================== */
@@ -214,7 +215,7 @@
     background-color: var(--gray);
 }
 
-/* Message */
+/* Message head*/
 .inboxContainer .main .messagesContainer {
     width: 100%;
 }
@@ -243,8 +244,8 @@
 }
 
 .inboxContainer .main .singleMessage:hover {
-    box-shadow: var(--shadow);
-    transform: translateY(-5px);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+    transform: translateY(-3px);
 }
 
 
@@ -257,6 +258,47 @@
     overflow: hidden;
 }
 
+/* ============================= */
+/* ============================= */
+/* ============================= */
+/* Message content */
+.inboxContainer .messageContent {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.inboxContainer .messageContent h3 {
+    color: var(--gray-dark);
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+}
+
+.inboxContainer .messageContent .senderInfo {
+    display: flex;
+    gap: 10px;
+}
+
+.inboxContainer .messageContent .senderInfo>div>div {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+.inboxContainer .messageContent img {
+    width: 55px;
+    border-radius: 50%;
+}
+
+.inboxContainer .messageContent .recipient>a,
+.inboxContainer .messageContent .email {
+    color: var(--blue);
+}
+
+.inboxContainer .messageContent .recipient>a:hover,
+.inboxContainer .messageContent .email:hover {
+    text-decoration: 2px underline;
+}
 
 
 /* ============================= */

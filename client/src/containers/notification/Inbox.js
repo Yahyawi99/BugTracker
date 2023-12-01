@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
@@ -145,12 +145,13 @@ const MessageContent = ({ message }) => {
     console.log(message);
     const {
       subject,
-      sender: { name, email, avatar },
+      sender: { _id: senderId, name, email, avatar },
+      recipient: { _id: recipientId },
     } = message;
 
     return (
       <div className="messageContent">
-        <p className="subject">{subject}</p>
+        <h3 className="subject">{subject}</h3>
 
         <div className="senderInfo">
           <img src={avatar} alt="sender" />
@@ -158,10 +159,14 @@ const MessageContent = ({ message }) => {
           <div>
             <div>
               <p className="name">{name}</p>
-              <p className="email">&lt;{email}&gt;</p>
+              <Link to={`/profile/member-profile/${senderId}`}>
+                <p className="email">&lt;{email}&gt;</p>
+              </Link>
             </div>
 
-            <p>to me</p>
+            <p className="recipient">
+              to <Link to={`/profile/member-profile/${recipientId}`}>me</Link>
+            </p>
           </div>
         </div>
       </div>
