@@ -22,6 +22,7 @@ const USER_ROLE = JSON.parse(localStorage.getItem("user"))?.role;
 
 const Inbox = () => {
   const [isFormShown, setIsFormShown] = useState(false);
+  const [message, setMessage] = useState(null);
 
   const { memberId } = useParams();
   const { getAllMessages, allMessages } = useMessages();
@@ -92,12 +93,21 @@ const Inbox = () => {
             <div className="messagesContainer">
               {allMessages &&
                 allMessages.map((message) => {
-                  return <Message key={message._id} data={message} />;
+                  return (
+                    <MessageHead
+                      key={message._id}
+                      data={message}
+                      message={message}
+                      setMessage={setMessage}
+                    />
+                  );
                 })}
             </div>
           </div>
         </div>
       </div>
+
+      <MessageContent message={message} />
 
       {isFormShown && <Form setIsFormShown={setIsFormShown} />}
     </section>
@@ -105,7 +115,7 @@ const Inbox = () => {
 };
 
 // ==========================
-const Message = ({ data }) => {
+const MessageHead = ({ data, message: messageContent, setMessage }) => {
   const {
     subject,
     sender: { name },
@@ -115,7 +125,10 @@ const Message = ({ data }) => {
   } = data;
 
   return (
-    <div className={`singleMessage ${!isRead && "unreadMessage"}`}>
+    <div
+      className={`singleMessage ${!isRead && "unreadMessage"}`}
+      onClick={() => setMessage(messageContent)}
+    >
       <p className="sender">{name}</p>
 
       <p className="subject">{subject + " - " + message}</p>
@@ -125,6 +138,35 @@ const Message = ({ data }) => {
       </p>
     </div>
   );
+};
+
+const MessageContent = ({ message }) => {
+  if (message) {
+    console.log(message);
+    const {
+      subject,
+      sender: { name, email, avatar },
+    } = message;
+
+    return (
+      <div className="messageContent">
+        <p className="subject">{subject}</p>
+
+        <div className="senderInfo">
+          <img src={avatar} alt="sender" />
+
+          <div>
+            <div>
+              <p className="name">{name}</p>
+              <p className="email">&lt;{email}&gt;</p>
+            </div>
+
+            <p>to me</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 };
 
 export default Inbox;
