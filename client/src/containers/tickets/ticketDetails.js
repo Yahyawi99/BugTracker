@@ -54,10 +54,10 @@ const TicketDetails = () => {
   return (
     singleTicket &&
     project && (
-      <section className="DocumentDetails">
+      <section className="ticketDetails">
         <HomeBtn name="Ticket Details" />
 
-        <div className="details ticketDetails">
+        <div className="details">
           <div className="first-column">
             <div className="row-one">
               <h1>{title}</h1>

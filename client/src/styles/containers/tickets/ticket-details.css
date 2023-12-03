@@ -1,3 +1,27 @@
+.ticketDetails .details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.ticketDetails .first-column>div,
+.ticketDetails .second-column>div {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.ticketDetails .first-column {
+    flex: .4;
+    min-width: 425px;
+}
+
+.ticketDetails .second-column {
+    flex: .6;
+    min-width: 600px;
+}
+
 /* project */
 .ticketDetails .project {
     display: flex;
