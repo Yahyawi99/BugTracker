@@ -113,7 +113,7 @@ const Table = ({
       </thead>
 
       <tbody>
-        {data?.projects.length > 0 ? (
+        {data?.projects?.length > 0 ? (
           data.projects.map((project) => {
             return (
               <tr key={project._id}>
@@ -122,8 +122,8 @@ const Table = ({
             );
           })
         ) : (
-          <tr colSpan="7">
-            <td>
+          <tr>
+            <td colSpan="7">
               <p className="noDocuments"> No Projects to show</p>
             </td>
           </tr>
