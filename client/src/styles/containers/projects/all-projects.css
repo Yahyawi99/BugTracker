@@ -233,3 +233,9 @@
 .projectsContainer .btns .unarchive:hover {
     background-color: var(--success);
 }
+
+
+/* No documents */
+.projectsContainer .noDocuments {
+    text-align: center;
+}
