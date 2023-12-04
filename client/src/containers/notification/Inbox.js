@@ -23,6 +23,7 @@ const USER_ROLE = JSON.parse(localStorage.getItem("user"))?.role;
 const Inbox = () => {
   const [isFormShown, setIsFormShown] = useState(false);
   const [message, setMessage] = useState(null);
+  const [newMessages, setNewMessages] = useState(0);
 
   const { memberId } = useParams();
   const { getAllMessages, allMessages } = useMessages();
@@ -30,6 +31,20 @@ const Inbox = () => {
   useEffect(() => {
     getAllMessages(memberId);
   }, []);
+
+  // New messages
+  useEffect(() => {
+    const myNewMessages = allMessages?.filter((message) => {
+      const creationTime =
+        new Date().getTime() - new Date(message.createdAt).getTime();
+
+      const day = 24 * 3600 * 1000;
+
+      return day - creationTime >= 0;
+    });
+
+    setNewMessages(myNewMessages.length);
+  }, [allMessages]);
 
   return (
     <section className="inboxContainer">
@@ -46,7 +61,7 @@ const Inbox = () => {
           <div>
             <FontAwesomeIcon icon={faEnvelope} />
             <p>New</p>
-            <p>0</p>
+            <p>{newMessages}</p>
           </div>
         </div>
 
@@ -170,12 +185,7 @@ const MessageContent = ({ message: messageContent }) => {
           </div>
         </div>
 
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil autem
-          quidem delectus sequi quia, quasi sunt repellat. Fugiat, nesciunt
-          quia. Possimus, dicta? Cum perspiciatis incidunt mollitia unde quidem
-          architecto eius.
-        </p>
+        <p>{message}</p>
       </div>
     );
   }
