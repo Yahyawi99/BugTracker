@@ -23,11 +23,11 @@ const useMessages = () => {
   };
 
   // create message
-  const createMessage = async (recipientID) => {
+  const createMessage = async (data) => {
     try {
       loading(true);
 
-      await axios.post(`/api/v1/message/${recipientID}`);
+      await axios.post(`/api/v1/message`, data);
 
       loading(false);
 

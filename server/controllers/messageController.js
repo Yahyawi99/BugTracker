@@ -18,6 +18,7 @@ const allMessages = async (req, res) => {
   res.status(StatusCodes.OK).json({ messages });
 };
 
+// create message
 const createMessage = async (req, res) => {
   const { recipientID, email, subject, message } = req.body;
   const { userId } = req.user;
@@ -30,7 +31,8 @@ const createMessage = async (req, res) => {
     message,
   };
 
-  await Message.create(newMessage);
+  // await Message.create(newMessage);
+  console.log(req.body);
 
   res.status(StatusCodes.CREATED).json({ msg: "success!" });
 };

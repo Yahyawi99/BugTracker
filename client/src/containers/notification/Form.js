@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useMainContext } from "../../context/global";
+// hooks
 import useUsers from "../../hooks/useUsers";
+import useMessages from "../../hooks/useMessages";
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faChevronDown } from "@fortawesome/free-solid-svg-icons";
@@ -14,6 +16,8 @@ const Form = ({ setIsFormShown }) => {
   const [data, setData] = useState({ recipient: "", subject: "", message: "" });
 
   const { getAllUsers, allUsers } = useUsers();
+  const { createMessage } = useMessages();
+
   const { alertMe } = useMainContext();
 
   const formHandler = async (e) => {
@@ -24,6 +28,10 @@ const Form = ({ setIsFormShown }) => {
     if (!recipient || !subject || !message) {
       await alertMe("All fields are required!", "var(--danger)");
     }
+
+    const messageData = new FormData(data);
+
+    createMessage(messageData);
   };
 
   useEffect(() => {
