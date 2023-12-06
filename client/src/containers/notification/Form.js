@@ -32,9 +32,7 @@ const Form = ({ setIsFormShown }) => {
     const messageData = new FormData();
     messageData.append("data", JSON.stringify(data));
 
-    try {
-      await createMessage(messageData, setData);
-    } catch (error) {}
+    createMessage(messageData, setData, setIsFormShown);
   };
 
   useEffect(() => {

@@ -23,7 +23,7 @@ const useMessages = () => {
   };
 
   // create message
-  const createMessage = async (data, clearFormData) => {
+  const createMessage = async (data, clearFormData, setIsFormShown) => {
     try {
       loading(true);
 
@@ -32,6 +32,7 @@ const useMessages = () => {
       loading(false);
 
       clearFormData({ recipient: "", subject: "", message: "" });
+      setIsFormShown(false);
 
       await alertMe("Message sent successfully.", "var(--success)");
     } catch (error) {
