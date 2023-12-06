@@ -29,7 +29,8 @@ const Form = ({ setIsFormShown }) => {
       await alertMe("All fields are required!", "var(--danger)");
     }
 
-    const messageData = new FormData(data);
+    const messageData = new FormData();
+    messageData.append("data", JSON.stringify(data));
 
     createMessage(messageData);
   };

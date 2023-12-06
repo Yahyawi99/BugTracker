@@ -1,6 +1,7 @@
 const { StatusCodes } = require("http-status-codes");
 const CustomError = require("../errors");
 const Message = require("../model/Message");
+const User = require("../model/User");
 
 const allMessages = async (req, res) => {
   const { id: memberId } = req.params;
@@ -20,19 +21,23 @@ const allMessages = async (req, res) => {
 
 // create message
 const createMessage = async (req, res) => {
-  const { recipientID, email, subject, message } = req.body;
+  const {
+    recipient: recipientEmail,
+    subject,
+    message,
+  } = JSON.parse(req.body.data);
   const { userId } = req.user;
 
+  const recipientDocument = await User.findOne({ email: recipientEmail });
+
   const newMessage = {
-    recipient: recipientID,
+    recipient: recipientDocument._id,
     sender: userId,
-    email,
     subject,
     message,
   };
 
-  // await Message.create(newMessage);
-  console.log(req.body);
+  await Message.create(newMessage);
 
   res.status(StatusCodes.CREATED).json({ msg: "success!" });
 };
