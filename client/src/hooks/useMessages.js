@@ -23,13 +23,15 @@ const useMessages = () => {
   };
 
   // create message
-  const createMessage = async (data) => {
+  const createMessage = async (data, clearFormData) => {
     try {
       loading(true);
 
       await axios.post(`/api/v1/message`, data);
 
       loading(false);
+
+      clearFormData({ recipient: "", subject: "", message: "" });
 
       await alertMe("Message sent successfully.", "var(--success)");
     } catch (error) {
