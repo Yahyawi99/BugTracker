@@ -10,7 +10,6 @@ import useProjects from "../../hooks/useProjects";
 import HomeBtn from "../../components/shared/HomeBtn";
 // css
 import "../../styles/containers/projects/edit-create-project.css";
-import "../../styles/containers/projects/create-project.css";
 
 const CreateTicket = () => {
   const { createTicket } = useTickets();
