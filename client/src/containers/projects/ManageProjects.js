@@ -31,7 +31,7 @@ const ManageProjects = () => {
     <section className="ManageProjectsSection">
       <HomeBtn name="Manage Projects" />
 
-      <div className="projectsContainer">
+      <div className="manageProjectsContainer">
         {allProjects.projects &&
           allProjects.projects.map((project) => {
             const {

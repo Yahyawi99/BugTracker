@@ -17,7 +17,7 @@ import progress from "../../utils/progress";
 import LimitAndSearch from "../../components/shared/LimitAndSearch";
 import HomeBtn from "../../components/shared/HomeBtn";
 // css
-import "../../styles/containers/projects/all-projects.css";
+import "../../styles/containers/projects/shared.css";
 
 const USER_ROLE = JSON.parse(localStorage.getItem("user"))?.role;
 
@@ -116,7 +116,7 @@ const Table = ({
       </thead>
 
       <tbody>
-        {data?.projects.length > 0 ? (
+        {data?.projects?.length > 0 ? (
           data.projects.map((project) => {
             return (
               <tr key={project._id}>

@@ -17,7 +17,7 @@ import progress from "../../utils/progress";
 import LimitAndSearch from "../../components/shared/LimitAndSearch";
 import HomeBtn from "../../components/shared/HomeBtn";
 // css
-import "../../styles/containers/projects/all-projects.css";
+import "../../styles/containers/projects/shared.css";
 
 const USER_ROLE = JSON.parse(localStorage.getItem("user"))?.role;
 
@@ -37,7 +37,7 @@ const AllProjects = () => {
   }
 
   return (
-    <section className="allProjectsContainer">
+    <section className="projectsContainer">
       <HomeBtn name="Projects" />
 
       <div>

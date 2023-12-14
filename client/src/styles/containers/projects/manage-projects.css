@@ -1,5 +1,5 @@
 /* Projects */
-.ManageProjectsSection .projectsContainer {
+.ManageProjectsSection .manageProjectsContainer {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     grid-template-rows: auto-fill;
@@ -37,7 +37,7 @@
     font-size: .8rem;
 }
 
-.ManageProjectsSection .project>div:nth-child(1) i {
+.ManageProjectsSection .project>div:nth-child(1) i svg {
     font-size: 1rem;
 }
 

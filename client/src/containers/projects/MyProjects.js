@@ -17,7 +17,7 @@ import LimitAndSearch from "../../components/shared/LimitAndSearch";
 import formatDate from "../../utils/formatDate";
 import progress from "../../utils/progress";
 // css
-import "../../styles/containers/projects/my-projects.css";
+import "../../styles/containers/projects/shared.css";
 
 const USER_ROLE = JSON.parse(localStorage.getItem("user"))?.role;
 
@@ -37,7 +37,7 @@ const MyProjects = () => {
   }
 
   return (
-    <section className="allProjectsContainer">
+    <section className="projectsContainer">
       <HomeBtn name="Projects" />
 
       <div>
