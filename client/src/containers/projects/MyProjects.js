@@ -37,7 +37,7 @@ const MyProjects = () => {
   }
 
   return (
-    <section className="projectsContainer">
+    <section className="allProjectsContainer">
       <HomeBtn name="Projects" />
 
       <div>
