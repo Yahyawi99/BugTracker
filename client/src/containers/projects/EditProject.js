@@ -63,10 +63,10 @@ const EditProject = () => {
       <HomeBtn name="Edit Project" />
 
       {project && (
-        <section className="editProject">
-          <div className="editForm">
+        <section className="editCreateProject">
+          <form className="editCreateForm">
             <div>
-              <label htmlFor="name">Project Name</label>
+              <div className="label">Project Name</div>
               <input
                 type="text"
                 id="name"
@@ -79,7 +79,7 @@ const EditProject = () => {
             </div>
 
             <div className="note-editor">
-              <label htmlFor="description">Project Description</label>
+              <div className="label">Project Description</div>
 
               <div className="quill-editor">
                 <ReactQuill
@@ -96,7 +96,7 @@ const EditProject = () => {
 
             <div className="date">
               <div>
-                <label htmlFor="startDate">Start Date</label>
+                <div className="label">Start Date</div>
                 <div className="calendar">
                   {project.startDate && (
                     <Calendar
@@ -110,7 +110,7 @@ const EditProject = () => {
               </div>
 
               <div>
-                <label htmlFor="endDate">End Date</label>
+                <div className="label">End Date</div>
                 <div className="calendar">
                   {project.endDate && (
                     <Calendar
@@ -125,7 +125,7 @@ const EditProject = () => {
             </div>
 
             <div>
-              <label htmlFor="priority">Choose a priority</label>
+              <div className="label">Choose a priority</div>
 
               <DropDown
                 initialValue={project.priority}
@@ -138,7 +138,7 @@ const EditProject = () => {
             </div>
 
             <div>
-              <label htmlFor="manager">Project Manager</label>
+              <div className="label">Project Manager</div>
 
               {project.managedBy && (
                 <DropDown
@@ -151,7 +151,7 @@ const EditProject = () => {
                 />
               )}
             </div>
-          </div>
+          </form>
 
           <button type="button" onClick={() => editProject(projectId, project)}>
             Save Changes

@@ -1,4 +1,4 @@
-.editProject {
+.editCreateProject {
     width: 100%;
     max-width: 800px;
     background-color: var(--white);
@@ -7,27 +7,31 @@
     padding: 20px;
 }
 
-.editProject .editForm {
+.editCreateProject .editCreateForm {
     display: flex;
     flex-direction: column;
     gap: 35px;
 }
 
 
-.editForm>div {
+.editCreateForm>div {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
 
-.editForm .label {
+.editCreateForm .label {
     font-weight: 600;
+}
+
+.editCreateForm .label span {
+    color: var(--danger);
 }
 
 
 /* name */
-.editForm input {
+.editCreateForm input {
     width: 100%;
     height: 40px;
     font-size: 1rem;
@@ -37,25 +41,25 @@
     padding: 0 0 0 5px;
 }
 
-.editForm input::placeholder {
+.editCreateForm input::placeholder {
     color: var(--gray);
     opacity: .25;
 }
 
 /* note-editor */
-.editForm .quill-editor>div>div:nth-child(2) {
+.editCreateForm .quill-editor>div>div:nth-child(2) {
     min-height: 200px;
     font-size: 1.1rem;
 }
 
 /* date */
-.editForm .date {
+.editCreateForm .date {
     flex-direction: row;
     justify-content: flex-start;
     overflow-y: auto;
 }
 
-.editForm .date>div {
+.editCreateForm .date>div {
     width: 50%;
     min-width: 250px;
     display: flex;
@@ -63,16 +67,16 @@
     gap: 10px;
 }
 
-.editForm .react-calendar {
+.editCreateForm .react-calendar {
     min-height: 308px;
 }
 
 /* Drop downs */
-.editForm .DropDownContainer {
+.editCreateForm .DropDownContainer {
     position: relative;
 }
 
-.editForm .DropDownContainer .dropDownValue {
+.editCreateForm .DropDownContainer .dropDownValue {
     height: 45px;
     border: 1px solid var(--border-color);
     border-radius: 5px;
@@ -81,7 +85,7 @@
     padding: 0 0 0 20px;
 }
 
-.editForm .DropDownContainer .dropDown {
+.editCreateForm .DropDownContainer .dropDown {
     width: 100%;
     max-height: 150px;
     background-color: var(--white);
@@ -101,17 +105,17 @@
     padding: 10px 20px;
 }
 
-.editForm .DropDownContainer .dropDown p {
+.editCreateForm .DropDownContainer .dropDown p {
     cursor: pointer;
     font-size: .9rem;
 }
 
-.editForm .DropDownContainer .dropDown p:hover {
+.editCreateForm .DropDownContainer .dropDown p:hover {
     text-decoration: 2px underline;
 }
 
 /* save button */
-.editProject>button {
+.editCreateProject>button {
     width: fit-content;
     background-color: var(--main-clr);
     color: var(--white);
@@ -125,27 +129,27 @@
     margin: 20px 0;
 }
 
-.editProject>button:hover {
+.editCreateProject>button:hover {
     background-color: transparent;
     border-color: var(--main-clr);
     color: var(--main-clr);
 }
 
 /* Links */
-.editProject .links {
+.editCreateProject .links {
     display: flex;
     gap: 5px;
 }
 
-.editProject .links a {
+.editCreateProject .links a {
     color: var(--main-clr);
 }
 
-.editProject .links a:hover {
+.editCreateProject .links a:hover {
     text-decoration: 2px underline;
 }
 
-.editProject .links p {
+.editCreateProject .links p {
     width: 3px;
     background-color: var(--black);
     margin: 0px 5px;
@@ -156,6 +160,6 @@
 /* ******************************* */
 /* ******************************* */
 /* Javascript classess */
-.editForm .DropDownContainer .showDropDown {
+.editCreateForm .DropDownContainer .showDropDown {
     transform: scaleY(1);
 }

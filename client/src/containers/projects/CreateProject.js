@@ -59,8 +59,8 @@ const CreateProject = () => {
     <>
       <HomeBtn name="Create" />
 
-      <section className="editProject createProject">
-        <form className="editForm">
+      <section className="editCreateProject">
+        <form className="editCreateForm">
           <div>
             <div className="label">
               Project Name
