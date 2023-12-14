@@ -29,7 +29,7 @@ const CreateProject = () => {
 
   //   managers
   useEffect(() => {
-    getAllUsers();
+    getAllUsers(1, "", Infinity);
   }, []);
 
   useEffect(() => {
@@ -60,12 +60,12 @@ const CreateProject = () => {
       <HomeBtn name="Create" />
 
       <section className="editProject createProject">
-        <div className="editForm">
+        <form className="editForm">
           <div>
-            <label htmlFor="name">
+            <div className="label">
               Project Name
               <span> *</span>
-            </label>
+            </div>
             <input
               type="text"
               id="name"
@@ -78,13 +78,14 @@ const CreateProject = () => {
           </div>
 
           <div className="note-editor">
-            <label htmlFor="description">
+            <div className="label">
               Project Description
               <span> *</span>
-            </label>
+            </div>
 
             <div className="quill-editor">
               <ReactQuill
+                id="description"
                 modules={reactQuillModules}
                 theme="snow"
                 placeholder="Your project description..."
@@ -98,12 +99,13 @@ const CreateProject = () => {
 
           <div className="date">
             <div>
-              <label htmlFor="startDate">
+              <div className="label">
                 Start Date
                 <span> *</span>
-              </label>
+              </div>
               <div className="calendar">
                 <Calendar
+                  id="startDate"
                   defaultValue={newProject.startDate}
                   onChange={(value) =>
                     setNewProject({ ...newProject, startDate: value })
@@ -113,12 +115,13 @@ const CreateProject = () => {
             </div>
 
             <div>
-              <label htmlFor="endDate">
+              <div className="label">
                 End Date
                 <span> *</span>
-              </label>
+              </div>
               <div className="calendar">
                 <Calendar
+                  id="endDate"
                   defaultValue={newProject.endDate}
                   onChange={(value) =>
                     setNewProject({ ...newProject, endDate: value })
@@ -129,10 +132,10 @@ const CreateProject = () => {
           </div>
 
           <div>
-            <label htmlFor="priority">
+            <div className="label">
               Choose a priority
               <span> *</span>
-            </label>
+            </div>
 
             <DropDown
               initialValue={newProject.priority}
@@ -141,11 +144,12 @@ const CreateProject = () => {
               project={newProject}
               type="priority"
               changeDropDownValue={changeDropDownValue}
+              id="priority"
             />
           </div>
 
           <div>
-            <label htmlFor="manager">Project Manager</label>
+            <div className="label">Project Manager</div>
 
             <DropDown
               initialValue={
@@ -158,7 +162,7 @@ const CreateProject = () => {
               changeDropDownValue={changeDropDownValue}
             />
           </div>
-        </div>
+        </form>
 
         <button type="button" onClick={() => createProject(newProject)}>
           Create Project
