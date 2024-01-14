@@ -6,7 +6,7 @@
 }
 
 .ticketsContainer>div:nth-child(2)>div {
-    overflow-x: scroll;
+    overflow-x: auto;
     display: flex;
 }
 

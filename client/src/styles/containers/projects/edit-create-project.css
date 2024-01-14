@@ -46,6 +46,10 @@
     opacity: .25;
 }
 
+.editCreateForm label span {
+    color: red;
+}
+
 /* note-editor */
 .editCreateForm .quill-editor>div>div:nth-child(2) {
     min-height: 200px;

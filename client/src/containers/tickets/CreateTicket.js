@@ -63,8 +63,8 @@ const CreateTicket = () => {
     <>
       <HomeBtn name="Create" />
 
-      <section className="editProject createProject">
-        <div className="editForm">
+      <section className="editCreateProject">
+        <div className="editCreateForm">
           <div>
             <label htmlFor="name">
               Ticket Title
