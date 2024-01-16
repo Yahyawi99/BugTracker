@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // hooks
 import useProjects from "../../hooks/useProjects";
 import useTickets from "../../hooks/useTickets";
 import useUsers from "../../hooks/useUsers";
+import useMessages from "../../hooks/useMessages";
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -23,20 +24,55 @@ import Projects from "./Projects";
 import "../../styles/containers/dashboard/index.css";
 import "../../styles/components/shared/pagination.css";
 
+const USER_ID = JSON.parse(localStorage.getItem("user"))?.userId;
+
 const Dashboard = () => {
   const { getAllProjects, allProjects } = useProjects();
   const { getAllTickets, allTickets } = useTickets();
   const { getAllUsers, allUsers } = useUsers();
+  const { getAllMessages, allMessages } = useMessages();
+
+  const [newUsers, setNewUsers] = useState(0);
+  const [newMessages, setNewMessages] = useState(0);
 
   useEffect(() => {
     getAllProjects(1, "", "", "", "all");
     getAllTickets(1, "", "", "");
     getAllUsers();
+    getAllMessages(USER_ID);
   }, []);
 
   const { projects } = allProjects;
   const { tickets } = allTickets;
   const { users } = allUsers;
+
+  // New users
+  useEffect(() => {
+    const myNewUsers = users?.filter((user) => {
+      const creationTime =
+        new Date().getTime() - new Date(user.createdAt).getTime();
+
+      const day = 24 * 3600 * 1000;
+
+      return day - creationTime >= 0;
+    });
+
+    setNewUsers(myNewUsers?.length);
+  }, [allUsers]);
+
+  // New messages
+  useEffect(() => {
+    const myNewMessages = allMessages?.filter((message) => {
+      const creationTime =
+        new Date().getTime() - new Date(message.createdAt).getTime();
+
+      const day = 24 * 3600 * 1000;
+
+      return day - creationTime >= 0;
+    });
+
+    setNewMessages(myNewMessages.length);
+  }, [allMessages]);
 
   return (
     <section className="dashboard-Container">
@@ -80,7 +116,7 @@ const Dashboard = () => {
 
             <span>
               <p>New User</p>
-              <p className="num">0</p>
+              <p className="num">{newUsers}</p>
             </span>
           </div>
 
@@ -157,7 +193,7 @@ const Dashboard = () => {
               <FontAwesomeIcon icon={faBell} />
             </i>
             <p>Notifications</p>
-            <p>0</p>
+            <p>{newMessages}</p>
           </span>
         </div>
 
