@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Hamburger from "hamburger-react";
+// hooks
+import useMessages from "../../hooks/useMessages";
 // context
 import { useAuth } from "../../context/auth/Auth-context";
 import { useMainContext } from "../../context/global";
 // Icons
+import Hamburger from "hamburger-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
 import {
@@ -17,12 +19,35 @@ import Settings from "../shared/Settings";
 import "../../styles/components/header/index.css";
 
 const USER_ROLE = JSON.parse(localStorage.getItem("user"))?.role;
+const USER_ID = JSON.parse(localStorage.getItem("user"))?.userId;
 
 const Header = () => {
   const { logout } = useAuth();
   const { isHamOpen, setIsHamOpen } = useMainContext();
+  const { getAllMessages, allMessages } = useMessages();
 
   const [isSettingsOn, setIsSettingsOn] = useState(false);
+  const [newMessages, setNewMessages] = useState(0);
+
+  useEffect(() => {
+    getAllMessages(USER_ID);
+  }, []);
+
+  // New messages
+  useEffect(() => {
+    const myNewMessages = allMessages?.filter((message) => {
+      const creationTime =
+        new Date().getTime() - new Date(message.createdAt).getTime();
+
+      const day = 24 * 3600 * 1000;
+
+      return day - creationTime >= 0;
+    });
+
+    setNewMessages(myNewMessages.length);
+  }, [allMessages]);
+
+  console.log(newMessages);
 
   return (
     <header className="header">
@@ -41,7 +66,7 @@ const Header = () => {
 
         <i className="bell">
           <FontAwesomeIcon icon={faBell} />
-          <span></span>
+          <span className={`${newMessages && "showDot"}`}></span>
         </i>
 
         <i
