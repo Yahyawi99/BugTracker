@@ -18,7 +18,6 @@ import Settings from "../shared/Settings";
 import BellDropDown from "../shared/BellDropDown";
 // css
 import "../../styles/components/header/index.css";
-import { all } from "axios";
 
 const USER_ROLE = JSON.parse(localStorage.getItem("user"))?.role;
 const USER_ID = JSON.parse(localStorage.getItem("user"))?.userId;
@@ -29,6 +28,7 @@ const Header = () => {
   const { getAllMessages, allMessages } = useMessages();
 
   const [isSettingsOn, setIsSettingsOn] = useState(false);
+  const [isBellOn, setIsBellOn] = useState(false);
   const [newMessages, setNewMessages] = useState(0);
 
   useEffect(() => {
@@ -64,15 +64,30 @@ const Header = () => {
           </Link>
         )}
 
-        <i className="bell">
+        <i
+          className="bell"
+          onClick={() => {
+            setIsBellOn(!isBellOn);
+            setIsSettingsOn(false);
+          }}
+        >
           <FontAwesomeIcon icon={faBell} />
+
           <span className={`${newMessages && "showDot"}`}></span>
-          <BellDropDown newMessages={newMessages} messages={allMessages} />
+
+          <BellDropDown
+            newMessages={newMessages}
+            messages={allMessages}
+            className={`${isBellOn && "showBellNotification"}`}
+          />
         </i>
 
         <i
           className="settingsIcon"
-          onClick={() => setIsSettingsOn(!isSettingsOn)}
+          onClick={() => {
+            setIsSettingsOn(!isSettingsOn);
+            setIsBellOn(false);
+          }}
         >
           <FontAwesomeIcon icon={faSliders} />
 

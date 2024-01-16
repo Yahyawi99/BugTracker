@@ -1,32 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const BellDropDown = ({ newMessages, messages }) => {
-  const myNewMessages = messages?.filter((message) => {
-    const creationTime =
-      new Date().getTime() - new Date(message.createdAt).getTime();
+const USER_ID = JSON.parse(localStorage.getItem("user"))?.userId;
 
-    const day = 24 * 3600 * 1000;
-
-    return day - creationTime >= 0;
-  });
-
+const BellDropDown = ({ newMessages, className }) => {
   return (
-    <div className="notificationDropDown">
+    <div className={`notificationDropDown ${className}`}>
       <p>You have {newMessages} new notification</p>
 
-      <div className="newNotifications">
-        {myNewMessages?.map((message) => {
-          const { _id, subject } = message;
-
-          return (
-            <div key={_id} className="message">
-              <p>{subject}</p>
-            </div>
-          );
-        })}
-      </div>
-
-      <button>see all notification</button>
+      <button>
+        {" "}
+        <Link to={`notification/my-inbox/${USER_ID}`}>
+          see all notification
+        </Link>
+      </button>
     </div>
   );
 };

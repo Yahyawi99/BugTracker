@@ -68,6 +68,9 @@
     right: 0;
     top: 40px;
     border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: .3s;
     padding: 10px;
 }
 
@@ -78,21 +81,13 @@
 
 .header .bell .notificationDropDown>button {
     background: transparent;
-    color: var(--black);
+    color: darkblue;
     border: none;
     cursor: pointer;
     font-weight: 600;
     text-decoration: 2px underline;
     margin-top: 5px;
 }
-
-.header .bell .notificationDropDown .message {
-    height: 35px;
-    background-color: red;
-    display: flex;
-    align-items: center;
-}
-
 
 
 /* *************************** */
@@ -116,4 +111,8 @@
 
 .header .bell>.showDot {
     display: initial;
+}
+
+.header .bell .showBellNotification {
+    transform: scaleX(1);
 }
