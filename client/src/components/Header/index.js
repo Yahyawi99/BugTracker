@@ -18,6 +18,7 @@ import Settings from "../shared/Settings";
 import BellDropDown from "../shared/BellDropDown";
 // css
 import "../../styles/components/header/index.css";
+import { all } from "axios";
 
 const USER_ROLE = JSON.parse(localStorage.getItem("user"))?.role;
 const USER_ID = JSON.parse(localStorage.getItem("user"))?.userId;
@@ -48,8 +49,6 @@ const Header = () => {
     setNewMessages(myNewMessages.length);
   }, [allMessages]);
 
-  console.log(newMessages);
-
   return (
     <header className="header">
       <div className="hamburgerContainer">
@@ -68,7 +67,7 @@ const Header = () => {
         <i className="bell">
           <FontAwesomeIcon icon={faBell} />
           <span className={`${newMessages && "showDot"}`}></span>
-          <BellDropDown newMessages={newMessages} />
+          <BellDropDown newMessages={newMessages} messages={allMessages} />
         </i>
 
         <i
