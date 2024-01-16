@@ -15,6 +15,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 // components
 import Settings from "../shared/Settings";
+import BellDropDown from "../shared/BellDropDown";
 // css
 import "../../styles/components/header/index.css";
 
@@ -67,6 +68,7 @@ const Header = () => {
         <i className="bell">
           <FontAwesomeIcon icon={faBell} />
           <span className={`${newMessages && "showDot"}`}></span>
+          <BellDropDown newMessages={newMessages} />
         </i>
 
         <i

@@ -59,6 +59,31 @@
     display: none;
 }
 
+.header .bell .notificationDropDown {
+    width: max-content;
+    background-color: var(--main-clr);
+    color: var(--white);
+    position: absolute;
+    right: 0;
+    top: 40px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.header .bell .notificationDropDown>p {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.header .bell .notificationDropDown>button {
+    background: transparent;
+    color: var(--black);
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: 2px underline;
+}
+
 /* *************************** */
 /* *************************** */
 /* *************************** */
