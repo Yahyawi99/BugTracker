@@ -39,8 +39,9 @@ const Header = () => {
           </Link>
         )}
 
-        <i>
+        <i className="bell">
           <FontAwesomeIcon icon={faBell} />
+          <span></span>
         </i>
 
         <i

@@ -44,6 +44,20 @@
     position: relative;
 }
 
+.header .bell {
+    position: relative;
+}
+
+.header .bell>span {
+    width: 8px;
+    height: 8px;
+    background: var(--main-clr);
+    border-radius: 50%;
+    position: absolute;
+    right: -3px;
+    top: -4px;
+}
+
 /* *************************** */
 /* *************************** */
 /* *************************** */
