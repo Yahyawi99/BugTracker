@@ -44,10 +44,26 @@ const useMessages = () => {
     }
   };
 
+  // Message is read
+  const editMessage = async (messageId) => {
+    try {
+      await axios.put(`/api/v1/message/${messageId}`, { isRead: true });
+
+      loading(false);
+    } catch (error) {
+      loading(false);
+      await alertMe(
+        "Something went wrong. Please try again later!",
+        "var(--danger)"
+      );
+    }
+  };
+
   return {
     createMessage,
     getAllMessages,
     allMessages,
+    editMessage,
   };
 };
 

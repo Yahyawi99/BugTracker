@@ -26,7 +26,7 @@ const Inbox = () => {
   const [newMessages, setNewMessages] = useState(0);
 
   const { memberId } = useParams();
-  const { getAllMessages, allMessages } = useMessages();
+  const { getAllMessages, allMessages, editMessage } = useMessages();
 
   useEffect(() => {
     getAllMessages(memberId);
@@ -114,6 +114,7 @@ const Inbox = () => {
                       data={message}
                       message={message}
                       setMessage={setMessage}
+                      editMessage={editMessage}
                     />
                   );
                 })}
@@ -130,8 +131,14 @@ const Inbox = () => {
 };
 
 // ==========================
-const MessageHead = ({ data, message: messageContent, setMessage }) => {
+const MessageHead = ({
+  data,
+  message: messageContent,
+  setMessage,
+  editMessage,
+}) => {
   const {
+    _id,
     subject,
     sender: { name },
     createdAt,
@@ -142,7 +149,10 @@ const MessageHead = ({ data, message: messageContent, setMessage }) => {
   return (
     <div
       className={`singleMessage ${!isRead && "unreadMessage"}`}
-      onClick={() => setMessage(messageContent)}
+      onClick={() => {
+        setMessage(messageContent);
+        editMessage(_id);
+      }}
     >
       <p className="sender">{name}</p>
 
