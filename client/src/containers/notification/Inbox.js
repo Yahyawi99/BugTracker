@@ -146,13 +146,20 @@ const MessageHead = ({
     isRead,
   } = data;
 
+  const [isMessageRead, setIsMessageRead] = useState(isRead);
+
+  const readMessage = () => {
+    setMessage(messageContent);
+    if (!isMessageRead) {
+      editMessage(_id);
+      setIsMessageRead(true);
+    }
+  };
+
   return (
     <div
-      className={`singleMessage ${!isRead && "unreadMessage"}`}
-      onClick={() => {
-        setMessage(messageContent);
-        editMessage(_id);
-      }}
+      className={`singleMessage ${!isMessageRead && "unreadMessage"}`}
+      onClick={readMessage}
     >
       <p className="sender">{name}</p>
 

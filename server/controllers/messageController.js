@@ -42,4 +42,21 @@ const createMessage = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ msg: "success!" });
 };
 
-module.exports = { allMessages, createMessage };
+const editMessage = async (req, res) => {
+  const { isRead } = req.body;
+  const { messageId } = req.params;
+
+  const message = await Message.findOne({ _id: messageId });
+
+  if (!message) {
+    throw new CustomError.NotFoundError(`No message with id : ${messageId}`);
+  }
+
+  message.isRead = isRead;
+
+  await message.save();
+
+  res.status(StatusCodes.OK).json({ msg: "success" });
+};
+
+module.exports = { allMessages, createMessage, editMessage };
