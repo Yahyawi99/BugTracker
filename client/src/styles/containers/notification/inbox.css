@@ -158,7 +158,7 @@
 .inboxContainer .main .navigation {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 .inboxContainer .main .navigation>div {
@@ -183,12 +183,12 @@
 }
 
 /* arrows */
-.inboxContainer .main .navigation>div:nth-child(2) {
+.inboxContainer .main .navigation {
     align-items: center;
     gap: 5px;
 }
 
-.inboxContainer .main .navigation>div:nth-child(2) .arrows button {
+.inboxContainer .main .navigation .arrows button {
     background-color: transparent;
     color: var(--gray);
     border: 2px solid var(--gray);
@@ -197,16 +197,16 @@
     padding: 5px 10px;
 }
 
-.inboxContainer .main .navigation>div:nth-child(2) .numOfPages {
+.inboxContainer .main .navigation .numOfPages {
     display: flex;
     gap: 2px;
 }
 
-.inboxContainer .main .navigation>div:nth-child(2) .numOfPages p {
+.inboxContainer .main .navigation .numOfPages p {
     font-weight: 600;
 }
 
-.inboxContainer .main .navigation>div:nth-child(2) .arrows button:hover {
+.inboxContainer .main .navigation .arrows button:hover {
     color: var(--white);
     background-color: var(--gray);
 }
@@ -321,7 +321,7 @@
 
 
 /* ************** */
-.inboxContainer .main .navigation>div:nth-child(2) .arrows .arrow-disabled {
+.inboxContainer .main .navigation .arrows .arrow-disabled {
     opacity: .25;
     pointer-events: none;
 }

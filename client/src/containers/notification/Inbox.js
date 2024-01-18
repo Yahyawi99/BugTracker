@@ -88,42 +88,35 @@ const Inbox = () => {
 
           <div className="main">
             <div className="navigation">
-              <div>
-                <p>Refresh</p>
-                <p>Archive</p>
-              </div>
+              <span className="numOfPages">
+                page : <p>{allMessages.currentPage}</p>
+              </span>
 
-              <div>
-                <span className="numOfPages">
-                  page : <p>{allMessages.currentPage}</p>
-                </span>
+              <div className="arrows">
+                <button
+                  type="button"
+                  className={`arrow-left ${
+                    allMessages.currentPage == 1 && "arrow-disabled"
+                  }`}
+                  onClick={() =>
+                    getAllMessages(memberId, allMessages.currentPage - 1, 3)
+                  }
+                >
+                  <FontAwesomeIcon icon={faChevronLeft} />
+                </button>
 
-                <div className="arrows">
-                  <button
-                    type="button"
-                    className={`arrow-left ${
-                      allMessages.currentPage == 1 && "arrow-disabled"
-                    }`}
-                    onClick={() =>
-                      getAllMessages(memberId, allMessages.currentPage - 1, 3)
-                    }
-                  >
-                    <FontAwesomeIcon icon={faChevronLeft} />
-                  </button>
-
-                  <button
-                    type="button"
-                    className={`arrow-right ${
-                      allMessages.currentPage == allMessages.numOfPages &&
-                      "arrow-disabled"
-                    }`}
-                    onClick={() =>
-                      getAllMessages(memberId, allMessages.currentPage + 1, 3)
-                    }
-                  >
-                    <FontAwesomeIcon icon={faChevronRight} />
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  className={`arrow-right ${
+                    allMessages.currentPage == allMessages.numOfPages &&
+                    "arrow-disabled"
+                  }`}
+                  onClick={() =>
+                    getAllMessages(memberId, allMessages.currentPage + 1, 3)
+                  }
+                >
+                  <FontAwesomeIcon icon={faChevronRight} />
+                </button>
               </div>
             </div>
 
