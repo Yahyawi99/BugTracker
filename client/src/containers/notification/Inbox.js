@@ -29,7 +29,7 @@ const Inbox = () => {
   const { getAllMessages, allMessages, editMessage } = useMessages();
 
   useEffect(() => {
-    getAllMessages(memberId, 1, 3);
+    getAllMessages(memberId);
   }, []);
 
   // New messages
@@ -99,7 +99,7 @@ const Inbox = () => {
                     allMessages.currentPage == 1 && "arrow-disabled"
                   }`}
                   onClick={() =>
-                    getAllMessages(memberId, allMessages.currentPage - 1, 3)
+                    getAllMessages(memberId, allMessages.currentPage - 1)
                   }
                 >
                   <FontAwesomeIcon icon={faChevronLeft} />
@@ -112,7 +112,7 @@ const Inbox = () => {
                     "arrow-disabled"
                   }`}
                   onClick={() =>
-                    getAllMessages(memberId, allMessages.currentPage + 1, 3)
+                    getAllMessages(memberId, allMessages.currentPage + 1)
                   }
                 >
                   <FontAwesomeIcon icon={faChevronRight} />
