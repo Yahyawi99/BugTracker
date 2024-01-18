@@ -7,11 +7,13 @@ const useMessages = () => {
   const [allMessages, setAllMessages] = useState([]);
 
   //   all messages
-  const getAllMessages = async (memberId) => {
+  const getAllMessages = async (memberId, page, limit) => {
     try {
       loading(true);
 
-      const response = await axios.get(`/api/v1/message/${memberId}`);
+      const response = await axios.get(
+        `/api/v1/message/${memberId}/?page=${page}&limit=${limit}`
+      );
 
       setAllMessages(response.data.messages);
 

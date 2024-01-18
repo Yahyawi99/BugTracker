@@ -29,7 +29,7 @@ const Inbox = () => {
   const { getAllMessages, allMessages, editMessage } = useMessages();
 
   useEffect(() => {
-    getAllMessages(memberId);
+    getAllMessages(memberId, 1, 3);
   }, []);
 
   // New messages
@@ -45,6 +45,8 @@ const Inbox = () => {
 
     setNewMessages(myNewMessages.length);
   }, [allMessages]);
+
+  console.log(allMessages);
 
   return (
     <section className="inboxContainer">

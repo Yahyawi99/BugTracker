@@ -5,10 +5,14 @@ const User = require("../model/User");
 
 const allMessages = async (req, res) => {
   const { id: memberId } = req.params;
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 3;
+  const skip = (page - 1) * limit;
 
-  const messages = await Message.find({ recipient: memberId }).populate(
-    "sender recipient"
-  );
+  const messages = await Message.find({ recipient: memberId })
+    .populate("sender recipient")
+    .skip(skip)
+    .limit(limit);
 
   if (!messages) {
     throw new CustomError.NotFoundError(
@@ -16,7 +20,13 @@ const allMessages = async (req, res) => {
     );
   }
 
-  res.status(StatusCodes.OK).json({ messages });
+  const totalMessages = await Message.countDocuments({ recipient: memberId });
+  const numOfPages = Math.ceil(totalMessages / limit);
+  const count = messages.length;
+
+  res
+    .status(StatusCodes.OK)
+    .json({ messages, numOfPages, count, currentPage: page });
 };
 
 // create message
