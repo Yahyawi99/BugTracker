@@ -206,10 +206,6 @@
     font-weight: 600;
 }
 
-.inboxContainer .main .navigation>div:nth-child(2) .arrows button:nth-child(1) {
-    border-right: none;
-}
-
 .inboxContainer .main .navigation>div:nth-child(2) .arrows button:hover {
     color: var(--white);
     background-color: var(--gray);
@@ -321,4 +317,11 @@
         max-width: 100px;
     }
 
+}
+
+
+/* ************** */
+.inboxContainer .main .navigation>div:nth-child(2) .arrows .arrow-disabled {
+    opacity: .25;
+    pointer-events: none;
 }

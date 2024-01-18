@@ -1,7 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 // components
-import Form from "./Form";
 import Inbox from "./Inbox";
 import NotFound from "../../components/not-found";
 

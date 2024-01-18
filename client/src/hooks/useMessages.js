@@ -15,7 +15,7 @@ const useMessages = () => {
         `/api/v1/message/${memberId}/?page=${page}&limit=${limit}`
       );
 
-      setAllMessages(response.data.messages);
+      setAllMessages(response.data);
 
       loading(false);
       await alertMe("Done", "var(--success)");

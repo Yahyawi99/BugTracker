@@ -34,19 +34,22 @@ const Inbox = () => {
 
   // New messages
   useEffect(() => {
-    const myNewMessages = allMessages?.filter((message) => {
-      const creationTime =
-        new Date().getTime() - new Date(message.createdAt).getTime();
+    if (allMessages.messages) {
+      const myNewMessages = allMessages.messages.filter((message) => {
+        const creationTime =
+          new Date().getTime() - new Date(message.createdAt).getTime();
 
-      const day = 24 * 3600 * 1000;
+        const day = 24 * 3600 * 1000;
 
-      return day - creationTime >= 0;
-    });
+        return day - creationTime >= 0;
+      });
 
-    setNewMessages(myNewMessages.length);
+      setNewMessages(myNewMessages.length);
+    }
   }, [allMessages]);
 
-  console.log(allMessages);
+  // const { numOfPages, count, page } = allMessages;
+  console.log(allMessages.currentPage, allMessages.numOfPages);
 
   return (
     <section className="inboxContainer">
@@ -92,15 +95,32 @@ const Inbox = () => {
 
               <div>
                 <span className="numOfPages">
-                  page : <p>1</p>
+                  page : <p>{allMessages.currentPage}</p>
                 </span>
 
                 <div className="arrows">
-                  <button type="button" className="arrow-left">
+                  <button
+                    type="button"
+                    className={`arrow-left ${
+                      allMessages.currentPage == 1 && "arrow-disabled"
+                    }`}
+                    onClick={() =>
+                      getAllMessages(memberId, allMessages.currentPage - 1, 3)
+                    }
+                  >
                     <FontAwesomeIcon icon={faChevronLeft} />
                   </button>
 
-                  <button type="button" className="arrow-right">
+                  <button
+                    type="button"
+                    className={`arrow-right ${
+                      allMessages.currentPage == allMessages.numOfPages &&
+                      "arrow-disabled"
+                    }`}
+                    onClick={() =>
+                      getAllMessages(memberId, allMessages.currentPage + 1, 3)
+                    }
+                  >
                     <FontAwesomeIcon icon={faChevronRight} />
                   </button>
                 </div>
@@ -108,8 +128,8 @@ const Inbox = () => {
             </div>
 
             <div className="messagesContainer">
-              {allMessages &&
-                allMessages.map((message) => {
+              {allMessages.messages &&
+                allMessages.messages.map((message) => {
                   return (
                     <MessageHead
                       key={message._id}
