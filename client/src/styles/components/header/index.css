@@ -109,6 +109,26 @@
     }
 }
 
+
+@media screen and (max-width:550px) {
+    .header .newTicketBtn {
+        font-size: .8rem;
+        padding: 8px 10px;
+    }
+
+    .header .settingsIcon svg,
+    .header .bell svg,
+    .header .logout svg {
+        font-size: 1rem;
+    }
+}
+
+
+/* ************************ */
+/* ************************ */
+/* ************************ */
+/* ************************ */
+
 .header .bell>.showDot {
     display: initial;
 }

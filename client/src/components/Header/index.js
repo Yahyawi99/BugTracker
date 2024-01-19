@@ -99,7 +99,7 @@ const Header = () => {
           />
         </i>
 
-        <i onClick={logout}>
+        <i className="logout" onClick={logout}>
           <FontAwesomeIcon icon={faArrowRightFromBracket} />
         </i>
       </div>
