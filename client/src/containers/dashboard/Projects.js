@@ -14,31 +14,19 @@ const Projects = () => {
   const [dropDown, setDropDown] = useState(false);
   const [searchInput, setSearchInput] = useState("");
 
-  const [data, setData] = useState({});
-
   useEffect(() => {
     getAllProjects(1, "", limit, searchInput, "all");
   }, []);
 
-  useEffect(() => {
-    setData(allProjects);
-  }, [allProjects]);
-
-  if (data) {
-    var { numOfPages, currentPage, count, totalProjects } = data;
-
-    var numOfpagesArr = Array.from({ length: numOfPages }, (_, i) => i + 1);
-  }
-
   return (
-    data && (
+    allProjects && (
       <section className="projects">
         <h2>Projects</h2>
 
         <div>
           <LimitAndSearch
             controller={getAllProjects}
-            currentPage={currentPage}
+            currentPage={allProjects.currentPage}
             states={{
               limit,
               setLimit,
@@ -49,120 +37,16 @@ const Projects = () => {
             }}
           />
 
-          <table summary="All company projects">
-            <colgroup>
-              <col />
-              <col />
-              <col />
-              <col />
-              <col />
-            </colgroup>
-
-            <thead>
-              <tr>
-                <th>
-                  <TableHead value={"Project"} />
-                </th>
-                <th>
-                  <TableHead value={"Start Date"} />
-                </th>
-                <th>
-                  <TableHead value={"End Date"} />
-                </th>
-                <th>
-                  <TableHead value={"Team"} />
-                </th>
-                <th>
-                  <TableHead value={"Tickets"} />
-                </th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {data.projects &&
-                data.projects.map((project) => {
-                  return (
-                    <tr key={project._id}>
-                      <TableData project={project} />
-                    </tr>
-                  );
-                })}
-            </tbody>
-
-            <tfoot>
-              <tr>
-                <td colSpan="4">
-                  <div>
-                    <p className="count">
-                      {count ? count : 0} out of {totalProjects} documents
-                    </p>
-
-                    <div className="pagination">
-                      {numOfPages > 1 && (
-                        <>
-                          {currentPage > 1 && (
-                            <button
-                              className="prevPage"
-                              onClick={() => {
-                                getAllProjects(
-                                  currentPage - 1,
-                                  "",
-                                  limit,
-                                  searchInput
-                                );
-                              }}
-                            >
-                              previous
-                            </button>
-                          )}
-
-                          <div className="pages">
-                            {numOfpagesArr &&
-                              numOfpagesArr.map((num) => {
-                                return (
-                                  <p
-                                    key={num}
-                                    onClick={() => {
-                                      getAllProjects(
-                                        num,
-                                        "",
-                                        limit,
-                                        searchInput
-                                      );
-                                    }}
-                                    className={`${
-                                      currentPage === num && "viewedPage"
-                                    }`}
-                                  >
-                                    {num}
-                                  </p>
-                                );
-                              })}
-                          </div>
-
-                          {currentPage < numOfPages && (
-                            <button
-                              className="nextPage"
-                              onClick={() => {
-                                getAllProjects(
-                                  currentPage + 1,
-                                  "",
-                                  limit,
-                                  searchInput
-                                );
-                              }}
-                            >
-                              next
-                            </button>
-                          )}
-                        </>
-                      )}
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tfoot>
-          </table>
+          <div className="table">
+            <div>
+              <Table
+                data={allProjects}
+                getAllUsers={getAllProjects}
+                limit={limit}
+                searchInput={searchInput}
+              />
+            </div>
+          </div>
         </div>
       </section>
     )
@@ -170,6 +54,124 @@ const Projects = () => {
 };
 
 // **********************
+const Table = ({ data, getAllProjects, limit, searchInput }) => {
+  var { projects, numOfPages, currentPage, count, totalProjects } = data;
+
+  var numOfpagesArr = Array.from({ length: numOfPages }, (_, i) => i + 1);
+
+  return (
+    <table summary="All company projects">
+      <colgroup>
+        <col />
+        <col />
+        <col />
+        <col />
+        <col />
+      </colgroup>
+
+      <thead>
+        <tr>
+          <th>
+            <TableHead value={"Project"} />
+          </th>
+          <th>
+            <TableHead value={"Start Date"} />
+          </th>
+          <th>
+            <TableHead value={"End Date"} />
+          </th>
+          <th>
+            <TableHead value={"Team"} />
+          </th>
+          <th>
+            <TableHead value={"Tickets"} />
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {projects &&
+          projects.map((project) => {
+            return (
+              <tr key={project._id}>
+                <TableData project={project} />
+              </tr>
+            );
+          })}
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colSpan="4">
+            <div>
+              <p className="count">
+                {count ? count : 0} out of {totalProjects} documents
+              </p>
+
+              <div className="pagination">
+                {numOfPages > 1 && (
+                  <>
+                    {currentPage > 1 && (
+                      <button
+                        className="prevPage"
+                        onClick={() => {
+                          getAllProjects(
+                            currentPage - 1,
+                            "",
+                            limit,
+                            searchInput
+                          );
+                        }}
+                      >
+                        previous
+                      </button>
+                    )}
+
+                    <div className="pages">
+                      {numOfpagesArr &&
+                        numOfpagesArr.map((num) => {
+                          return (
+                            <p
+                              key={num}
+                              onClick={() => {
+                                getAllProjects(num, "", limit, searchInput);
+                              }}
+                              className={`${
+                                currentPage === num && "viewedPage"
+                              }`}
+                            >
+                              {num}
+                            </p>
+                          );
+                        })}
+                    </div>
+
+                    {currentPage < numOfPages && (
+                      <button
+                        className="nextPage"
+                        onClick={() => {
+                          getAllProjects(
+                            currentPage + 1,
+                            "",
+                            limit,
+                            searchInput
+                          );
+                        }}
+                      >
+                        next
+                      </button>
+                    )}
+                  </>
+                )}
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  );
+};
+
 const TableHead = ({ value }) => {
   return (
     <div>

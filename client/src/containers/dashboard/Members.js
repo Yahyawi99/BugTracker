@@ -17,9 +17,6 @@ const Members = () => {
   }, []);
 
   if (allUsers) {
-    var { numOfPages, currentPage, count, totalUsers } = allUsers;
-
-    var numOfpagesArr = Array.from({ length: numOfPages }, (_, i) => i + 1);
   }
 
   return (
@@ -39,118 +36,116 @@ const Members = () => {
             setSearchInput,
           }}
         />
-
-        <table summary="All company members">
-          <colgroup>
-            <col />
-            <col />
-            <col />
-            <col />
-          </colgroup>
-
-          <thead>
-            <tr>
-              <th>
-                <TableHead value={"Avatar"} />
-              </th>
-              <th>
-                <TableHead value={"Name"} />
-              </th>
-              <th>
-                <TableHead value={"Projects"} />
-              </th>
-              <th>
-                <TableHead value={"Role"} />
-              </th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {allUsers.users &&
-              allUsers?.users.map((member) => {
-                return (
-                  <tr key={member._id}>
-                    <TableData member={member} />
-                  </tr>
-                );
-              })}
-          </tbody>
-
-          <tfoot>
-            <tr>
-              <td colSpan="4">
-                <div>
-                  <p className="count">
-                    {count ? count : 0} out of {totalUsers} documents
-                  </p>
-
-                  <div className="pagination">
-                    {numOfPages > 1 && (
-                      <>
-                        {currentPage > 1 && (
-                          <button
-                            className="prevPage"
-                            onClick={() => {
-                              getAllUsers(
-                                currentPage - 1,
-                                "",
-                                limit,
-                                searchInput
-                              );
-                            }}
-                          >
-                            previous
-                          </button>
-                        )}
-
-                        <div className="pages">
-                          {numOfpagesArr &&
-                            numOfpagesArr.map((num) => {
-                              return (
-                                <p
-                                  key={num}
-                                  onClick={() => {
-                                    getAllUsers(num, "", limit, searchInput);
-                                  }}
-                                  className={`${
-                                    currentPage === num && "viewedPage"
-                                  }`}
-                                >
-                                  {num}
-                                </p>
-                              );
-                            })}
-                        </div>
-
-                        {currentPage < numOfPages && (
-                          <button
-                            className="nextPage"
-                            onClick={() => {
-                              getAllUsers(
-                                currentPage + 1,
-                                "",
-                                limit,
-                                searchInput
-                              );
-                            }}
-                          >
-                            next
-                          </button>
-                        )}
-                      </>
-                    )}
-                  </div>
-                </div>
-              </td>
-            </tr>
-          </tfoot>
-        </table>
       </div>
     </section>
   );
 };
 
 // **********************
+const Table = ({ data, getAllUsers, limit, searchInput }) => {
+  var { users, numOfPages, currentPage, count, totalUsers } = data;
+
+  var numOfpagesArr = Array.from({ length: numOfPages }, (_, i) => i + 1);
+
+  return (
+    <table summary="All company members">
+      <colgroup>
+        <col />
+        <col />
+        <col />
+        <col />
+      </colgroup>
+
+      <thead>
+        <tr>
+          <th>
+            <TableHead value={"Avatar"} />
+          </th>
+          <th>
+            <TableHead value={"Name"} />
+          </th>
+          <th>
+            <TableHead value={"Projects"} />
+          </th>
+          <th>
+            <TableHead value={"Role"} />
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {users &&
+          users.map((member) => {
+            return (
+              <tr key={member._id}>
+                <TableData member={member} />
+              </tr>
+            );
+          })}
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colSpan="4">
+            <div>
+              <p className="count">
+                {count ? count : 0} out of {totalUsers} documents
+              </p>
+
+              <div className="pagination">
+                {numOfPages > 1 && (
+                  <>
+                    {currentPage > 1 && (
+                      <button
+                        className="prevPage"
+                        onClick={() => {
+                          getAllUsers(currentPage - 1, "", limit, searchInput);
+                        }}
+                      >
+                        previous
+                      </button>
+                    )}
+
+                    <div className="pages">
+                      {numOfpagesArr &&
+                        numOfpagesArr.map((num) => {
+                          return (
+                            <p
+                              key={num}
+                              onClick={() => {
+                                getAllUsers(num, "", limit, searchInput);
+                              }}
+                              className={`${
+                                currentPage === num && "viewedPage"
+                              }`}
+                            >
+                              {num}
+                            </p>
+                          );
+                        })}
+                    </div>
+
+                    {currentPage < numOfPages && (
+                      <button
+                        className="nextPage"
+                        onClick={() => {
+                          getAllUsers(currentPage + 1, "", limit, searchInput);
+                        }}
+                      >
+                        next
+                      </button>
+                    )}
+                  </>
+                )}
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  );
+};
+
 const TableHead = ({ value }) => {
   return (
     <div>

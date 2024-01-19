@@ -62,16 +62,18 @@ const Dashboard = () => {
 
   // New messages
   useEffect(() => {
-    const myNewMessages = allMessages?.filter((message) => {
-      const creationTime =
-        new Date().getTime() - new Date(message.createdAt).getTime();
+    if (allMessages.messages) {
+      const myNewMessages = allMessages?.messages.filter((message) => {
+        const creationTime =
+          new Date().getTime() - new Date(message.createdAt).getTime();
 
-      const day = 24 * 3600 * 1000;
+        const day = 24 * 3600 * 1000;
 
-      return day - creationTime >= 0;
-    });
+        return day - creationTime >= 0;
+      });
 
-    setNewMessages(myNewMessages.length);
+      setNewMessages(myNewMessages.length);
+    }
   }, [allMessages]);
 
   return (

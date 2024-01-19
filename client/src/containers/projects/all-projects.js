@@ -60,6 +60,8 @@ const AllProjects = () => {
               data={allProjects}
               archiveProject={archiveProject}
               getAllProjects={getAllProjects}
+              limit={limit}
+              searchInput={searchInput}
             />
           </div>
         </div>
