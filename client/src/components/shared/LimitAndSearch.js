@@ -51,13 +51,13 @@ const LimitAndSearch = (props) => {
         <p>show</p>
 
         <div className="dropdownContainer">
-          <p className="dropDownValue">
+          <div className="dropDownValue">
             <span>{limit}</span>
 
             <i onClick={() => setDropDown(!dropDown)}>
               <FontAwesomeIcon icon={faChevronDown} />
             </i>
-          </p>
+          </div>
 
           <div
             className={`${dropDown && "showDropDown"} dropDown`}
