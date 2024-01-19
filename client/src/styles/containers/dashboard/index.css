@@ -226,7 +226,7 @@
 
 .dashboard-Container .members>div>div:nth-child(2)>div {
     width: 100%;
-    min-width: 400px;
+    min-width: 500px;
 }
 
 .dashboard-Container table {
@@ -313,13 +313,21 @@
 /* ************************ */
 /* projects */
 .dashboard-Container .projects {
-    flex: 1;
-    height: fit-content;
-    min-width: fit-content;
+    width: 100%;
     background-color: var(--white);
     border-radius: 10px;
     padding: 20px 10px;
 }
+
+.dashboard-Container .projects>div>div:nth-child(2) {
+    overflow-x: scroll;
+}
+
+.dashboard-Container .projects>div>div:nth-child(2)>div {
+    width: 100%;
+    min-width: 600px;
+}
+
 
 /* Table column groupe */
 .dashboard-Container .projects table colgroup col:nth-child(1) {

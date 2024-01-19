@@ -36,6 +36,17 @@ const Members = () => {
             setSearchInput,
           }}
         />
+
+        <div className="table">
+          <div>
+            <Table
+              data={allUsers}
+              getAllUsers={getAllUsers}
+              limit={limit}
+              searchInput={searchInput}
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
