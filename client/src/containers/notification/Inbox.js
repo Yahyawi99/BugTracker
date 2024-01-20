@@ -30,6 +30,7 @@ const Inbox = () => {
 
   useEffect(() => {
     getAllMessages(memberId);
+    // eslint-disable-next-line
   }, []);
 
   // New messages
@@ -47,9 +48,6 @@ const Inbox = () => {
       setNewMessages(myNewMessages.length);
     }
   }, [allMessages]);
-
-  // const { numOfPages, count, page } = allMessages;
-  console.log(allMessages.currentPage, allMessages.numOfPages);
 
   return (
     <section className="inboxContainer">
@@ -74,7 +72,6 @@ const Inbox = () => {
           <div>
             <div className="title">
               <h2>Inbox</h2>
-              <button className="menuBtn">Menu</button>
             </div>
 
             <form className="search">
@@ -86,55 +83,61 @@ const Inbox = () => {
             </form>
           </div>
 
-          <div className="main">
-            <div className="navigation">
-              <span className="numOfPages">
-                page : <p>{allMessages.currentPage}</p>
-              </span>
+          {allMessages.messages?.length ? (
+            <div className="main">
+              <div className="navigation">
+                <span className="numOfPages">
+                  page : <p>{allMessages.currentPage}</p>
+                </span>
 
-              <div className="arrows">
-                <button
-                  type="button"
-                  className={`arrow-left ${
-                    allMessages.currentPage == 1 && "arrow-disabled"
-                  }`}
-                  onClick={() =>
-                    getAllMessages(memberId, allMessages.currentPage - 1)
-                  }
-                >
-                  <FontAwesomeIcon icon={faChevronLeft} />
-                </button>
+                <div className="arrows">
+                  <button
+                    type="button"
+                    className={`arrow-left ${
+                      allMessages.currentPage === 1 && "arrow-disabled"
+                    }`}
+                    onClick={() =>
+                      getAllMessages(memberId, allMessages.currentPage - 1)
+                    }
+                  >
+                    <FontAwesomeIcon icon={faChevronLeft} />
+                  </button>
 
-                <button
-                  type="button"
-                  className={`arrow-right ${
-                    allMessages.currentPage == allMessages.numOfPages &&
-                    "arrow-disabled"
-                  }`}
-                  onClick={() =>
-                    getAllMessages(memberId, allMessages.currentPage + 1)
-                  }
-                >
-                  <FontAwesomeIcon icon={faChevronRight} />
-                </button>
+                  <button
+                    type="button"
+                    className={`arrow-right ${
+                      allMessages.currentPage === allMessages.numOfPages &&
+                      "arrow-disabled"
+                    }`}
+                    onClick={() =>
+                      getAllMessages(memberId, allMessages.currentPage + 1)
+                    }
+                  >
+                    <FontAwesomeIcon icon={faChevronRight} />
+                  </button>
+                </div>
+              </div>
+
+              <div className="messagesContainer">
+                {allMessages.messages &&
+                  allMessages.messages.map((message) => {
+                    return (
+                      <MessageHead
+                        key={message._id}
+                        data={message}
+                        message={message}
+                        setMessage={setMessage}
+                        editMessage={editMessage}
+                      />
+                    );
+                  })}
               </div>
             </div>
-
-            <div className="messagesContainer">
-              {allMessages.messages &&
-                allMessages.messages.map((message) => {
-                  return (
-                    <MessageHead
-                      key={message._id}
-                      data={message}
-                      message={message}
-                      setMessage={setMessage}
-                      editMessage={editMessage}
-                    />
-                  );
-                })}
+          ) : (
+            <div>
+              <p className="noMessages">No messages to show</p>
             </div>
-          </div>
+          )}
         </div>
       </div>
 

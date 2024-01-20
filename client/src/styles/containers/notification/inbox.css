@@ -92,23 +92,6 @@
     align-items: center;
 }
 
-.inboxContainer .mail .menuBtn {
-    display: none;
-    background-color: var(--main-clr);
-    color: var(--white);
-    border: 2px solid transparent;
-    border-radius: 5px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: .25s;
-    padding: 5px 10px;
-}
-
-.inboxContainer .mail .menuBtn:hover {
-    background-color: transparent;
-    color: var(--main-clr);
-    border: 2px solid var(--main-clr);
-}
 
 /* search */
 .inboxContainer>div form {
@@ -126,7 +109,7 @@
 
 .inboxContainer>div form input::placeholder {
     color: var(--border-color);
-    opacity: 1;
+    opacity: .75;
 }
 
 .inboxContainer>div form button {
@@ -254,6 +237,15 @@
     overflow: hidden;
 }
 
+.inboxContainer .mail .noMessages {
+    width: 100%;
+    color: var(--gray-dark);
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 800;
+    padding-top: 25px;
+}
+
 /* ============================= */
 /* ============================= */
 /* ============================= */
@@ -316,7 +308,42 @@
     .inboxContainer .main .singleMessage .subject {
         max-width: 100px;
     }
+}
 
+
+@media screen and (max-width:600px) {
+    .inboxContainer>div:nth-child(2) {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    /* menu */
+    .inboxContainer .menu {
+        flex: 1;
+        max-width: initial;
+        padding-right: 0px;
+    }
+
+    /* Mail */
+    .inboxContainer .mail {
+        border-left: none;
+        border-top: 3px solid var(--border-color);
+        padding-top: 20px;
+        padding-left: 0px;
+    }
+
+    /* search */
+    .inboxContainer>div form {
+        height: 30px;
+    }
+
+    .inboxContainer>div form input {
+        max-width: 100px;
+    }
+
+    .inboxContainer>div form button {
+        padding: 0 8px;
+    }
 }
 
 
