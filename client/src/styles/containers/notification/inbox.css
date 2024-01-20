@@ -344,6 +344,26 @@
     .inboxContainer>div form button {
         padding: 0 8px;
     }
+
+
+    /* Message content */
+    .inboxContainer .messageContent {
+        padding: 20px 10px;
+    }
+
+    .inboxContainer .messageContent h3 {
+        font-size: 1.5rem;
+    }
+
+    .inboxContainer .messageContent .senderInfo {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .inboxContainer .messageContent img {
+        width: 55px;
+        border-radius: 5px;
+    }
 }
 
 
