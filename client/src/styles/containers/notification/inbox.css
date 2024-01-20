@@ -310,7 +310,6 @@
     }
 }
 
-
 @media screen and (max-width:600px) {
     .inboxContainer>div:nth-child(2) {
         flex-direction: column;
