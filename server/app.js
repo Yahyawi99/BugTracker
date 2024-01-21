@@ -40,6 +40,7 @@ app.use("/api/v1/ticket", TicketRoutes);
 app.use("/api/v1/comment", CommentRoutes);
 app.use("/api/v1/message", MessageRoutes);
 
+// Serve HTML file for all routes
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "client", "build", "index.html"));
 });
