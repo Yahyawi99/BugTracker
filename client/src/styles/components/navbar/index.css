@@ -10,7 +10,7 @@
     position: sticky;
     top: 83px;
     transition: .5s;
-    z-index: 10;
+    z-index: 100;
 }
 
 .navbarContainer::-webkit-scrollbar {

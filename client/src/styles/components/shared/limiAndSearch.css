@@ -16,7 +16,6 @@
 }
 
 .dropdownContainer {
-    position: relative;
     border: 2px solid var(--border-color);
     margin: 0px 10px;
     padding: 5px 10px;
@@ -36,6 +35,7 @@
     gap: 10px;
 }
 
+
 .limitControl .dropDown {
     background-color: var(--white);
     display: flex;
@@ -44,13 +44,13 @@
     gap: 5px;
     border-radius: 0px;
     position: absolute;
-    top: 34px;
-    left: 0;
+    top: 222px;
+    left: 78px;
     box-shadow: 0px 0px 5px rgb(0, 0, 0, .5);
     transform: scaleY(0);
     transform-origin: top;
     transition: .25s;
-    z-index: 5;
+    z-index: 10;
     padding: 5px 20px;
 }
 
@@ -113,8 +113,8 @@
     }
 
     .limitControl .dropDown {
-        top: 30px;
-        left: 0;
+        top: 208px;
+        left: 116px;
     }
 }
 
