@@ -1,5 +1,9 @@
 .manageRoleContainer>div {
-    display: flex;
+    margin-bottom: 25px;
+}
+
+.manageRoleContainer>div:nth-child(2) .table {
+    overflow-x: auto;
 }
 
 /* *********************** */
@@ -189,6 +193,18 @@
     flex-wrap: wrap;
     margin-top: 20px;
 }
+
+
+/* ************************************** */
+/* ************************************** */
+/* ************************************** */
+/* ************************************** */
+@media screen and (max-width:500px) {
+    .manageRoleContainer .mainSection {
+        padding: 0px 10px 10px 10px;
+    }
+}
+
 
 /* ******************************** */
 /* ******************************** */

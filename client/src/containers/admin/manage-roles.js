@@ -32,22 +32,22 @@ const ManageRoles = () => {
       <HomeBtn name="Manage Roles" />
 
       <div className="mainSection">
-        <div>
-          <div>
-            <LimitAndSearch
-              controller={getAllUsers}
-              currentPage={currentPage}
-              states={{
-                limit,
-                setLimit,
-                dropDown,
-                setDropDown,
-                searchInput,
-                setSearchInput,
-              }}
-              isArchived={"all"}
-            />
+        <LimitAndSearch
+          controller={getAllUsers}
+          currentPage={currentPage}
+          states={{
+            limit,
+            setLimit,
+            dropDown,
+            setDropDown,
+            searchInput,
+            setSearchInput,
+          }}
+          isArchived={"all"}
+        />
 
+        <div className="table">
+          <div>
             <Table
               data={allUsers}
               updateUser={updateCurrentUser}
