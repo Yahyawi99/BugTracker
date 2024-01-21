@@ -23,7 +23,7 @@ const CommentRoutes = require("./routes/commentRoutes");
 const MessageRoutes = require("./routes/messageRoutes");
 
 // ========================================
-app.use(express.static("../client/build"));
+app.use(express.static("./build"));
 
 // ========================================
 app.use(express.json());
