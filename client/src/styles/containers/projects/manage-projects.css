@@ -161,7 +161,31 @@
 /* *************************** */
 /* *************************** */
 /* *************************** */
+@media screen and (max-width:500px) {
+    .ManageProjectsSection .manageProjectsContainer {
+        grid-template-columns: repeat(auto-fill, 100%);
+    }
 
+    .ManageProjectsSection .project>div:nth-child(3) button {
+        font-size: .75rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* *************************** */
+/* *************************** */
+/* *************************** */
 .ManageProjectsSection .project .showDropDown {
     transform: scaleY(1);
 }

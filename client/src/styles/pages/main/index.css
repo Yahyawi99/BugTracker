@@ -15,4 +15,8 @@
     *:not(h1, h2, h3, h4, h5, h6) {
         font-size: 98.5%;
     }
+
+    .NavbarAndMain>main {
+        padding: 10px 0 0 10px;
+    }
 }
