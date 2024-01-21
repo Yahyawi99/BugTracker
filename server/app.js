@@ -6,6 +6,7 @@ const app = express();
 
 const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
+const cors = require("cors");
 
 // middlewares
 const NotFoundMiddleware = require("./middlewares/not-found");
@@ -23,7 +24,8 @@ const CommentRoutes = require("./routes/commentRoutes");
 const MessageRoutes = require("./routes/messageRoutes");
 
 // ========================================
-app.use(express.static("./build"));
+app.use(express.static("../client/build"));
+app.use(cors());
 
 // ========================================
 app.use(express.json());
@@ -41,7 +43,7 @@ app.use(NotFoundMiddleware);
 app.use(errHandlerMiddleware);
 
 // Start
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URL);
