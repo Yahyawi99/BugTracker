@@ -250,3 +250,32 @@
 .second-column .historyData .name span:hover {
     text-decoration: 2px underline;
 }
+
+
+
+
+/* ***************************** */
+/* ***************************** */
+/* ***************************** */
+/* ***************************** */
+@media screen and (max-width:550px) {
+    .ticketDetails .details {
+        grid-template-columns: repeat(auto-fill, 100%);
+    }
+
+    /* history */
+    .second-column #row-two {
+        padding: 20px 10px;
+    }
+
+
+    .second-column .historyContainer>div {
+        margin-left: -8px;
+    }
+
+    .second-column .historyContainer>div .pin {
+        width: 18px;
+        height: 16px;
+        border: 4px solid var(--main-clr);
+    }
+}

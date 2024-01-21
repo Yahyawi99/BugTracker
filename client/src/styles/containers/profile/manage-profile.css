@@ -14,6 +14,7 @@
 
 .manageProfile .titles h1 {
     font-size: 2.25rem;
+    margin-bottom: 10px;
 }
 
 .manageProfile .titles h2 {
@@ -160,6 +161,14 @@
 @media screen and (max-width:500px) {
     .manageProfile>div:nth-child(2) {
         padding: 10px;
+    }
+
+    .manageProfile .titles h1 {
+        font-size: 1.75rem;
+    }
+
+    .manageProfile .titles h2 {
+        font-size: 1rem;
     }
 }
 
