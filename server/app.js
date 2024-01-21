@@ -7,6 +7,7 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
 const cors = require("cors");
+const path = require("path");
 
 // middlewares
 const NotFoundMiddleware = require("./middlewares/not-found");
@@ -24,7 +25,7 @@ const CommentRoutes = require("./routes/commentRoutes");
 const MessageRoutes = require("./routes/messageRoutes");
 
 // ========================================
-app.use(express.static("../client/build"));
+app.use(express.static(path.join(__dirname, "..", "client", "build")));
 app.use(cors());
 
 // ========================================
@@ -38,6 +39,10 @@ app.use("/api/v1/project", ProjectRoutes);
 app.use("/api/v1/ticket", TicketRoutes);
 app.use("/api/v1/comment", CommentRoutes);
 app.use("/api/v1/message", MessageRoutes);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "client", "build", "index.html"));
+});
 
 app.use(NotFoundMiddleware);
 app.use(errHandlerMiddleware);
