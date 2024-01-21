@@ -4,7 +4,6 @@
 /* Drop down */
 .sectionHeader {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     overflow: hidden;
     padding: 30px 0 25px 0;
@@ -17,6 +16,7 @@
 
 .dropdownContainer {
     border: 2px solid var(--border-color);
+    justify-self: flex-start;
     margin: 0px 10px;
     padding: 5px 10px;
 }
@@ -35,6 +35,11 @@
     gap: 10px;
 }
 
+.limitControl {
+    position: absolute;
+    z-index: 10;
+}
+
 
 .limitControl .dropDown {
     background-color: var(--white);
@@ -44,13 +49,12 @@
     gap: 5px;
     border-radius: 0px;
     position: absolute;
-    top: 222px;
-    left: 78px;
+    top: 34px;
+    left: 43px;
     box-shadow: 0px 0px 5px rgb(0, 0, 0, .5);
     transform: scaleY(0);
     transform-origin: top;
     transition: .25s;
-    z-index: 10;
     padding: 5px 20px;
 }
 
@@ -63,6 +67,11 @@
 }
 
 /* Search */
+.searchBar {
+    width: 100%;
+    justify-content: flex-end;
+}
+
 .searchBar input {
     width: 200px;
     height: 40px;
@@ -105,16 +114,33 @@
     .sectionHeader {
         flex-direction: column;
         gap: 10px;
+        padding: 30px 0 35px 0;
+    }
+
+    /* Search */
+    .searchBar {
+        width: initial;
+        justify-content: initial;
     }
 
     .searchBar input {
         width: 50%;
-        max-width: 150px;
+        max-width: 140px;
+        height: 30px;
+    }
+
+    .searchBar button {
+        height: 30px;
+        padding: 0 5px;
+    }
+
+    .limitControl {
+        position: relative;
     }
 
     .limitControl .dropDown {
-        top: 208px;
-        left: 116px;
+        top: 32px;
+        left: 38px;
     }
 }
 

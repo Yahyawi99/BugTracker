@@ -1,7 +1,6 @@
 .projectsContainer>div:nth-child(2) {
     background-color: var(--white);
     border-radius: 10px;
-    z-index: 0;
     padding: 0 20px 20px 20px;
 }
 
