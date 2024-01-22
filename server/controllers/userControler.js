@@ -1,5 +1,5 @@
 const { StatusCodes } = require("http-status-codes");
-const path = require("path");
+const cloudinary = require("cloudinary").v2;
 const User = require("../model/User");
 const CustomError = require("../errors");
 
@@ -130,18 +130,13 @@ const updateUser = async (req, res) => {
 
   if (req.files) {
     const { file } = req.files;
-    const imageFolderPath = path.resolve(
-      __dirname,
-      "../../client/public/assets/images"
-    );
 
-    const imageName = file.name.split(" ").join("-");
+    const result = await cloudinary.uploader.upload(file.tempFilePath, {
+      use_filename: true,
+      folder: "Bugtracker",
+    });
 
-    const newAvatarPath = path.join("/assets/images", imageName);
-
-    await file.mv(path.join(imageFolderPath, imageName));
-
-    user.avatar = newAvatarPath;
+    user.avatar = result.secure_url;
   }
 
   // email
