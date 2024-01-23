@@ -195,9 +195,12 @@
 /* Members and projects */
 .dashboard-Container .membersAndProjectsContainer {
     display: flex;
-    flex-wrap: wrap;
     gap: 15px;
     margin-bottom: 25px;
+}
+
+.dashboard-Container .membersAndProjectsContainer>section {
+    position: relative;
 }
 
 
@@ -206,8 +209,7 @@
 /* ******************************** */
 /* Members */
 .dashboard-Container .members {
-    width: auto;
-    min-width: 600px;
+    flex: .3;
     background-color: var(--white);
     border-radius: 10px;
     padding: 20px 10px;
@@ -217,10 +219,7 @@
     overflow-x: auto;
 }
 
-.dashboard-Container .members>div>div:nth-child(2)>div {
-    width: 100%;
-    min-width: 500px;
-}
+
 
 .dashboard-Container table {
     min-width: 100%;
@@ -306,7 +305,8 @@
 /* ************************ */
 /* projects */
 .dashboard-Container .projects {
-    flex: 1;
+    flex: .7;
+    width: 100%;
     background-color: var(--white);
     border-radius: 10px;
     padding: 20px 10px;
@@ -316,10 +316,6 @@
     overflow-x: auto;
 }
 
-.dashboard-Container .projects>div>div:nth-child(2)>div {
-    width: 100%;
-    min-width: 600px;
-}
 
 
 /* Table column groupe */
@@ -416,9 +412,16 @@
 /* ****************************** */
 /* ****************************** */
 /* ****************************** */
-@media screen and (max-width:1520px) {
-    .dashboard-Container .members {
-        width: 100%;
-        min-width: initial;
+@media screen and (max-width:1450px) {
+    .dashboard-Container .membersAndProjectsContainer {
+        flex-direction: column;
+    }
+
+    .dashboard-Container .members>div>div:nth-child(2)>div {
+        min-width: 500px;
+    }
+
+    .dashboard-Container .projects>div>div:nth-child(2)>div {
+        min-width: 650px;
     }
 }
