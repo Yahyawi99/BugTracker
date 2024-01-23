@@ -26,7 +26,7 @@ const CommentRoutes = require("./routes/commentRoutes");
 const MessageRoutes = require("./routes/messageRoutes");
 
 // ========================================
-// app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, "build")));
 app.use(cors());
 
 // ========================================
@@ -35,7 +35,7 @@ app.use(cookieParser(process.env.JWT_SECRET));
 app.use(
   fileUpload({
     useTempFiles: true,
-    tempFileDir: "/tmp/", // Set the directory for temporary files
+    tempFileDir: "/tmp/",
   })
 );
 cloudinary.config({
@@ -51,10 +51,9 @@ app.use("/api/v1/ticket", TicketRoutes);
 app.use("/api/v1/comment", CommentRoutes);
 app.use("/api/v1/message", MessageRoutes);
 
-// Serve HTML file for all routes
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "build", "index.html"));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 app.use(NotFoundMiddleware);
 app.use(errHandlerMiddleware);
