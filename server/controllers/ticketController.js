@@ -6,7 +6,7 @@ const CustomError = require("../errors");
 
 // get all tickets
 const allTickets = async (req, res) => {
-  const { sort, search, isArchived } = req.query;
+  const { search, isArchived } = req.query;
 
   // pagination
   const page = Number(req.query.page) || 1;
@@ -27,32 +27,6 @@ const allTickets = async (req, res) => {
     .limit(limit);
 
   // **************
-  // sorting
-  if (sort) {
-    if (sort === "Title") {
-      tickets = tickets.sort("title");
-    }
-
-    if (sort === "-Title") {
-      tickets = tickets.sort("-title");
-    }
-
-    if (sort === "Date") {
-      tickets = tickets.sort("createdAt");
-    }
-
-    if (sort === "-Date") {
-      tickets = tickets.sort("-createdAt");
-    }
-
-    if (sort === "Priority") {
-      tickets = tickets.sort("priority");
-    }
-
-    if (sort === "-Priority") {
-      tickets = tickets.sort("-priority");
-    }
-  }
 
   // search
   if (search) {
@@ -128,7 +102,7 @@ const archiveTicket = async (req, res) => {
 
 // My tickets
 const userTickets = async (req, res) => {
-  const { sort, search } = req.query;
+  const { search } = req.query;
   const { userId } = req.user;
 
   // pagination
@@ -142,32 +116,6 @@ const userTickets = async (req, res) => {
     .limit(limit);
 
   // **************
-  // sorting
-  if (sort) {
-    if (sort === "Title") {
-      tickets = tickets.sort("title");
-    }
-
-    if (sort === "-Title") {
-      tickets = tickets.sort("-title");
-    }
-
-    if (sort === "Date") {
-      tickets = tickets.sort("createdAt");
-    }
-
-    if (sort === "-Date") {
-      tickets = tickets.sort("-createdAt");
-    }
-
-    if (sort === "Priority") {
-      tickets = tickets.sort("priority");
-    }
-
-    if (sort === "-Priority") {
-      tickets = tickets.sort("-priority");
-    }
-  }
 
   // search
   if (search) {
@@ -189,7 +137,7 @@ const userTickets = async (req, res) => {
 
 // get unassigned tickets
 const unassignedTickets = async (req, res) => {
-  const { sort, search, isArchived } = req.query;
+  const { search, isArchived } = req.query;
 
   // pagination
   const page = Number(req.query.page) || 1;
@@ -211,33 +159,6 @@ const unassignedTickets = async (req, res) => {
     .limit(limit);
 
   // **************
-  // sorting
-  if (sort) {
-    if (sort === "Title") {
-      tickets = tickets.sort("title");
-    }
-
-    if (sort === "-Title") {
-      tickets = tickets.sort("-title");
-    }
-
-    if (sort === "Date") {
-      tickets = tickets.sort("createdAt");
-    }
-
-    if (sort === "-Date") {
-      tickets = tickets.sort("-createdAt");
-    }
-
-    if (sort === "Priority") {
-      tickets = tickets.sort("priority");
-    }
-
-    if (sort === "-Priority") {
-      tickets = tickets.sort("-priority");
-    }
-  }
-
   // search
   if (search) {
     tickets = tickets.find({ title: { $regex: search, $options: "i" } });

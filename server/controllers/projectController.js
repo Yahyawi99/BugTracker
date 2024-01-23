@@ -9,7 +9,7 @@ const { default: isBoolean } = require("validator/lib/isBoolean");
 
 // get all projects
 const allProjects = async (req, res) => {
-  const { sort, search, isArchived } = req.query;
+  const { search, isArchived } = req.query;
 
   // pagination
   const page = Number(req.query.page) || 1;
@@ -31,26 +31,6 @@ const allProjects = async (req, res) => {
     })
     .skip(skip)
     .limit(limit);
-
-  // **************
-  // sorting
-  if (sort) {
-    if (sort === "Project") {
-      projects = projects.sort("-name");
-    }
-
-    if (sort === "-Project") {
-      projects = projects.sort("name");
-    }
-
-    if (sort === "End Date") {
-      projects = projects.sort("-endDate");
-    }
-
-    if (sort === "-End Date") {
-      projects = projects.sort("endDate");
-    }
-  }
 
   // search
   if (search) {
@@ -254,7 +234,7 @@ const archiveProject = async (req, res) => {
 
 // My projects
 const userProjects = async (req, res) => {
-  const { sort, search } = req.query;
+  const { search } = req.query;
   const { userId } = req.user;
 
   // pagination
@@ -269,26 +249,6 @@ const userProjects = async (req, res) => {
     })
     .skip(skip)
     .limit(limit);
-
-  // **************
-  // sorting
-  if (sort) {
-    if (sort === "Project") {
-      projects = projects.sort("-name");
-    }
-
-    if (sort === "-Project") {
-      projects = projects.sort("name");
-    }
-
-    if (sort === "End Date") {
-      projects = projects.sort("-endDate");
-    }
-
-    if (sort === "-End Date") {
-      projects = projects.sort("endDate");
-    }
-  }
 
   // search
   if (search) {
