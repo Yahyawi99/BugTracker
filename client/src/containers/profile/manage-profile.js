@@ -98,214 +98,219 @@ const ManageProfile = () => {
   };
 
   return (
-    <section className="manageProfile">
-      <HomeBtn name="Profile" />
-
-      <div>
-        <div className="titles">
-          <h1>Manage your account</h1>
-          <h2>Change your account settings</h2>
-        </div>
+    currentUser && (
+      <section className="manageProfile">
+        <HomeBtn name="Profile" />
 
         <div>
-          <ul className="navigation">
-            {["Profile", "Email", "Password"].map((value, i) => {
-              return (
-                <li
-                  key={i}
-                  className={`${settingsNavigateTo === value && "clicked"}`}
-                  onClick={() => setSettingsNavigateTo(value)}
-                >
-                  {value}
-                </li>
-              );
-            })}
-          </ul>
+          <div className="titles">
+            <h1>Manage your account</h1>
+            <h2>Change your account settings</h2>
+          </div>
 
           <div>
-            <h3>{settingsNavigateTo}</h3>
+            <ul className="navigation">
+              {["Profile", "Email", "Password"].map((value, i) => {
+                return (
+                  <li
+                    key={i}
+                    className={`${settingsNavigateTo === value && "clicked"}`}
+                    onClick={() => setSettingsNavigateTo(value)}
+                  >
+                    {value}
+                  </li>
+                );
+              })}
+            </ul>
 
-            {settingsNavigateTo === "Profile" && (
-              <form
-                className="form profile-form"
-                onSubmit={(e) => profileFormHandler(e)}
-              >
-                <div className="nameController">
-                  <label className="label" htmlFor="username">
-                    Username
-                  </label>
-                  <input
-                    type="text"
-                    id="username"
-                    value={userData.name}
-                    onChange={(e) =>
-                      setUserData({ ...userData, name: e.currentTarget.value })
-                    }
-                  />
-                </div>
+            <div>
+              <h3>{settingsNavigateTo}</h3>
 
-                <div className="phoneController">
-                  <label className="label" htmlFor="phone">
-                    Phone number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    value={userData.phoneNumber ? userData.phoneNumber : ""}
-                    onChange={(e) =>
-                      setUserData({
-                        ...userData,
-                        phoneNumber: e.currentTarget.value,
-                      })
-                    }
-                  />
-                </div>
-
-                <div className="imageContainer">
-                  <div className="imageController">
-                    <p className="label">Image</p>
-
+              {settingsNavigateTo === "Profile" && (
+                <form
+                  className="form profile-form"
+                  onSubmit={(e) => profileFormHandler(e)}
+                >
+                  <div className="nameController">
+                    <label className="label" htmlFor="username">
+                      Username
+                    </label>
                     <input
-                      type="file"
-                      id="image"
-                      accept="image/*"
+                      type="text"
+                      id="username"
+                      value={userData.name || ""}
                       onChange={(e) =>
                         setUserData({
                           ...userData,
-                          image: e.currentTarget.files[0],
+                          name: e.currentTarget.value,
                         })
                       }
                     />
-
-                    <label htmlFor="image" className="custom-button">
-                      Choose File
-                    </label>
-
-                    <span className="file-name">
-                      {userData.image ? userData.image.name : " No file chosen"}
-                    </span>
                   </div>
 
-                  <div className="currentImageController">
-                    <label className="label" htmlFor="currentImage">
-                      Current Image
+                  <div className="phoneController">
+                    <label className="label" htmlFor="phone">
+                      Phone number
                     </label>
-
-                    <img src={userData.avatar} alt="member" id="currentImage" />
+                    <input
+                      type="tel"
+                      id="phone"
+                      value={userData.phoneNumber ? userData.phoneNumber : ""}
+                      onChange={(e) =>
+                        setUserData({
+                          ...userData,
+                          phoneNumber: e.currentTarget.value,
+                        })
+                      }
+                    />
                   </div>
-                </div>
 
-                <button type="submit" className="Btn">
-                  Save
-                </button>
-              </form>
-            )}
+                  <div className="imageContainer">
+                    <div className="imageController">
+                      <p className="label">Image</p>
 
-            {settingsNavigateTo === "Email" && (
-              <form
-                className="form email-form"
-                onSubmit={(e) => emailFormHandler(e)}
-              >
-                <div>
-                  <label htmlFor="readonlyInput" className="label">
-                    Email
-                  </label>
-                  <input
-                    id="readonlyInput"
-                    type="text"
-                    value={userData.email}
-                    readOnly
-                  />
-                </div>
+                      <label htmlFor="image" className="custom-button">
+                        Choose File
+                      </label>
 
-                <div>
-                  <label htmlFor="newEmail" className="label">
-                    New Email
-                  </label>
-                  <input
-                    id="newEmail"
-                    type="email"
-                    value={userData.newEmail}
-                    onChange={(e) =>
-                      setUserData({
-                        ...userData,
-                        newEmail: e.currentTarget.value,
-                      })
-                    }
-                  />
-                </div>
+                      <input
+                        type="file"
+                        id="image"
+                        accept="image/*"
+                        onChange={(e) =>
+                          setUserData({
+                            ...userData,
+                            image: e.currentTarget.files[0],
+                          })
+                        }
+                      />
 
-                <button type="submit" className="Btn">
-                  Change email
-                </button>
-              </form>
-            )}
+                      <span className="file-name">
+                        {userData.image
+                          ? userData.image.name
+                          : " No file chosen"}
+                      </span>
+                    </div>
 
-            {settingsNavigateTo === "Password" && (
-              <form
-                className="form password-form"
-                onSubmit={(e) => passwordFormHandler(e)}
-              >
-                <div>
-                  <label htmlFor="currentPass" className="label">
-                    Current password
-                  </label>
-                  <input
-                    type="password"
-                    id="currentPass"
-                    value={userData.currentPassword}
-                    onChange={(e) =>
-                      setUserData({
-                        ...userData,
-                        currentPassword: e.currentTarget.value,
-                      })
-                    }
-                  />
-                </div>
+                    <div className="currentImageController">
+                      <p className="label">Current Image</p>
 
-                <div>
-                  <label htmlFor="newPass" className="label">
-                    New password
-                  </label>
-                  <input
-                    type="password"
-                    id="newPass"
-                    value={userData.newPassword}
-                    onChange={(e) =>
-                      setUserData({
-                        ...userData,
-                        newPassword: e.currentTarget.value,
-                      })
-                    }
-                  />
-                </div>
+                      <img src={userData.avatar} alt="member" />
+                    </div>
+                  </div>
 
-                <div>
-                  <label htmlFor="confirmNewPass" className="label">
-                    Confirm new password
-                  </label>
-                  <input
-                    type="password"
-                    id="confirmNewPass"
-                    value={userData.newPasswordConfirmed}
-                    onChange={(e) =>
-                      setUserData({
-                        ...userData,
-                        newPasswordConfirmed: e.currentTarget.value,
-                      })
-                    }
-                  />
-                </div>
+                  <button type="submit" className="Btn">
+                    Save
+                  </button>
+                </form>
+              )}
 
-                <button type="submit" className="Btn">
-                  Update password
-                </button>
-              </form>
-            )}
+              {settingsNavigateTo === "Email" && (
+                <form
+                  className="form email-form"
+                  onSubmit={(e) => emailFormHandler(e)}
+                >
+                  <div>
+                    <label htmlFor="readonlyInput" className="label">
+                      Email
+                    </label>
+                    <input
+                      id="readonlyInput"
+                      type="text"
+                      value={userData.email || ""}
+                      readOnly
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="newEmail" className="label">
+                      New Email
+                    </label>
+                    <input
+                      id="newEmail"
+                      type="email"
+                      value={userData.newEmail}
+                      onChange={(e) =>
+                        setUserData({
+                          ...userData,
+                          newEmail: e.currentTarget.value,
+                        })
+                      }
+                    />
+                  </div>
+
+                  <button type="submit" className="Btn">
+                    Change email
+                  </button>
+                </form>
+              )}
+
+              {settingsNavigateTo === "Password" && (
+                <form
+                  className="form password-form"
+                  onSubmit={(e) => passwordFormHandler(e)}
+                >
+                  <div>
+                    <label htmlFor="currentPass" className="label">
+                      Current password
+                    </label>
+                    <input
+                      type="password"
+                      id="currentPass"
+                      value={userData.currentPassword}
+                      onChange={(e) =>
+                        setUserData({
+                          ...userData,
+                          currentPassword: e.currentTarget.value,
+                        })
+                      }
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="newPass" className="label">
+                      New password
+                    </label>
+                    <input
+                      type="password"
+                      id="newPass"
+                      value={userData.newPassword}
+                      onChange={(e) =>
+                        setUserData({
+                          ...userData,
+                          newPassword: e.currentTarget.value,
+                        })
+                      }
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="confirmNewPass" className="label">
+                      Confirm new password
+                    </label>
+                    <input
+                      type="password"
+                      id="confirmNewPass"
+                      value={userData.newPasswordConfirmed}
+                      onChange={(e) =>
+                        setUserData({
+                          ...userData,
+                          newPasswordConfirmed: e.currentTarget.value,
+                        })
+                      }
+                    />
+                  </div>
+
+                  <button type="submit" className="Btn">
+                    Update password
+                  </button>
+                </form>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    )
   );
 };
 

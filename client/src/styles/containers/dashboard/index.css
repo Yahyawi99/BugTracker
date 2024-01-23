@@ -219,7 +219,9 @@
     overflow-x: auto;
 }
 
-
+.dashboard-Container .members>div>div:nth-child(2)>div {
+    min-width: 500px;
+}
 
 .dashboard-Container table {
     min-width: 100%;
@@ -417,9 +419,7 @@
         flex-direction: column;
     }
 
-    .dashboard-Container .members>div>div:nth-child(2)>div {
-        min-width: 500px;
-    }
+
 
     .dashboard-Container .projects>div>div:nth-child(2)>div {
         min-width: 650px;
