@@ -71,7 +71,11 @@ const useProjects = () => {
   // Edit project
   const editProject = async (projectId, updates) => {
     if (!singleProject.project.name || !singleProject.project.description) {
+<<<<<<< HEAD
       await alertMe("All fields are required!" + "!", "var(--danger)");
+=======
+      await alertMe("All fields are required!", "var(--danger)");
+>>>>>>> master
     }
 
     const {
@@ -86,7 +90,11 @@ const useProjects = () => {
     try {
       loading(true);
 
+<<<<<<< HEAD
       const response = await axios.patch(`/api/v1/project/${projectId}`, {
+=======
+      await axios.patch(`/api/v1/project/${projectId}`, {
+>>>>>>> master
         name,
         description,
         startDate,
@@ -103,10 +111,14 @@ const useProjects = () => {
     } catch (error) {
       loading(false);
 
+<<<<<<< HEAD
       await alertMe(
         "something went wrong please try again!" + "!",
         "var(--danger)"
       );
+=======
+      await alertMe("something went wrong please try again!", "var(--danger)");
+>>>>>>> master
     }
   };
 
@@ -127,10 +139,14 @@ const useProjects = () => {
     } catch (error) {
       loading(false);
 
+<<<<<<< HEAD
       await alertMe(
         "something went wrong please try again!" + "!",
         "var(--danger)"
       );
+=======
+      await alertMe("something went wrong please try again!", "var(--danger)");
+>>>>>>> master
     }
   };
 
@@ -184,10 +200,14 @@ const useProjects = () => {
     } catch (error) {
       loading(false);
 
+<<<<<<< HEAD
       await alertMe(
         "something went wrong please try again!" + "!",
         "var(--danger)"
       );
+=======
+      await alertMe("something went wrong please try again!", "var(--danger)");
+>>>>>>> master
     }
   };
 

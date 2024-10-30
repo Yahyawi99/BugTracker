@@ -27,6 +27,10 @@ const EditProject = () => {
   useEffect(() => {
     getSingleProject(projectId);
     getAllUsers();
+<<<<<<< HEAD
+=======
+    // eslint-disable-next-line
+>>>>>>> master
   }, []);
 
   useEffect(() => {
@@ -35,7 +39,11 @@ const EditProject = () => {
 
   useEffect(() => {
     if (allUsers.users) {
+<<<<<<< HEAD
       setManagers(() => allUsers.users.filter((user) => user.role == "PM"));
+=======
+      setManagers(() => allUsers.users.filter((user) => user.role === "PM"));
+>>>>>>> master
     }
   }, [allUsers]);
 

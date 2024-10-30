@@ -32,7 +32,11 @@ const useUsers = () => {
       loading(false);
 
       await alertMe(
+<<<<<<< HEAD
         "Something went wrong please try again later!" + "!",
+=======
+        "Something went wrong please try again later!",
+>>>>>>> master
         "var(--danger)"
       );
     }
@@ -100,7 +104,11 @@ const useUsers = () => {
       loading(false);
 
       await alertMe(
+<<<<<<< HEAD
         "Something went wrong please try again later!" + "!",
+=======
+        "Something went wrong please try again later!",
+>>>>>>> master
         "var(--danger)"
       );
     }

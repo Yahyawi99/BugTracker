@@ -30,6 +30,10 @@ const AllProjects = () => {
 
   useEffect(() => {
     getAllProjects(1, "", limit, searchInput);
+<<<<<<< HEAD
+=======
+    // eslint-disable-next-line
+>>>>>>> master
   }, []);
 
   if (allProjects) {

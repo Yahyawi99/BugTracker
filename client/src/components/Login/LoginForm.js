@@ -59,6 +59,7 @@ const LoginForm = () => {
           <button type="sumbit" className="loginRegisterBtn">
             {mode}
           </button>
+<<<<<<< HEAD
 
           {/* <p className="registerLoginQuestion">
             {mode === "login" ? (
@@ -73,6 +74,8 @@ const LoginForm = () => {
               </>
             )}
           </p> */}
+=======
+>>>>>>> master
         </form>
 
         <Link className="demoLinks" to="/login-register/demo-accounts">

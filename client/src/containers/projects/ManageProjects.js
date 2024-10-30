@@ -20,6 +20,10 @@ const ManageProjects = () => {
 
   useEffect(() => {
     getAllProjects(1, "", "", "", "all");
+<<<<<<< HEAD
+=======
+    // eslint-disable-next-line
+>>>>>>> master
   }, []);
 
   // Drop down

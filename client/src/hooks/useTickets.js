@@ -58,7 +58,11 @@ const useTickets = () => {
   // Edit ticket
   const editTicket = async (ticketId, updates) => {
     if (!singleTicket.ticket.title || !singleTicket.ticket.description) {
+<<<<<<< HEAD
       await alertMe("All fields are required!" + "!", "var(--danger)");
+=======
+      await alertMe("All fields are required!", "var(--danger)");
+>>>>>>> master
     }
 
     const { title, description, status, type, priority } = updates;
@@ -82,7 +86,11 @@ const useTickets = () => {
     } catch (error) {
       loading(false);
 
+<<<<<<< HEAD
       alertMe("something went wrong please try again!" + "!", "var(--danger)");
+=======
+      alertMe("something went wrong please try again!", "var(--danger)");
+>>>>>>> master
     }
   };
 
@@ -103,7 +111,11 @@ const useTickets = () => {
     } catch (error) {
       loading(false);
 
+<<<<<<< HEAD
       alertMe("something went wrong please try again!" + "!", "var(--danger)");
+=======
+      alertMe("something went wrong please try again!", "var(--danger)");
+>>>>>>> master
     }
   };
 
@@ -154,10 +166,14 @@ const useTickets = () => {
     } catch (error) {
       loading(false);
 
+<<<<<<< HEAD
       await alertMe(
         "something went wrong please try again!" + "!",
         "var(--danger)"
       );
+=======
+      await alertMe("something went wrong please try again!", "var(--danger)");
+>>>>>>> master
     }
   };
 
@@ -178,16 +194,24 @@ const useTickets = () => {
 
       setAllTickets(response.data);
 
+<<<<<<< HEAD
       await alertMe("Done" + "!", "var(--success)");
+=======
+      await alertMe("Done.", "var(--success)");
+>>>>>>> master
 
       loading(false);
     } catch (error) {
       loading(false);
 
+<<<<<<< HEAD
       await alertMe(
         "something went wrong please try again!" + "!",
         "var(--danger)"
       );
+=======
+      await alertMe("something went wrong please try again!", "var(--danger)");
+>>>>>>> master
     }
   };
 

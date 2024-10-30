@@ -31,6 +31,10 @@ const TicketDetails = () => {
   useEffect(() => {
     getSingleTicket(ticketId);
     getComments(ticketId);
+<<<<<<< HEAD
+=======
+    // eslint-disable-next-line
+>>>>>>> master
   }, []);
 
   if (singleTicket.ticket) {

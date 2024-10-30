@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import reactQuillModules from "../../utils/reactQuill-modules";
 // packages
 import ReactQuill from "react-quill";
+<<<<<<< HEAD
 import Calendar from "react-calendar";
+=======
+>>>>>>> master
 // hooks
 import useTickets from "../../hooks/useTickets";
 import useProjects from "../../hooks/useProjects";
@@ -27,6 +30,10 @@ const CreateTicket = () => {
   //   projects
   useEffect(() => {
     getAllProjects(1, 100 * 100, "", "", "all");
+<<<<<<< HEAD
+=======
+    // eslint-disable-next-line
+>>>>>>> master
   }, []);
 
   useEffect(() => {

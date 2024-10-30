@@ -29,6 +29,10 @@ const AllTickets = () => {
 
   useEffect(() => {
     getAllTickets(1, "", limit, searchInput);
+<<<<<<< HEAD
+=======
+    // eslint-disable-next-line
+>>>>>>> master
   }, []);
 
   if (allTickets) {
