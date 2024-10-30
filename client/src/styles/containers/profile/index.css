@@ -1,0 +1,211 @@
+.memberProfile {
+    display: flex;
+    flex-direction: column;
+}
+
+/* member info */
+.memberInfo {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 30px 25px;
+}
+
+.memberInfo img {
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 10px;
+}
+
+.memberInfo .name {
+    font-size: 2.25rem;
+    text-transform: capitalize;
+    margin: 0 0 5px 0;
+}
+
+.memberInfo .role {
+    width: fit-content;
+    color: var(--teal);
+    display: flex;
+    justify-content: center;
+    font-size: .7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: 2px solid var(--teal);
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 0 0 30px 0;
+}
+
+.memberInfo>div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.memberInfo>div>p:nth-child(1) {
+    color: var(--gray);
+    font-weight: 600;
+}
+
+.memberInfo .email {
+    margin-bottom: 5px;
+}
+
+.memberInfo a {
+    color: var(--blue);
+    transition: .25s;
+}
+
+.memberInfo a:hover {
+    opacity: .5;
+}
+
+
+/* ************************** */
+/* Projects */
+.memberProfile .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-rows: auto-fill;
+    gap: 25px;
+    margin: 0 0 25px 0;
+}
+
+.memberProfile .projects .project {
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.memberProfile .project>div {
+    display: flex;
+    align-items: center;
+}
+
+/* Header */
+.memberProfile .project>div:nth-child(1) {
+    justify-content: space-between;
+    position: relative;
+}
+
+.memberProfile .project>div:nth-child(1) .name {
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.memberProfile .project>div:nth-child(1) .priority {
+    font-size: .8rem;
+}
+
+/* description */
+.memberProfile .project>div:nth-child(2) {
+    height: 100%;
+    align-items: flex-start;
+    font-size: 1rem;
+    margin: 15px 0;
+}
+
+/* Team */
+.memberProfile .project>div:nth-child(3) {
+    justify-content: space-between;
+}
+
+.memberProfile .project>div:nth-child(3)>div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: .9rem;
+}
+
+.memberProfile .projects .project img {
+    width: 30px;
+    border: 2px solid var(--main-clr);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.memberProfile .projects .project a:not(:first-child) {
+    margin: 0 0 0 -10px;
+}
+
+.memberProfile .projects .project img:hover {
+    transform: translateY(-5px);
+}
+
+.memberProfile .project>div:nth-child(3) button {
+    background-color: var(--main-clr);
+    color: var(--white);
+    font-weight: 600;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 5px;
+}
+
+.memberProfile .project>div:nth-child(3) button:hover {
+    background-color: transparent;
+    color: var(--main-clr);
+    border-color: var(--main-clr);
+}
+
+.memberProfile .project>div:nth-child(3) .noTeam {
+    color: var(--gray);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Progress */
+.memberProfile .projects .project .progress {
+    min-height: 5px;
+    background-color: var(--main-clr-hover);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.memberProfile .projects .project .progress>p {
+    height: 100%;
+    background-color: var(--main-clr);
+    border-radius: 5px;
+    position: absolute;
+    transition: .5s ease-in-out;
+    transition-delay: .1s;
+}
+
+/* Tickets */
+.memberProfile .project>div:nth-child(5) {
+    display: flex;
+    gap: 5px;
+}
+
+/* *************************** */
+/* *************************** */
+/* *************************** */
+/* media queries */
+@media screen and (max-width:500px) {
+
+    /* member info */
+    .memberInfo {
+        padding: 20px 10px;
+    }
+
+    .memberInfo .role {
+        font-size: .6rem;
+        padding: 4px 8px;
+    }
+}
+
+
+/* *************************** */
+/* *************************** */
+/* *************************** */
+/* Javascript */
+.memberProfile .projects .project .showDropDown {
+    transform: scaleY(1);
+}

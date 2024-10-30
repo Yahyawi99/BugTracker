@@ -1,0 +1,206 @@
+.manageTeam {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.manageTeam>div:not(div:nth-child(1)) {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.manageTeam>div:not(div:nth-child(1))>div {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.manageTeam .first-column h1 {
+    margin-bottom: 5px;
+}
+
+.manageTeam .second-column {
+    flex: 1;
+    min-width: 500px;
+}
+
+.manageTeam img {
+    border-radius: 50%;
+}
+
+
+/* Manager */
+.manageTeam .first-column .pm {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 2px solid var(--border-color);
+    margin: 30px 0 25px 0;
+    padding: 0 0 20px 0;
+}
+
+.manageTeam .first-column .pm img {
+    width: 100px;
+}
+
+.manageTeam .first-column .pm .info {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.manageTeam .first-column .pm .info .name {
+    color: var(--gray-dark);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.manageTeam .first-column .pm .info .email,
+.manageTeam .first-column .pm .info .role {
+    color: var(--gray);
+}
+
+.manageTeam .first-column .pm .info .role {
+    font-size: .9rem;
+    margin-bottom: 5px;
+}
+
+.manageTeam .first-column .pm button,
+.manageTeam .first-column .noManager button {
+    background-color: var(--main-clr);
+    color: var(--white);
+    font-weight: 600;
+    font-size: .8rem;
+    border: 2px solid var(--main-clr);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 5px 10px;
+}
+
+.manageTeam .first-column .pm button:hover,
+.manageTeam .first-column .noManager button:hover {
+    background-color: transparent;
+    color: var(--main-clr);
+}
+
+.manageTeam .first-column .noManager {
+    border-bottom: 2px solid var(--border-color);
+    padding: 10px 0;
+}
+
+.manageTeam .first-column .noManager p {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0px 0 5px 0;
+}
+
+/* team */
+.manageTeam .first-column .team {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.manageTeam .first-column .team>div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.manageTeam .first-column .team>div .role {
+    color: var(--gray);
+}
+
+.manageTeam .first-column .team img {
+    width: 50px;
+}
+
+
+/* Drag and drop */
+.manageTeam .dnd {
+    display: flex;
+    gap: 5px;
+}
+
+.manageTeam .dnd .title {
+    color: var(--gray);
+    font-size: .9rem;
+    text-decoration: 2px underline;
+    align-self: center;
+}
+
+.manageTeam .dnd>div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.manageTeam .dnd>div>div {
+    flex: 1;
+    background-color: var(--main-clr-hover);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 3px solid var(--border-color);
+    transition: .25s;
+    padding: 5px;
+}
+
+.manageTeam .dnd p {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    cursor: grab;
+    padding: 15px;
+}
+
+.manageTeam .dnd p:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow);
+}
+
+.manageTeam .dnd svg {
+    color: var(--main-clr);
+    align-self: center;
+}
+
+.manageTeam .dnd .emptyDroppable {
+    border-style: dashed;
+    border-width: 3px;
+    background-color: transparent;
+}
+
+.manageTeam .second-column button {
+    color: var(--white);
+    background-color: var(--main-clr);
+    border: 2px solid var(--main-clr);
+    border-radius: 5px;
+    font-weight: 600;
+    align-self: flex-start;
+    cursor: pointer;
+    transition: .25s;
+    padding: 10px 15px;
+}
+
+.manageTeam .second-column button:hover {
+    background-color: transparent;
+    color: var(--main-clr);
+}
+
+/* **************************** */
+/* **************************** */
+/* **************************** */
+/* media queries */
+@media screen and (max-width:925px) {
+    .manageTeam>div:not(div:nth-child(1)) {
+        flex-direction: column;
+    }
+
+    .manageTeam .second-column,
+    .manageTeam .first-column {
+        min-width: 100%;
+    }
+}

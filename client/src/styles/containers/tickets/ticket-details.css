@@ -1,0 +1,281 @@
+.ticketDetails .details {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    grid-auto-rows: auto;
+    gap: 20px;
+}
+
+.ticketDetails .first-column>div,
+.ticketDetails .second-column>div {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* ======================== */
+/* ======================== */
+/* First column */
+.ticketDetails .first-column>div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ticketDetails .first-column .row-one {
+    gap: 15px;
+}
+
+.ticketDetails .first-column .row-two {
+    gap: 10px;
+}
+
+/* project */
+.ticketDetails .project {
+    display: flex;
+    gap: 5px;
+}
+
+.ticketDetails .project p:nth-child(1) {
+    font-weight: 600;
+}
+
+/* developer */
+.ticketDetails .dev>p {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.ticketDetails .dev>div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.ticketDetails .dev img {
+    width: 35px;
+    border-radius: 50%;
+}
+
+.ticketDetails .unassigned span {
+    font-weight: normal;
+}
+
+/* buttons */
+.ticketDetails .action .assignBtn {
+    color: var(--blue);
+    border: 2px solid var(--blue);
+}
+
+.ticketDetails .action .assignBtn:hover {
+    color: var(--white);
+    background-color: var(--blue);
+}
+
+/* status & type*/
+.ticketDetails .status .new,
+.ticketDetails .type .changeRequest,
+.ticketDetails .type .generalTask,
+.ticketDetails .type .workTask {
+    color: var(--gray);
+    border: 2px solid var(--gray);
+}
+
+.ticketDetails .status .development,
+.ticketDetails .type .enhancement {
+    color: var(--blue);
+    border: 2px solid var(--blue);
+}
+
+.ticketDetails .status .resolved,
+.ticketDetails .type .newDevelopment {
+    color: var(--success);
+    border: 2px solid var(--success);
+}
+
+.ticketDetails .type .defect {
+    color: var(--danger);
+    border: 2px solid var(--danger);
+}
+
+/* ************************** */
+/* second column */
+.second-column>div {
+    border-radius: 10px;
+}
+
+/* comments */
+.second-column {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    gap: 25px;
+}
+
+.second-column #row-one {
+    width: 100%;
+    padding: 20px;
+}
+
+.second-column form {
+    padding-bottom: 40px;
+}
+
+.second-column #row-one .quill-editor {
+    margin: 20px 0 10px 0;
+}
+
+.second-column #row-one .quill-editor>div>div:nth-child(2) {
+    min-height: 150px;
+    font-size: 1rem;
+}
+
+.second-column form button {
+    background-color: var(--main-clr);
+    color: var(--white);
+    border: 2px solid transparent;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s;
+    padding: 7px 15px;
+}
+
+.second-column form button:hover {
+    background-color: transparent;
+    color: var(--main-clr);
+    border-color: var(--main-clr);
+}
+
+/* Comments */
+.second-column .comments {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    border-top: 2px solid var(--border-color);
+    padding: 15px 0;
+}
+
+.second-column .comments>div img {
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transform: .25s;
+}
+
+.second-column .comments>div img:hover {
+    opacity: .5;
+}
+
+.second-column .comments .name {
+    font-weight: 600;
+}
+
+.second-column .comments .date {
+    font-size: .8rem;
+}
+
+.second-column .comments>div>div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.second-column .comments>div>p {
+    color: var(--gray-dark);
+}
+
+.second-column .comments>div>div>div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+
+/* History */
+.second-column #row-two {
+    width: 100%;
+    background-color: var(--main-clr-hover);
+    padding: 20px;
+}
+
+.second-column #row-two h3 {
+    margin-bottom: 50px;
+}
+
+.second-column .historyContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 75px;
+    border-left: 2px solid var(--border-color);
+    padding: 25px 0;
+}
+
+.second-column .historyContainer>div {
+    display: flex;
+    gap: 15px;
+    margin-left: -10px;
+}
+
+.second-column .historyContainer>div .pin {
+    width: 20px;
+    height: 20px;
+    background-color: var(--white);
+    border-radius: 50%;
+    border: 6px solid var(--main-clr);
+}
+
+.second-column .historyData {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.second-column .historyData .date {
+    color: var(--gray-dark);
+}
+
+.second-column .historyData .title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.second-column .historyData .name span {
+    color: var(--blue);
+    cursor: pointer;
+    transition: .25s;
+}
+
+.second-column .historyData .name span:hover {
+    text-decoration: 2px underline;
+}
+
+
+
+
+/* ***************************** */
+/* ***************************** */
+/* ***************************** */
+/* ***************************** */
+@media screen and (max-width:550px) {
+    .ticketDetails .details {
+        grid-template-columns: repeat(auto-fill, 100%);
+    }
+
+    /* history */
+    .second-column #row-two {
+        padding: 20px 10px;
+    }
+
+
+    .second-column .historyContainer>div {
+        margin-left: -8px;
+    }
+
+    .second-column .historyContainer>div .pin {
+        width: 18px;
+        height: 16px;
+        border: 4px solid var(--main-clr);
+    }
+}

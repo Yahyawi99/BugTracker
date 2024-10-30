@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto Condensed', sans-serif;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #007bff;
+  --blue-hover: #007bff1a;
+
+  --pink: #e83e8c;
+  --pink-hover: #e83e8d1a;
+
+  --purple: #6f42c1;
+  --purple-hover: #6e42c11a;
+
+  --orange: #fd7e14;
+  --orange-hover: #fd7d141a;
+
+  --yellow: #ffc107;
+  --yellow-hover: #ffc1071a;
+
+  --green: #28a745;
+  --green-hover: #28a7451a;
+
+  --red: #dc3545;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --indigo: #6610f2;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #007bff;
+  --dark-blue: #0b57d0;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --black: #000;
+  --border-color: rgb(90, 87, 87, .25);
+  --shadow: 0px 0px 5px 0px rgba(0, 0, 0, .3);
+  --svg-fill: #767676;
+}
+
+body {
+  background-color: #EDF2F4;
+  overflow: hidden;
+}
+
+main::-webkit-scrollbar {
+  appearance: none;
+}
+
+i svg path {
+  fill: var(--svg-fill);
+}
+
+i svg {
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: .25s;
+}
+
+i svg:hover {
+  opacity: .5;
+}
+
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+input,
+text {
+  font-family: inherit;
+}
+
+ul {
+  list-style-type: none;
+}

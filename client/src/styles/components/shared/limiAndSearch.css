@@ -1,0 +1,154 @@
+/* *********************** */
+/* *********************** */
+/* Header */
+/* Drop down */
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 30px 0 25px 0;
+}
+
+.sectionHeader>div {
+    display: flex;
+    align-items: center;
+}
+
+.dropdownContainer {
+    border: 2px solid var(--border-color);
+    justify-self: flex-start;
+    margin: 0px 10px;
+    padding: 5px 10px;
+}
+
+.dropdownContainer:active {
+    border-color: var(--main-clr);
+}
+
+.dropdownContainer i svg {
+    font-size: .8rem;
+}
+
+.dropDownValue {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.limitControl {
+    position: absolute;
+}
+
+
+.limitControl .dropDown {
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    border-radius: 0px;
+    position: absolute;
+    top: 34px;
+    left: 43px;
+    box-shadow: 0px 0px 5px rgb(0, 0, 0, .5);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: .25s;
+    padding: 5px 20px;
+}
+
+.limitControl .dropDown p {
+    cursor: pointer;
+}
+
+.limitControl .dropDown p:hover {
+    text-decoration: underline 2px;
+}
+
+/* Search */
+.searchBar {
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.searchBar input {
+    width: 200px;
+    height: 40px;
+    border: 2px solid var(--border-color);
+    border-right: none;
+    font-size: 1rem;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    padding: 0 0 0 5px;
+    margin: 0 0 0 10px;
+}
+
+.searchBar input:focus {
+    border-color: var(--main-clr);
+}
+
+.searchBar button {
+    height: 40px;
+    background-color: var(--main-clr);
+    color: var(--white);
+    border: 2px solid transparent;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: .25s;
+    padding: 0 10px;
+}
+
+.searchBar button:hover {
+    border-color: var(--main-clr);
+    background-color: var(--main-clr-hover);
+    color: var(--main-clr);
+}
+
+
+/* ***************************** */
+/* ***************************** */
+/* ***************************** */
+/* ***************************** */
+@media screen and (max-width:550px) {
+    .sectionHeader {
+        flex-direction: column;
+        gap: 10px;
+        padding: 30px 0 35px 0;
+    }
+
+    /* Search */
+    .searchBar {
+        width: initial;
+        justify-content: initial;
+    }
+
+    .searchBar input {
+        width: 50%;
+        max-width: 140px;
+        height: 30px;
+    }
+
+    .searchBar button {
+        height: 30px;
+        padding: 0 5px;
+    }
+
+    .limitControl {
+        position: relative;
+    }
+
+    .limitControl .dropDown {
+        top: 32px;
+        left: 38px;
+    }
+}
+
+
+/* **************************** */
+/* **************************** */
+/* **************************** */
+/* **************************** */
+/* Javascript classes */
+.limitControl .showDropDown {
+    transform: scaleY(1);
+}

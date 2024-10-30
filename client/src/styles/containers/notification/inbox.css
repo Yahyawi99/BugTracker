@@ -1,0 +1,373 @@
+.inboxContainer>div:nth-child(2) {
+    display: flex;
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 20px 15px;
+    margin-bottom: 20px;
+}
+
+/* ======================== */
+/* ======================== */
+/* Menu */
+.inboxContainer .menu {
+    height: fit-content;
+    flex: .5;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-right: 10px;
+}
+
+.inboxContainer .menu>div {
+    display: flex;
+    align-items: flex-end;
+    background-color: rgba(128, 128, 128, 0.15);
+    border-radius: 5px;
+    padding: 8px;
+}
+
+.inboxContainer .menu>div svg {
+    font-size: 1.25rem;
+    margin-right: 10px;
+}
+
+.inboxContainer .menu>div p:nth-child(2) {
+    color: var(--gray-dark);
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.inboxContainer .menu>div p:nth-child(3) {
+    color: var(--success);
+    font-weight: 600;
+    font-size: .8rem;
+    border: 2px solid var(--success);
+    border-radius: 5px;
+    padding: 0px 5px;
+    margin-left: auto;
+}
+
+/* compose button */
+.inboxContainer .menu button {
+    flex: 1;
+    background-color: var(--main-clr);
+    color: var(--white);
+    font-weight: 600;
+    font-size: .9rem;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 8px 0;
+}
+
+.inboxContainer .menu button:hover {
+    background-color: transparent;
+    color: var(--main-clr);
+    border: 2px solid var(--main-clr);
+}
+
+/* ======================== */
+/* ======================== */
+/* Mail */
+.inboxContainer .mail {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+    border-left: 3px solid var(--border-color);
+    padding-left: 10px;
+}
+
+.inboxContainer .mail>div {
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.inboxContainer .mail>div:nth-child(1)>div {
+    display: flex;
+    align-items: center;
+}
+
+
+/* search */
+.inboxContainer>div form {
+    height: 35px;
+}
+
+.inboxContainer>div form input {
+    height: inherit;
+    color: var(--gray-dark);
+    font-weight: 600;
+    border: 2px solid var(--border-color);
+    border-right: none;
+    padding-left: 5px;
+}
+
+.inboxContainer>div form input::placeholder {
+    color: var(--border-color);
+    opacity: .75;
+}
+
+.inboxContainer>div form button {
+    height: inherit;
+    background-color: var(--main-clr);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    transition: .25s;
+    padding: 0 10px;
+}
+
+.inboxContainer>div form button:hover {
+    opacity: .5;
+}
+
+
+/* ============================= */
+/* ============================= */
+/* ============================= */
+/* Main */
+.inboxContainer .main {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* navigation */
+.inboxContainer .main .navigation {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.inboxContainer .main .navigation>div {
+    display: flex;
+}
+
+.inboxContainer .main .navigation>div:nth-child(1) p {
+    color: var(--gray);
+    border: 2px solid var(--gray);
+    cursor: pointer;
+    transition: .25s;
+    padding: 5px 10px;
+}
+
+.inboxContainer .main .navigation>div:nth-child(1) p:nth-child(1) {
+    border-right: none;
+}
+
+.inboxContainer .main .navigation>div:nth-child(1) p:hover {
+    color: var(--white);
+    background-color: var(--gray);
+}
+
+/* arrows */
+.inboxContainer .main .navigation {
+    align-items: center;
+    gap: 5px;
+}
+
+.inboxContainer .main .navigation .arrows button {
+    background-color: transparent;
+    color: var(--gray);
+    border: 2px solid var(--gray);
+    cursor: pointer;
+    transition: .25s;
+    padding: 5px 10px;
+}
+
+.inboxContainer .main .navigation .numOfPages {
+    display: flex;
+    gap: 2px;
+}
+
+.inboxContainer .main .navigation .numOfPages p {
+    font-weight: 600;
+}
+
+.inboxContainer .main .navigation .arrows button:hover {
+    color: var(--white);
+    background-color: var(--gray);
+}
+
+/* Message head*/
+.inboxContainer .main .messagesContainer {
+    width: 100%;
+}
+
+.inboxContainer .main .singleMessage {
+    width: 100%;
+    height: 45px;
+    background-color: var(--main-clr-hover);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    transition: .2s;
+    cursor: pointer;
+    font-size: .9rem;
+    border-bottom: 1px solid var(--border-color);
+    padding: 5px;
+}
+
+.inboxContainer .main .singleMessage:first-child {
+    border-top: 1px solid var(--border-color);
+}
+
+.inboxContainer .main .unreadMessage {
+    font-weight: 600;
+}
+
+.inboxContainer .main .singleMessage:hover {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+    transform: translateY(-3px);
+}
+
+
+.inboxContainer .main .singleMessage .subject {
+    flex: 1;
+    max-width: 300px;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.inboxContainer .mail .noMessages {
+    width: 100%;
+    color: var(--gray-dark);
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 800;
+    padding-top: 25px;
+}
+
+/* ============================= */
+/* ============================= */
+/* ============================= */
+/* Message content */
+.inboxContainer .messageContent {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.inboxContainer .messageContent h3 {
+    color: var(--gray-dark);
+    font-size: 2.5rem;
+}
+
+.inboxContainer .messageContent .senderInfo {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0 30px 0;
+}
+
+.inboxContainer .messageContent .senderInfo>div>div {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+.inboxContainer .messageContent img {
+    width: 55px;
+    border-radius: 50%;
+}
+
+.inboxContainer .messageContent .recipient>a,
+.inboxContainer .messageContent .email {
+    color: var(--blue);
+}
+
+.inboxContainer .messageContent .recipient>a:hover,
+.inboxContainer .messageContent .email:hover {
+    text-decoration: 2px underline;
+}
+
+.inboxContainer .messageContent>p {
+    width: 100%;
+    max-width: 100%;
+    height: max-content;
+    font-size: 1.1rem;
+    line-height: 24px;
+}
+
+
+/* ============================= */
+/* ============================= */
+/* ============================= */
+/* Media query */
+@media screen and (max-width:800px) {
+
+    /* message */
+    .inboxContainer .main .singleMessage .subject {
+        max-width: 100px;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .inboxContainer>div:nth-child(2) {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    /* menu */
+    .inboxContainer .menu {
+        flex: 1;
+        max-width: initial;
+        padding-right: 0px;
+    }
+
+    /* Mail */
+    .inboxContainer .mail {
+        border-left: none;
+        border-top: 3px solid var(--border-color);
+        padding-top: 20px;
+        padding-left: 0px;
+    }
+
+    /* search */
+    .inboxContainer>div form {
+        height: 30px;
+    }
+
+    .inboxContainer>div form input {
+        max-width: 100px;
+    }
+
+    .inboxContainer>div form button {
+        padding: 0 8px;
+    }
+
+
+    /* Message content */
+    .inboxContainer .messageContent {
+        padding: 20px 10px;
+    }
+
+    .inboxContainer .messageContent h3 {
+        font-size: 1.5rem;
+    }
+
+    .inboxContainer .messageContent .senderInfo {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .inboxContainer .messageContent img {
+        width: 55px;
+        border-radius: 5px;
+    }
+}
+
+
+/* ************** */
+.inboxContainer .main .navigation .arrows .arrow-disabled {
+    opacity: .25;
+    pointer-events: none;
+}

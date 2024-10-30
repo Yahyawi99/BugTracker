@@ -1,0 +1,215 @@
+.manageRoleContainer>div {
+    margin-bottom: 25px;
+}
+
+.manageRoleContainer>div:nth-child(2) .table {
+    overflow-x: auto;
+}
+
+/* *********************** */
+/* *********************** */
+/* Header */
+.manageRoleContainer .mainSection {
+    width: 100%;
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 0px 20px 20px 20px;
+}
+
+.manageRoleContainer .mainSection>div {
+    width: 100%;
+}
+
+.manageRoleContainer .sectionHeader {
+    width: 100%;
+}
+
+/* =========================== */
+/* =========================== */
+/* =========================== */
+/* Table */
+.manageRoleContainer table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.manageRoleContainer table colgroup col {
+    min-width: fit-content;
+}
+
+.manageRoleContainer table colgroup col:nth-child(1) {
+    width: 10%;
+}
+
+.manageRoleContainer table colgroup col:nth-child(2) {
+    width: 30%;
+}
+
+.manageRoleContainer table colgroup col:nth-child(3) {
+    width: 20%;
+}
+
+.manageRoleContainer table colgroup col:nth-child(4) {
+    width: 20%;
+}
+
+.manageRoleContainer table colgroup col:nth-child(5) {
+    width: 12%;
+}
+
+/* Table head */
+.manageRoleContainer table thead {
+    background-color: var(--black);
+}
+
+.manageRoleContainer table th>div {
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    margin-right: 5px;
+    padding: 20px 10px;
+}
+
+.manageRoleContainer table th>div svg {
+    height: 100%;
+    width: 15px;
+    display: flex;
+}
+
+/* Table body */
+.manageRoleContainer table tbody tr:not(:last-child) {
+    border-bottom: 2px solid var(--border-color);
+}
+
+.manageRoleContainer table tbody tr td {
+    padding: 10px;
+}
+
+.manageRoleContainer .avatar {
+    width: 55px;
+    border: 2px solid var(--main-clr);
+    border-radius: 50%;
+    transition: .25s;
+}
+
+.manageRoleContainer .avatar:hover {
+    transform: translateY(-5px);
+}
+
+.manageRoleContainer .name {
+    color: var(--gray-dark);
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.manageRoleContainer .role {
+    width: fit-content;
+    color: var(--blue);
+    border: 2px solid var(--blue);
+    border-radius: 5px;
+    padding: 5px 15px;
+}
+
+.manageRoleContainer .manageRole {
+    position: relative;
+}
+
+.manageRoleContainer .manageRole>div:nth-child(1) {
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    transition: .25s;
+    cursor: pointer;
+    text-transform: capitalize;
+    padding: 5px 8px;
+}
+
+.manageRoleContainer .manageRole>div:nth-child(1):hover {
+    opacity: .75;
+}
+
+.manageRoleContainer .manageRole .initialValue {
+    color: var(--gray);
+}
+
+.manageRoleContainer .manageRole svg {
+    font-size: .8rem;
+    color: var(--gray-dark);
+}
+
+.manageRoleContainer .manageRole .manageRoleDropdown {
+    width: 150px;
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 35px;
+    transition: .25s;
+    transform-origin: top;
+    transform: scaleY(0);
+    z-index: 10;
+}
+
+.manageRoleContainer .manageRole .manageRoleDropdown p {
+    color: var(--gray-dark);
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+    padding: 10px 0px 10px 5px;
+}
+
+.manageRoleContainer .manageRole .manageRoleDropdown p:hover {
+    background-color: var(--border-color);
+}
+
+.manageRoleContainer .btns .assign {
+    background-color: transparent;
+    color: var(--green);
+    border: 2px solid var(--green);
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 8px 15px;
+}
+
+.manageRoleContainer .btns .assign:hover {
+    background-color: var(--green);
+    color: var(--white);
+}
+
+/* Table footer */
+.manageRoleContainer table tfoot td>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+
+/* ************************************** */
+/* ************************************** */
+/* ************************************** */
+/* ************************************** */
+@media screen and (max-width:500px) {
+    .manageRoleContainer .mainSection {
+        padding: 0px 10px 10px 10px;
+    }
+}
+
+
+/* ******************************** */
+/* ******************************** */
+/* ******************************** */
+/* Javascript classes */
+.manageRoleContainer .manageRole .showManageRoleDropdown {
+    transform: scaleY(1);
+}

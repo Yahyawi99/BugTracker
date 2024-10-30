@@ -1,0 +1,150 @@
+.messageBox {
+    width: 100%;
+    max-width: 500px;
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+    position: absolute;
+    bottom: 5px;
+    right: 16px;
+    border-radius: 5px 5px 0 0;
+}
+
+/* Header */
+.messageBox .boxHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--blue-hover);
+    padding: 15px 10px;
+}
+
+.messageBox .boxHeader h1 {
+    color: var(--gray-dark);
+}
+
+.messageBox .boxHeader svg {
+    cursor: pointer;
+    transition: .25s;
+}
+
+.messageBox .boxHeader svg:hover {
+    opacity: .5;
+}
+
+/* Form */
+.messageBox form {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 10px;
+}
+
+.messageBox form input,
+.messageBox form textarea {
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+.messageBox form input {
+    min-height: 50px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.messageBox form input::placeholder,
+.messageBox form textarea::placeholder {
+    color: var(--border-color);
+    opacity: .75;
+    font-weight: 600;
+}
+
+.messageBox form textarea {
+    resize: none;
+    padding-top: 8px;
+}
+
+.messageBox form button {
+    width: fit-content;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    font-weight: 600;
+    font-size: .9rem;
+    border-radius: 25px;
+    border: none;
+    padding: 10px 30px;
+    cursor: pointer;
+    transition: .25s;
+    margin: 0 0 5px 0;
+}
+
+.messageBox form button:hover {
+    opacity: .75;
+}
+
+/* Dropdown */
+.messageBox form .recipients {
+    position: relative;
+}
+
+.messageBox form .recipients .currentValue {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.messageBox form .currentValue svg {
+    display: flex;
+    color: var(--gray-dark);
+    font-size: .8rem;
+    cursor: pointer;
+}
+
+.messageBox form .recipients input {
+    width: 100%;
+    border-bottom: none;
+    cursor: pointer;
+}
+
+.messageBox form .recipients .options {
+    width: 100%;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 55px;
+    box-shadow: var(--shadow);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: .25s;
+    z-index: 10;
+    padding: 10px;
+}
+
+.messageBox form .recipients .options p {
+    color: var(--gray-dark);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.messageBox form .recipients .options p:hover {
+    text-decoration: 3px underline;
+}
+
+
+/* ************************** */
+/* ************************** */
+/* ************************** */
+/* ************************** */
+@media screen and (max-width:550px) {
+    .messageBox {
+        max-width: initial;
+        right: 0px;
+    }
+}
+
+/* **************************** */
+/* **************************** */
+/* **************************** */
+.messageBox form .recipients .showOptions {
+    transform: scaleY(1);
+}

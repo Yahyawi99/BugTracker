@@ -1,0 +1,24 @@
+.home-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 25px;
+}
+
+.home-btn>i {
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.home-btn span {
+    font-weight: 800;
+}
+
+.home-btn>:not(i) {
+    font-size: 1.25rem;
+}
+
+
+.home-btn a {
+    color: var(--main-clr);
+}

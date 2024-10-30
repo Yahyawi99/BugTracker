@@ -1,0 +1,64 @@
+/* ========================== */
+/* ========================== */
+/* ========================== */
+.pagination {
+    display: flex;
+}
+
+.pagination .pages {
+    display: flex;
+    align-items: center;
+}
+
+
+.pagination .pages p {
+    font-weight: 600;
+    color: var(--gray);
+    border: 2px solid var(--main-clr);
+    border-left: none;
+    cursor: pointer;
+    padding: 10px 15px;
+}
+
+.pagination .pages p:nth-child(1) {
+    border-left: 2px solid var(--main-clr);
+}
+
+.pagination .pages p:hover {
+    background-color: var(--main-clr-hover);
+    color: var(--main-clr);
+}
+
+.pagination button {
+    background-color: transparent;
+    border: 2px solid var(--main-clr);
+    color: var(--main-clr);
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s;
+    padding: 10px;
+}
+
+.pagination .nextPage {
+    border-left: none;
+}
+
+.pagination .prevPage {
+    border-right: none;
+}
+
+.pagination button:hover {
+    background-color: var(--main-clr);
+    color: var(--white);
+}
+
+
+/* ****************************** */
+/* ****************************** */
+/* ****************************** */
+/* Javascript classes */
+.pagination .pages .viewedPage {
+    background-color: var(--main-clr);
+    color: var(--white);
+    pointer-events: none;
+}

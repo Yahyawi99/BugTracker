@@ -1,0 +1,234 @@
+.ticketsContainer>div:nth-child(2) {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 0 20px 20px 20px;
+}
+
+.ticketsContainer>div:nth-child(2)>div {
+    overflow-x: auto;
+    display: flex;
+}
+
+.ticketsContainer>div:nth-child(2) .table>div {
+    width: 100%;
+    z-index: 0;
+}
+
+/* =========================== */
+/* =========================== */
+/* =========================== */
+/* table */
+.ticketsContainer table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ticketsContainer table colgroup col {
+    min-width: fit-content;
+}
+
+.ticketsContainer table colgroup col:nth-child(1) {
+    width: 25%;
+    min-width: 125px;
+}
+
+.ticketsContainer table colgroup col:nth-child(2) {
+    width: 10%;
+    min-width: 125px;
+}
+
+.ticketsContainer table colgroup col:nth-child(3) {
+    width: 20%;
+    min-width: 200px;
+}
+
+.ticketsContainer table colgroup col:nth-child(4) {
+    width: 15%;
+}
+
+.ticketsContainer table colgroup col:nth-child(5) {
+    width: 25%;
+}
+
+.ticketsContainer table colgroup col:nth-child(6) {
+    width: 15%;
+}
+
+.ticketsContainer table colgroup col:nth-child(7) {
+    width: 15%;
+}
+
+/* Table head */
+.ticketsContainer table thead tr {
+    background-color: var(--black);
+}
+
+.ticketsContainer table th>div {
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    margin-right: 5px;
+    padding: 20px 10px;
+}
+
+.ticketsContainer table th>div svg {
+    height: 100%;
+    width: 15px;
+    display: flex;
+    margin-left: 5px;
+}
+
+/* Ticket */
+.ticketsContainer table tbody tr:not(:last-child) {
+    border-bottom: 2px solid var(--border-color);
+}
+
+.ticketsContainer table tbody tr td {
+    padding: 15px 10px;
+}
+
+/* Title */
+.ticketsContainer table .title {
+    font-weight: 600;
+}
+
+
+/* Status */
+.ticketsContainer table .status {
+    display: flex;
+    align-items: center;
+}
+
+
+.ticketsContainer table .status p,
+.ticketsContainer table .priority p {
+    width: fit-content;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    padding: 5px 10px;
+
+}
+
+.ticketsContainer table .status .development {
+    color: var(--blue);
+    border-color: var(--blue);
+}
+
+.ticketsContainer table .status .resolved {
+    color: var(--success);
+    border-color: var(--success);
+}
+
+.ticketsContainer table .status .new {
+    color: var(--gray);
+    border-color: var(--gray);
+}
+
+/* Priority */
+.ticketsContainer table .priority .urgent {
+    color: var(--danger);
+    border-color: var(--danger);
+}
+
+.ticketsContainer table .priority .high {
+    color: var(--orange);
+    border-color: var(--orange);
+}
+
+.ticketsContainer table .priority .low {
+    color: var(--gray);
+    border-color: var(--gray);
+}
+
+/* unassigned*/
+.ticketsContainer table .unassigned {
+    color: var(--gray);
+    text-decoration: 2px line-through;
+}
+
+/* Buttons */
+.ticketsContainer .btns {
+    display: flex;
+    gap: 5px;
+}
+
+.ticketsContainer .btns button {
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 10px;
+}
+
+.ticketsContainer .btns button:hover {
+    color: var(--white);
+}
+
+.ticketsContainer .btns .details {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.ticketsContainer .btns .details:hover {
+    background-color: var(--blue);
+}
+
+.ticketsContainer .btns .edit {
+    border-color: var(--gray);
+    color: var(--gray);
+}
+
+.ticketsContainer .btns .edit:hover {
+    background-color: var(--gray);
+}
+
+.ticketsContainer .btns .archive {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+.ticketsContainer .btns .archive:hover {
+    background-color: var(--danger);
+}
+
+.ticketsContainer .btns .unarchive {
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.ticketsContainer .btns .unarchive:hover {
+    background-color: var(--success);
+}
+
+/* Table footer */
+.ticketsContainer table tfoot td>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px 10px 30px 10px;
+}
+
+/* No documents */
+.ticketsContainer .noDocuments {
+    color: var(--gray-dark);
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 20px;
+}
+
+
+
+/* ************************************** */
+/* ************************************** */
+/* ************************************** */
+/* ************************************** */
+@media screen and (max-width:500px) {
+    .ticketsContainer>div:nth-child(2) {
+        padding: 0 10px 10px 10px;
+    }
+}

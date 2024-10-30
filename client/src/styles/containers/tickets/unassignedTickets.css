@@ -1,0 +1,16 @@
+.unassignedTickets .assignDevBtn {
+    background-color: var(--blue);
+    color: var(--white);
+    font-weight: 600;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 8px 10px;
+}
+
+.unassignedTickets .assignDevBtn:hover {
+    background-color: var(--white);
+    color: var(--blue);
+    border-color: var(--blue);
+}

@@ -1,0 +1,138 @@
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    padding: 20px 25px;
+}
+
+.header>div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header .newTicketBtn {
+    background-color: var(--main-clr);
+    color: var(--white);
+    font-size: .9rem;
+    font-weight: 600;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 10px 15px;
+}
+
+.header .newTicketBtn:hover {
+    background-color: transparent;
+    color: var(--main-clr);
+    border: 2px solid var(--main-clr);
+}
+
+.header .hamburgerContainer {
+    color: var(--main-clr);
+    display: none;
+    transform: scale(.8);
+}
+
+.header .settingsIcon {
+    position: relative;
+}
+
+.header .bell {
+    position: relative;
+}
+
+.header .bell>span {
+    width: 8px;
+    height: 8px;
+    background: var(--main-clr);
+    border-radius: 50%;
+    position: absolute;
+    right: -3px;
+    top: -4px;
+    display: none;
+}
+
+.header .bell .notificationDropDown {
+    width: max-content;
+    min-width: 225px;
+    background-color: var(--main-clr);
+    color: var(--white);
+    position: absolute;
+    right: 0;
+    top: 40px;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: .3s;
+    padding: 10px;
+}
+
+.header .bell .notificationDropDown>p {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.header .bell .notificationDropDown>button {
+    background: transparent;
+    color: darkblue;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: 2px underline;
+    margin-top: 5px;
+}
+
+
+/* *************************** */
+/* *************************** */
+/* *************************** */
+/* media queries */
+@media screen and (max-width:1100px) {
+    .header {
+        z-index: 20;
+        padding: 20px 15px 20px 5px;
+    }
+
+    .header .hamburgerContainer {
+        display: initial;
+    }
+
+    .header .logo {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width:550px) {
+    .header .newTicketBtn {
+        font-size: .8rem;
+        padding: 8px 10px;
+    }
+
+    .header .settingsIcon svg,
+    .header .bell svg,
+    .header .logout svg {
+        font-size: 1rem;
+    }
+}
+
+
+/* ************************ */
+/* ************************ */
+/* ************************ */
+/* ************************ */
+
+.header .bell>.showDot {
+    display: initial;
+}
+
+.header .bell .showBellNotification {
+    transform: scaleX(1);
+}

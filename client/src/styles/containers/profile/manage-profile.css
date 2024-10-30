@@ -1,0 +1,185 @@
+/* Titles */
+.manageProfile>div:nth-child(2) {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.manageProfile .titles {
+    color: var(--gray-dark);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.manageProfile .titles h1 {
+    font-size: 2.25rem;
+    margin-bottom: 10px;
+}
+
+.manageProfile .titles h2 {
+    font-size: 1.5rem;
+}
+
+/* ************************** */
+.manageProfile>div>div:nth-child(2) {
+    display: grid;
+    grid-template-columns: 300px minmax(400px, 1fr);
+    grid-template-rows: auto;
+    gap: 25px;
+}
+
+/* Navigation */
+.manageProfile .navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.manageProfile .navigation li {
+    cursor: pointer;
+    border-radius: 5px;
+    transition: .25s;
+    padding: 10px;
+}
+
+.manageProfile .navigation li:hover {
+    background-color: var(--main-clr-hover);
+    color: var(--main-clr);
+    font-weight: 600;
+}
+
+/* profile */
+.manageProfile>div>div>div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 10px;
+}
+
+.manageProfile>div>div>div h3 {
+    color: var(--gray-dark);
+    font-size: 1.25rem;
+    text-decoration: 4px underline;
+}
+
+.manageProfile .form>div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+
+.manageProfile .form .label {
+    color: var(--gray);
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.manageProfile .form input:not(input[type="file"]) {
+    height: 40px;
+    color: var(--gray-dark);
+    font-size: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    outline: none;
+    padding: 0 0 0 10px;
+}
+
+.manageProfile .profile-form input[type="file"] {
+    display: none;
+}
+
+.manageProfile .profile-form .custom-button {
+    display: inline-block;
+    background-color: var(--gray);
+    color: var(--white);
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 10px 20px;
+    margin: 0 10px 10px 0;
+}
+
+.manageProfile .profile-form .custom-button:hover {
+    opacity: .75;
+}
+
+.manageProfile .profile-form .currentImageController {
+    display: flex;
+    flex-direction: column;
+}
+
+.manageProfile .profile-form img {
+    width: 100px;
+    border-radius: 5px;
+}
+
+.manageProfile .profile-form .imageContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+/* Email */
+.manageProfile .email-form #readonlyInput {
+    background-color: var(--border-color);
+    font-weight: 600;
+    border-color: transparent;
+}
+
+.manageProfile .Btn {
+    background-color: var(--main-clr);
+    color: var(--white);
+    border: 2px solid transparent;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: .9rem;
+    cursor: pointer;
+    transition: .25s;
+    padding: 10px 15px;
+}
+
+.manageProfile .Btn:hover {
+    background-color: transparent;
+    color: var(--main-clr);
+    border-color: var(--main-clr);
+}
+
+/* ***************************** */
+/* ***************************** */
+/* ***************************** */
+/* media queries */
+@media screen and (max-width:800px) {
+    .manageProfile>div>div:nth-child(2) {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media screen and (max-width:500px) {
+    .manageProfile>div:nth-child(2) {
+        padding: 10px;
+    }
+
+    .manageProfile .titles h1 {
+        font-size: 1.75rem;
+    }
+
+    .manageProfile .titles h2 {
+        font-size: 1rem;
+    }
+}
+
+
+/* ***************************** */
+/* ***************************** */
+/* ***************************** */
+/* Javascript */
+.manageProfile .navigation .clicked {
+    background-color: var(--main-clr);
+    color: var(--white);
+    font-weight: 600;
+    pointer-events: none;
+}

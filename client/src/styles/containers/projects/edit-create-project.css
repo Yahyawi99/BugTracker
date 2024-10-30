@@ -1,0 +1,169 @@
+.editCreateProject {
+    width: 100%;
+    max-width: 800px;
+    background-color: var(--white);
+    border-radius: 10px;
+    margin: 0 0 25px 0;
+    padding: 20px;
+}
+
+.editCreateProject .editCreateForm {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+
+.editCreateForm>div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.editCreateForm .label {
+    font-weight: 600;
+}
+
+.editCreateForm .label span {
+    color: var(--danger);
+}
+
+
+/* name */
+.editCreateForm input {
+    width: 100%;
+    height: 40px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    outline: none;
+    padding: 0 0 0 5px;
+}
+
+.editCreateForm input::placeholder {
+    color: var(--gray);
+    opacity: .25;
+}
+
+.editCreateForm label span {
+    color: red;
+}
+
+/* note-editor */
+.editCreateForm .quill-editor>div>div:nth-child(2) {
+    min-height: 200px;
+    font-size: 1.1rem;
+}
+
+/* date */
+.editCreateForm .date {
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow-y: auto;
+}
+
+.editCreateForm .date>div {
+    width: 50%;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.editCreateForm .react-calendar {
+    min-height: 308px;
+}
+
+/* Drop downs */
+.editCreateForm .DropDownContainer {
+    position: relative;
+}
+
+.editCreateForm .DropDownContainer .dropDownValue {
+    height: 45px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0 0 0 20px;
+}
+
+.editCreateForm .DropDownContainer .dropDown {
+    width: 100%;
+    max-height: 150px;
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 1.1rem;
+    border-radius: 2px;
+    position: absolute;
+    top: Calc(100% + 5px);
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: .25s;
+    overflow-y: auto;
+    z-index: 10;
+    padding: 10px 20px;
+}
+
+.editCreateForm .DropDownContainer .dropDown p {
+    cursor: pointer;
+    font-size: .9rem;
+}
+
+.editCreateForm .DropDownContainer .dropDown p:hover {
+    text-decoration: 2px underline;
+}
+
+/* save button */
+.editCreateProject>button {
+    width: fit-content;
+    background-color: var(--main-clr);
+    color: var(--white);
+    font-weight: 600;
+    font-size: .9rem;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 10px 20px;
+    margin: 20px 0;
+}
+
+.editCreateProject>button:hover {
+    background-color: transparent;
+    border-color: var(--main-clr);
+    color: var(--main-clr);
+}
+
+/* Links */
+.editCreateProject .links {
+    display: flex;
+    gap: 5px;
+}
+
+.editCreateProject .links a {
+    color: var(--main-clr);
+}
+
+.editCreateProject .links a:hover {
+    text-decoration: 2px underline;
+}
+
+.editCreateProject .links p {
+    width: 3px;
+    background-color: var(--black);
+    margin: 0px 5px;
+}
+
+
+/* ******************************* */
+/* ******************************* */
+/* ******************************* */
+/* Javascript classess */
+.editCreateForm .DropDownContainer .showDropDown {
+    transform: scaleY(1);
+}

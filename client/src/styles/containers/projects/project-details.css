@@ -1,0 +1,509 @@
+.projectDetails {
+    margin-bottom: 25px;
+}
+
+.projectDetails .details {
+    width: 100%;
+    display: flex;
+    gap: 25px;
+}
+
+
+/* ================================ */
+/* ================================ */
+/* ================================ */
+/* First Column */
+.projectDetails .details .first-column {
+    flex: .6;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.projectDetails .details .first-column>div {
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* row one */
+.details .row-one {
+    gap: 25px;
+}
+
+.details .row-one h1 {
+    color: var(--gray);
+    font-size: 2.5rem;
+}
+
+.details .row-one .progress {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.details .row-one .progress>div {
+    width: 100%;
+    height: 20px;
+    background-color: var(--main-clr-hover);
+    position: relative;
+}
+
+.details .row-one .progress .thumb {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-clr);
+    position: absolute;
+}
+
+.details .row-one .progress .thumb p {
+    color: var(--white);
+    font-weight: 600;
+}
+
+.details .row-one .action {
+    display: flex;
+    gap: 5px;
+    margin-top: 15px;
+}
+
+.details .row-one button {
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: .25s;
+    cursor: pointer;
+    padding: 10px 15px;
+}
+
+.details .row-one .action .editBtn {
+    border-color: var(--orange);
+    color: var(--orange);
+}
+
+.details .row-one .action .editBtn:hover {
+    color: var(--white);
+    background-color: var(--orange);
+}
+
+.details .row-one .action .archive {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+.details .row-one .action .archive:hover {
+    color: var(--white);
+    background-color: var(--danger);
+}
+
+.details .row-one .action .unarchive {
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.details .row-one .action .unarchive:hover {
+    color: var(--white);
+    background-color: var(--success);
+}
+
+/* row-two */
+.details .row-two {
+    gap: 25px;
+}
+
+.details .row-two>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.details .row-two>div p:nth-child(2) {
+    border-radius: 5px;
+    font-size: .75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding: 5px 10px;
+}
+
+.details .row-two .created p:nth-child(2),
+.details .row-two .deadline p:nth-child(2) {
+    color: var(--gray);
+    border: 2px solid var(--border-color);
+
+}
+
+.details .row-two .priority p:nth-child(2),
+.details .row-two .status p:nth-child(2) {
+    border: 2px solid;
+}
+
+.details .row-two .priority .urgent {
+    color: var(--danger);
+    border-color: var(--danger);
+}
+
+.details .row-two .priority .high {
+    color: var(--orange);
+    border-color: var(--orange);
+}
+
+.details .row-two .priority .low {
+    color: var(--gray);
+    border-color: var(--gray);
+}
+
+.details .row-two .status .active {
+    color: var(--success);
+    border-color: var(--success);
+}
+
+.details .row-two .status .inactive {
+    color: var(--gray);
+    border-color: var(--gray);
+}
+
+/* row-three */
+.details .row-three {
+    gap: 5px;
+}
+
+.details .row-three .manager,
+.details .row-three .user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid var(--border-color);
+    padding: 15px 0;
+}
+
+.details .row-three .manager img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.details .row-three .managerInfo p {
+    color: var(--gray);
+}
+
+.details .row-three .managerInfo .name {
+    color: var(--black);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.details .row-three .noManager {
+    border-bottom: 2px solid var(--border-color);
+    padding: 10px 0;
+}
+
+.details .row-three .noManager p {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0px 0 5px 0;
+}
+
+
+.details .row-three .user img {
+    width: 40px;
+    height: 40px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    transition: .25s;
+    cursor: pointer;
+}
+
+.details .row-three .user img:hover {
+    border-color: var(--main-clr);
+}
+
+.details .row-three .user {
+    border-bottom: none;
+}
+
+.details .row-three .user .role {
+    color: var(--gray);
+    opacity: .75;
+}
+
+.details .row-three button {
+    width: fit-content;
+    background-color: var(--main-clr);
+    color: var(--white);
+    border: 2px solid transparent;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s;
+    padding: 10px 15px;
+}
+
+.details .row-three button:hover {
+    background-color: transparent;
+    color: var(--main-clr);
+    border-color: var(--main-clr);
+}
+
+
+/* ================================ */
+/* ================================ */
+/* ================================ */
+/* ================================ */
+/* ================================ */
+/* ================================ */
+/* second Column */
+.projectDetails .details .second-column {
+    flex: 1;
+    width: 100px;
+    position: relative;
+}
+
+.projectDetails .details .second-column .dropDown {
+    left: 53px;
+}
+
+.projectDetails .details .second-column .table {
+    overflow-x: scroll;
+}
+
+.projectDetails .details .second-column>div {
+    background-color: var(--white);
+    padding: 0 10px;
+}
+
+
+/* =========================== */
+/* =========================== */
+/* table */
+.projectDetails table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.projectDetails table colgroup col {
+    min-width: fit-content;
+}
+
+.projectDetails table colgroup col:nth-child(1) {
+    width: 25%;
+    min-width: 200px;
+}
+
+.projectDetails table colgroup col:nth-child(2) {
+    width: 10%;
+    min-width: 125px;
+}
+
+.projectDetails table colgroup col:nth-child(3) {
+    width: 30%;
+}
+
+.projectDetails table colgroup col:nth-child(4) {
+    width: 20%;
+}
+
+.projectDetails table colgroup col:nth-child(5) {
+    width: 25%;
+}
+
+.projectDetails table colgroup col:nth-child(6) {
+    width: 15%;
+}
+
+
+/* Table head */
+.projectDetails table thead tr {
+    background-color: var(--black);
+}
+
+.projectDetails table th>div {
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    margin-right: 5px;
+    padding: 20px 10px;
+}
+
+.projectDetails table th>div svg {
+    height: 100%;
+    width: 15px;
+    display: flex;
+    margin-left: 5px;
+}
+
+/* Ticket */
+.projectDetails table tbody tr:not(:last-child) {
+    border-bottom: 2px solid var(--border-color);
+}
+
+.projectDetails table tbody tr td {
+    padding: 15px 10px;
+}
+
+/* ticket */
+.projectDetails table .title {
+    font-weight: 600;
+}
+
+.projectDetails table .dev {
+    color: var(--gray);
+    font-weight: 600;
+}
+
+.projectDetails table .dev .unassigned {
+    opacity: .5;
+    text-decoration: 3px underline;
+}
+
+/* Status */
+.projectDetails table .status p,
+.projectDetails table .priority p {
+    width: fit-content;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.projectDetails table .development {
+    color: var(--blue);
+    border-color: var(--blue);
+}
+
+.projectDetails table .resolved {
+    color: var(--success);
+    border-color: var(--success);
+}
+
+.projectDetails table .new {
+    color: var(--gray);
+    border-color: var(--gray);
+}
+
+/* Priority */
+.projectDetails table .urgent {
+    color: var(--danger);
+    border-color: var(--danger);
+}
+
+.projectDetails table .high {
+    color: var(--orange);
+    border-color: var(--orange);
+}
+
+.projectDetails table .low {
+    color: var(--gray);
+    border-color: var(--gray);
+}
+
+
+/* Buttons */
+.projectDetails table .btns {
+    display: flex;
+    gap: 5px;
+}
+
+.projectDetails table .btns button {
+    height: 100%;
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 10px;
+}
+
+.projectDetails table .btns .details {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.projectDetails table .btns .details:hover {
+    background-color: var(--blue);
+}
+
+.projectDetails table .btns .edit {
+    border-color: var(--gray);
+    color: var(--gray);
+}
+
+.projectDetails table .btns .edit:hover {
+    background-color: var(--gray);
+}
+
+.projectDetails table .btns .archive {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+.projectDetails table .btns .archive:hover {
+    background-color: var(--danger);
+}
+
+.projectDetails table .btns .unarchive {
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.projectDetails table .btns .unarchive:hover {
+    background-color: var(--success);
+}
+
+.projectDetails table .btns button:hover {
+    color: var(--white);
+}
+
+/* assign dev btn */
+.projectDetails table .dev button {
+    background-color: var(--main-clr);
+    color: var(--white);
+    border: 2px solid var(--main-clr);
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s;
+    padding: 8px 12px;
+}
+
+.projectDetails table .dev button:hover {
+    background-color: transparent;
+    color: var(--main-clr);
+}
+
+/* Table footer */
+.projectDetails table tfoot td>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px 10px 30px 10px;
+}
+
+/* *************************** */
+/* *************************** */
+/* *************************** */
+/* media queries */
+@media screen and (max-width:1000px) {
+    .projectDetails .details {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 25px;
+    }
+
+    /* second Column */
+    .projectDetails .details .second-column {
+        flex: 1;
+
+        width: 100%;
+    }
+}

@@ -1,0 +1,427 @@
+/* *********************************** */
+/* First row */
+.number-data {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.number-data span {
+    height: 125px;
+    color: var(--white);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.number-data span>p:nth-child(1) {
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+.number-data span:nth-child(1) {
+    background-color: var(--cyan);
+}
+
+.number-data span:nth-child(2) {
+    background-color: var(--gray);
+}
+
+.number-data span:nth-child(3) {
+    background-color: var(--yellow);
+}
+
+.number-data span:nth-child(4) {
+    background-color: var(--dark);
+}
+
+/* *********************************** */
+/* Second row */
+.company {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.company h3 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.company>div {
+    min-width: 200px;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* company info */
+.company-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.company-info i {
+    width: 50px;
+    height: 50px;
+    background-color: var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.company-info i svg path {
+    fill: var(--dark);
+}
+
+.company-info div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.company-info p {
+    word-wrap: break-word;
+}
+
+.company-info .num {
+    font-weight: 800;
+}
+
+/* company data */
+.company-data h3 {
+    margin-bottom: 25px;
+}
+
+.company-data span {
+    display: flex;
+    align-items: center;
+    padding: 0 0 20px 0;
+}
+
+.company-data span:not(:nth-child(5)) {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.company-data span i {
+    width: 25px;
+    pointer-events: none;
+    margin-right: 15px;
+}
+
+.company-data span>p:nth-child(2) {
+    color: var(--blue);
+    font-weight: 600;
+}
+
+.company-data span>p:nth-child(3) {
+    margin-left: auto;
+}
+
+.company-data span p:nth-child(3) {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.company-data span:nth-child(2) p:nth-child(3) {
+    border-color: var(--pink);
+    color: var(--pink);
+}
+
+.company-data span:nth-child(3) p:nth-child(3) {
+    border-color: var(--orange);
+    color: var(--orange);
+}
+
+.company-data span:nth-child(4) p:nth-child(3) {
+    border-color: var(--teal);
+    color: var(--teal);
+}
+
+.company-data span:nth-child(5) p:nth-child(3) {
+    border-color: var(--cyan);
+    color: var(--cyan);
+}
+
+/* priority-project */
+.priority-project {
+    display: flex;
+    align-items: center;
+}
+
+
+/* Team-statistics */
+.team-statistics {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.team-statistics .recharts-legend-wrapper {
+    width: 100% !important;
+    left: 5px !important;
+    bottom: -10px !important;
+}
+
+
+
+/* =================================== */
+/* =================================== */
+/* =================================== */
+/* =================================== */
+/* =================================== */
+
+/* Members and projects */
+.dashboard-Container .membersAndProjectsContainer {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.dashboard-Container .membersAndProjectsContainer>section {
+    position: relative;
+}
+
+
+/* ******************************** */
+/* ******************************** */
+/* ******************************** */
+/* Members */
+.dashboard-Container .members {
+    flex: .3;
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 20px 10px;
+}
+
+.dashboard-Container .members>div>div:nth-child(2) {
+    overflow-x: auto;
+}
+
+.dashboard-Container .members>div>div:nth-child(2)>div {
+    min-width: 500px;
+}
+
+.dashboard-Container table {
+    min-width: 100%;
+    border-collapse: collapse;
+}
+
+/* Table column groupe */
+.dashboard-Container .members table colgroup col:nth-child(1) {
+    width: 20%;
+}
+
+.dashboard-Container .members table colgroup col:nth-child(2) {
+    width: 40%;
+}
+
+.dashboard-Container .members table colgroup col:nth-child(3) {
+    width: 20%;
+}
+
+.dashboard-Container .members table colgroup col:nth-child(4) {
+    width: 20%;
+}
+
+/* Table head */
+.dashboard-Container table th {
+    background-color: var(--black);
+    word-wrap: normal;
+    padding: 20px 0px 20px 5px;
+}
+
+.dashboard-Container table th>div {
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    margin-right: 5px;
+}
+
+.dashboard-Container table th>div svg {
+    width: 15px;
+    height: 100%;
+}
+
+
+/* data */
+.dashboard-Container table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.dashboard-Container table img {
+    width: 40px;
+    border: 2px solid var(--main-clr);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dashboard-Container .members .numOfProjects {
+    color: var(--gray-dark);
+    font-weight: 600;
+}
+
+.dashboard-Container .members .role {
+    width: fit-content;
+    color: var(--gray);
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+/* Pagination */
+.dashboard-Container tfoot td>div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+
+/* ************************ */
+/* ************************ */
+/* ************************ */
+/* projects */
+.dashboard-Container .projects {
+    flex: .7;
+    width: 100%;
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 20px 10px;
+}
+
+.dashboard-Container .projects>div>div:nth-child(2) {
+    overflow-x: auto;
+}
+
+
+
+/* Table column groupe */
+.dashboard-Container .projects table colgroup col:nth-child(1) {
+    width: 40%;
+}
+
+.dashboard-Container .projects table colgroup col:nth-child(2) {
+    width: 15%;
+}
+
+.dashboard-Container .projects table colgroup col:nth-child(3) {
+    width: 15%;
+}
+
+.dashboard-Container .projects table colgroup col:nth-child(4) {
+    width: 20%;
+}
+
+.dashboard-Container .projects table colgroup col:nth-child(5) {
+    width: 10%;
+}
+
+.dashboard-Container .projects table td:not(tfoot td) {
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 0px 15px 5px;
+}
+
+/* name & pm */
+.dashboard-Container .projects .name {
+    color: var(--blue);
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.dashboard-Container .projects .pm {
+    color: var(--gray)
+}
+
+/* team */
+.dashboard-Container .projects .team {
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-Container .projects .team img {
+    width: 35px;
+    border: 2px solid var(--main-clr);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.dashboard-Container .projects .team a:not(:nth-child(1)) {
+    margin-left: -12px;
+}
+
+.dashboard-Container .projects .team img:hover {
+    transform: translateY(-5px);
+}
+
+/* dates */
+.dashboard-Container .projects .startDate,
+.dashboard-Container .projects .endDate {
+    width: fit-content;
+    font-size: .8rem;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.dashboard-Container .projects .startDate {
+    color: var(--success);
+}
+
+.dashboard-Container .projects .endDate {
+    color: var(--danger);
+}
+
+/* tickets */
+.dashboard-Container .projects .numOfTicket {
+    color: var(--gray-dark);
+    font-weight: 600;
+}
+
+
+/* Table foot */
+.dashboard-Container table td:not(tfoot td) {
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px 0px 5px 5px;
+}
+
+
+/* ****************************** */
+/* ****************************** */
+/* ****************************** */
+@media screen and (max-width:1450px) {
+    .dashboard-Container .membersAndProjectsContainer {
+        flex-direction: column;
+    }
+
+
+
+    .dashboard-Container .projects>div>div:nth-child(2)>div {
+        min-width: 650px;
+    }
+}

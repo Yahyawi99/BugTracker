@@ -1,0 +1,167 @@
+/* ****************************** */
+/* First column */
+.assignDev .first-column .btns {
+    display: flex;
+    gap: 5px;
+}
+
+.assignDev .first-column .assignBtn {
+    color: var(--white);
+    background-color: var(--orange);
+    border-color: var(--orange);
+}
+
+.assignDev .first-column .cancelBtn {
+    color: var(--white);
+    background-color: var(--danger);
+    border-color: var(--danger);
+}
+
+.assignDev .first-column button:hover {
+    background-color: transparent;
+}
+
+.assignDev .first-column .assignBtn:hover {
+    color: var(--orange);
+}
+
+.assignDev .first-column .cancelBtn:hover {
+    color: var(--danger);
+}
+
+/* drop down */
+.assignDev .first-column .devsDropdown {
+    position: relative;
+}
+
+.assignDev .first-column .devsDropdown>div:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s;
+    padding: 10px;
+}
+
+.assignDev .first-column .devsDropdown>div:nth-child(1):hover {
+    opacity: .75;
+}
+
+.assignDev .first-column .devsDropdown .devs {
+    width: 100%;
+    background-color: var(--white);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 45px;
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: .25s;
+    box-shadow: var(--shadow);
+    padding: 10px 0 10px 10px;
+}
+
+.assignDev .first-column .devsDropdown .devs p {
+    cursor: pointer;
+}
+
+.assignDev .first-column .devsDropdown .devs p:hover {
+    text-decoration: 2px underline;
+}
+
+/* *************************** */
+/* Current Dev */
+.assignDev .first-column .row-two>div {
+    flex-direction: column;
+}
+
+/* unassigned */
+.assignDev .first-column .row-two .unassigned {
+    color: var(--gray-dark);
+    gap: 10px;
+}
+
+.assignDev .first-column .row-two .unassigned p {
+    font-size: 2.25rem;
+}
+
+.assignDev .first-column .row-two .unassigned svg {
+    font-size: 7rem;
+}
+
+/* assigned */
+.assignDev .first-column .row-two .currentDev img {
+    width: 150px;
+    border-radius: 50%;
+}
+
+.assignDev .first-column .row-two .currentDev .name {
+    font-size: 2.25rem;
+    padding: 0;
+}
+
+.assignDev .first-column .row-two .currentDev .email {
+    color: var(--gray-dark);
+    font-size: 1.1rem;
+}
+
+.assignDev .first-column .row-two .currentDev button {
+    background-color: var(--main-clr);
+    color: var(--white);
+    border: 2px solid var(--main-clr);
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s;
+    margin: 10px 0 0 0;
+    padding: 5px 10px;
+}
+
+.assignDev .first-column .row-two .currentDev button:hover {
+    background-color: transparent;
+    color: var(--main-clr);
+}
+
+/* *************************** */
+/* Second Column */
+.DocumentDetails>div:nth-child(2) .second-column>div {
+    padding: 20px 10px;
+}
+
+.DocumentDetails>div:nth-child(2) .second-column .row-one {
+    width: 100%;
+}
+
+.DocumentDetails>div:nth-child(2) .second-column .row-one {
+    display: flex;
+    flex-direction: column;
+}
+
+.DocumentDetails>div:nth-child(2) .second-column .row-one .project {
+    display: flex;
+    gap: 5px;
+}
+
+.DocumentDetails>div:nth-child(2) .second-column .row-one .project p:nth-child(1) {
+    font-weight: 600;
+}
+
+.DocumentDetails>div:nth-child(2) .second-column .row-two {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+
+/* ************************** */
+/* ************************** */
+/* ************************** */
+/* Javascript classes */
+.assignDev .first-column .devsDropdown .showDevs {
+    transform: scaleY(1);
+}
