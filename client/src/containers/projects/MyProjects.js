@@ -30,11 +30,7 @@ const MyProjects = () => {
 
   useEffect(() => {
     getUserProjects();
-<<<<<<< HEAD
-  }, []);
-=======
   });
->>>>>>> master
 
   if (userProjects) {
     var { currentPage } = userProjects;

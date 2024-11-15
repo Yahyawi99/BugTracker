@@ -6,10 +6,6 @@ import {
   faEye,
   faPencil,
   faBoxArchive,
-<<<<<<< HEAD
-  faBoxOpen,
-=======
->>>>>>> master
 } from "@fortawesome/free-solid-svg-icons";
 // hooks
 import useTickets from "../../hooks/useTickets";
@@ -32,10 +28,7 @@ const MyTickets = () => {
 
   useEffect(() => {
     getUserTickets();
-<<<<<<< HEAD
-=======
     // eslint-disable-next-line
->>>>>>> master
   }, []);
 
   if (userTickets) {

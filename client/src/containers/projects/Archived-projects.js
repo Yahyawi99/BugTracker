@@ -30,10 +30,7 @@ const ArchivedProjects = () => {
 
   useEffect(() => {
     getAllProjects(1, "", limit, searchInput, true);
-<<<<<<< HEAD
-=======
     // eslint-disable-next-line
->>>>>>> master
   }, []);
 
   if (allProjects) {

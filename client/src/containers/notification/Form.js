@@ -37,6 +37,7 @@ const Form = ({ setIsFormShown }) => {
 
   useEffect(() => {
     getAllUsers(1, "", Infinity);
+    // eslint-disable-next-line
   }, []);
 
   return (

@@ -21,10 +21,7 @@ const EditTicket = () => {
 
   useEffect(() => {
     getSingleTicket(ticketId);
-<<<<<<< HEAD
-=======
     // eslint-disable-next-line
->>>>>>> master
   }, []);
 
   useEffect(() => {
@@ -64,13 +61,8 @@ const EditTicket = () => {
       <HomeBtn name="Edit Ticket" />
 
       {ticket && (
-<<<<<<< HEAD
-        <section className="editProject">
-          <div className="editForm">
-=======
         <section className="editCreateProject">
           <div className="editCreateForm">
->>>>>>> master
             <div>
               <label htmlFor="name">Title</label>
               <input

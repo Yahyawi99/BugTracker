@@ -21,10 +21,7 @@ const MemberProfile = () => {
   useEffect(() => {
     getSingleUser(memberId);
     getUserProjects(memberId);
-<<<<<<< HEAD
-=======
     // eslint-disable-next-line
->>>>>>> master
   }, []);
 
   return (

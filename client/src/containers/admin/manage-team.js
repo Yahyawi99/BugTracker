@@ -36,6 +36,7 @@ const ManageTeam = () => {
   useEffect(() => {
     getSingleProject(projectId);
     getAllUsers(1, "", Infinity);
+    // eslint-disable-next-line
   }, []);
 
   if (singleProject.project) {
@@ -62,6 +63,8 @@ const ManageTeam = () => {
         return newValue;
       });
     }
+
+    // eslint-disable-next-line
   }, [allUsers, singleProject]);
 
   // *********************
@@ -73,7 +76,6 @@ const ManageTeam = () => {
   const onDragDnd = (e) => {
     const destination = e.over?.id;
     const id = e.active.data.current?.id ?? "";
-    const index = e.active.data.current?.index ?? 0;
     const parent = e.active.data.current?.parent ?? "ToDo";
 
     if (destination === parent) {

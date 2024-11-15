@@ -37,11 +37,7 @@ const ProjectDetails = () => {
 
   useEffect(() => {
     getSingleProject(projectId);
-<<<<<<< HEAD
-  }, []);
-=======
   });
->>>>>>> master
 
   // handle the undefined errors
   if (

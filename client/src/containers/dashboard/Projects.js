@@ -16,6 +16,7 @@ const Projects = () => {
 
   useEffect(() => {
     getAllProjects(1, "", limit, searchInput, "all");
+    // eslint-disable-next-line
   }, []);
 
   return (

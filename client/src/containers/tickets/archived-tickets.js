@@ -24,10 +24,7 @@ const ArchivedTickets = () => {
 
   useEffect(() => {
     getAllTickets(1, "", limit, searchInput, true);
-<<<<<<< HEAD
-=======
     // eslint-disable-next-line
->>>>>>> master
   }, []);
 
   if (allTickets) {

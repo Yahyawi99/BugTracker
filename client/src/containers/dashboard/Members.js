@@ -14,6 +14,7 @@ const Members = () => {
 
   useEffect(() => {
     getAllUsers();
+    // eslint-disable-next-line
   }, []);
 
   if (allUsers) {

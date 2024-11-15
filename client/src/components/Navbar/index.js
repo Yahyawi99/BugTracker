@@ -43,6 +43,7 @@ const NavBar = () => {
 
   useEffect(() => {
     getCurrentUser();
+    // eslint-disable-next-line
   }, []);
 
   // Drop down

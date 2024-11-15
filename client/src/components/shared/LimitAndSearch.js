@@ -33,6 +33,8 @@ const LimitAndSearch = (props) => {
     } else {
       controller(currentPage, "", limit, searchInput, isArchived);
     }
+
+    // eslint-disable-next-line
   }, [limit]);
 
   // search

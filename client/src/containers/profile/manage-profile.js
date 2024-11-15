@@ -23,10 +23,7 @@ const ManageProfile = () => {
 
   useEffect(() => {
     getCurrentUser();
-<<<<<<< HEAD
-=======
     // eslint-disable-next-line
->>>>>>> master
   }, []);
 
   useEffect(() => {

@@ -21,6 +21,7 @@ const ManageRoles = () => {
 
   useEffect(() => {
     getAllUsers(1, "", limit, searchInput, "all");
+    // eslint-disable-next-line
   }, []);
 
   if (allUsers) {
@@ -230,8 +231,10 @@ const Member = ({ member, updateUser }) => {
   };
 
   const assignRole = (memberId, element) => {
-    const newRole =
-      element.parentElement.previousElementSibling.children[0].textContent;
+    const newRoleHTMLElem =
+      element.parentElement.parentElement.previousElementSibling;
+
+    const newRole = newRoleHTMLElem.querySelector(".initialValue").textContent;
 
     const formData = new FormData();
 

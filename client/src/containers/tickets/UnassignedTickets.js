@@ -28,11 +28,7 @@ const UnassignedTickets = () => {
 
   useEffect(() => {
     unassignedTickets(1, "", limit, searchInput, "all");
-<<<<<<< HEAD
-  }, []);
-=======
   });
->>>>>>> master
 
   if (allTickets) {
     var { currentPage } = allTickets;
@@ -216,21 +212,8 @@ const TableHead = ({ value }) => {
 };
 
 const Ticket = ({ ticket, archiveTicket }) => {
-<<<<<<< HEAD
-  const {
-    _id,
-    assignedTo,
-    assignedBy,
-    title,
-    status,
-    priority,
-    createdAt,
-    isArchived,
-  } = ticket;
-=======
   const { _id, assignedBy, title, status, priority, createdAt, isArchived } =
     ticket;
->>>>>>> master
 
   return (
     <>

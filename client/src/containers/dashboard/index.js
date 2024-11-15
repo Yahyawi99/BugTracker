@@ -40,6 +40,7 @@ const Dashboard = () => {
     getAllTickets(1, "", "", "");
     getAllUsers();
     getAllMessages(USER_ID);
+    // eslint-disable-next-line
   }, []);
 
   const { projects } = allProjects;
@@ -58,6 +59,7 @@ const Dashboard = () => {
     });
 
     setNewUsers(myNewUsers?.length);
+    // eslint-disable-next-line
   }, [allUsers]);
 
   // New messages

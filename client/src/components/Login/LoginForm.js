@@ -59,23 +59,6 @@ const LoginForm = () => {
           <button type="sumbit" className="loginRegisterBtn">
             {mode}
           </button>
-<<<<<<< HEAD
-
-          {/* <p className="registerLoginQuestion">
-            {mode === "login" ? (
-              <>
-                You don't have an account?{" "}
-                <span onClick={() => setMode("register")}>Register</span>
-              </>
-            ) : (
-              <>
-                You already have an account?{" "}
-                <span onClick={() => setMode("login")}>Login</span>
-              </>
-            )}
-          </p> */}
-=======
->>>>>>> master
         </form>
 
         <Link className="demoLinks" to="/login-register/demo-accounts">

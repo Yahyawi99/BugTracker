@@ -9,10 +9,7 @@ const DemoAccounts = () => {
 
   useEffect(() => {
     setPassword("1234567890");
-<<<<<<< HEAD
-=======
     // eslint-disable-next-line
->>>>>>> master
   }, []);
 
   return (

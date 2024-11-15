@@ -23,6 +23,7 @@ const ManagePM = () => {
   useEffect(() => {
     getAllUsers();
     getSingleProject(projectId);
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {

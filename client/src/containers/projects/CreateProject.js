@@ -29,19 +29,12 @@ const CreateProject = () => {
   //   managers
   useEffect(() => {
     getAllUsers(1, "", Infinity);
-<<<<<<< HEAD
-=======
     // eslint-disable-next-line
->>>>>>> master
   }, []);
 
   useEffect(() => {
     if (allUsers.users) {
-<<<<<<< HEAD
-      setManagers(() => allUsers.users.filter((user) => user.role == "PM"));
-=======
       setManagers(() => allUsers.users.filter((user) => user.role === "PM"));
->>>>>>> master
     }
   }, [allUsers]);
 

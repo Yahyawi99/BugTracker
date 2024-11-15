@@ -26,10 +26,7 @@ const AssignDev = () => {
   useEffect(() => {
     getSingleTicket(ticketId);
     getAllUsers(1, "", Infinity);
-<<<<<<< HEAD
-=======
     // eslint-disable-next-line
->>>>>>> master
   }, []);
 
   useEffect(() => {

@@ -16,11 +16,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
-<<<<<<< HEAD
-    "dnd-kit": "^0.0.0-0",
-=======
     "eslint": "^8.57.1",
->>>>>>> master
     "framer-motion": "^10.16.4",
     "hamburger-react": "^2.5.0",
     "jwt-decode": "^3.1.2",
@@ -30,11 +26,7 @@
     "react-google-charts": "^4.0.0",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.13.0",
-<<<<<<< HEAD
-    "react-scripts": "5.0.1",
-=======
     "react-scripts": "^5.0.1",
->>>>>>> master
     "recharts": "^2.7.2",
     "web-vitals": "^2.1.4"
   },

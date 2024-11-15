@@ -33,10 +33,7 @@ const Header = () => {
 
   useEffect(() => {
     getAllMessages(USER_ID);
-<<<<<<< HEAD
-=======
     // eslint-disable-next-line
->>>>>>> master
   }, []);
 
   // New messages
