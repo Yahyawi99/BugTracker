@@ -257,32 +257,43 @@ const Member = ({ member, updateUser }) => {
       </td>
 
       <td>
-        <p className="role">{role}</p>
+        <p className="role">{role === "PM" ? "project manager" : role}</p>
       </td>
 
       <td>
         <div className="manageRole">
           <div onClick={(e) => showDropDown(e.currentTarget)}>
             <p className="initialValue">
-              {role || <span style={{ opacity: 0 }}>None selected</span>}
+              {role ? (
+                role === "PM" ? (
+                  "project manager"
+                ) : (
+                  role
+                )
+              ) : (
+                <span style={{ opacity: 0.25 }}>None selected</span>
+              )}
             </p>
             <FontAwesomeIcon icon={faChevronDown} />
           </div>
 
           <div data-id={_id} className="manageRoleDropdown">
-            {["admin", "project manager", "developer", "submitter"].map(
-              (value, i) => {
-                return (
-                  <p
-                    key={i}
-                    onClick={(e) => chooseRole(e.currentTarget, value)}
-                  >
-                    <Checkbox isChecked={value === role} />
-                    <span>{value}</span>
-                  </p>
-                );
-              }
-            )}
+            {["admin", "PM", "developer", "submitter"].map((value, i) => {
+              return (
+                <p
+                  key={i}
+                  onClick={(e) => {
+                    chooseRole(e.currentTarget, value);
+                    e.currentTarget.parentElement.classList.toggle(
+                      "showManageRoleDropdown"
+                    );
+                  }}
+                >
+                  <Checkbox isChecked={value === role} />
+                  <span>{value === "PM" ? "project manager" : value}</span>
+                </p>
+              );
+            })}
           </div>
         </div>
       </td>

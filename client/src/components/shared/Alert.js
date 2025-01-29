@@ -4,12 +4,17 @@ import { useMainContext } from "../../context/global";
 import "../../styles/components/shared/alert.css";
 
 const Alert = () => {
-  const { alert } = useMainContext();
+  const { alert, skin } = useMainContext();
 
   return (
-    <section className={`alertContainer ${alert.isOn && "alertOn"}`}>
-      <p style={{ background: alert.backClr }}>{alert.message}</p>
-    </section>
+    <div className={`alertContainer ${alert.isOn && "alertOn"}`}>
+      <div
+        style={{
+          background: skin,
+        }}
+      ></div>
+      <img src="/assets/icons/bug.svg" alt="bug" />
+    </div>
   );
 };
 

@@ -30,7 +30,7 @@ const MyProjects = () => {
 
   useEffect(() => {
     getUserProjects();
-  });
+  }, []);
 
   if (userProjects) {
     var { currentPage } = userProjects;

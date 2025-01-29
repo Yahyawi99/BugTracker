@@ -37,7 +37,8 @@ const ProjectDetails = () => {
 
   useEffect(() => {
     getSingleProject(projectId);
-  });
+    // eslint-disable-next-line
+  }, []);
 
   // handle the undefined errors
   if (
