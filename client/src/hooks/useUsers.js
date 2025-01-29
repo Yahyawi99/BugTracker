@@ -61,12 +61,13 @@ const useUsers = () => {
   const updateCurrentUser = async (userId, data) => {
     try {
       loading(true);
-
+      console.log(data);
       await axios.patch(`/api/v1/user/${userId}`, data);
 
       loading(false);
 
       await alertMe("Done", "var(--success)");
+      window.location = "/";
     } catch (error) {
       loading(false);
 
