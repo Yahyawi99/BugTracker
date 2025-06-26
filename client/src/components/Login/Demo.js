@@ -8,7 +8,7 @@ const DemoAccounts = () => {
   const { submitHandler, setMode, setEmail, setPassword } = useAuth();
 
   useEffect(() => {
-    setPassword("1234567890");
+    setPassword("0123456789");
     // eslint-disable-next-line
   }, []);
 
