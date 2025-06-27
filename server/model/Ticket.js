@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const History = require("./History");
+const Team = require("./Team");
+const UserModel = require("./User");
 
 const TicketSchema = new mongoose.Schema(
   {
@@ -92,7 +94,7 @@ TicketSchema.pre("save", async function () {
       const historyDocument = {
         title: `New Ticket Developer`,
         description: "A new <b>developer</b> was assigned.",
-        actionBy: this.admin,
+        actionBy: this.assignedBy,
         ticket: this._id,
         createdAt: this.createdAt,
       };
@@ -107,13 +109,14 @@ TicketSchema.pre("save", async function () {
         return;
       }
 
-      if (!projectTeam.membersIds.includes(this.assignedTo)) {
-        projectTeam.membersIds.push(this.assignedTo);
+      const membersIds = projectTeam.members.map((member) => member._id);
+
+      if (!membersIds?.includes(this.assignedTo)) {
+        membersIds.push(this.assignedTo);
       }
 
-      console.log(this.assignedTo);
-
-      // await projectTeam.save();
+      const members = await UserModel.find({ _id: { $in: membersIds } });
+      await Team.findOneAndUpdate({ project: this.project }, { members });
     }
   }
 });
