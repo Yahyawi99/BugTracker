@@ -84,7 +84,7 @@ const MemberProfile = () => {
                 <div>
                   <p>Team :</p>
 
-                  {team.length ? (
+                  {team && team.length ? (
                     <div className="team">
                       {team.map((user) => {
                         const { _id, avatar } = user;
@@ -122,7 +122,7 @@ const MemberProfile = () => {
 
               <div>
                 <p>Tickets : </p>
-                <p>{tickets.length}</p>
+                <p>{tickets?.length}</p>
               </div>
             </div>
           );
