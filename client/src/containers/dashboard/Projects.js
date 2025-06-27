@@ -184,7 +184,7 @@ const TableHead = ({ value }) => {
 const TableData = ({ project }) => {
   const { _id, name, startDate, endDate, team, tickets, managedBy } = project;
 
-  const members = { ...team }[0].members;
+  const members = { ...team }[0]?.members;
 
   return (
     <>

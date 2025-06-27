@@ -1,4 +1,3 @@
-import React from "react";
 import {
   BarChart,
   Bar,
@@ -13,36 +12,38 @@ const MyBarChart = ({ projects }) => {
   let data = [];
 
   if (projects) {
-    data = projects.reduce((acc, project, index) => {
-      const value = {
-        name: `P${index + 1}`,
-        Submitters: 0,
-        Developers: 0,
-        PMs: 0,
-      };
+    data = projects
+      .filter((project) => project.status === "active")
+      .reduce((acc, project, index) => {
+        const value = {
+          name: `P${index + 1}`,
+          Submitters: 0,
+          Developers: 0,
+          PMs: 0,
+        };
 
-      project.team.forEach((user) => {
-        if (user.role === "developer") {
-          value.Developers++;
-        }
+        project.team[0].members.forEach((user) => {
+          if (user.role === "developer") {
+            value.Developers++;
+          }
 
-        if (user.role === "PM") {
+          if (user.role === "PM") {
+            value.PMs++;
+          }
+
+          if (user.role === "submitter") {
+            value.Submitters++;
+          }
+        });
+
+        if (project.managedBy) {
           value.PMs++;
         }
 
-        if (user.role === "submitter") {
-          value.Submitters++;
-        }
-      });
+        !acc.includes(value) && acc.push(value);
 
-      if (project.managedBy) {
-        value.PMs++;
-      }
-
-      !acc.includes(value) && acc.push(value);
-
-      return acc;
-    }, []);
+        return acc;
+      }, []);
   }
 
   return (

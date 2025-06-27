@@ -60,6 +60,24 @@
     "role": "admin"
   },
   {
+    "name": "Demo PM",
+    "email": "demopm@gmail.com",
+    "password": "0123456789",
+    "role": "PM"
+  },
+  {
+    "name": "Demo Submitter",
+    "email": "demosubmitter@gmail.com",
+    "password": "0123456789",
+    "role": "submitter"
+  },
+  {
+    "name": "Demo dev",
+    "email": "demodev@gmail.com",
+    "password": "0123456789",
+    "role": "developer"
+  },
+  {
     "name": "Gonzalo Colledge",
     "email": "gcolledge2@whitehouse.gov",
     "password": "$2a$04$tvBRaauw3byCtQXpX1Zeeu3V7BdxHQZSY1lVKu1TCM2oMxrmWcMc2",

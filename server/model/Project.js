@@ -92,6 +92,7 @@ ProjectSchema.methods.projectTeam = async function (UserModel) {
     await Team.create({ project: this._id });
     return;
   }
+
   const membersIds = projectTeam.members.map((member) => member._id);
 
   const managerId = this.managedBy?._id;
@@ -119,7 +120,7 @@ ProjectSchema.methods.projectTeam = async function (UserModel) {
 
   const members = await UserModel.find({ _id: { $in: membersIds } });
 
-  await Team.findOneAndUpdate({ project: this._id }, { members });
+  await Team.findOneAndUpdate({ project: this.id }, { members });
 };
 
 module.exports = mongoose.model("Project", ProjectSchema);
