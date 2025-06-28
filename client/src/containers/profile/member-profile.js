@@ -22,7 +22,7 @@ const MemberProfile = () => {
     getSingleUser(memberId);
     getUserProjects(memberId);
     // eslint-disable-next-line
-  }, []);
+  }, [memberId]);
 
   return (
     <section className="memberProfile">
@@ -84,9 +84,9 @@ const MemberProfile = () => {
                 <div>
                   <p>Team :</p>
 
-                  {team && team.length ? (
+                  {team ? (
                     <div className="team">
-                      {team.map((user) => {
+                      {team[0].members.map((user) => {
                         const { _id, avatar } = user;
 
                         return (

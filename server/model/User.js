@@ -107,7 +107,7 @@ UserSchema.methods.projects = async function (user) {
     }, []);
 
     return await Project.find({ _id: { $in: userProjectIds } }).populate(
-      "tickets"
+      "tickets team"
     );
 
     // ************************************
