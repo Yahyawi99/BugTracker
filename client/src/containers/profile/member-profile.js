@@ -84,7 +84,7 @@ const MemberProfile = () => {
                 <div>
                   <p>Team :</p>
 
-                  {team ? (
+                  {team && team[0].members.length ? (
                     <div className="team">
                       {team[0].members.map((user) => {
                         const { _id, avatar } = user;
