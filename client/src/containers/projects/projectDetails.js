@@ -40,6 +40,8 @@ const ProjectDetails = () => {
     // eslint-disable-next-line
   }, []);
 
+  console.log(singleProject);
+
   // handle the undefined errors
   if (
     singleProject.hasOwnProperty("project") &&

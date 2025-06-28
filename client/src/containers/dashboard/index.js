@@ -44,7 +44,7 @@ const Dashboard = () => {
   }, []);
 
   const { projects } = allProjects;
-  const { tickets } = allTickets;
+  const { tickets, totalTickets } = allTickets;
   const { users } = allUsers;
 
   // New users
@@ -85,28 +85,23 @@ const Dashboard = () => {
       <div className="number-data">
         <span>
           <p>
-            {projects &&
-              projects.filter((project) => project.status === "active").length}
+            {projects?.filter((project) => project.status === "active").length}
           </p>
           <p>Active Projects</p>
         </span>
 
         <span>
-          <p>{tickets && tickets.length}</p>
+          <p>{totalTickets}</p>
           <p>Total Tickets</p>
         </span>
 
         <span>
-          <p>
-            {tickets && tickets.filter((ticket) => !ticket.isAssigned).length}
-          </p>
+          <p>{tickets?.filter((ticket) => !ticket.isAssigned).length}</p>
           <p>Unassigned Tickets</p>
         </span>
 
         <span>
-          <p>
-            {tickets && tickets.filter((ticket) => ticket.isAssigned).length}
-          </p>
+          <p>{tickets?.filter((ticket) => ticket.isAssigned).length}</p>
           <p>Assigned Tickets</p>
         </span>
       </div>

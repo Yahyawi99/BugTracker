@@ -85,7 +85,7 @@ const singleProject = async (req, res) => {
   const limit = Number(req.query.limit) || 3;
   const skip = (page - 1) * limit;
 
-  let associatedTickets = Ticket.find({
+  let associatedTickets = await Ticket.find({
     project: projectId,
   })
     .populate("assignedTo project")
